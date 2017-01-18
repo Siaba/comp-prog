@@ -1,7 +1,7 @@
 # comp-prog
 CMPSC 488 Project for Sizzling Syntax
 
-Key Contributers:
+Key Contributors:
 Casey Reagan,
 Griffin Kepp,
 Martin Lavendier,
