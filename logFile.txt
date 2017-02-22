@@ -1,0 +1,71 @@
+Team: Sizzling Syntax
+
+LOG FILE
+
+Group Members:
+Griffin Kepp
+Casey Raegan
+Martin Lavendier
+Nick Hain
+
+Sunday February 19th:
+
+Amazon Web Services recognizing our Github Repository and the respective files that are in them
+Time: 5pm to 6:30pm
+Members: Nick Hain , Martin Lavendier
+Description - Using the CodeDeploy system on the Amazon Web Services to upload our files to our app. Our respository is then recognized by 
+Amazon Web Services and our files for the web application are ready for the final deployment setup.
+
+
+Monday February 20th:
+
+
+Correcting the DNS of our website to accept the public DNS.
+Time: 6pm to 8pm
+Members: Griffin Kepp , Casey Raegan , 
+Description - Setting up and correcting the DNS of our website to accept the public DNS or www.sizzlingsyntax.com. This will allow access by typing
+in sizzlingsyntax.com or www.sizzlingsyntax.com
+
+Fixing the firewall and traffic policy for our website
+Time: 6pm to 8pm
+Members: Nick Hain , Martin Lavendier
+Description - Making sure that our website will accept HTTP AND HTTPS requests, as well as mangaging the TCP protocols to 
+properly handle HTTP or HTTPS request to access our website.
+
+Setting up the SSH security settings and creating access keys so we can all develop our appliation from a secure shell.
+Time: 8pm to 10pm
+Members: Griffin Kepp , Casey Raegan , Nick Hain , Martin Lavendier
+Description - Setting up the Amazon web services to accept the IP Addresses of each our home IP's, so that we
+can access the EC2 instance from home. This was done by creating access and secret access keys so that we can shell
+into the virtual machine. The virtual machine must be handle environment variables and allow us to access through a 
+shell anywhere.
+
+Creating a security group so we can all access the Amazon EC2 Virtual Machine Instance
+Time: 9pm to 10pm
+Members: Griffin Kepp , Martin Lavendier , Casey Raegan , Nick Hain
+Description: This creates a group of all of us so we can properly access the virutal machine instance.
+
+
+Tuesday February 21st:
+
+
+Amazon Web Services Finalizing EC2 Instance of Virutal Machine:
+Members - Casey Reagan , Martin Lavendier , Griffin Kepp , Nick Hain
+Time: 5pm to 7pm
+Description - Completed the process of initialzing the Virtual Machine instance on the Amazon Web Services. This was a process that we followed
+on Amazon to get the initial setup running.
+
+Hooking up Amazon Web Services Code Delpoyment:
+Members - Griffin Kepp , Martin Lavendier , Griffin Kepp , Nick Hain
+Time: 8pm to 12pm
+Description - Following a step by step process on the Amazon Web Services, this was the majority of the chunk of the process of getting our code to deploy
+from Github. This also requires tampering with the settings on the virtual machine and installing apache.
+
+
+Wednesday February 22nd:
+
+
+Setting up the login functionality on the page
+Members - Casey Raegan , Nick Hain , Griffin Kepp , Martin Lavendier
+Time: 10pm to 1pm
+Description - Having the login page accept a username and password. If the password and username is not valid then the website sends the user back to the page. 
