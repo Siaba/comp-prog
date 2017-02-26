@@ -44,9 +44,9 @@
             
           </div>
         </div>
-
-      <form action="index.html" method="post">
       
+      <form action="index.html" method="post">
+      <div class="signupForm">
         <h1>Sign Up</h1>
         <p>* Required Fields</p>
         
@@ -86,7 +86,7 @@
   		<input type="radio" name="gender" value="male" checked> Male<br>
  	    <input type="radio" name="gender" value="female"> Female<br>
   		<input type="radio" name="gender" value="prefer_not_to_say"> Prefer not to say<br><br>
-		</form>
+	 	</form>
 		<label for="occupation">* Occupation (please select from the following):</label>
         <select id="occupation" name="user_occupation">
           <optgroup label="Occupation">Occupation
@@ -97,6 +97,7 @@
           </optgroup>
         </select>
         </fieldset>
+    </div>
 
         <script>
           function checkEmail() {
@@ -112,6 +113,9 @@
           		text = text.fontcolor("red");
          		document.getElementById("emailWrong").innerHTML = text;
           	}
+          	else {
+         			document.getElementById("emailWrong").innerHTML = text;
+         		}
           }
           </script>
 
@@ -129,6 +133,9 @@
           			text = text.fontcolor("red");
          			document.getElementById("passwordWrong").innerHTML = text;
           		}
+          		else {
+         			document.getElementById("passwordWrong").innerHTML = text;
+         		}
           	}
           </script>
 
@@ -169,7 +176,7 @@
          			document.getElementById("usernameWrong").innerHTML = text;
          		}
          		else {
-         			document.getElementById("userameWrong").innerHTML = text;
+         			document.getElementById("usernameWrong").innerHTML = text;
          		}
          	}
         </script>
@@ -198,6 +205,9 @@
          		if (lastName.length == 0) {
          			text = "* Please enter a last name.";
          			text = text.fontcolor("red");
+         			document.getElementById("lastNameWrong").innerHTML = text;
+         		}
+         		else {
          			document.getElementById("lastNameWrong").innerHTML = text;
          		}
          	}
