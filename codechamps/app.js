@@ -4,6 +4,7 @@ var favicon = require('static-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var AWS = require('aws-sdk');
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
@@ -30,8 +31,10 @@ app.get('/', function(req, res){
 
 app.listen(3000);
 
-var ddb = require('dynamodb').ddb({ accessKeyId: 'AKIAIXOJTQ5PDL2MVQVQ', secretAccessKey: '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'});
-ddb.listTables({},function(err, res) {console.log(res);});
+var db = new AWS.DynamoDB({apiVersion: '2012-08-10'});
+   db.listTables(function(err, data) {
+   console.log(data.TableNames);
+});
 
 /// catch 404 and forwarding to error handler
 app.use(function(req, res, next) {
