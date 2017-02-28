@@ -33,7 +33,7 @@ app.listen(3000);
 
 var db = new AWS.DynamoDB({apiVersion: '2012-08-10'});
    db.listTables(function(err, data) {
-   console.log(data.TableNames);
+   console.log(data.user);
 });
 
 /// catch 404 and forwarding to error handler
