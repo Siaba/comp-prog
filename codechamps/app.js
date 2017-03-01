@@ -33,7 +33,7 @@ app.listen(3000);
 
 AWS.config.update({
     region: "us-east-1",
-    endpoint: "dynamo.us-east-1.amazonaws.com"
+    endpoint: "dynamodb.us-east-1.amazonaws.com"
 });
 
 var db = new AWS.DynamoDB({apiVersion: '2012-08-10'});
