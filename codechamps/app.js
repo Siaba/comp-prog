@@ -31,9 +31,14 @@ app.get('/', function(req, res){
 
 app.listen(3000);
 
+AWS.config.update({
+    region: "us-east-1",
+    endpoint: "dynamo.us-east-1.amazonaws.com"
+});
+
 var db = new AWS.DynamoDB({apiVersion: '2012-08-10'});
    db.listTables(function(err, data) {
-   console.log(data.user);
+   console.log(data);
 });
 
 /// catch 404 and forwarding to error handler
