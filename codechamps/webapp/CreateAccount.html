@@ -306,9 +306,48 @@
          	}
         </script>
         </fieldset>
-        <form>
+        <form name = "signUp" action="index.html" onsubmit="return checkBeforeSubmission()" method="post">
         <button type="submit">Sign Up</button>
       </form>
+      <script>
+      function checkBeforeSubmission() {
+      	 var getFirstName = document.getElementById("firstName");
+      	 getFirstName = getFirstName.value.replace(/\s+/g, '');
+      	 var getLastName = document.getElementById("lastName");
+      	 getLastName = getLastName.value.replace(/\s+/g, '');
+      	 var getUsername = document.getElementById("username");
+      	 getUsername = getUsername.value.replace(/\s+/g, '');
+      	 var getEmail = document.getElementById("mail");
+      	 getEmail = getEmail.value.replace(/\s+/g, '');
+      	 var getReEmail = document.getElementById("reMail");
+      	 getReEmail = getReEmail.value.replace(/\s+/g, '');
+      	 var getPassword = document.getElementById("password");
+      	 getPassword = getPassword.value.replace(/\s+/g, '');
+      	 var getRePassword = document.getElementById("password_reentered");
+      	 getRePassword = getRePassword.value.replace(/\s+/g, '');
+      	 var getAge = document.getElementById("userAge");
+      	 getAge = getAge.value.replace(/\s+/g, '');
+      	 var hasErrors = 0;
+      	 if (getFirstName.length == 0 || getLastName.length == 0 || getUsername.length == 0 || getEmail == 0 || getReEmail == 0 || getPassword == 0 || getRePassword == 0) {
+      	 	firstNameWrong();
+      	 	lastNameWrong();
+      	 	validUsername();
+      	 	checkFirstEmail();
+      	 	checkEmail();
+      	 	checkFirstPassword();
+      	 	checkPassword();
+      	 	validAge();
+      	 	hasErrors = 1;
+      	 }
+      	 if (hasErrors > 0) {
+      	 	return false;
+      	 }
+      	 else {
+      	 	return true;
+      	 }
+
+      }
+      </script>
       
     </body>
 </html>
