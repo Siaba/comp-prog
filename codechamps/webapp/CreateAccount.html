@@ -19,7 +19,7 @@
     	<div class="top-bar">
           <div class="top-bar-left">
             <h3>CodeChamps<h3>
-          </h3></div>
+          </h3>
           <div class="top-bar-right">
             <ul class="dropdown menu" data-dropdown-menu>
               
@@ -43,9 +43,8 @@
             </ul>
             
           </div>
-        </div>
       
-      <form action="index.html" method="post">
+      <form action="/CreateAccount.html" method="post">
       <div class="legacysignupForm">
         <h1>Sign Up</h1>
         <p>* Required Fields</p>
@@ -84,11 +83,9 @@
           <input type="text" id="userAge" name="user_age" onblur="validAge()">
           <p id="ageWrong"></p>
         <label for="gender">* Gender:</label>
-        <form>
   		<input type="radio" name="gender" value="male" checked> Male<br>
  	    <input type="radio" name="gender" value="female"> Female<br>
   		<input type="radio" name="gender" value="prefer_not_to_say"> Prefer not to say<br><br>
-	 	</form>
 		<label for="occupation">* Occupation (please select from the following):</label>
         <select id="occupation" name="user_occupation">
           <optgroup label="Occupation">Occupation
@@ -305,8 +302,6 @@
          		}
          	}
         </script>
-        </fieldset>
-        <form name = "signUp" action="index.html" onsubmit="return checkBeforeSubmission()" method="post">
         <button type="submit">Sign Up</button>
       </form>
       <script>
