@@ -17,8 +17,8 @@ app.set('view engine', 'jade');
 
 app.use(favicon());
 app.use(logger('dev'));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded());
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'webapp')));
 
@@ -36,6 +36,45 @@ AWS.config.update({
     endpoint: "dynamodb.us-east-1.amazonaws.com"
 });
 
+//add new user to database
+app.post('/CreateAccount.html', function(req, res) {
+	var table = "user";
+	var username = req.body.user_name;
+	var age = req.body.user_age;
+	var email = req.body.user_email;
+	var firstname = req.body.first_name;
+	var lastname = req.body.last_name;
+	var gender = req.body.gender;
+	var occupation = req.body.user_occupation;
+	var pass = req.body.user_password;
+	
+	var docClient = new AWS.DynamoDB.DocumentClient();
+	
+	console.log(username);
+	var params = {
+		TableName:table,
+		Item:{
+			"username": username,
+			"age": age,
+			"email": email,
+			"firstname": firstname,
+			"gender": gender,
+			"lastname": lastname,
+			"occupation": occupation,
+			"password": pass
+		}
+	};
+
+	console.log("Adding a new item...");
+	docClient.put(params, function(err, data) {
+		if (err) {
+			console.error("Unable to add item. Error JSON:", JSON.stringify(err, null, 2));
+		} else {
+			console.log("Added item:", JSON.stringify(data, null, 2));
+		}
+	});
+	res.redirect('/index.html');
+});
 var db = new AWS.DynamoDB({apiVersion: '2012-08-10'});
    db.listTables(function(err, data) {
    console.log(data);
