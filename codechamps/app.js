@@ -11,9 +11,7 @@ var users = require('./routes/users');
 
 var app = express();
 
-var server = require('http').createServer(app);
-var io = require('socket.io')(server);
-io.on('connection', function(){ console.log("someone has connected."); });
+
 
 
 // view engine setup
@@ -33,6 +31,11 @@ app.use('/users', users);
 app.get('/', function(req, res){
     res.sendFile(path.join(__dirname + '/index.html'));
 });
+
+var server = require('http').createServer(app);
+var io = require('socket.io')(server);
+io.on('connection', function(){ console.log("someone has connected."); });
+
 
 server.listen(3000);
 
