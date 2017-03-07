@@ -11,6 +11,11 @@ var users = require('./routes/users');
 
 var app = express();
 
+var server = require('http').createServer(app);
+var io = require('socket.io')(server);
+io.on('connection', function(){ console.log("someone has connected."); });
+
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
@@ -29,7 +34,7 @@ app.get('/', function(req, res){
     res.sendFile(path.join(__dirname + '/index.html'));
 });
 
-app.listen(3000);
+server.listen(3000);
 
 AWS.config.update({
     region: "us-east-1",
