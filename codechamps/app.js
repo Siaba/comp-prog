@@ -34,7 +34,7 @@ app.get('/', function(req, res){
 
 var server = require('http').createServer(app);
 var io = require('socket.io')(server);
-io.on('connection', function(){ console.log("someone has connected."); });
+io.on('connection', function(socket){ console.log("someone has connected."); });
 
 
 server.listen(3000);
