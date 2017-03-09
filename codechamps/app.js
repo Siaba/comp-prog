@@ -92,6 +92,7 @@ app.post('/blanktext.html', function(req, res){
 	fs.writeFile(filePath, body ,function(){
 		console.log(__dirname);
 	});
+	res.redirect('/blanktext.html');
 });
 
 var db = new AWS.DynamoDB({apiVersion: '2012-08-10'});
