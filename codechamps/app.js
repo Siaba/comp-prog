@@ -89,7 +89,8 @@ app.post('/CreateAccount.html', function(req, res) {
 app.post('/blanktext.html', function(req, res){
 	var body = req.body.comments;
 	var filePath = __dirname + '/webapp/test.txt';
-	fs.writeFile(filePath, body ,function(){
+	fs.writeFile(filePath, body ,function(err){
+		if(err) throw err;
 		console.log(__dirname);
 	});
 	res.redirect('/blanktext.html');
