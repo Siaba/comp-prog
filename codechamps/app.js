@@ -5,6 +5,7 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var AWS = require('aws-sdk');
+var fs = require('fs');
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
@@ -83,6 +84,22 @@ app.post('/CreateAccount.html', function(req, res) {
 	});
 	res.redirect('/index.html');
 });
+
+//write to file when submit button is clicked
+app.post('/blanktext.html', function(req, res){
+	var body = '';
+	var filePath = __dirname + 'test.txt';
+	req.on('data',function(data){
+		body += data;
+	});
+	
+	req.on('end',function(){
+		fs.writeFile(filePath, document.getElementById("comments").value, function(){
+			res.end();
+		});
+	});
+});
+
 var db = new AWS.DynamoDB({apiVersion: '2012-08-10'});
    db.listTables(function(err, data) {
    console.log(data);
