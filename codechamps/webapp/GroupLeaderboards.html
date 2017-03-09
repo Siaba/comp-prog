@@ -36,12 +36,27 @@
             
           </div>
         </div>
-	<h1>See how you compare in your group.</h1>
-	<ul>
-		<li><a href="GroupStats.html">Your statistics compared to your group who is playing.</a></li>
-		<li><a href="Leaderboards.html">Go back.</a></li>
-		<li><a href="HomePage.html">Go back to the homepage.</a></li>
-	</ul>
+	<center>
+	<h1>Choose a Player to Compare Your Scores With.</h1>
+</center>
+  <div>
+	<label for="occupation"><center>Player's Username to Compare Scores With:</center></label>
+        <select id="playerList" name="user_player_list" onclick="populatePlayerList()">
+          <optgroup label="Player Username">
+            <option>
+          </optgroup>
+        </select>
+</div>
+
+<script>
+function populatePlayerList() { //This will eventually populate a list of player names.
+  var x = document.getElementById("playerList");
+    var y = document.createElement("OPTGROUP");
+    y.setAttribute("label", "SwedishCars");
+    y.appendChild(x.options[0])
+    x.insertBefore(y, x.options[0]);
+}
+</script>
 	<script src="js/vendor/jquery.js"></script>
     <script src="js/vendor/what-input.js"></script>
     <script src="js/vendor/foundation.js"></script>
