@@ -89,14 +89,8 @@ app.post('/CreateAccount.html', function(req, res) {
 app.post('/blanktext.html', function(req, res){
 	var body = '';
 	var filePath = __dirname + 'test.txt';
-	req.on('data',function(data){
-		body += data;
-	});
-	
-	req.on('end',function(){
-		fs.writeFile(filePath, document.getElementById("comments").value, function(){
-			res.end();
-		});
+	fs.writeFile(filePath, document.getElementById("comments").value,function(){
+		console.log("I wrote to a file");
 	});
 });
 
