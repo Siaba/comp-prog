@@ -88,7 +88,7 @@ app.post('/CreateAccount.html', function(req, res) {
 //write to file when submit button is clicked
 app.post('/blanktext.html', function(req, res){
 	var body = req.body.comments;
-	var filePath = __dirname + '/test.txt';
+	var filePath = __dirname + '/webapp/test.txt';
 	fs.writeFile(filePath, body ,function(){
 		console.log("I wrote to a file");
 	});
