@@ -16,10 +16,10 @@
 
     <body>
 
-    	<div class="top-bar">
+      <div class="top-bar">
           <div class="top-bar-left">
             <h3>CodeChamps<h3>
-		    </h3></div>
+        </h3></div>
           <div class="top-bar-right">
             <ul class="dropdown menu" data-dropdown-menu>
               
@@ -37,13 +37,13 @@
               <li><a href="Stats.html">Stats</a></li>
               <li><a href="Leaderboards.html">Leaderboards</a></li>
               <li><a href="History.html">History</a></li>
-	      <li><a href="CreateAccount.html">Sign Up</a></li>
+        <li><a href="CreateAccount.html">Sign Up</a></li>
               
               
             </ul>
             
           </div>
-		</div>
+    </div>
       <form action="/CreateAccount.html" method="post">
       <div class="legacysignupForm">
         <h1>Sign Up</h1>
@@ -74,6 +74,9 @@
           <label for="password">* Password:</label>
           <input type="password" id="password" name="user_password" onblur="checkFirstPassword()">
           <p id="firstPasswordWrong"></p>
+          <!--<input type="checkbox" id="showHide1" onclick="if(password.type=='text') { password.type='password'; password_reentered.type='password';}else { password.type='text'; password_reentered.type='text';}" unchecked>
+            Show Password (Check Only if you are Alone)<br></br>
+          </input>-->
 
           <label for="password">* Confirm Password:</label>
           <input type="password" id="password_reentered" name="user_confirm_password" onblur="checkPassword()">
@@ -83,9 +86,11 @@
           <input type="text" id="userAge" name="user_age" onblur="validAge()">
           <p id="ageWrong"></p>
         <label for="gender">* Gender:</label>
+        <form>
   		<input type="radio" name="gender" value="male" checked> Male<br>
  	    <input type="radio" name="gender" value="female"> Female<br>
   		<input type="radio" name="gender" value="prefer_not_to_say"> Prefer not to say<br><br>
+	 	</form>
 		<label for="occupation">* Occupation (please select from the following):</label>
         <select id="occupation" name="user_occupation">
           <optgroup label="Occupation">Occupation
@@ -189,32 +194,7 @@
           	}
           </script>
 
-          <script>
-          	function checkPassword() {
-          		var getPassword = document.getElementById("password");
-          		var getRePassword = document.getElementById("password_reentered");
-          		var password1 = getPassword.value;
-          		var password2 = getRePassword.value;
-          		var text = "";
-          		password1 = password1.replace(/\s+/g, '');
-          		password2 = password2.replace(/\s+/g, '');
-
-          		if (password2.length == 0) {
-				text = "* Please enter a password.";
-          		text = text.fontcolor("red");
-         		document.getElementById("passwordWrong").innerHTML = text;
-				}
-
-          		else if (password1 != password2) {
-          			text = "* Passwords do not match. Please Retype.";
-          			text = text.fontcolor("red");
-         			document.getElementById("passwordWrong").innerHTML = text;
-          		}
-          		else {
-         			document.getElementById("passwordWrong").innerHTML = text;
-         		}
-          	}
-          </script>
+          
 
          <script>
          	function validAge() {
@@ -245,7 +225,7 @@
          	function validUsername() {
          		var getUsername = document.getElementById("username");
          		var userName = getUsername.value;
-         		userName = userName.replace(/\s+/g, '');
+         		var usernameRegexpression = /^[a-zA-Z0-9]+$/;
          		var text = "";
          		if (userName.length == 0) {
          			text = "* Please enter a username.";
@@ -258,7 +238,7 @@
          			document.getElementById("usernameWrong").innerHTML = text;
          		}
 
-         		else if (!userName.match(/^[a-zA-Z\-]+$/)) {
+         		else if (!userName.match(usernameRegexpression)) {
          			text = "* Illegal character(s) detected. Please use only letters and numbers for your username.";
          			text = text.fontcolor("red");
          			document.getElementById("usernameWrong").innerHTML = text;
@@ -302,6 +282,8 @@
          		}
          	}
         </script>
+        </fieldset>
+        <form name = "signUp" action="index.html" onsubmit="return checkBeforeSubmission()" onclick="return checkBeforeSubmission()" method="post">
         <button type="submit">Sign Up</button>
       </form>
       <script>
@@ -343,6 +325,7 @@
 
       }
       </script>
-      
+      <script src="js/checkPassword.js"></script>
+
     </body>
 </html>
