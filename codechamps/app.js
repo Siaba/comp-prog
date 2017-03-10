@@ -6,6 +6,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var AWS = require('aws-sdk');
 var fs = require('fs');
+const exec = require('child_process').exec;
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
@@ -93,8 +94,20 @@ app.post('/blanktext.html', function(req, res){
 		if(err) throw err;
 		console.log(__dirname);
 	});
+	
+	exec('isolate --init', (error, stdout, stderr) => {
+ 	 if (error) {
+   	 console.error(`exec error: ${error}`);
+   	 return;
+ 	 }
+ 	 console.log(`stdout: ${stdout}`);
+ 	 console.log(`stderr: ${stderr}`);
+	});
+	
 	res.redirect('/blanktext.html');
 });
+
+
 
 var db = new AWS.DynamoDB({apiVersion: '2012-08-10'});
    db.listTables(function(err, data) {
