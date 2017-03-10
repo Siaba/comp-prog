@@ -1,21 +1,24 @@
 <!DOCTYPE html>
-<html>
+<html class="no-js" lang="en" dir="ltr">
 
 <head>
-	<meta Charset="utf-8">
-	<meta http-equiv="x-ua-compatible" content="ie=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" href="css/foundation.css">
-    <link rel="stylesheet" href="css/app.css">
-
-	<title>Leaderboards</title>
-</head>
-<body>
-	        		<div class="top-bar">
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/foundation.css">
+  <link rel="stylesheet" href="css/app.css">
+  <link href="http://cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/foundation-icons.css" rel="stylesheet">
+  <title>Leaderboards</title>
+  </head>
+  <body>
+	 
+  <div class="top-bar">
           <div class="top-bar-left">
-            <h3>CodeChamps<h3>
-          </h3></div>
+            <h3>CodeChamps</h3>
+              
+          </div>
           <div class="top-bar-right">
+          
             <ul class="dropdown menu" data-dropdown-menu>
               <li><a href="index.html">Home</a></li>
               <li>
@@ -27,33 +30,37 @@
                 </ul>
               </li>
 
-
-             
+              
               <li><a href="Account.html">Account</a></li>
+              <li><a href="blanktext.html">Isolate Test DAWG</a></li>
               <li><a href="Stats.html">Stats</a></li>
               <li><a href="Leaderboards.html">Leaderboards</a></li>
               <li><a href="History.html">History</a></li>
-	      <li><a href="CreateAccount.html">Sign Up</a></li>
+             <li><a href="CreateAccount.html">Sign Up</a></li>
             </ul>
             
           </div>
-        </div>
+          </div>
+
 	<div class="leaderboardback">
-        <center>
-	<h1 style="color:blue">You Vs.</h1>
-</center>
-  <form name="leaderboardType" method="post">
     <center>
-      <div class= "lbbuttonspacing">
-		<button type="submit" class="button large" style="background-color: #3399ff" style="align-content: center;" action="GroupLeaderboards.html">Your Group.</button>
-		<button type="submit" class="button large" action="GlobalLeaderboards.html" style="color: white;">The World.</button>
-  </center>
-</div>
+  	<h1 style="color:blue">You Vs.</h1>
+    </center>
+    <form name="leaderboardType" method="post">
+      <center>
+        <div class= "lbbuttonspacing">
+  		  <button type="submit" class="button large" style="background-color: #3399ff" style="align-content: center;" action="GroupLeaderboards.html">Your Group.</button>
+  		  <button type="submit" class="button large" action="GlobalLeaderboards.html" style="color: white;">The World.</button>
+      </center>
+  </div>
+
 </form><br><br><br><br><br><br><br><br>
+
 </div>
-	<script src="js/vendor/jquery.js"></script>
+
+	  <script src="js/vendor/jquery.js"></script>
     <script src="js/vendor/what-input.js"></script>
     <script src="js/vendor/foundation.js"></script>
-    <!--<script src="js/app.js"></script>-->
+    <script src="js/app.js"></script>
 </body>
 </html>
