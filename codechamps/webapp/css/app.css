@@ -8,11 +8,90 @@
 .hero {
 
 	background-image: url("BG3.jpg");
-	padding: 80px 80px;
+	padding: 120px 120px;
+  	opacity: 0.89;
 
+
+}
+
+
+a:hover {
+
+	background-color: #0066ff;
+	color: white;
+	font: bold;
+	border-radius: 2px;
+	
+
+}
+
+a.a2:hover {
+
+	
+
+	background-color: #000000;
+	color: white;
+	font: bold;
+	border-radius: 2px;
+
+	
+
+}
+
+.full-width {
+  max-width: 1400px;
+}
+
+.footer {
+  background-image: url("black_lozenge.png");
+  padding: 2rem 4rem;
+  text-align: center;
+  color: #fff;
+  position: absolute;
+  align-self: bottom;
+}
+.footer i {
+  font-size: 100px;
+
+}
+
+.footer i:hover {
+
+  opacity: 0.5;
+
+}
+
+.footer h4 {
+  color: #fff;
+  font-size: 1em;
+  font-weight: 400;
+  text-transform: uppercase;
+  margin-top: 2.5rem;
+  margin-bottom: 10px;
+
+}
+.footer p, .footer a {
+  font-weight: 300;
+  font-size: 0.8em;
+  color: #fff;
+  display: block;
+}
+
+@media only screen and (min-width: 40.063em) {
+  .footer .columns:nth-child(n+2) {
+    border-left: 1px solid  #3399ff;
+    min-height: 300px;
+  }
+}
+.footer-links {
+  list-style-type: none;
+}
+.footer-links li {
+  margin-top: .5em;
 }
 
 
 foundation.css
 
 app.css
+
