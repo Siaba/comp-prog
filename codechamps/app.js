@@ -88,20 +88,32 @@ app.post('/CreateAccount.html', function(req, res) {
 
 //write to file when submit button is clicked
 app.post('/blanktext.html', function(req, res){
-	var body = req.body.comments;
-	var filePath = __dirname + '/webapp/test.txt';
-	fs.writeFile(filePath, body ,function(err){
-		if(err) throw err;
-		console.log(__dirname);
-	});
+	
 	
 	exec('isolate --init', (error, stdout, stderr) => {
  	 if (error) {
    	 console.error(`exec error: ${error}`);
    	 return;
  	 }
+	
  	 console.log(`stdout: ${stdout}`);
  	 console.log(`stderr: ${stderr}`);
+	 var body = req.body.comments;
+	 var filePath = '/tmp/box/0/box/test.txt';
+	 fs.writeFile(filePath, body ,function(err){
+		if(err) throw err;
+		console.log(__dirname);
+	 });
+		
+	 fs.symlink('/usr/lib/jvm/java-8-openjdk-amd64/jre/bin/java','/tmp/box/0/box/java'function(err){
+		 if(err) throw err;
+		 console.log("java symlink has been created.");
+	 });
+	fs.symlink('/usr/lib/jvm/java-8-openjdk-amd64/bin/javac','/tmp/box/0/box/javac'function(err){
+		 if(err) throw err;
+		 console.log("javac symlink has been created.");
+	 });
+	
 	});
 	
 	res.redirect('/blanktext.html');
