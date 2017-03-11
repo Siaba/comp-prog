@@ -117,6 +117,12 @@ app.post('/blanktext.html', function(req, res){
 				 console.error("javac failed");
 				 return;
 			 }
+			 exec('isolate --processes=15 --run -- java test', (error,stdout,stderr) => {
+				 if(error) {
+					 console.error("test run failed");
+					 return;
+				 }
+			 });
 		 });
 	 });
 	
