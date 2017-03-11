@@ -105,11 +105,11 @@ app.post('/blanktext.html', function(req, res){
 		console.log(__dirname);
 	 });
 		
-	 fs.symlink('/usr/lib/jvm/java-8-openjdk-amd64/jre/bin/java','/tmp/box/0/box/java'function(err){
+	 fs.symlink('/usr/lib/jvm/java-8-openjdk-amd64/jre/bin/java','/tmp/box/0/box/java',function(err){
 		 if(err) throw err;
 		 console.log("java symlink has been created.");
 	 });
-	fs.symlink('/usr/lib/jvm/java-8-openjdk-amd64/bin/javac','/tmp/box/0/box/javac'function(err){
+	fs.symlink('/usr/lib/jvm/java-8-openjdk-amd64/bin/javac','/tmp/box/0/box/javac',function(err){
 		 if(err) throw err;
 		 console.log("javac symlink has been created.");
 	 });
