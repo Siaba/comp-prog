@@ -1,12 +1,26 @@
 <!doctype html>
 <html class="no-js" lang="en" dir="ltr">
-  <head>
+<head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Practice Mode</title>
     <link rel="stylesheet" href="css/foundation.css">
     <link rel="stylesheet" href="css/app.css">
+    <style type="text/css" media="screen">
+    #editor { 
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+    }
+    #acecontainer {
+	position: relative;
+	height: 500px;
+	width: 100%;
+    }
+	</style>
   </head>
   <body>
 
@@ -39,67 +53,92 @@
           </div>
         </div>
     <div class="row">
-      <div class="large-8 medium-8 columns">
-        <form>
-          <div class="row">
-			<label>File name</label>
-			<div class="input-group columns">
-		          <input type="text" placeholder="filename" class="input-group-field"/>
-				  <span id="ext" class="input-group-label">.java</span>
-
-            </div>
-          </div>
-          <div class="row">
-            <div class="large-12">
-              <label>Language</label>
-			<script>
-			function changeExtension() {
-			  var src = document.getElementById("ddown");   
-			  var trgt = document.getElementById("ext");	  
-			  var txt;
-				
-			  if (src.value == "Java"){
-				txt = document.createTextNode(".java");
-				trgt.innerText = txt.textContent;
-			  }
-			  else if (src.value == "c++"){
-				txt = document.createTextNode(".cxx");
-				trgt.innerText = txt.textContent;
-			  }
-			  else {
-				txt = document.createTextNode(".py");
-				trgt.innerText = txt.textContent;
-			  }
-			}
-		   </script>
-			  <div class="large-12 columns">
-		          <select name="ddown" onchange="if (this.selectedIndex) changeExtension()">
-		            <option value="java" onclick="changeExtension()">Java</option>
-		            <option value="c++" onclick="changeExtension()">C++</option>
-		            <option value="python" onclick="changeExtension()">Python</option>
+		<div class="large-8 columns">
+		          <select name="problems" id="problems_ddown">
+		            <option value="0">Hello World</option>
+		            <option value="1">Recursion</option>
+		            <option value="2">Fibonacci</option>
 		          </select>
-			  </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="large-12 columns">
-              <label>Code</label>
-              <textarea rows="25" placeholder="code here"></textarea>
-            </div>
-			<div class="large-6 medium-6 columns">
-				<a href="#" class="button">Test</a>
-            	<a class="button" onclick="moveYourBar()">Run</a>
+		</div>
+		<script>
+		function changeLang(){
+			var ddown = document.getElementById('ddown');
+			var editor = ace.edit("editor");
+			editor.session.setMode("ace/mode/" + ddown.value);
+			switch(ddown.value) {
+				case 'java':
+					editor.setValue("public class HelloWorld"
+					+ "\n{"
+					+ "\n\tpublic static void main(String[] args) {"
+					+ "\n\t\tSystem.out.println(\"Hello, World\");"
+					+ "\n\t}"
+					+ "\n}");
+					break;
+				case 'c_cpp':
+					editor.setValue("#include <iostream>"
+					+ "\nusing namespace std;"
+					+ "\n"
+					+ "\nint main()"
+					+ "\n{"
+					+ "\n\tcout << \"Hello World!\";"
+					+ "\n}");
+					break;
+				case 'python':
+					editor.setValue("print(\"Hello World!\");");
+					break;
+				default:
+					editor.setValue("");
+			}
+		}
+		</script>
+		<div class="large-8 medium-8 columns">
+		<div  id="acecontainer">
+			<pre id="editor">function foo(items) {
+				var i;
+				for (i = 0; i &lt; items.length; i++) {
+					alert("Ace Rocks " + items[i]);
+				}
+			}</pre>
+		</div>
+		</br>
+		<div class="row">
+		<div class="small-10 columns">
+		          <select name="ddown" id="ddown" onchange="changeLang()">
+		            <option value="java">Java</option>
+		            <option value="c_cpp">C++</option>
+		            <option value="python">Python</option>
+		          </select>
+		</div>
+		<div class="small-2 columns">
+		<button type="submit" class="button" onclick="fillace()">Submit</button>
+		<script>
+		function fillace(){
+			var aceinput = document.getElementById('aceinput');
+			var editor = ace.edit('editor');
+			aceinput.value = editor.getValue();
+			document.getElementById('aceform').submit();
+		}
+		</script>
+		
+		<form action="/blanktext.html" method="post" id="aceform">
+			<input type="hidden" id="aceinput" value=""/>
+		</form>
+		</div>
+		</div>
+		</div>
+		<script src="src-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
+		<script>
+			var editor = ace.edit("editor");
+			editor.setTheme("ace/theme/crimson_editor");
+			editor.session.setMode("ace/mode/javascript");
+		</script>
+		
+		<div class="large-4 medium-4 columns">
+			<div class="callout">
+			  <h5>Description:</h5>
+			  <p><font face="monospace">Write a program that outputs <em>Hello World!</em></font></p>
 			</div>
-          </div>
-          <div class="row">
-            <div class="large-12 columns">
-              <label>Test Input</label>
-              <textarea placeholder="test input"></textarea>
-            </div>
-          </div>
-        </form>
-      </div>
-
+		</div>
       <div class="large-4 medium-4 columns">
         <div class="callout">
 		  <h5>Your output:</h5>
