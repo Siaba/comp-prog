@@ -99,7 +99,7 @@ app.post('/blanktext.html', function(req, res){
  	 console.log(`stdout: ${stdout}`);
  	 console.log(`stderr: ${stderr}`);
 	 var body = req.body.comments;
-	 var filePath = '/tmp/box/0/box/test.txt';
+	 var filePath = '/tmp/box/0/box/test.java';
 	 fs.writeFile(filePath, body ,function(err){
 		if(err) throw err;
 		console.log(__dirname);
@@ -112,6 +112,12 @@ app.post('/blanktext.html', function(req, res){
 	fs.symlink('/usr/lib/jvm/java-8-openjdk-amd64/bin/javac','/tmp/box/0/box/javac',function(err){
 		 if(err) throw err;
 		 console.log("javac symlink has been created.");
+		 exec('isolate --processes=15 --run -- javac test.java', (error, stdout, stderr) => {
+			 if(error) {
+				 console.error("javac failed");
+				 return;
+			 }
+		 });
 	 });
 	
 	});
