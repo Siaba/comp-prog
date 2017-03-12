@@ -1,113 +1,117 @@
-<!doctype html>
-<html class="no-js" lang="en" dir="ltr">
-  <head>
-    
-    <meta charset="utf-8">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CodeChamps++</title>
-    <link rel="stylesheet" href="css/foundation.css">
-    <link rel="stylesheet" href="css/app.css">
-    <link href="http://cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/foundation-icons.css" rel="stylesheet">
+.main {
 
-  </head>
-  <body>
-      <!-- 
-          Home Page -->
+  padding: 2rem 4rem;
+  background-color: 
+
+}
+
+.main .columns:nth-child(n + 2) {
+  
+  border-left: 1px solid black;
+  min-height: 300px;
 
 
-        <div class="top-bar">
-          <div class="top-bar-left">
-            <h3>CodeChamps</h3>
-          </div>
-          <div class="top-bar-right">
-          
-            <ul class="dropdown menu" data-dropdown-menu>
-              <li><a href="index.html">Home</a></li>
-              <li>
-                <a href="Versus.html">Game</a>
-                <ul class="menu vertical">
-                  <li><a href="PracticeMode.html">Practice Mode</a></li>
-                  <li><a href="Versus.html">Versus Match</a></li>
-                  
-                </ul>
-              </li>
+}
 
-              
-              <li><a href="Account.html">Account</a></li>
-              <li><a href="blanktext.html">Isolate Test DAWG</a></li>
-              <li><a href="Stats.html">Stats</a></li>
-              <li><a href="Leaderboards.html">Leaderboards</a></li>
-              <li><a href="History.html">History</a></li>
-	           <li><a href="CreateAccount.html">Sign Up</a></li>
-            </ul>
-            
-          </div>
-          </div>
+.main i {
 
-        <section class="hero">
-        <h1 align="vertical" style="text-align: center; color: white;" style="font-style: bold;"> Welcome to the CodeChamps Website
-        </h1>
-        <div>
-        <p style="color: white;" align="center" style="width: 30px;">
-        Ready to join a community of fellow programmers seeking to solve new challenges and see how their skills measure? Start solving challenges now and compete face to face with other developers. When your not playing versus mode, you can always create a group and have a team competition or cool off in single player mode. Sign up today and begin mastering your skills
-        </p></div><br>
-        <center>
-        <a href="About.html" class="button large" style="background-color: #3399ff" style="align-content: center;">About Us</a>
-        <a href="Contact.html" class="button  success large" style="color: white;">Contact Us</a>
-        </center>
-        </section>
-        <br>
-        <br>
+  font-size: 8rem;
+
+}
+
+.top-bar h3 {
+
+  text-shadow: 2px 2px 4px #404040;
+  font: bold;
+
+}
+
+.hero {
+
+	background-image: url("BG3.jpg");
+	padding: 135px 135px;
+  opacity: 0.85;
 
 
+}
 
 
-        <!-- Footer Section   -->
+a:hover {
 
-        <footer class="footer">
-          <div class="row full-width">
-          <div class="small-12 medium-3 large-4 columns">
-              <i class="fi-laptop"></i>
-              <p>Ready to join a community of fellow programmers seeking to solve new challenges and see how their skills measure? Start solving challenges now and compete face to face with other developers. When your not playing versus mode, you can always create a group and have a team competition, or cool off in single player mode. Sign up today and begin mastering your skills</p>
-            </div>
-            <div class="small-12 medium-3 large-4 columns">
-              <i class="fi-trophy"></i>
-              <p>See how you stack up against some of your fellow programmers. Challenge your friends to earn the number one spot on the leaderboards. Who knows, enough practice and you may be able to compete for the ultimate sizzler award, being considered the CodeChamp</p>
-            </div>
-            <div class="small-6 medium-3 large-2 columns">
-            <center>
-              <h4>Services</h4>
-              <ul class="footer-links">
-                <li><a class="a2" href="About.html">About</a></li>
-                <li><a class="a2" href="PracticeMode.html">Solve Now</a></li>
-                <li><a class="a2" href="Versus.html">Versus Match</a></li>
-                <li><a class="a2" href="Contact.html">Contact Us</a></li>
-                <li><a class="a2" href="CreateAccount.html">Register Account</a></li>
-                </center>
-              <ul>
-            </div>
-            <div class="small-6 medium-3 large-2 columns">
-             
-              <h4>Resources</h4>
-              <ul class="footer-links">
-                <li><a class="a2" href="https://github.com/Siaba/comp-prog">GitHub</a></li>
-                <li><a class="a2" href="https://aws.amazon.com/ec2/?nc2=h_m1">AWS</a></li>
-                <li><a class="a2" href="https://github.com/cms-dev/isolate">Isolate</a></li>
-                <li><a class="a2" href="http://foundation.zurb.com/showcase/about.html">Foundation 6</a></li>
-                <li><a class="a2" href="https://ace.c9.io/#nav=about">Ace Code Editor</a></li>
-              <ul>
-             
-            </div>
-          </div>
-        </footer>
+	background-color: #404040;
+	color: white;
+	font: bold;
+	border-radius: 4px;
+	
 
+}
 
+a.a2:hover {
 
-        </body>
-    <script src="js/vendor/jquery.js"></script>
-    <script src="js/vendor/what-input.js"></script>
-    <script src="js/vendor/foundation.js"></script>
-    <script src="js/app.js"></script>
-  </body>
-</html>
+	
+
+	background-color: #000000;
+	color: white;
+	font: bold;
+	border-radius: 2px;
+  text-shadow: 2px 2px 4px #ffffff;
+
+	
+
+}
+
+.full-width {
+  max-width: 1400px;
+}
+
+.footer {
+  background-image: url("stardust.png");
+  padding: 2rem 4rem;
+  text-align: center;
+  color: #fff;
+  position: absolute;
+  align-self: bottom;
+}
+.footer i {
+  font-size: 6rem;
+
+}
+
+.footer i:hover {
+
+  opacity: 0.5;
+
+}
+
+.footer h4 {
+  color: #fff;
+  font-size: 1em;
+  font-weight: 400;
+  text-transform: uppercase;
+  margin-top: 2.5rem;
+  margin-bottom: 10px;
+
+}
+.footer p, .footer a {
+  font-weight: 300;
+  font-size: 0.8em;
+  color: #fff;
+  display: block;
+}
+
+@media only screen and (min-width: 40.063em) {
+  .footer .columns:nth-child(n + 2) {
+    border-left: 1px solid  #3399ff;
+    min-height: 300px;
+  }
+}
+.footer-links {
+  list-style-type: none;
+}
+.footer-links li {
+  margin-top: .5em;
+}
+
+foundation.css
+
+app.css
