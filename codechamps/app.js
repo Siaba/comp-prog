@@ -136,6 +136,9 @@ app.post('/blanktext.html', function(req, res){
 						 if(data.toString() === other_data.toString()){
 							 console.log("Your output is correct.");
 						 }
+						 else{
+							 console.log("Your output failed.");
+						 }
 					 });
 				 });
 			 });
