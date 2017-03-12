@@ -133,7 +133,7 @@ app.post('/blanktext.html', function(req, res){
 					 if(err) throw err;
 					 fs.readFile('/tmp/box/0/box/helloworld.txt', (error, other_data) => {
 						 if(error) throw error;
-						 if(data === other_data){
+						 if(data.toString() === other_data.toString()){
 							 console.log("Your output is correct.");
 						 }
 					 });
