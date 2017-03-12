@@ -1,15 +1,36 @@
-.log-in-form {
-  border: 2px solid #cacaca;
-  padding: 1rem;
-  border-radius: 3px; 
+.main {
+
+  padding: 2rem 4rem;
+  background-color: 
+
+}
+
+.main .columns:nth-child(n + 2) {
+  
+  border-left: 1px solid black;
+  min-height: 300px;
+
+
+}
+
+.main i {
+
+  font-size: 8rem;
+
+}
+
+.top-bar h3 {
+
+  text-shadow: 2px 2px 4px #404040;
+  font: bold;
 
 }
 
 .hero {
 
 	background-image: url("BG3.jpg");
-	padding: 120px 120px;
-  	opacity: 0.89;
+	padding: 135px 135px;
+  opacity: 0.85;
 
 
 }
@@ -17,10 +38,10 @@
 
 a:hover {
 
-	background-color: #0066ff;
+	background-color: #404040;
 	color: white;
 	font: bold;
-	border-radius: 2px;
+	border-radius: 4px;
 	
 
 }
@@ -33,6 +54,7 @@ a.a2:hover {
 	color: white;
 	font: bold;
 	border-radius: 2px;
+  text-shadow: 2px 2px 4px #ffffff;
 
 	
 
@@ -43,7 +65,7 @@ a.a2:hover {
 }
 
 .footer {
-  background-image: url("black_lozenge.png");
+  background-image: url("stardust.png");
   padding: 2rem 4rem;
   text-align: center;
   color: #fff;
@@ -51,7 +73,7 @@ a.a2:hover {
   align-self: bottom;
 }
 .footer i {
-  font-size: 100px;
+  font-size: 6rem;
 
 }
 
@@ -78,7 +100,7 @@ a.a2:hover {
 }
 
 @media only screen and (min-width: 40.063em) {
-  .footer .columns:nth-child(n+2) {
+  .footer .columns:nth-child(n + 2) {
     border-left: 1px solid  #3399ff;
     min-height: 300px;
   }
@@ -90,8 +112,6 @@ a.a2:hover {
   margin-top: .5em;
 }
 
-
 foundation.css
 
 app.css
-
