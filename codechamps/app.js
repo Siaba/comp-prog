@@ -105,6 +105,13 @@ app.post('/blanktext.html', function(req, res){
 		console.log(__dirname);
 	 });
 		
+	 exec('cp '+ __dirname + 'Problems/helloworld.txt /tmp/box/0/box', (error,stdout,stderr) =>{
+		 if(error){
+			 console.error("copy file has failed");
+			 return;
+		 }
+	 });
+		
 	 fs.symlink('/usr/lib/jvm/java-8-openjdk-amd64/jre/bin/java','/tmp/box/0/box/java',function(err){
 		 if(err) throw err;
 		 console.log("java symlink has been created.");
@@ -122,6 +129,15 @@ app.post('/blanktext.html', function(req, res){
 					 console.error("test run failed");
 					 return;
 				 }
+				 fs.readFile('/tmp/box/0/box/output.txt' (err,data) => {
+					 if(err) throw err;
+					 fs.readFile('/tmp/box/0/box/helloworld.txt', (error, other_data) => {
+						 if(error) throw error;
+						 if(data === other_data){
+							 console.log("Your output is correct.");
+						 }
+					 });
+				 });
 			 });
 		 });
 	 });
