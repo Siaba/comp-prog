@@ -105,7 +105,7 @@ app.post('/blanktext.html', function(req, res){
 		console.log(__dirname);
 	 });
 		
-	 exec('cp '+ __dirname + 'Problems/helloworld.txt /tmp/box/0/box', (error,stdout,stderr) =>{
+	 exec('cp '+ __dirname + '/Problems/helloworld.txt /tmp/box/0/box', (error,stdout,stderr) =>{
 		 if(error){
 			 console.error("copy file has failed");
 			 return;
