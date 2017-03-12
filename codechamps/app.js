@@ -129,7 +129,7 @@ app.post('/blanktext.html', function(req, res){
 					 console.error("test run failed");
 					 return;
 				 }
-				 fs.readFile('/tmp/box/0/box/output.txt' (err,data) => {
+				 fs.readFile('/tmp/box/0/box/output.txt' ,(err,data) => {
 					 if(err) throw err;
 					 fs.readFile('/tmp/box/0/box/helloworld.txt', (error, other_data) => {
 						 if(error) throw error;
