@@ -159,6 +159,7 @@ function runSandbox(req){
 				console.error(`exec error: ${error}`);
 				return;
 			}
+			console.log("sandbox created.");
 		});
 		callback();
 	},
