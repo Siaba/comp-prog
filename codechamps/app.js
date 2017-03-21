@@ -239,6 +239,7 @@ function runSandbox(req){
 			 else{
 				 console.log("Your output failed.");
 			 }
+			callback();
 		 });
 	}
 	],function(err){
