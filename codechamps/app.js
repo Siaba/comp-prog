@@ -151,7 +151,7 @@ app.post('/blanktext.html', function(req, res){
 
 
 function runSandbox(){
-	
+	console.log("Starting async tasks");
 	async.series([function(callback){
 		exec('isolate --init', (error, stdout, stderr) => {
 			if (error) {
