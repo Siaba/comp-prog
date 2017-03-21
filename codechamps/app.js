@@ -7,7 +7,7 @@ var bodyParser = require('body-parser');
 var AWS = require('aws-sdk');
 var fs = require('fs');
 const exec = require('child_process').exec;
-
+var async = require('async');
 var routes = require('./routes/index');
 var users = require('./routes/users');
 
@@ -88,9 +88,8 @@ app.post('/CreateAccount.html', function(req, res) {
 
 //write to file when submit button is clicked
 app.post('/blanktext.html', function(req, res){
-	
-	
-	exec('isolate --init', (error, stdout, stderr) => {
+	runSandbox();
+	/*exec('isolate --init', (error, stdout, stderr) => {
  	 if (error) {
    	 console.error(`exec error: ${error}`);
    	 return;
@@ -146,11 +145,35 @@ app.post('/blanktext.html', function(req, res){
 	 });
 	
 	});
-	
+	*/
 	res.redirect('/blanktext.html');
 });
 
 
+function runSandbox(){
+	
+	async.series([function(callback){
+		exec('isolate --init', (error, stdout, stderr) => {
+			if (error) {
+				console.error(`exec error: ${error}`);
+				return;
+			}
+		});
+	},
+	
+	function(callback){
+		var body = req.body.comments;
+		var filePath = '/tmp/box/0/box/test.java';
+		fs.writeFile(filePath, body ,function(err){
+			if(err) throw err;
+			console.log(__dirname);
+		});
+	}
+	],function(err){
+		console.log("all functions complete.");
+	});
+	
+}
 
 var db = new AWS.DynamoDB({apiVersion: '2012-08-10'});
    db.listTables(function(err, data) {
