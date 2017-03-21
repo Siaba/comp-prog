@@ -160,8 +160,9 @@ function runSandbox(req){
 				return;
 			}
 			console.log("sandbox created.");
+			callback();
 		});
-		callback();
+		
 	},
 	
 	function(callback){
@@ -171,8 +172,9 @@ function runSandbox(req){
 		fs.writeFile(filePath, body ,function(err){
 			if(err) throw err;
 			console.log(__dirname);
+			callback();
 		});
-		callback();
+		
 	}
 	],function(err){
 		console.log("all functions complete.");
