@@ -88,7 +88,7 @@ app.post('/CreateAccount.html', function(req, res) {
 
 //write to file when submit button is clicked
 app.post('/blanktext.html', function(req, res){
-	runSandbox();
+	runSandbox(req);
 	/*exec('isolate --init', (error, stdout, stderr) => {
  	 if (error) {
    	 console.error(`exec error: ${error}`);
@@ -150,7 +150,7 @@ app.post('/blanktext.html', function(req, res){
 });
 
 
-function runSandbox(){
+function runSandbox(req){
 	console.log("Starting async tasks");
 	async.series([function(callback){
 		console.log("initializing sandbox");
