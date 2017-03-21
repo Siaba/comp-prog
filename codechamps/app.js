@@ -204,7 +204,7 @@ function runSandbox(req){
 	},
 		      
 	function(callback){
-		exec('isolate --processes=15 --run -- javac test.java', (error, stdout, stderr) => {
+		exec('isolate --processes=15 --box-id=1 --run -- javac test.java', (error, stdout, stderr) => {
 			 if(error) {
 				 console.error("javac failed");
 				 throw error;
@@ -214,7 +214,7 @@ function runSandbox(req){
 	},
 		      
 	function(callback){
-		exec('isolate --processes=15 --stdout=output.txt --run -- java test', (error,stdout,stderr) => {
+		exec('isolate --processes=15 --box-id=1 --stdout=output.txt --run -- java test', (error,stdout,stderr) => {
 				 if(error) {
 					 console.error("test run failed");
 					 return;
