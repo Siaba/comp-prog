@@ -207,7 +207,7 @@ function runSandbox(req){
 		exec('isolate --processes=15 --run -- javac test.java', (error, stdout, stderr) => {
 			 if(error) {
 				 console.error("javac failed");
-				 return;
+				 throw error;
 			 }
 			callback();
 		});
