@@ -226,12 +226,7 @@ function runSandbox(req){
 	function(callback){
 		 fs.readFile('/tmp/box/1/box/output.txt' ,(err,data) => {
 			 if(err) throw err;
-			 callback();
-		 });
-	},
-		      
-	function(callback){
-		fs.readFile('/tmp/box/1/box/helloworld.txt', (error, other_data) => {
+			 fs.readFile('/tmp/box/1/box/helloworld.txt', (error, other_data) => {
 			if(error) throw error;
 			if(data.toString() === other_data.toString()){
 				 console.log("Your output is correct.");
@@ -240,6 +235,7 @@ function runSandbox(req){
 				 console.log("Your output failed.");
 			 }
 			callback();
+		 });
 		 });
 	}
 	],function(err){
