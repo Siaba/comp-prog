@@ -175,6 +175,71 @@ function runSandbox(req){
 			callback();
 		});
 		
+	},
+	
+	function(callback){
+		exec('cp '+ __dirname + '/Problems/helloworld.txt /tmp/box/1/box', (error,stdout,stderr) =>{
+			 if(error){
+				 console.error("copy file has failed");
+				 return;
+		 	}
+			callback();
+	 	});
+	},
+		      
+	function(callback){
+		 fs.symlink('/usr/lib/jvm/java-8-openjdk-amd64/jre/bin/java','/tmp/box/1/box/java',function(err){
+		 	if(err) throw err;
+			 console.log("java symlink has been created.");
+			 callback();
+		 });
+	},
+		      
+	function(callback){
+		fs.symlink('/usr/lib/jvm/java-8-openjdk-amd64/bin/javac','/tmp/box/1/box/javac',function(err){
+			 if(err) throw err;
+		 	console.log("javac symlink has been created.");
+			callback();
+		});
+	},
+		      
+	function(callback){
+		exec('isolate --processes=15 --run -- javac test.java', (error, stdout, stderr) => {
+			 if(error) {
+				 console.error("javac failed");
+				 return;
+			 }
+			callback();
+		});
+	},
+		      
+	function(callback){
+		exec('isolate --processes=15 --stdout=output.txt --run -- java test', (error,stdout,stderr) => {
+				 if(error) {
+					 console.error("test run failed");
+					 return;
+				 }
+				callback();
+		});
+	},
+		      
+	function(callback){
+		 fs.readFile('/tmp/box/1/box/output.txt' ,(err,data) => {
+			 if(err) throw err;
+			 callback();
+		 });
+	},
+		      
+	function(callback){
+		fs.readFile('/tmp/box/1/box/helloworld.txt', (error, other_data) => {
+			if(error) throw error;
+			if(data.toString() === other_data.toString()){
+				 console.log("Your output is correct.");
+			 }
+			 else{
+				 console.log("Your output failed.");
+			 }
+		 });
 	}
 	],function(err){
 		console.log("all functions complete.");
