@@ -153,21 +153,25 @@ app.post('/blanktext.html', function(req, res){
 function runSandbox(){
 	console.log("Starting async tasks");
 	async.series([function(callback){
+		console.log("initializing sandbox");
 		exec('isolate --init', (error, stdout, stderr) => {
 			if (error) {
 				console.error(`exec error: ${error}`);
 				return;
 			}
 		});
+		callback();
 	},
 	
 	function(callback){
 		var body = req.body.comments;
 		var filePath = '/tmp/box/0/box/test.java';
+		console.log("Writing to file");
 		fs.writeFile(filePath, body ,function(err){
 			if(err) throw err;
 			console.log(__dirname);
 		});
+		callback();
 	}
 	],function(err){
 		console.log("all functions complete.");
