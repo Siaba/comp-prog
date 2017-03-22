@@ -10,7 +10,7 @@ const exec = require('child_process').exec;
 var async = require('async');
 var routes = require('./routes/index');
 var users = require('./routes/users');
-const nodemailer = require('nodemailer');
+//const nodemailer = require('nodemailer');
 var app = express();
 
 
