@@ -5,42 +5,80 @@
 	<meta http-equiv="x-ua-compatible" content="ie=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="css/foundation.css">
-    <link rel="stylesheet" href="css/app.css">
+  <link rel="stylesheet" href="css/app.css">
+  <link rel="stylesheet" href="css/ContactUs.css">
+  <link href="http://cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/foundation-icons.css" rel="stylesheet">
 	<title>Contact Us</title>
 </head>
+
 <body>
-		<div class="top-bar">
-          <div class="top-bar-left">
-            <h3>CodeChamps<h3>
-          </h3></div>
-          <div class="top-bar-right">
-            <ul class="dropdown menu" data-dropdown-menu>
-              <li><a href="index.html">Home</a></li>
-              <li>
-                <a href="Versus.html">Game</a>
-                <ul class="menu vertical">
-                  <li><a href="PracticeMode.html">Practice Mode</a></li>
-                  <li><a href="Versus.html">Versus Match</a></li>
-                  
-                </ul>
-              </li>
+  
+  <div class="nav">
+          <div class="top-bar">
+            <div class="top-bar-left">
+              <h3><i class="fi-crown" style="color: #3399ff;">&nbsp&nbsp</i><span>CodeChamps</span>&nbsp&nbsp<i class="fi-home"></i>
+            </div>
+            <div class="top-bar-right">
+              <ul class="dropdown menu" data-dropdown-menu>
+                <li><a href="index.html">Home</a></li>
+                <li>
+                  <a href="Versus.html">Game</a>
+                  <ul class="menu vertical">
+                    <li><a href="PracticeMode.html">Practice Mode</a></li>
+                    <li><a href="Versus.html">Versus Match</a></li>
+                    
+                  </ul>
+                </li>
 
-
+                
+                <li><a href="Account.html">Account</a></li>
+                <li><a href="blanktext.html">Isolate Test DAWG</a></li>
+                <li><a href="Stats.html">Stats</a></li>
+                <li><a href="Leaderboards.html">Leaderboards</a></li>
+                <li><a href="History.html">History</a></li>
+               <li><a href="CreateAccount.html">Sign Up</a></li>
+              </ul>
               
-              <li><a href="Account.html">Account</a></li>
-              <li><a href="Stats.html">Stats</a></li>
-              <li><a href="Leaderboards.html">Leaderboards</a></li>
-              <li><a href="History.html">History</a></li>
-	      <li><a href="CreateAccount.html">Sign Up</a></li>
-            </ul>
+            </div>
+            </div>
+            </div>
             
+
+        <center>
+        <div class="g">
+          <div style="color: white;">
+          <h1>Is something not going your way? Let us step in.</h1><br>
+          <p style="font-size: 1em;">Bugs are a real problem. Help us squash them by emailing them to us and helping us replicate the issue to make our game better for you and the rest of the population playing.
+          Please email us with your questions, concerns, or just let us know that we are doing a great job. We will get back to you as soon as we can, because we value you playing our game. 
+          
           </div>
+          </div>
+          </center>
+              
+
+
+        <!-- Form to email us with any questions and conerns -->
+        <br>
+        <center>
+        <form action="/Contact.html" method="post">        
+        <input type="text" name="usernametext" id="username" placeholder="*Enter your username here" style="width: 500px; height: px;">
+        <input type="text" name="emailtext" id="email" placeholder="*Enter your email here" style="width: 500px; height: px;">
+        <input type="text" name="ustext" id="hereus" placeholder="*Enter where you heard of us from" style="width: 500px; height: px;">
+        <div class="row column">
+        <textarea  name="textareatext" name="tarea" id="message" cols="30" rows="5" placeholder="Message......"></textarea>
         </div>
-	<h1>Is something not going your way? Let us step in.</h1>
-<p>Bugs are a real problem. Help us squash them by emailing them to us and helping us replicate the issue to make our game better for you and the rest of the population playing. Our email is <a href = "#">sizzlingsyntax@gmail.com</a>. Please email us with your questions, concerns, or just let us know that we are doing a great job. We will get back to you as soon as we can, because we value you playing our game. <a href ="HomePage.html">Back to homepage</a>.
+        </div></div>
+        </form>
+        <button class="button large" type="submit">Send Email</button>
+        <br>
+        
+        </center>
+                
+    </div>
     <script src="js/vendor/jquery.js"></script>
     <script src="js/vendor/what-input.js"></script>
     <script src="js/vendor/foundation.js"></script>
     <script src="js/app.js"></script>
+
 </body>
 </html>
