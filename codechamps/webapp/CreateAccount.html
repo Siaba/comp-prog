@@ -1,84 +1,323 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<meta Charset="utf-8">
-	<meta http-equiv="x-ua-compatible" content="ie=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" href="css/foundation.css">
-  <link rel="stylesheet" href="css/app.css">
-  <link rel="stylesheet" href="css/ContactUs.css">
-  <link href="http://cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/foundation-icons.css" rel="stylesheet">
-	<title>Contact Us</title>
-</head>
+<!doctype html>
+<html class="no-js" lang="en" dir="ltr">
 
-<body>
-  
-  <div class="nav">
-          <div class="top-bar">
-            <div class="top-bar-left">
-              <h3><i class="fi-crown" style="color: #3399ff;">&nbsp&nbsp</i><span>CodeChamps</span>&nbsp&nbsp<i class="fi-home"></i>
-            </div>
-            <div class="top-bar-right">
-              <ul class="dropdown menu" data-dropdown-menu>
-                <li><a href="index.html">Home</a></li>
-                <li>
-                  <a href="Versus.html">Game</a>
-                  <ul class="menu vertical">
-                    <li><a href="PracticeMode.html">Practice Mode</a></li>
-                    <li><a href="Versus.html">Versus Match</a></li>
-                    
-                  </ul>
-                </li>
-
-                
-                <li><a href="Account.html">Account</a></li>
-                <li><a href="blanktext.html">Isolate Test DAWG</a></li>
-                <li><a href="Stats.html">Stats</a></li>
-                <li><a href="Leaderboards.html">Leaderboards</a></li>
-                <li><a href="History.html">History</a></li>
-               <li><a href="CreateAccount.html">Sign Up</a></li>
-              </ul>
-              
-            </div>
-            </div>
-            </div>
-            
-
-        <center>
-        <div class="g">
-          <div style="color: white;">
-          <h1>Is something not going your way? Let us step in.</h1><br>
-          <p style="font-size: 1em;">Bugs are a real problem. Help us squash them by emailing them to us and helping us replicate the issue to make our game better for you and the rest of the population playing.
-          Please email us with your questions, concerns, or just let us know that we are doing a great job. We will get back to you as soon as we can, because we value you playing our game. 
-          
-          </div>
-          </div>
-          </center>
-              
-
-
-        <!-- Form to email us with any questions and conerns -->
-        <br>
-        <center>
-        <form action="/Contact.html" method="post">        
-        <input type="text" name="usernametext" id="username" placeholder="*Enter your username here" style="width: 500px; height: px;">
-        <input type="text" name="emailtext" id="email" placeholder="*Enter your email here" style="width: 500px; height: px;">
-        <input type="text" name="ustext" id="hereus" placeholder="*Enter where you heard of us from" style="width: 500px; height: px;">
-        <div class="row column">
-        <textarea  name="textareatext" name="tarea" id="message" cols="30" rows="5" placeholder="Message......"></textarea>
-        </div>
-        </div></div>
-        </form>
-        <button class="button large" type="submit">Send Email</button>
-        <br>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="x-ua-compatible" content="ie=edge, width=device-width">
+        <title>Sign Up Form</title>
         
-        </center>
-                
-    </div>
-    <script src="js/vendor/jquery.js"></script>
-    <script src="js/vendor/what-input.js"></script>
-    <script src="js/vendor/foundation.js"></script>
-    <script src="js/app.js"></script>
+        <link href='http://fonts.googleapis.com/css?family=Nunito:400,300' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="css/app.css">
+        <link rel="stylesheet" href="css/foundation.css">
+        <link rel="stylesheet" href="css/main.css">
+        <link rel="stylesheet" href="css/blink.css">
+    </head>
 
-</body>
+    <body>
+
+      <div class="top-bar">
+          <div class="top-bar-left">
+            <h3>CodeChamps<h3>
+        </h3></div>
+          <div class="top-bar-right">
+            <ul class="dropdown menu" data-dropdown-menu>
+              <li><a href="index.html">Home</a></li>
+              <li>
+                <a href="Versus.html">Game</a>
+                <ul class="menu vertical">
+                  <li><a href="PracticeMode.html">Practice Mode</a></li>
+                  <li><a href="Versus.html">Versus Match</a></li>
+                  
+                </ul>
+              </li>
+
+
+              <li><a href="Account.html">Account</a></li>
+              <li><a href="Stats.html">Stats</a></li>
+              <li><a href="Leaderboards.html">Leaderboards</a></li>
+              <li><a href="History.html">History</a></li>
+        <li><a href="CreateAccount.html">Sign Up</a></li>
+              
+              
+            </ul>
+            
+          </div>
+    </div>
+      <form action="/CreateAccount.html" method="post">
+      <div class="legacysignupForm">
+        <h1>Sign Up</h1>
+        <p>* Required Fields</p>
+        
+        <fieldset>
+          <legend><span class="blink">$</span>Your Basic Info</legend>
+          <label for="name">* First Name:</label>
+          <input type="text" id="firstName" name="first_name" onblur="firstNameWrong()">
+          <p id="firstNameWrong"></p>
+          
+          <label for="name">* Last Name:</label>
+          <input type="text" id="lastName" name="last_name" onblur="lastNameWrong()">
+          <p id="lastNameWrong"></p>
+
+          <label for="name">* Your Username:</label>
+          <input type="text" id="username" name="user_name" onblur="validUsername()">
+          <p id="usernameWrong"></p>
+
+          <label for="mail">* Email:</label>
+          <input type="email" id="mail" name="user_email" onblur="checkFirstEmail()">
+          <p id="originalEmailWrong"></p>
+
+          <label for="mail">* Reenter Email:</label>
+          <input type="email" id="reMail" name="user_reentered_email" onblur="checkEmail()">
+          <p id="emailWrong"></p>
+          
+          <label for="password">* Password:</label>
+          <input type="password" id="password" name="user_password" onblur="checkFirstPassword()">
+          <p id="firstPasswordWrong"></p>
+          <!--<input type="checkbox" id="showHide1" onclick="if(password.type=='text') { password.type='password'; password_reentered.type='password';}else { password.type='text'; password_reentered.type='text';}" unchecked>
+            Show Password (Check Only if you are Alone)<br></br>
+          </input>-->
+
+          <label for="password">* Confirm Password:</label>
+          <input type="password" id="password_reentered" name="user_confirm_password" onblur="checkPassword()">
+          <p id="passwordWrong"></p>
+
+          <label>* Age:</label>
+          <input type="text" id="userAge" name="user_age" onblur="validAge()">
+          <p id="ageWrong"></p>
+        <label for="gender">* Gender:</label>
+        <form>
+  		<input type="radio" name="gender" value="male" checked> Male<br>
+ 	    <input type="radio" name="gender" value="female"> Female<br>
+  		<input type="radio" name="gender" value="prefer_not_to_say"> Prefer not to say<br><br>
+	 	</form>
+		<label for="occupation">* Occupation (please select from the following):</label>
+        <select id="occupation" name="user_occupation">
+          <optgroup label="Occupation">Occupation
+            <option value="Programmer">Programmer</option>
+            <option value="Software_Engineer">Software Engineer</option>
+            <option value="mobile_designer">Student</option>
+            <option value="other">Other</option>
+          </optgroup>
+        </select>
+        </fieldset>
+    </div>
+
+    	<script>
+    	  function checkFirstEmail() {
+    	  	var getEmail = document.getElementById("mail");
+    	  	var eMail = getEmail.value;
+    	  	eMail = eMail.replace(/\s+/g, '');
+    	  	var At = 0;
+    	  	var text = "";
+			for (var i = 0; i < eMail.length; i++) {
+    		if(eMail.charAt(i) == "@") {
+    			At = 1;
+    		}
+			}
+			if (eMail.length == 0) {
+				text = "* Please enter an email.";
+          		text = text.fontcolor("red");
+         		document.getElementById("originalEmailWrong").innerHTML = text;
+			}
+			else if (!eMail.match(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)) {
+				text = "* Email is not valid. Please retype.";
+          		text = text.fontcolor("red");
+         		document.getElementById("originalEmailWrong").innerHTML = text;
+			}
+			else {
+				document.getElementById("originalEmailWrong").innerHTML = text;
+			}
+    	  }
+    	</script>
+
+        <script>
+          function checkEmail() {
+          	var getEmail = document.getElementById("mail");
+          	var getReEmail = document.getElementById("reMail");
+          	var email1 = getEmail.value;
+  			var email2 = getReEmail.value;
+  			var text = "";
+  			email1 = email1.replace(/\s+/g, '');
+  			email2 = email2.replace(/\s+/g, '');
+  			if (email2.length == 0) {
+				text = "* Please enter an email.";
+          		text = text.fontcolor("red");
+         		document.getElementById("emailWrong").innerHTML = text;
+			}
+          	else if (email1 != email2) {
+          		text = "* Emails do not match. Please retype.";
+          		text = text.fontcolor("red");
+         		document.getElementById("emailWrong").innerHTML = text;
+          	}
+          	else {
+         			document.getElementById("emailWrong").innerHTML = text;
+         		}
+          }
+          </script>
+
+          <script>
+          	function checkFirstPassword() {
+          		var getPassword = document.getElementById("password");
+          		var password = getPassword.value;
+          		var capital = 0;
+          		var number = 0;
+          		var text = "";
+          		var whiteSpace = /\s/g;
+          		if (password.match(/\s/g)) {
+          			text = "* Please enter a password without whitespace characters.";
+          			text = text.fontcolor("red");
+         			document.getElementById("firstPasswordWrong").innerHTML = text;
+				}
+          		else if (password.length == 0) {
+          			text = "* Please enter a password.";
+          			text = text.fontcolor("red");
+         			document.getElementById("firstPasswordWrong").innerHTML = text;
+          		}
+          		else if (password.length < 6) {
+          			text = "* Please enter a password containing at least 6 characters, 1 capital letter and 1 number.";
+          			text = text.fontcolor("red");
+         			document.getElementById("firstPasswordWrong").innerHTML = text;
+          		}
+          		else if(!password.match((/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d).*$/))) {
+          			text = "* Please enter a password containing at least 1 capital letter and 1 number.";
+          			text = text.fontcolor("red");
+         			document.getElementById("firstPasswordWrong").innerHTML = text;
+          		}
+          		else {
+          			document.getElementById("firstPasswordWrong").innerHTML = text;
+          		}
+          	}
+          </script>
+
+          
+
+         <script>
+         	function validAge() {
+         		var getAge = document.getElementById("userAge");
+         		var age = getAge.value;
+         		var text = "";
+         		if(age < 0 || age > 110) {
+         			text = "* Please enter your real age.";
+         			text = text.fontcolor("red");
+         			document.getElementById("ageWrong").innerHTML = text;
+         		}
+         		else if(age =='') {
+         			text = "* Please enter an age.";
+         			text = text.fontcolor("red");
+         			document.getElementById("ageWrong").innerHTML = text;
+         		}
+         		else if(isNaN(age)) {
+         			text = "* Please enter your age as a number.";
+         			text = text.fontcolor("red");
+         			document.getElementById("ageWrong").innerHTML = text;
+         		}
+         		else {
+         			document.getElementById("ageWrong").innerHTML = text;
+         		}
+         	}
+         </script>
+         <script>
+         	function validUsername() {
+         		var getUsername = document.getElementById("username");
+         		var userName = getUsername.value;
+         		var usernameRegexpression = /^[a-zA-Z0-9]+$/;
+         		var text = "";
+         		if (userName.length == 0) {
+         			text = "* Please enter a username.";
+         			text = text.fontcolor("red");
+         			document.getElementById("usernameWrong").innerHTML = text;
+         		}
+         		else if (userName.length < 6) {
+         			text = "* Please enter a username containing at least 6 characters.";
+         			text = text.fontcolor("red");
+         			document.getElementById("usernameWrong").innerHTML = text;
+         		}
+         		else if (!userName.match(usernameRegexpression)) {
+         			text = "* Illegal character(s) detected. Please use only letters and numbers for your username.";
+         			text = text.fontcolor("red");
+         			document.getElementById("usernameWrong").innerHTML = text;
+         		}
+         		else {
+         			document.getElementById("usernameWrong").innerHTML = text;
+         		}
+         	}
+        </script>
+        <script>
+         	function firstNameWrong() {
+         		var getFirstName = document.getElementById("firstName");
+         		var firstName = getFirstName.value;
+         		var firstName = firstName.replace(/\s+/g, '');
+         		var text = "";
+         		if (firstName.length == 0) {
+         			text = "* Please enter a first name.";
+         			text = text.fontcolor("red");
+         			document.getElementById("firstNameWrong").innerHTML = text;
+         		}
+         		else {
+         			document.getElementById("firstNameWrong").innerHTML = text;
+         		}
+         	}
+        </script>
+        <script>
+         	function lastNameWrong() {
+         		var getLastName = document.getElementById("lastName");
+         		var lastName = getLastName.value;
+         		var lastName = lastName.replace(/\s+/g, '');
+         		var text = "";
+         		if (lastName.length == 0) {
+         			text = "* Please enter a last name.";
+         			text = text.fontcolor("red");
+         			document.getElementById("lastNameWrong").innerHTML = text;
+         		}
+         		else {
+         			document.getElementById("lastNameWrong").innerHTML = text;
+         		}
+         	}
+        </script>
+        </fieldset>
+        <form name = "signUp" action="index.html" onsubmit="return checkBeforeSubmission()" onclick="return checkBeforeSubmission()" method="post">
+        <button type="submit">Sign Up</button>
+      </form>
+      <script>
+      function checkBeforeSubmission() {
+      	 var getFirstName = document.getElementById("firstName");
+      	 getFirstName = getFirstName.value.replace(/\s+/g, '');
+      	 var getLastName = document.getElementById("lastName");
+      	 getLastName = getLastName.value.replace(/\s+/g, '');
+      	 var getUsername = document.getElementById("username");
+      	 getUsername = getUsername.value.replace(/\s+/g, '');
+      	 var getEmail = document.getElementById("mail");
+      	 getEmail = getEmail.value.replace(/\s+/g, '');
+      	 var getReEmail = document.getElementById("reMail");
+      	 getReEmail = getReEmail.value.replace(/\s+/g, '');
+      	 var getPassword = document.getElementById("password");
+      	 getPassword = getPassword.value.replace(/\s+/g, '');
+      	 var getRePassword = document.getElementById("password_reentered");
+      	 getRePassword = getRePassword.value.replace(/\s+/g, '');
+      	 var getAge = document.getElementById("userAge");
+      	 getAge = getAge.value.replace(/\s+/g, '');
+      	 var hasErrors = 0;
+      	 if (getFirstName.length == 0 || getLastName.length == 0 || getUsername.length == 0 || getEmail == 0 || getReEmail == 0 || getPassword == 0 || getRePassword == 0) {
+      	 	firstNameWrong();
+      	 	lastNameWrong();
+      	 	validUsername();
+      	 	checkFirstEmail();
+      	 	checkEmail();
+      	 	checkFirstPassword();
+      	 	checkPassword();
+      	 	validAge();
+      	 	hasErrors = 1;
+      	 }
+      	 if (hasErrors > 0) {
+      	 	return false;
+      	 }
+      	 else {
+      	 	return true;
+      	 }
+      }
+      </script>
+      <script src="js/checkPassword.js"></script>
+
+    </body>
 </html>
