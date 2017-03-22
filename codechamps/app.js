@@ -98,32 +98,61 @@ app.post('/CreateAccount.html', function(req, res) {
 	var occupation = req.body.user_occupation;
 	var pass = req.body.user_password;
 	
-	var docClient = new AWS.DynamoDB.DocumentClient();
+	AWS.config.update({
+	  region: "us-east-1",
+	  endpoint: "dynamodb.us-east-1.amazonaws.com"
+	});
+	var db = new AWS.DynamoDB();
 	
 	console.log(username);
-	var params = {
+	var paramsgetuser = {
 		TableName:table,
-		Item:{
-			"username": username,
-			"age": age,
-			"email": email,
-			"firstname": firstname,
-			"gender": gender,
-			"lastname": lastname,
-			"occupation": occupation,
-			"password": pass
-		}
+		Key : {"username" : {S: username}},
+		AttributesToGet: [ "username" ]
 	};
+	
+	//check if username exists in database
+	db.getItem(paramsgetuser, function(err, data){
+		if(err) {
+			console.log(err);
+		}
+		else {
+			console.log(data);
+			if(data.Item == null){ //add user if non-existent
+				var docClient = new AWS.DynamoDB.DocumentClient();
+				
+				//user tuple
+				var params = {
+					TableName:table,
+					Item:{
+						"username": username,
+						"age": age,
+						"email": email,
+						"firstname": firstname,
+						"gender": gender,
+						"lastname": lastname,
+						"occupation": occupation,
+						"password": pass
+					}
+				};
 
-	console.log("Adding a new item...");
-	docClient.put(params, function(err, data) {
-		if (err) {
-			console.error("Unable to add item. Error JSON:", JSON.stringify(err, null, 2));
-		} else {
-			console.log("Added item:", JSON.stringify(data, null, 2));
+				console.log("Adding a new item...");
+				//put user in database
+				docClient.put(params, function(err, data) {
+					if (err) {
+						console.error("Unable to add user. Error JSON:", JSON.stringify(err, null, 2));
+					} else {
+						console.log("Added user:", JSON.stringify(data, null, 2));
+					}
+				});
+				res.redirect('/index.html');
+			}
+			else{
+				alert("Username already exists.");
+				res.redirect('/CreateAccount.html');
+			}
 		}
 	});
-	res.redirect('/index.html');
 });
 
 //write to file when submit button is clicked
