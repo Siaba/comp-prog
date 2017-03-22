@@ -10,7 +10,7 @@ const exec = require('child_process').exec;
 var async = require('async');
 var routes = require('./routes/index');
 var users = require('./routes/users');
-
+var nodemailer = require('nodemailer');
 var app = express();
 
 
@@ -39,12 +39,52 @@ var io = require('socket.io')(server);
 io.on('connection', function(socket){ console.log("someone has connected."); });
 
 
-server.listen(3000);
+app.listen(3000);
 
 AWS.config.update({
     region: "us-east-1",
     endpoint: "dynamodb.us-east-1.amazonaws.com"
 });
+
+/* Email for COntact us using nodemailer, veru close most likely something stupid 
+app.post('/Contact.html', function(req, res) {
+
+	 var mailOpts, smtpTrans;
+  //Setup Nodemailer transport, I chose gmail. Create an application-specific password to avoid problems.
+  smtpTrans = nodemailer.createTransport('SMTP', {
+      service: 'Gmail',
+      auth: {
+          user: "gkepp13@gmail.com",
+          pass: "password" 
+      }
+  });
+  //Mail options
+  mailOpts = {
+      from: req.body.nametext + ' &lt;' + req.body.emailtext + '&gt;', //grab form data from the request body object
+      to: 'gkepp13@gmail.com',
+      subject: 'Website contact form',
+      text: req.body.textareatext
+  };
+  smtpTrans.sendMail(mailOpts, function (error, response) {
+      //Email not sent
+      if (error) {
+          var ask = window.confirm("Are you sure you want to send this");
+          if(ask){
+
+          	res.redirect('index.html')
+          }
+
+          res.redirect('/Contact.html');
+      }
+      //Yay!! Email sent
+      else {
+          res.redirect('/index.html');
+      }
+  });
+});
+	*/
+
+
 
 //add new user to database
 app.post('/CreateAccount.html', function(req, res) {
@@ -282,3 +322,4 @@ app.use(function(err, req, res, next) {
 
 
 module.exports = app;
+
