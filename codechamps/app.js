@@ -65,22 +65,12 @@ app.post('/Contact.html', function(req, res) {
       subject: 'Website contact form',
       text: req.body.textareatext
   };
-  smtpTrans.sendMail(mailOpts, function (error, response) {
-      //Email not sent
-      if (error) {
-          var ask = window.confirm("Are you sure you want to send this");
-          if(ask){
-
-          	res.redirect('index.html')
-          }
-
-          res.redirect('/Contact.html');
-      }
-      //Yay!! Email sent
-      else {
-          res.redirect('/index.html');
-      }
-  });
+  / send mail with defined transport object
+transporter.sendMail(mailOptions, (error, info) => {
+    if (error) {
+        return console.log(error);
+    }
+    console.log('Message %s sent: %s', info.messageId, info.response);
 });
 	*/
 
