@@ -44,7 +44,8 @@
             
           </div>
     </div>
-      <form action="/CreateAccount.html" method="post">
+      <form action="/CreateAccount.html" name = "signUp"
+	    onsubmit="return checkBeforeSubmission()" onclick="return checkBeforeSubmission()" method="post">
       <div class="legacysignupForm">
         <h1>Sign Up</h1>
         <p>* Required Fields</p>
@@ -86,24 +87,23 @@
           <input type="text" id="userAge" name="user_age" onblur="validAge()">
           <p id="ageWrong"></p>
         <label for="gender">* Gender:</label>
-        <form>
   		<input type="radio" name="gender" value="male" checked> Male<br>
  	    <input type="radio" name="gender" value="female"> Female<br>
   		<input type="radio" name="gender" value="prefer_not_to_say"> Prefer not to say<br><br>
-	 	</form>
 		<label for="occupation">* Occupation (please select from the following):</label>
         <select id="occupation" name="user_occupation">
           <optgroup label="Occupation">Occupation
             <option value="Programmer">Programmer</option>
-            <option value="Software_Engineer">Software Engineer</option>
-            <option value="mobile_designer">Student</option>
-            <option value="other">Other</option>
+            <option value="Software Engineer">Software Engineer</option>
+            <option value="Student">Student</option>
+            <option value="Other">Other</option>
           </optgroup>
         </select>
         </fieldset>
-    </div>
-
-    	<script>
+        <button type="submit">Sign Up</button>
+      	</form>
+	</div>
+	<script>
     	  function checkFirstEmail() {
     	  	var getEmail = document.getElementById("mail");
     	  	var eMail = getEmail.value;
@@ -275,10 +275,6 @@
          		}
          	}
         </script>
-        </fieldset>
-        <form name = "signUp" action="index.html" onsubmit="return checkBeforeSubmission()" onclick="return checkBeforeSubmission()" method="post">
-        <button type="submit">Sign Up</button>
-      </form>
       <script>
       function checkBeforeSubmission() {
       	 var getFirstName = document.getElementById("firstName");
