@@ -10,7 +10,7 @@ const exec = require('child_process').exec;
 var async = require('async');
 var routes = require('./routes/index');
 var users = require('./routes/users');
-var nodemailer = require('nodemailer');
+const nodemailer = require('nodemailer');
 var app = express();
 
 
@@ -46,7 +46,7 @@ AWS.config.update({
     endpoint: "dynamodb.us-east-1.amazonaws.com"
 });
 
-/* Email for COntact us using nodemailer, veru close most likely something stupid 
+ //Email for COntact us using nodemailer, veru close most likely something stupid 
 app.post('/Contact.html', function(req, res) {
 
 	 var mailOpts, smtpTrans;
@@ -63,7 +63,7 @@ app.post('/Contact.html', function(req, res) {
       from: req.body.nametext + ' &lt;' + req.body.emailtext + '&gt;', //grab form data from the request body object
       to: 'gkepp13@gmail.com',
       subject: 'Website contact form',
-      text: req.body.textareatext
+      text: req.body.tarea
   };
   / send mail with defined transport object
 transporter.sendMail(mailOptions, (error, info) => {
@@ -72,7 +72,7 @@ transporter.sendMail(mailOptions, (error, info) => {
     }
     console.log('Message %s sent: %s', info.messageId, info.response);
 });
-	*/
+	
 
 
 
