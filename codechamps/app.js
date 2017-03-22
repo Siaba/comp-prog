@@ -75,6 +75,39 @@ transporter.sendMail(mailOptions, (error, info) => {
 	
 });
 
+//log user in
+app.post('/Account.html', function(req, res) {
+	var table = "user";
+	var username = req.body.user_name;
+	var pass = req.body.user_password;
+	
+	var db = new AWS.DynamoDB();
+	console.log(username);
+	var params = {
+		TableName:table,
+		Key : {"username" : {S: username}}
+	};
+	
+	//get user tuple for given username (if it exists)
+	db.getItem(params, function(err, data){
+		if(err) {
+			console.log(err);
+		}
+		else {
+			//do not log in if username does not exist or password does not match
+			if(data.Item == null || !(data.Item.password.S === pass)){
+				console.log("User " + data.Item.password.S + ": login UNSUCCESSFUL");
+				res.redirect('/Account.html');
+			}
+			else{
+				//need to do session stuff here...
+				console.log("User  " + username + ": login SUCCESSFUL")
+				res.redirect('/index.html');
+			}
+		}
+		
+	});
+});
 
 //add new user to database
 app.post('/CreateAccount.html', function(req, res) {
