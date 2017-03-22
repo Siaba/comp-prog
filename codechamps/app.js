@@ -65,7 +65,7 @@ app.post('/Contact.html', function(req, res) {
       subject: 'Website contact form',
       text: req.body.tarea
   };
-  / send mail with defined transport object
+  // send mail with defined transport object
 transporter.sendMail(mailOptions, (error, info) => {
     if (error) {
         return console.log(error);
