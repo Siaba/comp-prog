@@ -73,7 +73,7 @@ transporter.sendMail(mailOptions, (error, info) => {
     console.log('Message %s sent: %s', info.messageId, info.response);
 });
 	
-
+});
 
 
 //add new user to database
