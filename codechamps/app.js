@@ -12,6 +12,7 @@ var routes = require('./routes/index');
 var users = require('./routes/users');
 //const nodemailer = require('nodemailer');
 var app = express();
+var session = require('express-session');
 
 
 
@@ -30,8 +31,17 @@ app.use(express.static(path.join(__dirname, 'webapp')));
 app.use('/', routes);
 app.use('/users', users);
 
+app.use(session({secret: "Shh, its a secret!"}));
+
 app.get('/', function(req, res){
     res.sendFile(path.join(__dirname + '/index.html'));
+    if(req.session.page_views){
+      req.session.page_views++;
+      res.send("You visited this page " + req.session.page_views + " times");
+   }else{
+      req.session.page_views = 1;
+      res.send("Welcome to this page for the first time!");
+   }
 });
 
 var server = require('http').createServer(app);
@@ -41,6 +51,8 @@ io.on('connection', function(socket){ console.log("someone has connected."); });
 
 app.listen(3000);
 
+
+
 AWS.config.update({
     region: "us-east-1",
     endpoint: "dynamodb.us-east-1.amazonaws.com"
@@ -49,7 +61,6 @@ AWS.config.update({
  //Email for COntact us using nodemailer, veru close most likely something stupid 
 /*
 app.post('/Contact.html', function(req, res) {
-
 	 var mailOpts, smtpTrans;
   //Setup Nodemailer transport, I chose gmail. Create an application-specific password to avoid problems.
   smtpTrans = nodemailer.createTransport('SMTP', {
@@ -75,7 +86,6 @@ transporter.sendMail(mailOptions, (error, info) => {
 });
 	
 });
-
 */
 
 //log user in
@@ -174,6 +184,7 @@ app.post('/CreateAccount.html', function(req, res) {
 				res.redirect('/index.html');
 			}
 			else{
+				alert("Username already exists.");
 				res.redirect('/CreateAccount.html');
 			}
 		}
@@ -376,4 +387,3 @@ app.use(function(err, req, res, next) {
 
 
 module.exports = app;
-
