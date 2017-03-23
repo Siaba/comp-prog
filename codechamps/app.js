@@ -35,14 +35,17 @@ app.use('/users', users);
 app.use(session({secret: "Shh, its a secret!"}));
 
 app.get('/', function(req, res){
-    res.sendFile(path.join(__dirname + '/index.html'));
     if(req.session.page_views){
       req.session.page_views++;
       res.send("You visited this page " + req.session.page_views + " times");
+      console.log("Matt Hoare was here" + req.session.page_views);
    }else{
       req.session.page_views = 1;
       res.send("Welcome to this page for the first time!");
+      console.log('Visited the home page for the first time');
    }
+
+   res.sendFile(path.join(__dirname + '/index.html'));
 });
 
 var server = require('http').createServer(app);
