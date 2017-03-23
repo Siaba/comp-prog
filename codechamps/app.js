@@ -92,7 +92,6 @@ transporter.sendMail(mailOptions, (error, info) => {
 app.post('/Account.html', function(req, res) {
 	var table = "user";
 	var username = req.body.user_name;
-	var pass = req.body.user_password;
 	
 	var db = new AWS.DynamoDB();
 	console.log(username);
@@ -107,18 +106,24 @@ app.post('/Account.html', function(req, res) {
 			console.log(err);
 		}
 		else {
-			//do not log in if username does not exist or password does not match
-			if(data.Item == null || !(data.Item.password.S === pass)){
-				console.log("User " + data.Item.password.S + ": login UNSUCCESSFUL");
+			if(data.Item == null){
 				res.redirect('/Account.html');
 			}
 			else{
-				//need to do session stuff here...
-				console.log("User  " + username + ": login SUCCESSFUL")
-				res.redirect('/index.html');
+				//do not log in if username does not exist or password does not match
+				bcrypt.compare(req.body.user_password, data.Item.password.S).then(function(resp){
+					if(!resp){
+						console.log("User " + username + ": login UNSUCCESSFUL");
+						res.redirect('/Account.html');
+					}
+					else{
+						//need to do session stuff here...
+						console.log("User  " + username + ": login SUCCESSFUL")
+						res.redirect('/index.html');
+					}
+				});
 			}
 		}
-		
 	});
 });
 
@@ -132,12 +137,7 @@ app.post('/CreateAccount.html', function(req, res) {
 	var lastname = req.body.last_name;
 	var gender = req.body.gender;
 	var occupation = req.body.user_occupation;
-	var pass = req.body.user_password;
 	
-	AWS.config.update({
-	  region: "us-east-1",
-	  endpoint: "dynamodb.us-east-1.amazonaws.com"
-	});
 	var db = new AWS.DynamoDB();
 	
 	console.log(username);
@@ -157,34 +157,38 @@ app.post('/CreateAccount.html', function(req, res) {
 			if(data.Item == null){ //add user if non-existent
 				var docClient = new AWS.DynamoDB.DocumentClient();
 				
-				//user tuple
-				var params = {
-					TableName:table,
-					Item:{
-						"username": username,
-						"age": age,
-						"email": email,
-						"firstname": firstname,
-						"gender": gender,
-						"lastname": lastname,
-						"occupation": occupation,
-						"password": pass
-					}
-				};
+				const saltRounds = 10;
+				bcrypt.genSalt(saltRounds, function(err, salt) {
+					bcrypt.hash(req.body.user_password, salt, function(err, hash){
+						//user tuple
+						var params = {
+							TableName:table,
+							Item:{
+								"username": username,
+								"age": age,
+								"email": email,
+								"firstname": firstname,
+								"gender": gender,
+								"lastname": lastname,
+								"occupation": occupation,
+								"password": hash,
+							}
+						};
 
-				console.log("Adding a new item...");
-				//put user in database
-				docClient.put(params, function(err, data) {
-					if (err) {
-						console.error("Unable to add user. Error JSON:", JSON.stringify(err, null, 2));
-					} else {
-						console.log("Added user:", JSON.stringify(data, null, 2));
-					}
+						console.log("Adding a new item...");
+						//put user in database
+						docClient.put(params, function(err, data) {
+							if (err) {
+								console.error("Unable to add user. Error JSON:", JSON.stringify(err, null, 2));
+							} else {
+								console.log("Added user:", JSON.stringify(data, null, 2));
+							}
+						});
+					});
 				});
 				res.redirect('/index.html');
 			}
 			else{
-				alert("Username already exists.");
 				res.redirect('/CreateAccount.html');
 			}
 		}
