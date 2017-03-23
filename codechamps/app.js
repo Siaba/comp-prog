@@ -174,7 +174,6 @@ app.post('/CreateAccount.html', function(req, res) {
 				res.redirect('/index.html');
 			}
 			else{
-				alert("Username already exists.");
 				res.redirect('/CreateAccount.html');
 			}
 		}
