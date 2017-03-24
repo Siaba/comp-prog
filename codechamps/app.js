@@ -44,7 +44,7 @@ app.get('/', function(req, res){
       res.send("Welcome to this page for the first time!");
       console.log('Visited the home page for the first time');
    }
-
+   console.log(req.session.page_views);
    res.sendFile(path.join(__dirname + '/index.html'));
 });
 
