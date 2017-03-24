@@ -35,16 +35,16 @@ app.use('/users', users);
 app.use(session({secret: "Shh, its a secret!"}));
 
 app.get('/', function(req, res){
-    if(req.session.page_views){
-      req.session.page_views++;
-      res.send("You visited this page " + req.session.page_views + " times");
-      console.log("Visited the page" + req.session.page_views);
+    if(req.session.views){
+      req.session.views++;
+      res.send("You visited this page " + req.session.views + " times");
+      console.log("Visited the page" + req.session.views);
    }else{
-      req.session.page_views = 1;
+      req.session.views = 1;
       res.send("Welcome to this page for the first time!");
       console.log('Visited the home page for the first time');
    }
-   console.log(req.session.page_views);
+   console.log(req.session.views);
    res.sendFile(path.join(__dirname + '/index.html'));
 });
 
