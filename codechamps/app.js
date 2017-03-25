@@ -38,6 +38,7 @@ app.get('/', function(req, res){
       req.session.views++;
       console.log("this means we screwed up");
 	console.log(req.cookies);
+	console.log(req.sessionID);
       //res.send("You visited this page " + req.session.views + " times");
       console.log("Visited the page" + req.session.views);
    }else{
@@ -45,6 +46,7 @@ app.get('/', function(req, res){
      // res.send("Welcome to this page for the first time!");
       console.log('Visited the home page for the first time');
 	console.log(req.cookies);
+	   console.log(req.sessionID);
    }
    console.log(req.session.views);
    res.sendFile(path.join(__dirname + '/webapp/Home.html'));
