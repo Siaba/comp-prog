@@ -67,7 +67,7 @@ AWS.config.update({
 });
 
  //Email for COntact us using nodemailer, veru close most likely something stupid 
-/*
+
 app.post('/Contact.html', function(req, res) {
 	 var mailOpts, smtpTrans;
   //Setup Nodemailer transport, I chose gmail. Create an application-specific password to avoid problems.
@@ -94,7 +94,7 @@ transporter.sendMail(mailOptions, (error, info) => {
 });
 	
 });
-*/
+
 
 //log user in
 app.post('/Account.html', function(req, res) {
