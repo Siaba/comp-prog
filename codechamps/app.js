@@ -11,7 +11,7 @@ var async = require('async');
 var bcryptjs = require('bcryptjs');
 var routes = require('./routes/index');
 var users = require('./routes/users');
-//const nodemailer = require('nodemailer');
+const nodemailer = require('nodemailer');
 var app = express();
 var session = require('express-session');
 
