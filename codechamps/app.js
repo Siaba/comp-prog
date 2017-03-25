@@ -8,14 +8,14 @@ var AWS = require('aws-sdk');
 var fs = require('fs');
 const exec = require('child_process').exec;
 var async = require('async');
-var bcrypt = require('bcrypt');
+var bcryptjs = require('bcryptjs');
 var routes = require('./routes/index');
 var users = require('./routes/users');
 //const nodemailer = require('nodemailer');
 var app = express();
 var session = require('express-session');
 
-
+app.use(express.static(path.join(__dirname, 'webapp')));
 
 
 // view engine setup
@@ -27,7 +27,7 @@ app.use(logger('dev'));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'webapp')));
+
 
 app.use('/', routes);
 app.use('/users', users);
@@ -46,7 +46,7 @@ app.get('/', function(req, res){
       console.log('Visited the home page for the first time');
    }
    console.log(req.session.views);
-   res.sendFile(path.join(__dirname + '/index.html'));
+   res.sendFile(path.join(__dirname + '/webapp/Home.html'));
 });
 
 var server = require('http').createServer(app);
