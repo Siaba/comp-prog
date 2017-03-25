@@ -127,7 +127,7 @@ app.post('/Account.html', function(req, res) {
 					else{
 						//need to do session stuff here...
 						console.log("User  " + username + ": login SUCCESSFUL")
-						res.redirect('/index.html');
+						res.redirect('/Home.html');
 					}
 				});
 			}
@@ -194,7 +194,7 @@ app.post('/CreateAccount.html', function(req, res) {
 						});
 					});
 				});
-				res.redirect('/index.html');
+				res.redirect('/Home.html');
 			}
 			else{
 				res.redirect('/CreateAccount.html');
