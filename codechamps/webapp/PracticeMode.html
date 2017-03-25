@@ -65,6 +65,7 @@
 			var ddown = document.getElementById('ddown');
 			var editor = ace.edit("editor");
 			editor.session.setMode("ace/mode/" + ddown.value);
+			editor.session.setFontSize(12);
 			switch(ddown.value) {
 				case 'java':
 					editor.setValue("public class test"
