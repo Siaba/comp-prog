@@ -119,7 +119,7 @@ app.post('/Account.html', function(req, res) {
 			}
 			else{
 				//do not log in if username does not exist or password does not match
-				bcrypt.compare(req.body.user_password, data.Item.password.S).then(function(resp){
+				bcryptjs.compare(req.body.user_password, data.Item.password.S).then(function(resp){
 					if(!resp){
 						console.log("User " + username + ": login UNSUCCESSFUL");
 						res.redirect('/Account.html');
@@ -166,8 +166,8 @@ app.post('/CreateAccount.html', function(req, res) {
 				var docClient = new AWS.DynamoDB.DocumentClient();
 				
 				const saltRounds = 10;
-				bcrypt.genSalt(saltRounds, function(err, salt) {
-					bcrypt.hash(req.body.user_password, salt, function(err, hash){
+				bcryptjs.genSalt(saltRounds, function(err, salt) {
+					bcryptjs.hash(req.body.user_password, salt, function(err, hash){
 						//user tuple
 						var params = {
 							TableName:table,
