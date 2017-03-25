@@ -37,6 +37,7 @@ app.use(session({secret: "Shh, its a secret!"}));
 app.get('/', function(req, res){
     if(req.session.views){
       req.session.views++;
+      console.log("this means we screwed up");
       res.send("You visited this page " + req.session.views + " times");
       console.log("Visited the page" + req.session.views);
    }else{
