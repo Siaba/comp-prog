@@ -28,29 +28,61 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(cookieParser());
 
+bcryptjs.hash("123abcg53zzllapp*&%$$#%", salt, function(err, hash){				
+app.use(session({secret: "hash"}))};
 
 
+//GET REQUEST for routing clicks to accounte to the login if no username page
 
-app.use(session({secret: "Shh, its a secret!"}));
+var sess;
 
+app.get('/Account.html', function(req, res)){
+
+	sess = req.session;
+	sess.user_name;
+	sess.p_word;
+
+	if(sess.username && sess.p_word){
+
+		res.sendFile(path.join(__dirname + '/webapp/PracticeMode.html'));
+
+	}
+
+	else {
+
+		res.sendFile(path.join(__dirname + '/webapp/CreateAccount.html'));
+
+	}
+
+}
+
+
+//GET REQUEST for routing clicks to practicemode to the account page
+/*
 app.get('/', function(req, res){
     if(req.session.views){
-      req.session.views++;
-      console.log("this means we screwed up");
-	console.log(req.cookies);
-	console.log(req.sessionID);
-      //res.send("You visited this page " + req.session.views + " times");
-      console.log("Visited the page" + req.session.views);
-   }else{
-      req.session.views = 1;
-     // res.send("Welcome to this page for the first time!");
-      console.log('Visited the home page for the first time');
-	console.log(req.cookies);
-	   console.log(req.sessionID);
+      
+    req.session.views++;
+	console.log("The cookie information is: " + "\n" + req.cookies);
+	console.log("The session ID for the user is: " + "\n" + req.sessionID);
+    console.log("Visited the page" + req.session.views);
+
    }
+
+   else{
+
+      req.session.views = 1;
+      console.log('Visited the home page for the first time');
+	  console.log("The cookie information is: " + "\n" + req.cookies);
+	  console.log("The session ID for the user is: " + "\n" + req.sessionID);
+   }
+
    console.log(req.session.views);
    res.sendFile(path.join(__dirname + '/webapp/Home.html'));
 });
+
+*/
+
 
 var server = require('http').createServer(app);
 var io = require('socket.io')(server);
