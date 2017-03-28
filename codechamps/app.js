@@ -36,19 +36,18 @@ app.use(session({secret: "123abcg53zzllapp*&%$$#%"}));
 var sess;
 
 app.get('/Account.html', function(req, res){
-
+	console.log("On account page...");
 	sess = req.session;
 	sess.user_name;
 	sess.p_word;
-
+	
 	if(sess.username && sess.p_word){
-
+		console.log("Username and pw exist, redirecting to practice mode...");
 		res.sendFile(path.join(__dirname + '/webapp/PracticeMode.html'));
-
 	}
 
 	else {
-
+		console.log("Username and pw don't exist, redirecting to create account...");
 		res.sendFile(path.join(__dirname + '/webapp/CreateAccount.html'));
 
 	}
@@ -77,6 +76,9 @@ app.get('/', function(req, res){
    }
 
    console.log(req.session.views);*/
+	console.log('Visited the home page for the first time');
+	console.log("The cookie information is: " + "\n" + req.cookies);
+	console.log("The session ID for the user is: " + "\n" + req.sessionID);
    res.sendFile(path.join(__dirname + '/webapp/Home.html'));
 });
 
