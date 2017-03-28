@@ -55,7 +55,7 @@ app.get('/', function(req, res){
 	  console.log("The session ID for the user is: " + "\n" + req.sessionID);
    }
 
-   console.log(req.session.views);*/
+   console.log(req.session.views);
 	console.log('Visited the home page for the first time');
 	console.log("The cookie information is: " + "\n" + req.cookies);
 	console.log("The session ID for the user is: " + "\n" + req.sessionID);
