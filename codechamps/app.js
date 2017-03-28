@@ -42,7 +42,7 @@ app.get('/', function(req, res){
       
     req.session.views++;
 	console.log("The cookie information is: " + "\n" + req.cookies);
-	console.log("The session ID for the user is: " + "\n" + req.sessionID);
+	console.log("The session ID for " + req.session.user_name + " is: " + "\n" + req.sessionID);
     console.log("Visited the page" + req.session.views);
 
    }
@@ -52,13 +52,13 @@ app.get('/', function(req, res){
       req.session.views = 1;
       console.log('Visited the home page for the first time');
 	  console.log("The cookie information is: " + "\n" + req.cookies);
-	  console.log("The session ID for the user is: " + "\n" + req.sessionID);
+	  console.log("The session ID for " + req.session.user_name + " is: " + "\n" + req.sessionID);
    }
 
    console.log(req.session.views);
 	console.log('Visited the home page for the first time');
 	console.log("The cookie information is: " + "\n" + req.cookies);
-	console.log("The session ID for the user is: " + "\n" + req.sessionID);
+	console.log("The session ID for " + req.session.user_name + " is: " + "\n" + req.sessionID);
    	res.sendFile(path.join(__dirname + '/webapp/Home.html'));
 });
 
