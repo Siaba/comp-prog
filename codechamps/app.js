@@ -27,9 +27,8 @@ app.use(logger('dev'));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(cookieParser());
-
-bcryptjs.hash("123abcg53zzllapp*&%$$#%", salt, function(err, hash){				
-	app.use(session({secret: hash}))});
+				
+app.use(session({secret: "123abcg53zzllapp*&%$$#%"}));
 
 
 //GET REQUEST for routing clicks to account to the login if no username page
