@@ -28,7 +28,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(cookieParser());
 				
-app.use(session({secret: "123abcg53zzllapp*&%$$#%"}));
+app.use(session({secret: "123abcg"}));
 
 
 //GET REQUEST for routing clicks to account to the login if no username page
