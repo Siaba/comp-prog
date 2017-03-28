@@ -30,6 +30,7 @@ hooks:
     - location: /scripts/clean.sh
   AfterInstall:
     - location: /scripts/setup.sh
+    - location: /scripts/installpkgs.sh
 # For deployments to Amazon Linux, Ubuntu Server, or RHEL instances,
 #   you can specify a "permissions" 
 #   section here that describes special permissions to apply to the files 
