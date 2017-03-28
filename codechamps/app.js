@@ -36,7 +36,7 @@ bcryptjs.hash("123abcg53zzllapp*&%$$#%", salt, function(err, hash){
 
 var sess;
 
-app.get('/Account.html', function(req, res)){
+app.get('/Account.html', function(req, res){
 
 	sess = req.session;
 	sess.user_name;
@@ -54,7 +54,7 @@ app.get('/Account.html', function(req, res)){
 
 	}
 
-}
+});
 
 
 //GET REQUEST for routing clicks to practicemode to the account page
