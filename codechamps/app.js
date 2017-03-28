@@ -163,6 +163,7 @@ app.post('/Account.html', function(req, res) {
 					else{
 						//need to do session stuff here...
 						console.log("User  " + username + ": login SUCCESSFUL")
+						req.session.user_name = username;
 						res.redirect('/Home.html');
 					}
 				});
