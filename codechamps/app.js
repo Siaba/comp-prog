@@ -62,6 +62,31 @@ app.get('/', function(req, res){
    	res.sendFile(path.join(__dirname + '/webapp/Home.html'));
 });
 
+app.get('/Account.html', function(req, res){
+    if(req.session.views){
+      
+    req.session.views++;
+	console.log("The cookie information is: " + "\n" + req.cookies);
+	console.log("The session ID for the user is: " + "\n" + req.sessionID);
+    console.log("Visited the page" + req.session.views);
+
+   }
+
+   else{
+
+      req.session.views = 1;
+      console.log('Visited the home page for the first time');
+	  console.log("The cookie information is: " + "\n" + req.cookies);
+	  console.log("The session ID for the user is: " + "\n" + req.sessionID);
+   }
+
+   console.log(req.session.views);
+	console.log('Visited the home page for the first time');
+	console.log("The cookie information is: " + "\n" + req.cookies);
+	console.log("The session ID for the user is: " + "\n" + req.sessionID);
+   	res.sendFile(path.join(__dirname + '/webapp/Account.html'));
+});
+
 
 var server = require('http').createServer(app);
 var io = require('socket.io')(server);
