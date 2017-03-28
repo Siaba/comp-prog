@@ -57,9 +57,9 @@ app.get('/Account.html', function(req, res){
 
 
 //GET REQUEST for routing clicks to practicemode to the account page
-/*
+
 app.get('/', function(req, res){
-    if(req.session.views){
+    /*if(req.session.views){
       
     req.session.views++;
 	console.log("The cookie information is: " + "\n" + req.cookies);
@@ -76,11 +76,9 @@ app.get('/', function(req, res){
 	  console.log("The session ID for the user is: " + "\n" + req.sessionID);
    }
 
-   console.log(req.session.views);
+   console.log(req.session.views);*/
    res.sendFile(path.join(__dirname + '/webapp/Home.html'));
 });
-
-*/
 
 
 var server = require('http').createServer(app);
