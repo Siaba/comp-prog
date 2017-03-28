@@ -54,11 +54,6 @@ app.get('/', function(req, res){
 	  console.log("The cookie information is: " + "\n" + req.cookies);
 	  console.log("The session ID for " + req.session.user_name + " is: " + "\n" + req.sessionID);
    }
-
-   console.log(req.session.views);
-	console.log('Visited the home page for the first time');
-	console.log("The cookie information is: " + "\n" + req.cookies);
-	console.log("The session ID for " + req.session.user_name + " is: " + "\n" + req.sessionID);
    	res.sendFile(path.join(__dirname + '/webapp/Home.html'));
 });
 
@@ -79,12 +74,6 @@ app.get('/Account.html', function(req, res){
 	  console.log("The cookie information is: " + "\n" + req.cookies);
 	  console.log("The session ID for " + req.session.user_name + " is: " + "\n" + req.sessionID);
    }
-
-   console.log(req.session.views);
-	console.log('Visited the home page for the first time');
-	console.log("The cookie information is: " + "\n" + req.cookies);
-	console.log("The session ID for " + req.session.user_name + " is: " + "\n" + req.sessionID);
-   	res.sendFile(path.join(__dirname + '/webapp/Account.html'));
 });
 
 
