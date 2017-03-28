@@ -11,7 +11,7 @@ var async = require('async');
 var bcryptjs = require('bcryptjs');
 var routes = require('./routes/index');
 var users = require('./routes/users');
-const nodemailer = require('nodemailer');
+//const nodemailer = require('nodemailer');
 var app = express();
 var session = require('express-session');
 
@@ -98,7 +98,7 @@ AWS.config.update({
 });
 
  //Email for COntact us using nodemailer, veru close most likely something stupid 
-
+/*
 app.post('/Contact.html', function(req, res) {
 	 var mailOpts, smtpTrans;
   //Setup Nodemailer transport, I chose gmail. Create an application-specific password to avoid problems.
@@ -124,7 +124,7 @@ transporter.sendMail(mailOptions, (error, info) => {
     console.log('Message %s sent: %s', info.messageId, info.response);
 });
 	
-});
+});*/
 
 
 //log user in
