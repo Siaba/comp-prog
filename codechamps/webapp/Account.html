@@ -7,8 +7,9 @@
     <title>Account</title>
     <link rel="stylesheet" href="css/foundation.css">
     <link rel="stylesheet" href="css/app.css">
+    <link rel="stylesheet" href="css/login.css">
   </head>
-  <body>
+  <body class="loginWhole">
 
     <div class="top-bar">
           <div class="top-bar-left">
@@ -38,25 +39,23 @@
             
           </div>
         </div>
-    <div class="row">
-      <div class="large-8 medium-8 columns">
+        <div class="login-page">
+    <div class="form-new">
         <form action="/Account.html" method="post">
           <div class="row">
-			<div class="large-4 large-4 columns">
-			<label>Username</label>
-		          <input type="text" name="user_name" placeholder="username" class="input-group-field"/>
-			<label>Password</label>
-		          <input type="password" name="user_password" placeholder="password" class="input-group-field"/>
+			<label><b>Username</b></label>
+		          <input type="text" name="user_name" placeholder="username" class="timeblock" onSubmit="hashLoginPassword()"/>
+			<label><b>Password</b></label>
+		          <input type="password" name="user_password" placeholder="password" class="timeblock"/>
 			</div>
-          </div>
 		  <div class="row">
-			<div class="large-6 medium-6 columns">
-				<button type="submit" class="button">Log in</button>
-			</div>
+				<button type="submit" class="submit success button">Log in</button>
           </div>
-        </form>
-      </div>
-    </div>
+          <p><center>Don't have an account?<br> <a href="CreateAccount.html"><b>Create one now</a>.</b></center></p>
+  </div>
+            </div>
+
+          </form>
 
     <script src="js/vendor/jquery.js"></script>
     <script src="js/vendor/what-input.js"></script>
