@@ -50,7 +50,7 @@ router.get('/Account.html', function(req, res) {
 }});
 
 //log user in
-router.post('/Account.html', function(req, res) {
+/*router.post('/Account.html', function(req, res) {
 	var table = "user";
 	var username = req.body.user_name;
 	
@@ -81,14 +81,14 @@ router.post('/Account.html', function(req, res) {
 						//need to do session stuff here...
 						console.log("User  " + username + ": login SUCCESSFUL")
 						req.session.user_name = username;
-      console.log("The username is: " + username);
+      						console.log("The username is: " + username);
 						res.redirect('/Home.html');
 					}
 				});
 			}
 		}
 	});
-});
+});*/
 
 /* GET home page. */
 router.get('/CreateAccount.html', function(req, res) {
