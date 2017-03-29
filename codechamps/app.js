@@ -27,7 +27,7 @@ app.use(favicon());
 app.use(logger('dev'));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-app.use(cookieParser());
+
 				
 //GET REQUEST for routing clicks to account to the login if no username pag
 
