@@ -21,11 +21,22 @@ router.get('/Account.html', function(req, res) {
  var username = req.session.username;
  var password = req.session.password;
  
+ if(username && password){
+  res.sendFile(path.join(filePath + '/webapp/Account.html'));
+ }
+ 
+ else {
+  
+  res.sendFile(path.join(filePath + '/webapp/CreateAccount.html'));
+ }
+ 
+ 
+ 
  console.log("The cookie ID" + req.cookies);
  console.log("The SessionID" + req.sessionID);
  
  console.log("ROUTES WORKED: Account Page");
- res.sendFile(path.join(filePath + '/webapp/Account.html'));
+ //res.sendFile(path.join(filePath + '/webapp/Account.html'));
  
  
  
