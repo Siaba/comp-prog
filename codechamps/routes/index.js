@@ -13,6 +13,8 @@ var filePath = '/home/ubuntu/codechamps';
 router.get('/', function(req, res) {
  
  console.log("ROUTES WORKED");
+ var username = req.session.username;
+ console.log("The username is: " + username);
  res.sendFile(path.join(filePath + '/webapp/Home.html'));
  
 });
@@ -22,6 +24,9 @@ router.get('/Account.html', function(req, res) {
  
  var username = req.session.username;
  var password = req.session.password;
+	
+
+console.log("The username is: " + username);
  
  if(username && password){
   res.sendFile(path.join(filePath + '/webapp/Account.html'));
@@ -51,7 +56,7 @@ router.get('/Account.html', function(req, res) {
 }});
 
 //log user in
-/*router.post('/Account.html', function(req, res) {
+router.post('/Account.html', function(req, res) {
 	var table = "user";
 	var username = req.body.user_name;
 	
@@ -89,7 +94,7 @@ router.get('/Account.html', function(req, res) {
 			}
 		}
 	});
-});*/
+});
 
 /* GET home page. */
 router.get('/CreateAccount.html', function(req, res) {
