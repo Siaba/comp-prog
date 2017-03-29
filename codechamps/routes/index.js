@@ -1,6 +1,9 @@
 var express = require('express');
 var path = require('path');
 var router = express.Router();
+var session = require('express-session');
+
+app.use(session({secret: "123abcg"}));
 
 var filePath = '/home/ubuntu/codechamps';
 
@@ -14,6 +17,8 @@ router.get('/', function(req, res) {
 
 /* GET home page. */
 router.get('/Account.html', function(req, res) {
+ var username = req.session.username;
+ var password = req.session.password;
  
  console.log("The cookie ID" + req.cookies);
  console.log("The SessionID" + req.sessionID);
