@@ -59,7 +59,7 @@ console.log("The username is: " + username);
 }});
 
 //log user in
-router.post('/Account.html', function(req, res) {
+/*router.post('/Account.html', function(req, res) {
 	var table = "user";
 	var username = req.body.user_name;
 	
@@ -98,6 +98,7 @@ router.post('/Account.html', function(req, res) {
 		}
 	});
 });
+*/
 
 /* GET home page. */
 router.get('/CreateAccount.html', function(req, res) {
