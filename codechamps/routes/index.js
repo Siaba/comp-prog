@@ -3,7 +3,7 @@ var path = require('path');
 var router = express.Router();
 var session = require('express-session');
 
-app.use(session({secret: "123abcg"}));
+router.use(session({secret: "123abcg"}));
 
 var filePath = '/home/ubuntu/codechamps';
 
