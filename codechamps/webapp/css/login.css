@@ -28,6 +28,28 @@ animation: login 3s ease-in-out;
     animation-duration: 4s;
 }
 
+.form-new1 {
+  position: relative;
+  z-index: 1;
+  background: red;
+  max-width: 360px;
+  margin: 0 auto 100px;
+  padding: 45px;
+  text-align: center;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+}
+
+.form-new2 {
+  position: relative;
+  z-index: 1;
+  background: orange;
+  max-width: 360px;
+  margin: 0 auto 100px;
+  padding: 45px;
+  text-align: center;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+}
+
 input.timeBlock {
     height: 90px;
     width: 90px;
@@ -132,3 +154,4 @@ input:focus {
     from {background-color: blue;}
     to {background-color: yellow;}
 }
+
