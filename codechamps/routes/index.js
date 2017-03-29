@@ -15,10 +15,17 @@ router.get('/', function(req, res) {
 /* GET home page. */
 router.get('/Account.html', function(req, res) {
  
+ console.log("The cookie ID" + req.cookies);
+ console.log("The SessionID" + req.sessionID);
+ 
  console.log("ROUTES WORKED: Account Page");
  res.sendFile(path.join(filePath + '/webapp/Account.html'));
  
+ 
+ 
 });
+
+
 
 /* GET home page. */
 router.get('/CreateAccount.html', function(req, res) {
