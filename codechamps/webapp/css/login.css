@@ -1,0 +1,134 @@
+.loginWhole {
+	background-image: url("rad.jpg");
+}
+.login-page {
+  width: 360px;
+  padding: 8% 0 0;
+  margin: auto;
+  -webkit-animation: login 3s ease-in-out;
+-moz-animation: login 3s ease-in-out;
+-ms-animation: login 3s ease-in-out;
+-o-animation: login 3s ease-in-out;
+animation: login 3s ease-in-out;
+
+}
+
+.form-new {
+  position: relative;
+  z-index: 1;
+  background: yellow;
+  max-width: 360px;
+  margin: 0 auto 100px;
+  padding: 45px;
+  text-align: center;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+  -webkit-animation-name: colorFade; /* Safari 4.0 - 8.0 */
+    -webkit-animation-duration: 4s; /* Safari 4.0 - 8.0 */
+    animation-name: colorFade;
+    animation-duration: 4s;
+}
+
+input.timeBlock {
+    height: 90px;
+    width: 90px;
+    text-align: center;
+    font-size: 3.5em;
+    border-radius: 10px;
+    color: #444;
+    border: 3px solid #ccc;
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.15) inset; 
+    position: absolute;
+    top:0;
+    bottom: 0;
+    margin: auto;
+    transition:border 2s;
+}
+
+input:focus {
+    border: 3px solid #cc0000;
+}
+
+@keyframes "login" {
+ 0% {
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+    filter: alpha(opacity=0);
+    opacity: 0;
+    margin-top: 0px;
+ }
+ 100% {
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+    filter: alpha(opacity=100);
+    opacity: 1;
+    margin-top: 0px;
+ }
+ 
+}
+ 
+@-moz-keyframes login {
+ 0% {
+   filter: alpha(opacity=0);
+   opacity: 0;
+   margin-top: 0px;
+ }
+ 100% {
+   filter: alpha(opacity=100);
+   opacity: 1;
+   margin-top: 0px;
+ }
+ 
+}
+ 
+@-webkit-keyframes "login" {
+ 0% {
+   filter: alpha(opacity=0);
+   opacity: 0;
+   margin-top: 0px;
+ }
+ 100% {
+   filter: alpha(opacity=100);
+   opacity: 1;
+   margin-top: 0px;
+ }
+ 
+}
+ 
+@-ms-keyframes "login" {
+ 0% {
+   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+   filter: alpha(opacity=0);
+   opacity: 0;
+   margin-top: 0px;
+ }
+ 100% {
+   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+   filter: alpha(opacity=100);
+   opacity: 1;
+   margin-top: 0px;
+ }
+ 
+}
+ 
+@-o-keyframes "login" {
+ 0% {
+   filter: alpha(opacity=0);
+   opacity: 0;
+   margin-top: 0px;
+ }
+ 100% {
+   filter: alpha(opacity=100);
+   opacity: 1;
+   margin-top: 0px;
+ }
+ 
+}
+
+@-webkit-keyframes colorFade {
+    from {background-color: blue;}
+    to {background-color: yellow;}
+}
+
+/* Standard syntax */
+@keyframes colorFade {
+    from {background-color: blue;}
+    to {background-color: yellow;}
+}
