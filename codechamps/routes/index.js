@@ -85,7 +85,7 @@ router.get('/GroupLeaderboards.html', function(req, res) {
 });
 
 /* GET home page. */
-router.get('/GroupStats', function(req, res) {
+router.get('/GroupStats.html', function(req, res) {
  
  console.log("ROUTES WORKED: group stats");
  res.sendFile(path.join(filePath + '/webapp/GroupStats.html'));
