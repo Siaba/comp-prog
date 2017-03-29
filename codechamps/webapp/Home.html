@@ -15,37 +15,51 @@
       <!-- 
           Home Page -->
 
-        <div class="nav">
-        <div class="top-bar">
-          <div class="top-bar-left">
-            <h3><i class="fi-crown" style="color: #3399ff;">&nbsp&nbsp</i><span>CodeChamps</span>&nbsp&nbsp<i class="fi-home"></i>
-            
-          </div>
-          <div class="top-bar-right">
-          
-            <ul class="dropdown menu" data-dropdown-menu>
-              <li><a href="Home.html">Home</a></li>
-              <li>
-                <a href="Versus.html">Game</a>
-                <ul class="menu vertical">
-                  <li><a href="PracticeMode.html">Practice Mode</a></li>
-                  <li><a href="Versus.html">Versus Match</a></li>
-                  
-                </ul>
-              </li>
+<div class="nav">
+<div class="top-bar">
+  <div class="top-bar-left">
+    <h3><i class="fi-crown" style="color: #3399ff;">&nbsp&nbsp</i><span>CodeChamps</span>&nbsp&nbsp
 
-              
-              <li><a href="Account.html">Account</a></li>
-              <li><a href="blanktext.html">Isolate Test DAWG</a></li>
-              <li><a href="Stats.html">Stats</a></li>
-              <li><a href="Leaderboards.html">Leaderboards</a></li>
-              <li><a href="History.html">History</a></li>
-	           <li><a href="CreateAccount.html">Sign Up</a></li>
-            </ul>
-            
-          </div>
-          </div>
-          </div>
+  </div>
+  <div class="top-bar-right">
+
+    <ul id="logindd" class="dropdown menu" data-dropdown-menu data-close-on-click-inside="false">
+      <li><a href="Home.html"><b style="font-size:26px" class="fi-home"></b></a></li>
+		  <li>
+			<a href="Account.html">Login</a>
+			<ul class="menu vertical">
+				<li>
+				<form action="/Account.html" method="post">
+						<label><b>Username</b></label>
+							<input type="text" name="user_name" placeholder="username" class="timeblock"/>
+						<label><b>Password</b></label>
+							<input type="password" name="user_password" placeholder="password" class="timeblock"/>
+						<center><button type="submit" class="submit success button">Log in</button></center>
+					<p><center>Don't have an account?<br> <a href="CreateAccount.html"><b>Create one now.</b></a></center></p>
+				</form>
+				</li>
+		  </ul>
+		  </li>
+      <li>
+	<a href="Versus.html">Game</a>
+	<ul class="menu vertical">
+	  <li><a href="PracticeMode.html">Practice Mode</a></li>
+	  <li><a href="Versus.html">Versus Match</a></li>
+
+	</ul>
+      </li>
+
+
+      <li><a href="Account.html">Account</a></li>
+      <li><a href="Stats.html">Stats</a></li>
+      <li><a href="Leaderboards.html">Leaderboards</a></li>
+      <li><a href="History.html">History</a></li>
+	   <li><a href="CreateAccount.html">Sign Up</a></li>
+    </ul>
+
+  </div>
+  </div>
+  </div>
 
         <!-- Hero Section -->
 
