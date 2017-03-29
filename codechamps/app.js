@@ -15,6 +15,7 @@ var users = require('./routes/users');
 var app = express();
 var session = require('express-session');
 
+app.use('/', routes);
 app.use(express.static(path.join(__dirname, 'webapp')));
 
 
