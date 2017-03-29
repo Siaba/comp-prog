@@ -18,6 +18,7 @@ router.get('/', function(req, res) {
 
 /* GET home page. */
 router.get('/Account.html', function(req, res) {
+ 
  var username = req.session.username;
  var password = req.session.password;
  
@@ -27,16 +28,22 @@ router.get('/Account.html', function(req, res) {
  
  else {
   
-  res.sendFile(path.join(filePath + '/webapp/CreateAccount.html'));
+  if(session.views){
+   console.log("The " + session.views + " times youve viewed the page");
+   session.views = session.views + 1;
+  }
+  
+  else {
+   session.views = 1;
+   console.log("The first time youve viewd: view count is: " + session.views);
  }
  
+ //res.sendFile(path.join(filePath + '/webapp/CreateAccount.html'));
  
- 
+ res.sendFile(path.join(filePath + '/webapp/Account.html'));
  console.log("The cookie ID" + req.cookies);
  console.log("The SessionID" + req.sessionID);
- 
  console.log("ROUTES WORKED: Account Page");
- //res.sendFile(path.join(filePath + '/webapp/Account.html'));
  
  
  
