@@ -77,7 +77,7 @@ router.get('/Contact.html', function(req, res) {
 });
 
 /* GET home page. */
-router.get('/GroupLeaderboards.html, function(req, res) {
+router.get('/GroupLeaderboards.html', function(req, res) {
  
  console.log("ROUTES WORKED: group LBS");
  res.sendFile(path.join(filePath + '/webapp/GroupLeaderboards.html'));
