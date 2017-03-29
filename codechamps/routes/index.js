@@ -12,6 +12,7 @@ router.get('/', function(req, res) {
  
 });
 
+/* GET home page. */
 router.get('/Account.html', function(req, res) {
  
  console.log("ROUTES WORKED: Account Page");
@@ -19,6 +20,7 @@ router.get('/Account.html', function(req, res) {
  
 });
 
+/* GET home page. */
 router.get('/CreateAccount.html', function(req, res) {
  
  console.log("ROUTES WORKED: Create Account");
@@ -26,6 +28,7 @@ router.get('/CreateAccount.html', function(req, res) {
  
 });
 
+/* GET home page. */
 router.get('/PracticeMode.html', function(req, res) {
  
  console.log("ROUTES WORKED: PracticeMode");
@@ -33,6 +36,7 @@ router.get('/PracticeMode.html', function(req, res) {
  
 });
 
+/* GET home page. */
 router.get('/Versus.html', function(req, res) {
  
  console.log("ROUTES WORKED: versus Match");
@@ -40,6 +44,7 @@ router.get('/Versus.html', function(req, res) {
  
 });
 
+/* GET home page. */
 router.get('/Stats.html', function(req, res) {
  
  console.log("ROUTES WORKED: stats");
@@ -47,6 +52,7 @@ router.get('/Stats.html', function(req, res) {
  
 });
 
+/* GET home page. */
 router.get('/History.html', function(req, res) {
  
  console.log("ROUTES WORKED: history page");
@@ -54,6 +60,7 @@ router.get('/History.html', function(req, res) {
  
 });
 
+/* GET home page. */
 router.get('/Leaderboards.html', function(req, res) {
  
  console.log("ROUTES WORKED: leaderboards");
@@ -61,6 +68,7 @@ router.get('/Leaderboards.html', function(req, res) {
  
 });
 
+/* GET home page. */
 router.get('/Contact.html', function(req, res) {
  
  console.log("ROUTES WORKED: contact us ");
@@ -68,6 +76,7 @@ router.get('/Contact.html', function(req, res) {
  
 });
 
+/* GET home page. */
 router.get('/GroupLeaderboards.html, function(req, res) {
  
  console.log("ROUTES WORKED: group LBS");
@@ -75,6 +84,7 @@ router.get('/GroupLeaderboards.html, function(req, res) {
  
 });
 
+/* GET home page. */
 router.get('/GroupStats', function(req, res) {
  
  console.log("ROUTES WORKED: group stats");
@@ -82,6 +92,7 @@ router.get('/GroupStats', function(req, res) {
  
 });
 
+/* GET home page. */
 router.get('/FindMatch.html', function(req, res) {
  
  console.log("ROUTES WORKED: find match");
