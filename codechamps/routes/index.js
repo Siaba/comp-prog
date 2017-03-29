@@ -101,8 +101,16 @@ router.get('/CreateAccount.html', function(req, res) {
 /* GET home page. */
 router.get('/PracticeMode.html', function(req, res) {
  
- console.log("ROUTES WORKED: PracticeMode");
- res.sendFile(path.join(filePath + '/webapp/PracticeMode.html'));
+ 	console.log("ROUTES WORKED: PracticeMode");
+	var username = req.session.username;
+	var password = req.session.password;
+ 
+ 	if(username && password){
+  		res.sendFile(path.join(filePath + '/webapp/PracticeMode.html'));
+ 	}
+	else{
+		res.sendFile(path.join(filePath + '/webapp/Account.html'));
+	}
  
 });
 
