@@ -4,7 +4,7 @@ var router = express.Router();
 var cookieParser = require('cookie-parser');
 var session = require('express-session');
 
-router.use(cookieparser());
+router.use(cookieParser());
 router.use(session({secret: "123abcg"}));
 
 var filePath = '/home/ubuntu/codechamps';
