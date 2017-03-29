@@ -49,7 +49,46 @@ router.get('/Account.html', function(req, res) {
  
 }});
 
-
+//log user in
+router.post('/Account.html', function(req, res) {
+	var table = "user";
+	var username = req.body.user_name;
+	
+	var db = new AWS.DynamoDB();
+	console.log(username);
+	var params = {
+		TableName:table,
+		Key : {"username" : {S: username}}
+	};
+	
+	//get user tuple for given username (if it exists)
+	db.getItem(params, function(err, data){
+		if(err) {
+			console.log(err);
+		}
+		else {
+			if(data.Item == null){
+				res.redirect('/Account.html');
+			}
+			else{
+				//do not log in if username does not exist or password does not match
+				bcryptjs.compare(req.body.user_password, data.Item.password.S).then(function(resp){
+					if(!resp){
+						console.log("User " + username + ": login UNSUCCESSFUL");
+						res.redirect('/Account.html');
+					}
+					else{
+						//need to do session stuff here...
+						console.log("User  " + username + ": login SUCCESSFUL")
+						req.session.user_name = username;
+      console.log("The username is: " + username);
+						res.redirect('/Home.html');
+					}
+				});
+			}
+		}
+	});
+});
 
 /* GET home page. */
 router.get('/CreateAccount.html', function(req, res) {
