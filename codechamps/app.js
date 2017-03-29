@@ -13,7 +13,7 @@ var routes = require('./routes/index');
 var users = require('./routes/users');
 //const nodemailer = require('nodemailer');
 var app = express();
-var session = require('express-session');
+
 
 app.use('/', routes);
 app.use(express.static(path.join(__dirname, 'webapp')));
@@ -29,54 +29,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(cookieParser());
 				
-app.use(session({secret: "123abcg"}));
-
-
-//GET REQUEST for routing clicks to account to the login if no username page
-
-
-
-//GET REQUEST for routing clicks to practicemode to the account page
-
-app.get('/', function(req, res){
-    if(req.session.views){
-      
-    req.session.views++;
-	console.log("The cookie information is: " + "\n" + req.cookies);
-	console.log("The session ID for " + req.session.user_name + " is: " + "\n" + req.sessionID);
-    console.log("Visited the page" + req.session.views);
-
-   }
-
-   else{
-
-      req.session.views = 1;
-      console.log('Visited the home page for the first time');
-	  console.log("The cookie information is: " + "\n" + req.cookies);
-	  console.log("The session ID for " + req.session.user_name + " is: " + "\n" + req.sessionID);
-   }
-   	res.sendFile(path.join(__dirname + '/webapp/Home.html'));
-});
-
-app.get('/Account.html', function(req, res){
-    if(req.session.views){
-      
-    req.session.views++;
-	console.log("The cookie information is: " + "\n" + req.cookies);
-	console.log("The session ID for " + req.session.user_name + " is: " + "\n" + req.sessionID);
-    console.log("Visited the page" + req.session.views);
-
-   }
-
-   else{
-
-      req.session.views = 1;
-      console.log('Visited the home page for the first time');
-	  console.log("The cookie information is: " + "\n" + req.cookies);
-	  console.log("The session ID for " + req.session.user_name + " is: " + "\n" + req.sessionID);
-   }
-});
-
+//GET REQUEST for routing clicks to account to the login if no username pag
 
 var server = require('http').createServer(app);
 var io = require('socket.io')(server);
