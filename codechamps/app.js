@@ -226,7 +226,7 @@ function runSandbox(req){
 	}
 	,function(err){
 		console.log("all functions complete.");
-	});
+	}});
 	
 
 
