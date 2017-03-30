@@ -117,7 +117,7 @@ router.get('/PracticeMode.html', function(req, res) {
 	var username = req.session.username;
 	var password = req.session.password;
  
- 	if(username != null && password != null){
+ 	if(username != null){
   		res.redirect('/PracticeMode.html');
  	}
 	else{
