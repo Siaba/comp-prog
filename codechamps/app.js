@@ -224,14 +224,14 @@ function runSandbox(req){
 		 });
 		 });
 	}
-	],function(err){
+	,function(err){
 		console.log("all functions complete.");
 	});
 	
-}
 
 
-});
+
+
 
 /// catch 404 and forwarding to error handler
 app.use(function(req, res, next) {
