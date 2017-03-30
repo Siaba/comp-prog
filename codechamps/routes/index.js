@@ -118,7 +118,7 @@ router.get('/PracticeMode.html', function(req, res) {
 	var password = req.session.password;
  
  	if(username != null){
-  		res.redirect('/PracticeMode.html');
+  		res.sendFile(path.join(filePath + '/webapp/PracticeMode.html'));
  	}
 	else{
 		res.redirect('/Account.html');
