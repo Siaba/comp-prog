@@ -135,7 +135,6 @@ app.post('/blanktext.html', function(req, res){
 	res.redirect('/blanktext.html');
 });
 
-
 function runSandbox(req){
 	console.log("Starting async tasks");
 	async.series([function(callback){
@@ -224,14 +223,11 @@ function runSandbox(req){
 		 });
 		 });
 	}
-	,function(err){
+	],function(err){
 		console.log("all functions complete.");
-	}});
+	});
 	
-
-
-
-
+}
 
 /// catch 404 and forwarding to error handler
 app.use(function(req, res, next) {
