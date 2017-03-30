@@ -11,6 +11,7 @@ router.use(bodyParser.json());
 router.use(session({secret: "123abcg"}));
 
 var filePath = '/home/ubuntu/codechamps';
+var sess;
 
 /* GET home page. */
 router.get('/', function(req, res) {
@@ -27,11 +28,12 @@ router.get('/Account.html', function(req, res) {
  
  var username = req.session.username;
  var password = req.session.password;
+ sess = req.session;
 	
 
 console.log("The username is: " + username);
  
- if(username && password){
+ if(username && password && sess){
   res.sendFile(path.join(filePath + '/webapp/Account.html'));
  }
  
