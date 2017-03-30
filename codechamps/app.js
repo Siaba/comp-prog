@@ -38,6 +38,13 @@ io.on('connection', function(socket){ console.log("someone has connected."); });
 
 app.listen(3000);
 
+
+
+AWS.config.update({
+    region: "us-east-1",
+    endpoint: "dynamodb.us-east-1.amazonaws.com"
+});
+
  //Email for COntact us using nodemailer, veru close most likely something stupid 
 /*
 app.post('/Contact.html', function(req, res) {
@@ -68,9 +75,113 @@ transporter.sendMail(mailOptions, (error, info) => {
 });*/
 
 
+app.post('/Account.html', function(req, res) {
+	var table = "user";
+	var username = req.body.user_name;
+	
+	var db = new AWS.DynamoDB();
+	console.log(username);
+	var params = {
+		TableName:table,
+		Key : {"username" : {S: username}}
+	};
+	
+	//get user tuple for given username (if it exists)
+	db.getItem(params, function(err, data){
+		if(err) {
+			console.log(err);
+		}
+		else {
+			if(data.Item == null){
+				res.redirect('/Account.html');
+			}
+			else{
+				//do not log in if username does not exist or password does not match
+				bcryptjs.compare(req.body.user_password, data.Item.password.S).then(function(resp){
+					if(!resp){
+						console.log("User " + username + ": login UNSUCCESSFUL");
+						res.redirect('/Account.html');
+					}
+					else{
+						//need to do session stuff here...
+						console.log("User  " + username + ": login SUCCESSFUL")
+						req.session.user_name = username;
+      						console.log("The username is: " + username);
+						res.redirect('/Home.html');
+					}
+				});
+			}
+		}
+	});
+});
 
+//add new user to database
+app.post('/CreateAccount.html', function(req, res) {
+	var table = "user";
+	var username = req.body.user_name;
+	var age = req.body.user_age;
+	var email = req.body.user_email;
+	var firstname = req.body.first_name;
+	var lastname = req.body.last_name;
+	var gender = req.body.gender;
+	var occupation = req.body.user_occupation;
+	
+	var db = new AWS.DynamoDB();
+	
+	console.log(username);
+	var paramsgetuser = {
+		TableName:table,
+		Key : {"username" : {S: username}},
+		AttributesToGet: [ "username" ]
+	};
+	
+	//check if username exists in database
+	db.getItem(paramsgetuser, function(err, data){
+		if(err) {
+			console.log(err);
+		}
+		else {
+			console.log(data);
+			if(data.Item == null){ //add user if non-existent
+				var docClient = new AWS.DynamoDB.DocumentClient();
+				
+				const saltRounds = 10;
+				bcryptjs.genSalt(saltRounds, function(err, salt) {
+					bcryptjs.hash(req.body.user_password, salt, function(err, hash){
+						//user tuple
+						var params = {
+							TableName:table,
+							Item:{
+								"username": username,
+								"age": age,
+								"email": email,
+								"firstname": firstname,
+								"gender": gender,
+								"lastname": lastname,
+								"occupation": occupation,
+								"password": hash,
+							}
+						};
 
-
+						console.log("Adding a new item...");
+						//put user in database
+						docClient.put(params, function(err, data) {
+							if (err) {
+								console.error("Unable to add user. Error JSON:", JSON.stringify(err, null, 2));
+							} else {
+								console.log("Added user:", JSON.stringify(data, null, 2));
+							}
+						});
+					});
+				});
+				res.redirect('/Home.html');
+			}
+			else{
+				res.redirect('/CreateAccount.html');
+			}
+		}
+	});
+});
 
 //write to file when submit button is clicked
 app.post('/blanktext.html', function(req, res){
@@ -134,6 +245,7 @@ app.post('/blanktext.html', function(req, res){
 	*/
 	res.redirect('/blanktext.html');
 });
+
 
 function runSandbox(req){
 	console.log("Starting async tasks");
@@ -229,6 +341,11 @@ function runSandbox(req){
 	
 }
 
+var db = new AWS.DynamoDB({apiVersion: '2012-08-10'});
+   db.listTables(function(err, data) {
+   console.log(data);
+});
+
 /// catch 404 and forwarding to error handler
 app.use(function(req, res, next) {
     var err = new Error('Not Found');
@@ -258,6 +375,7 @@ app.use(function(err, req, res, next) {
         message: err.message,
         error: {}
     });
+});
 
 
 module.exports = app;
