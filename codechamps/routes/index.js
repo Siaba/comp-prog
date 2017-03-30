@@ -50,7 +50,7 @@ console.log("The username is: " + username);
  //res.sendFile(path.join(filePath + '/webapp/CreateAccount.html'));
  
  res.sendFile(path.join(filePath + '/webapp/Account.html'));
- console.log("The cookie ID" + req.cookies.json());
+ console.log("The cookie ID" + json(req.cookies));
  console.log("The SessionID" + req.sessionID);
  console.log("ROUTES WORKED: Account Page");
  
