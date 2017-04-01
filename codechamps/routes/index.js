@@ -1,6 +1,8 @@
 var express = require('express');
 var path = require('path');
 var router = express.Router();
+var AWS = require('aws-sdk');
+var bcryptjs = require('bcryptjs');
 var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
 var session = require('express-session');
@@ -9,6 +11,11 @@ router.use(cookieParser());
 router.use(bodyParser.urlencoded({extended: true }));
 router.use(bodyParser.json());
 router.use(session({secret: "123abcg"}));
+
+AWS.config.update({
+    region: "us-east-1",
+    endpoint: "dynamodb.us-east-1.amazonaws.com"
+});
 
 var filePath = '/home/ubuntu/codechamps';
 var sess;
@@ -116,7 +123,7 @@ router.get('/PracticeMode.html', function(req, res) {
  	console.log("ROUTES WORKED: PracticeMode");
 	var username = req.session.username;
 	var password = req.session.password;
- 
+ 	
  	if(username != null){
   		res.sendFile(path.join(filePath + '/webapp/PracticeMode.html'));
  	}
@@ -190,5 +197,44 @@ router.get('/FindMatch.html', function(req, res) {
  
 });
 
+app.post('/Account.html', function(req, res) {
+	var table = "user";
+	var username = req.body.user_name;
+	
+	var db = new AWS.DynamoDB();
+	console.log(username);
+	var params = {
+		TableName:table,
+		Key : {"username" : {S: username}}
+	};
+	
+	//get user tuple for given username (if it exists)
+	db.getItem(params, function(err, data){
+		if(err) {
+			console.log(err);
+		}
+		else {
+			if(data.Item == null){
+				res.redirect('/Account.html');
+			}
+			else{
+				//do not log in if username does not exist or password does not match
+				bcryptjs.compare(req.body.user_password, data.Item.password.S).then(function(resp){
+					if(!resp){
+						console.log("User " + username + ": login UNSUCCESSFUL");
+						res.redirect('/Account.html');
+					}
+					else{
+						//need to do session stuff here...
+						console.log("User  " + username + ": login SUCCESSFUL")
+						req.session.username = username;
+      						console.log("The username is: " + username);
+						res.redirect('/Home.html');
+					}
+				});
+			}
+		}
+	});
+});
 
 module.exports = router;
