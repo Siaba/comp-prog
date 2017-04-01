@@ -17,6 +17,9 @@ AWS.config.update({
     endpoint: "dynamodb.us-east-1.amazonaws.com"
 });
 
+const MAX_USERS = 5;
+var boxIndex = 0;
+
 var filePath = '/home/ubuntu/codechamps';
 var sess;
 
@@ -228,7 +231,12 @@ router.post('/Account.html', function(req, res) {
 						//need to do session stuff here...
 						console.log("User  " + username + ": login SUCCESSFUL")
 						req.session.username = username;
-      						console.log("The username is: " + username);
+						var sID = boxIndex++;
+						if(boxIndex > MAX_USERS){
+							boxIndex = 0;
+						}
+						req.session.sID = sID;
+      						console.log("The username is: " + username + " and their box ID is: " + sID);
 						res.redirect('/Home.html');
 					}
 				});
