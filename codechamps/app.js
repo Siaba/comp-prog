@@ -184,7 +184,7 @@ app.post('/CreateAccount.html', function(req, res) {
 });
 
 //write to file when submit button is clicked
-app.post('/blanktext.html', function(req, res){
+app.post('/PracticeMode.html', function(req, res){
 	runSandbox(req);
 	/*exec('isolate --init', (error, stdout, stderr) => {
  	 if (error) {
@@ -243,7 +243,6 @@ app.post('/blanktext.html', function(req, res){
 	
 	});
 	*/
-	res.redirect('/blanktext.html');
 });
 
 
