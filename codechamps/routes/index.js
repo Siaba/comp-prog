@@ -197,7 +197,7 @@ router.get('/FindMatch.html', function(req, res) {
  
 });
 
-app.post('/Account.html', function(req, res) {
+router.post('/Account.html', function(req, res) {
 	var table = "user";
 	var username = req.body.user_name;
 	
