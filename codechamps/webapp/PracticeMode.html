@@ -76,7 +76,7 @@
 		function changeLang(){
 			var ddown = document.getElementById('ddown');
 			var editor = ace.edit("editor");
-			editor.session.setMode("ace/mode/" + ddown.value);			
+			editor.session.setMode("ace/mode/" + ddown.value);
 			switch(ddown.value) {
 				case 'java':
 					editor.setValue("public class test"
@@ -128,11 +128,13 @@
 			var aceinput = document.getElementById('aceinput');
 			var editor = ace.edit('editor');
 			aceinput.value = editor.getValue();
+			
+			
 			document.getElementById('aceform').submit();
 		}
 		</script>
 		
-		<form action="/blanktext.html" method="post" id="aceform">
+		<form action="/PracticeMode.html" method="post" id="aceform">
 			<input type="hidden" id="aceinput"  name="comments" value=""/>
 		</form>
 		</div>
