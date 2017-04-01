@@ -208,9 +208,10 @@ app.post('/PracticeMode.html', function(req, res){
 
 function runSandbox(req){
 	console.log("Starting async tasks");
+	var sID = req.session.sID;
 	async.series([function(callback){
-		console.log("initializing sandbox");
-		exec('isolate --box-id=1 --init', (error, stdout, stderr) => {
+		console.log("initializing sandbox " + sID);
+		exec('isolate --box-id=' + sID + ' --init', (error, stdout, stderr) => {
 			if (error) {
 				console.error(`exec error: ${error}`);
 				return;
@@ -223,7 +224,7 @@ function runSandbox(req){
 	
 	function(callback){
 		var body = req.body.comments;
-		var filePath = '/tmp/box/1/box/test.java';
+		var filePath = '/tmp/box/' + sID + '/box/test.java';
 		console.log("Writing to file");
 		fs.writeFile(filePath, body ,function(err){
 			if(err) throw err;
@@ -234,7 +235,7 @@ function runSandbox(req){
 	},
 	
 	function(callback){
-		exec('cp '+ __dirname + '/Problems/helloworld.txt /tmp/box/1/box', (error,stdout,stderr) =>{
+		exec('cp '+ __dirname + '/Problems/helloworld.txt /tmp/box/' + sID + '/box', (error,stdout,stderr) =>{
 			 if(error){
 				 console.error("copy file has failed");
 				 return;
@@ -244,7 +245,7 @@ function runSandbox(req){
 	},
 		      
 	function(callback){
-		 fs.symlink('/usr/lib/jvm/java-8-openjdk-amd64/jre/bin/java','/tmp/box/1/box/java',function(err){
+		 fs.symlink('/usr/lib/jvm/java-8-openjdk-amd64/jre/bin/java','/tmp/box/' + sID + '/box/java',function(err){
 		 	if(err) throw err;
 			 console.log("java symlink has been created.");
 			 callback();
@@ -252,7 +253,7 @@ function runSandbox(req){
 	},
 		      
 	function(callback){
-		fs.symlink('/usr/lib/jvm/java-8-openjdk-amd64/bin/javac','/tmp/box/1/box/javac',function(err){
+		fs.symlink('/usr/lib/jvm/java-8-openjdk-amd64/bin/javac','/tmp/box/' + sID + '/box/javac',function(err){
 			 if(err) throw err;
 		 	console.log("javac symlink has been created.");
 			callback();
@@ -260,7 +261,7 @@ function runSandbox(req){
 	},
 		      
 	function(callback){
-		exec('isolate --processes=15 --box-id=1 --run -- javac test.java', (error, stdout, stderr) => {
+		exec('isolate --processes=15 --box-id=' + sID + ' --run -- javac test.java', (error, stdout, stderr) => {
 			 if(error) {
 				 console.error("javac failed");
 				 throw error;
@@ -270,7 +271,7 @@ function runSandbox(req){
 	},
 		      
 	function(callback){
-		exec('isolate --processes=15 --box-id=1 --stdout=output.txt --run -- java test', (error,stdout,stderr) => {
+		exec('isolate --processes=15 --box-id=' + sID + ' --stdout=output.txt --run -- java test', (error,stdout,stderr) => {
 				 if(error) {
 					 console.error("test run failed");
 					 return;
@@ -280,9 +281,9 @@ function runSandbox(req){
 	},
 		      
 	function(callback){
-		 fs.readFile('/tmp/box/1/box/output.txt' ,(err,data) => {
+		 fs.readFile('/tmp/box/' + sID + '/box/output.txt' ,(err,data) => {
 			 if(err) throw err;
-			 fs.readFile('/tmp/box/1/box/helloworld.txt', (error, other_data) => {
+			 fs.readFile('/tmp/box/' + sID + '/box/helloworld.txt', (error, other_data) => {
 			if(error) throw error;
 			if(data.toString() === other_data.toString()){
 				 console.log("Your output is correct.");
