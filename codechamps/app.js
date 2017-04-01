@@ -254,7 +254,7 @@ function runSandbox(req){
 		      
 	function(callback){
 		fs.symlink('/usr/lib/jvm/java-8-openjdk-amd64/bin/javac','/tmp/box/' + sID + '/box/javac',function(err){
-			 if(err) throw err;
+			
 		 	console.log("javac symlink has been created.");
 			callback();
 		});
@@ -264,7 +264,7 @@ function runSandbox(req){
 		exec('isolate --processes=15 --box-id=' + sID + ' --run -- javac test.java', (error, stdout, stderr) => {
 			 if(error) {
 				 console.error("javac failed");
-				 throw error;
+				 
 			 }
 			callback();
 		});
