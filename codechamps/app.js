@@ -226,6 +226,7 @@ function runSandbox(req, res){
 	
 	function(callback){
 		var body = req.body.comments;
+		console.log(body);
 		var filePath = '/tmp/box/' + sID + '/box/test.java';
 		console.log("Writing to file");
 		fs.writeFile(filePath, body ,function(err){
