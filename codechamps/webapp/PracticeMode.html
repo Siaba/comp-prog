@@ -151,8 +151,8 @@
 		
 		<div class="large-4 medium-4 columns">
 			<div class="callout">
-			  <h5 id ="description">Description</h5>
-			  <!--<p><font face="monospace">Write a program that outputs <em>Hello World!</em></font></p>-->
+			  <h5>Description:</h5>
+			  <p><font face="monospace">Write a program that outputs <em>Hello World!</em></font></p>
 			</div>
 		</div>
       <div class="large-4 medium-4 columns">
@@ -167,7 +167,6 @@
 			  height: 10px;
 			  background-color: #ddd;
 			}
-
 			#yourBar {
 			  width: 1%;
 			  height: 100%;
@@ -219,17 +218,5 @@
 	    });
 	});
   </script>
-	
-  <script>
-	console.log("jQuery script for changing the problem description is now starting.....");
-	$(document).ready(function(){
-	console.log("The document is ready.....");
-	$("#problems_ddown").change(function(e){    
-	var problem = $('#problems_ddown').find(":selected").text();
-	$.post( '/PracticeMode.html', {problem}, function() {	     
-	$('#description').load("/Problems/Descriptions/helloworld.txt");
-		     });
-		    });
-   </script>
   </body>
 </html>
