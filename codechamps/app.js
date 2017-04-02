@@ -144,8 +144,8 @@ app.post('/CreateAccount.html', function(req, res) {
 });
 
 //write to file when submit button is clicked
-app.post('/PracticeMode.html', function(req, res){
-	console.log("Box " + req.session.sID + " lang = " req.body.ddown);
+app.get('/runSandbox', function(req, res){
+	
 	runSandbox(req, res);
 	/*exec('isolate --init', (error, stdout, stderr) => {
  	 if (error) {
