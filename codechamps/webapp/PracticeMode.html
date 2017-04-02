@@ -25,7 +25,8 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
 	<script>
 		$(document).ready(function(){
-		    $("#aceform").submit(function(){
+		    $("#aceform").on('submit', function(e){
+			    e.preventDefault();
 		     $.post( '/runSandbox', function(req, res) {
 		       $('#test').append(res);
 		     });
@@ -121,7 +122,7 @@
 		</div>
 		</br>
 		<div class="row">
-		<form action="/runsandbox" method="post" id="aceform">
+		<form action="" method="post" id="aceform">
 			<div class="small-10 columns">
 		          <select name="ddown" id="ddown" onchange="changeLang()">
 		            <option value="java">Java</option>
