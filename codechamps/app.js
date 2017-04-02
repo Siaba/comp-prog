@@ -278,9 +278,11 @@ function runSandbox(req, res){
 				 if(error) {
 					 console.error("test run failed");
 					 console.log(stderr);
-					
+					callback(true,stderr);
 				 }
-				callback(true,stderr);
+				else{
+					callback();	
+				}
 		});
 	},
 		      
