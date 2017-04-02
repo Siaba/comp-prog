@@ -219,5 +219,17 @@
 	    });
 	});
   </script>
+	
+  <script>
+	console.log("jQuery script for changing the problem description is now starting.....");
+	$(document).ready(function(){
+	console.log("The document is ready.....");
+	$("#problems_ddown").change(function(e){    
+	var problem = $('#problems_ddown').find(":selected").text();
+	$.post( '/PracticeMode.html', {problem.val()}, function(data) {	     
+	$('#description').load("/Problems/Descriptions/helloworld.txt");
+		     });
+		    });
+   </script>
   </body>
 </html>
