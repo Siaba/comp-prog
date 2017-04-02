@@ -120,7 +120,9 @@
 		          </select>
 			</div>
 			<input type="hidden" id="aceinput"  name="comments" value=""/>
-			<button type="submit" class="button">Submit</button>
+			<div class="small-2 columns">
+			  <button type="submit" class="button">Submit</button>
+			</div>
 		</form>
 		<!--<div class="small-2 columns">
 		<button type="button" class="button" onclick="fillace()">Submit</button>
@@ -205,6 +207,9 @@
 	    $("#aceform").submit(function(e){
 		    console.log("preventing default");
 		    e.preventDefault();
+		    var aceinput = $('#aceinput');
+			var editor = ace.edit('editor');
+			aceinput.val(editor.getValue());
 	     $.post( '/runSandbox', function(req, res) {
 		     console.log("runsandbox post req made");
 	       $('#test').append(res);
