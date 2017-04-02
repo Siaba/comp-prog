@@ -145,7 +145,7 @@ app.post('/CreateAccount.html', function(req, res) {
 
 //write to file when submit button is clicked
 app.post('/PracticeMode.html', function(req, res){
-	runSandbox(req);
+	runSandbox(req, res);
 	/*exec('isolate --init', (error, stdout, stderr) => {
  	 if (error) {
    	 console.error(`exec error: ${error}`);
@@ -206,7 +206,7 @@ app.post('/PracticeMode.html', function(req, res){
 });
 
 
-function runSandbox(req){
+function runSandbox(req, res){
 	console.log("Starting async tasks");
 	var sID = req.session.sID;
 	async.series([function(callback){
@@ -298,7 +298,7 @@ function runSandbox(req){
 	],function(err){
 		console.log("all functions complete.");
 	});
-	
+	res.end();
 }
 
 var db = new AWS.DynamoDB({apiVersion: '2012-08-10'});
