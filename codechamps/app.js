@@ -301,7 +301,7 @@ function runSandbox(req, res){
 	}
 	],function(err, results){
 		console.log("all functions complete.");
-		console.log(results);
+		res.send(results);
 	});
 	
 }
