@@ -204,7 +204,7 @@ app.post('/runSandbox', function(req, res){
 	
 	});
 	*/
-	res.end();
+	
 });
 
 
