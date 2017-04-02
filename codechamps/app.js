@@ -280,7 +280,7 @@ function runSandbox(req, res){
 					 console.log(stderr);
 					
 				 }
-				callback(null,stderr);
+				callback(true,stderr);
 		});
 	},
 		      
