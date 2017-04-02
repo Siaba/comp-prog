@@ -209,7 +209,9 @@
 		    e.preventDefault();
 		    var aceinput = $('#aceinput');
 			var editor = ace.edit('editor');
+		    console.log("editor getvalue:\n-----------------" + editor.getValue());
 			aceinput.val(editor.getValue());
+		    console.log("aceinput val:----------------\n" + aceinput.val());
 	     $.post( '/runSandbox', function(req, res) {
 		     console.log("runsandbox post req made");
 	       $('#test').append(res);
