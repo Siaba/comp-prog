@@ -204,6 +204,7 @@ app.get('/runSandbox', function(req, res){
 	
 	});
 	*/
+	
 });
 
 
@@ -288,18 +289,21 @@ function runSandbox(req, res){
 			if(error) throw error;
 			if(data.toString() === other_data.toString()){
 				 console.log("Your output is correct.");
+				 callback(null,"Your output is correct.");
 			 }
 			 else{
 				 console.log("Your output failed.");
+				 callback(null,"Your output failed.");
 			 }
-			callback();
+			
 		 });
 		 });
 	}
-	],function(err){
+	],function(err, results){
 		console.log("all functions complete.");
+		console.log(results);
 	});
-	res.end();
+	
 }
 
 var db = new AWS.DynamoDB({apiVersion: '2012-08-10'});
