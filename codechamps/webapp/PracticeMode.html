@@ -26,7 +26,7 @@
 	<script>
 		$(document).ready(function(){
 		    $("#aceform").submit(function(){
-		     $.get( '/runSandbox', function(req, res) {
+		     $.post( '/runSandbox', function(req, res) {
 		       $('#test').append(res);
 		     });
 		    });
@@ -121,7 +121,7 @@
 		</div>
 		</br>
 		<div class="row">
-		<form action="/PracticeMode.html" method="get" id="aceform">
+		<form action="/PracticeMode.html" method="post" id="aceform">
 			<div class="small-10 columns">
 		          <select name="ddown" id="ddown" onchange="changeLang()">
 		            <option value="java">Java</option>
