@@ -25,6 +25,15 @@
 	<script src='/socket.io/socket.io.js'></script>
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+	<script>
+		$(document).ready(function(){
+		    $("#aceform").submit(function(){
+		     $.get( '/runSandbox', function(req, res) {
+		       $('#test').append(res);
+		     });
+		    });
+		});
+	</script>
 	
   </head>
   <body>
@@ -158,6 +167,7 @@
       <div class="large-4 medium-4 columns">
         <div class="callout">
 		  <h5>Your output:</h5>
+		<p id="test"></p>
           <p><font face="monospace">Example output</font></p>
 		  <p>Test cases:</p>
 		  <style>
