@@ -226,7 +226,7 @@
 	console.log("The document is ready.....");
 	$("#problems_ddown").change(function(e){    
 	var problem = $('#problems_ddown').find(":selected").text();
-	$.post( '/PracticeMode.html', {problem.val()}, function(data) {	     
+	$.post( '/PracticeMode.html', {problem}, function() {	     
 	$('#description').load("/Problems/Descriptions/helloworld.txt");
 		     });
 		    });
