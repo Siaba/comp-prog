@@ -212,9 +212,9 @@
 		    console.log("editor getvalue:\n-----------------" + editor.getValue());
 			aceinput.val(editor.getValue());
 		    console.log("aceinput val:----------------\n" + aceinput.val());
-	     $.post( '/runSandbox', {comments: aceinput.val()}, function(req, res) {
+	     $.post( '/runSandbox', {comments: aceinput.val()}, function(data) {
 		     console.log("runsandbox post req made");
-	       $('#test').append(res);
+	       $('#test').append(data);
 	     });
 	    });
 	});
