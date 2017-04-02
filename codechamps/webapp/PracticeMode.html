@@ -114,13 +114,16 @@
 		</div>
 		</br>
 		<div class="row">
-		<div class="small-10 columns">
+		<form action="/PracticeMode.html" method="post" id="aceform">
+			<div class="small-10 columns">
 		          <select name="ddown" id="ddown" onchange="changeLang()">
 		            <option value="java">Java</option>
 		            <option value="c_cpp">C++</option>
 		            <option value="python">Python</option>
 		          </select>
-		</div>
+			</div>
+			<input type="hidden" id="aceinput"  name="comments" value=""/>	
+		</form>
 		<div class="small-2 columns">
 		<button type="submit" class="button" onclick="fillace()">Submit</button>
 		<script>
@@ -134,9 +137,7 @@
 		}
 		</script>
 		
-		<form action="/PracticeMode.html" method="post" id="aceform">
-			<input type="hidden" id="aceinput"  name="comments" value=""/>
-		</form>
+		
 		</div>
 		</div>
 		</div>
