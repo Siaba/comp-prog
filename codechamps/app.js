@@ -144,7 +144,7 @@ app.post('/CreateAccount.html', function(req, res) {
 });
 
 //write to file when submit button is clicked
-app.get('/runSandbox', function(req, res){
+app.post('/runSandbox', function(req, res){
 	
 	runSandbox(req, res);
 	/*exec('isolate --init', (error, stdout, stderr) => {
