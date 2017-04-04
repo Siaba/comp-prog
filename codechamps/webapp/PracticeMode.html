@@ -63,7 +63,7 @@
   </div>
     <div class="row">
 		<div class="large-8 columns">
-		          <select name="problems" id="problems_ddown">
+		          <select name="problems" id="problems">
 		            <option value="0">Hello World</option>
 		            <option value="1">Recursion</option>
 		            <option value="2">Fibonacci</option>
@@ -152,7 +152,7 @@
 		<div class="large-4 medium-4 columns">
 			<div class="callout">
 			  <h5>Description:</h5>
-			  <p><font face="monospace">Write a program that outputs <em>Hello World!</em></font></p>
+			  <p id="description"><font face="monospace"></font></p>
 			</div>
 		</div>
       <div class="large-4 medium-4 columns">
@@ -210,12 +210,22 @@
 			var ddown = $('#ddown');
 			var editor = ace.edit('editor');
 			console.log("editor getvalue:\n-----------------" + editor.getValue());
-				aceinput.val(editor.getValue());
+			aceinput.val(editor.getValue());
 			console.log("aceinput val:----------------\n" + aceinput.val());
 			console.log("language val:----------------\n" + ddown.val());
 			$.post( '/runSandbox', {comments: aceinput.val(), language: ddown.val()}, function(data) {
 				console.log("runsandbox post req made");
 				$('#test').empty().append(data);
+			});
+		});
+		$('#problems').change(function(e){
+			console.log('preventing default');
+			e.preventDefault();
+			var problem = $('#problems');
+			console.log('problem name:\n-----------------' + problem.val());
+			$.post( '/getproblem', {comments: problem.val()}, function(data) {
+				console.log('getproblem post req made');
+				$('#description').empty().append(data);
 			});
 		});
 	});
