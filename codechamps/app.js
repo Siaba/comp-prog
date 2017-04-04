@@ -231,7 +231,7 @@ function runSandbox(req, res){
 			case 'java':
 				filePath += 'test.java';
 				break;
-			case 'c++':
+			case 'c_cpp':
 				filePath += 'test.cpp';
 				break;
 			default:
@@ -282,7 +282,7 @@ function runSandbox(req, res){
 				source += '/usr/lib/jvm/java-8-openjdk-amd64/bin/javac';
 				sym += '/tmp/box/' + sID + '/box/javac';
 				break;
-			case 'c++':
+			case 'c_cpp':
 				 source += 'usr/bin/g++-5';
 				 sym += '/tmp/box/' + sID + '/box/c++';
 				 break;
@@ -302,7 +302,7 @@ function runSandbox(req, res){
 			case 'java':
 				env += 'javac test.java';
 				break;
-			case 'c++':
+			case 'c_cpp':
 				env += 'c++ -o test test.cpp';
 				break;
 			default:
@@ -323,7 +323,7 @@ function runSandbox(req, res){
 			case 'java':
 				run += 'java test';
 				break;
-			case 'c++':
+			case 'c_cpp':
 				run += './test';
 				break;
 			default:
