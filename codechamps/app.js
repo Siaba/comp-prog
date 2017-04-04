@@ -226,8 +226,17 @@ function runSandbox(req, res){
 	
 	function(callback){
 		var body = req.body.comments;
-		console.log(body);
-		var filePath = '/tmp/box/' + sID + '/box/test.java';
+		var filePath = '/tmp/box/' + sID + '/box/';
+		switch(req.body.language){
+			case 'java':
+				filePath += 'test.java';
+				break;
+			case 'c++':
+				filePath += 'test.cpp';
+				break;
+			default:
+				break;
+		}
 		console.log("Writing to file");
 		fs.writeFile(filePath, body ,function(err){
 			if(err) throw err;
@@ -238,7 +247,7 @@ function runSandbox(req, res){
 	},
 	
 	function(callback){
-		exec('cp '+ __dirname + '/Problems/helloworld.txt /tmp/box/' + sID + '/box', (error,stdout,stderr) =>{
+		exec('cp '+ __dirname + '/Problems/helloworld.txt/tmp/box/' + sID + '/box', (error,stdout,stderr) =>{
 			 if(error){
 				 console.error("copy file has failed");
 				 return;
@@ -248,25 +257,60 @@ function runSandbox(req, res){
 	},
 		      
 	function(callback){
-		 fs.symlink('/usr/lib/jvm/java-8-openjdk-amd64/jre/bin/java','/tmp/box/' + sID + '/box/java',function(err){
+		 var source = '';
+		 var sym = '';
+		 switch(req.body.language){
+			 case 'java':
+				 source += '/usr/lib/jvm/java-8-openjdk-amd64/jre/bin/java';
+				 sym += '/tmp/box/' + sID + '/box/java';
+				 break;
+			 default:
+				 break;
+		 }
+		 fs.symlink(source,sym,function(err){
 		 	if(err) throw err;
-			 console.log("java symlink has been created.");
+			 console.log("execution symlink has been created.");
 			 callback();
 		 });
 	},
 		      
 	function(callback){
-		fs.symlink('/usr/lib/jvm/java-8-openjdk-amd64/bin/javac','/tmp/box/' + sID + '/box/javac',function(err){
+		var source = '';
+		var sym = '';
+		switch(req.body.language){
+			case 'java':
+				source += '/usr/lib/jvm/java-8-openjdk-amd64/bin/javac';
+				sym += '/tmp/box/' + sID + '/box/javac';
+				break;
+			case 'c++':
+				 source += 'usr/bin/g++-5';
+				 sym += '/tmp/box/' + sID + '/box/c++';
+				 break;
+			default:
+				break;
+		}
+		fs.symlink(source,sym,function(err){
 			
-		 	console.log("javac symlink has been created.");
+		 	console.log("compiler symlink has been created.");
 			callback();
 		});
 	},
 		      
 	function(callback){
-		exec('isolate --processes=15 --box-id=' + sID + ' --run -- javac test.java', (error, stdout, stderr) => {
+		var env = 'isolate --processes=15 --box-id=' + sID + ' --run -- ';
+		switch(req.body.language){
+			case 'java':
+				env += 'javac test.java';
+				break;
+			case 'c++':
+				env += 'c++ -o test test.cpp';
+				break;
+			default:
+				break;
+		}
+		exec(env, (error, stdout, stderr) => {
 			 if(error) {
-				 console.error("javac failed");
+				 console.error("compilation failed");
 				 
 			 }
 			callback();
@@ -274,7 +318,18 @@ function runSandbox(req, res){
 	},
 		      
 	function(callback){
-		exec('isolate --processes=15 --box-id=' + sID + ' --stdout=output.txt --stderr=error.txt --run -- java test', (error,stdout,stderr) => {
+		var run = 'isolate --processes=15 --box-id=' + sID + '  --stdout=output.txt --stderr=error.txt --run -- ';
+		switch(req.body.language){
+			case 'java':
+				run += 'java test';
+				break;
+			case 'c++':
+				run += './test';
+				break;
+			default:
+				break;
+		}
+		exec(run, (error,stdout,stderr) => {
 				 if(error) {
 					 console.error("test run failed");
 					 console.log(stderr);
