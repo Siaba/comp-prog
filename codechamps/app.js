@@ -259,19 +259,27 @@ function runSandbox(req, res){
 	function(callback){
 		 var source = '';
 		 var sym = '';
+		 var flag = false;
 		 switch(req.body.language){
 			 case 'java':
 				 source += '/usr/lib/jvm/java-8-openjdk-amd64/jre/bin/java';
 				 sym += '/tmp/box/' + sID + '/box/java';
+				 flag = true;
 				 break;
 			 default:
+				 flag = false;
 				 break;
 		 }
-		 fs.symlink(source,sym,function(err){
-		 	if(err) throw err;
-			 console.log("execution symlink has been created.");
+		 if(flag){
+			 fs.symlink(source,sym,function(err){
+		 		if(err) throw err;
+			 	console.log("execution symlink has been created.");
+			 	callback();
+		 	 });
+		 }
+		 else{
 			 callback();
-		 });
+		 }
 	},
 		      
 	function(callback){
