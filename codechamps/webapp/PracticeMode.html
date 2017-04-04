@@ -219,11 +219,10 @@
 			});
 		});
 		$('#problems').change(function(e){
-			console.log('preventing default');
-			e.preventDefault();
+			console.log('Chaning problem jQuery script');
 			var problem = $('#problems');
 			console.log('problem name:\n-----------------' + problem.val());
-			$.post( '/getproblem', {comments: problem.val()}, function(data) {
+			$.post( '/getproblem', {problem: problem.val()}, function(data) {
 				console.log('getproblem post req made');
 				$('#description').empty().append(data);
 			});
