@@ -247,7 +247,7 @@ function runSandbox(req, res){
 	},
 	
 	function(callback){
-		exec('cp '+ __dirname + '/Problems/helloworld.txt/tmp/box/' + sID + '/box', (error,stdout,stderr) =>{
+		exec('cp '+ __dirname + '/Problems/helloworld.txt /tmp/box/' + sID + '/box', (error,stdout,stderr) =>{
 			 if(error){
 				 console.error("copy file has failed");
 				 return;
