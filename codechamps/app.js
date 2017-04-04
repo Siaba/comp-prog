@@ -376,7 +376,7 @@ function runSandbox(req, res){
 
 app.post('/getproblem', function(req, res){
 	getproblem(req, res);
-}
+});
 
 function getproblem(req, res){
 	var pname = req.body.problem;
