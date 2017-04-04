@@ -373,6 +373,19 @@ function runSandbox(req, res){
 	
 }
 
+
+app.post('/getproblem', function(req, res){
+	getproblem(req, res);
+}
+
+function getproblem(req, res){
+	var pname = req.body.problem;
+	fs.readFile('../Problems/' + pname + '.txt', (err, data) => {
+		if(err){console.log('ERR: Could not find problem description file: ' + pname.txt);}
+	});
+	res.send(data);
+}
+
 var db = new AWS.DynamoDB({apiVersion: '2012-08-10'});
    db.listTables(function(err, data) {
    console.log(data);
