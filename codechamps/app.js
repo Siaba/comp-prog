@@ -291,7 +291,7 @@ function runSandbox(req, res){
 				sym += '/tmp/box/' + sID + '/box/javac';
 				break;
 			case 'c_cpp':
-				 source += 'usr/bin/g++';
+				 source += '/usr/bin/g++';
 				 sym += '/tmp/box/' + sID + '/box/g++';
 				 break;
 			default:
