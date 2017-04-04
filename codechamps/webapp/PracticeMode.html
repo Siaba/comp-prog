@@ -199,24 +199,26 @@
     <script src="js/vendor/what-input.js"></script>
     <script src="js/vendor/foundation.js"></script>
     <script src="js/app.js"></script>
-    <script>
+<script>
 	console.log("jquery begin");
 	$(document).ready(function(){
 		console.log("document ready");
-	    $("#aceform").submit(function(e){
-		    console.log("preventing default");
-		    e.preventDefault();
-		    var aceinput = $('#aceinput');
+		$("#aceform").submit(function(e){
+			console.log("preventing default");
+			e.preventDefault();
+			var aceinput = $('#aceinput');
+			var ddown = $('#ddown');
 			var editor = ace.edit('editor');
-		    console.log("editor getvalue:\n-----------------" + editor.getValue());
-			aceinput.val(editor.getValue());
-		    console.log("aceinput val:----------------\n" + aceinput.val());
-	     $.post( '/runSandbox', {comments: aceinput.val()}, function(data) {
-		     console.log("runsandbox post req made");
-	       $('#test').empty().append(data);
-	     });
-	    });
+			console.log("editor getvalue:\n-----------------" + editor.getValue());
+				aceinput.val(editor.getValue());
+			console.log("aceinput val:----------------\n" + aceinput.val());
+			console.log("language val:----------------\n" + ddown.val());
+			$.post( '/runSandbox', {comments: aceinput.val(), language: ddown.val()}, function(data) {
+				console.log("runsandbox post req made");
+				$('#test').empty().append(data);
+			});
+		});
 	});
-  </script>
+</script>
   </body>
 </html>
