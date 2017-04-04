@@ -383,8 +383,8 @@ function getproblem(req, res){
 	fs.readFile('/home/ubuntu/codechamps/Problems/' + pname + '.txt', (err, data) => {
 		if(err){console.log('ERR: Could not find problem description file: ' + pname + 'txt', err);
 		       console.log(process.cwd());}
+		res.send(data);
 	});
-	res.send(data);
 }
 
 var db = new AWS.DynamoDB({apiVersion: '2012-08-10'});
