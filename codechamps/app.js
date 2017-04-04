@@ -381,7 +381,7 @@ app.post('/getproblem', function(req, res){
 function getproblem(req, res){
 	var pname = req.body.problem;
 	fs.readFile('../Problems/' + pname + '.txt', (err, data) => {
-		if(err){console.log('ERR: Could not find problem description file: ' + pname.txt);}
+		if(err){console.log('ERR: Could not find problem description file: ' + pname + 'txt', err);}
 	});
 	res.send(data);
 }
