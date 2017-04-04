@@ -311,7 +311,7 @@ function runSandbox(req, res){
 				env += 'javac test.java';
 				break;
 			case 'c_cpp':
-				env += 'g++ -o -c test test.cpp';
+				env += 'g++ -c -o test test.cpp';
 				break;
 			default:
 				break;
