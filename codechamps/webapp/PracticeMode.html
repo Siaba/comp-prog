@@ -17,15 +17,14 @@
 	
     }
     #acecontainer {
-	position: relative;
-	height: 800px;
-	width: 100%;
+		position: relative;
+		height: 100vh;
+		width: 100%;
     }
 	
 	body {
-
-	background-image: url("/css/ep_naturalwhite.png");
-}
+		background-image: url("/css/ep_naturalwhite.png");
+	}
 	</style>
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
@@ -74,10 +73,7 @@
 		   <option value="">Recursion</option>
 		   <option value="fibonacci">Fibonacci</option>
 		   <option value="palindrome">Palindrome</option>
-		   <option value="Pig Latin">Fibonacci</option>
-		  <option value="fibonacci">Fibonacci</option>
-		  <option value="fibonacci">Fibonacci</option>
-		  <option value="fibonacci">Fibonacci</option>
+		   <option value="pig_latin">Pig Latin</option>
 		  </select>
 		</div>
 		<script>
@@ -100,11 +96,11 @@
 					+ "\n"
 					+ "\nint main()"
 					+ "\n{"
-					+ "\n\tcout << \"Hello World!\";"
+					+ "\n\tcout << \"Hello, World\";"
 					+ "\n}");
 					break;
 				case 'python':
-					editor.setValue("print(\"Hello World!\");");
+					editor.setValue("print(\"Hello, World\");");
 					break;
 				default:
 					editor.setValue("");
@@ -112,135 +108,119 @@
 		}
 		</script>
 		<div class="large-8 medium-8 columns">
-		<div  id="acecontainer">
-			<!--<pre id="editor">function foo(items) {
-				var i;
-				for (i = 0; i &lt; items.length; i++) {
-					alert("Ace Rocks " + items[i]);
-				}
-			}</pre>-->
-			
-			
-		</div>
-		</br>
-		<div class="row">
-		<form method="post" id="aceform">
-			<div class="small-10 columns">
-		          <select name="ddown" id="ddown" onchange="changeLang()">
-		            <option value="java">Java</option>
-		            <option value="c_cpp">C++</option>
-		            <option value="python">Python</option>
-		          </select>
+			<div  id="acecontainer">
+				<pre id="editor">
+				</pre>
 			</div>
-			<input type="hidden" id="aceinput"  name="comments" value=""/>
-			<div class="small-2 columns">
-			  <button type="submit" class="button">Submit</button>
+			</br>
+			<div class="row">
+				<form method="post" id="aceform">
+					<div class="small-10 columns">
+						  <select name="ddown" id="ddown" onchange="changeLang()">
+							<option value="java">Java</option>
+							<option value="c_cpp">C++</option>
+							<option value="python">Python</option>
+						  </select>
+					</div>
+					<input type="hidden" id="aceinput"  name="comments" value=""/>
+					<div class="small-2 columns">
+					  <button type="submit" class="button">Submit</button>
+					</div>
+				</form>
 			</div>
-		</form>
-		<!--<div class="small-2 columns">
-		<button type="button" class="button" onclick="fillace()">Submit</button>
-		<script>
-		function fillace(){
-			var aceinput = document.getElementById('aceinput');
-			var editor = ace.edit('editor');
-			aceinput.value = editor.getValue();
-			
-			
-			document.getElementById('aceform').submit();
-		}
-		</script>-->
-		
-		
-		</div>
-		</div>
 		</div>
 		<script src="src-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
 		<script>
 			var editor = ace.edit("editor");
 			editor.setTheme("ace/theme/crimson_editor");
-			editor.session.setMode("ace/mode/javascript");
-			editor.setFontSize(20);
+			editor.session.setMode("ace/mode/java");
+			editor.setFontSize(16);
+			editor.setValue("public class test"
+					+ "\n{"
+					+ "\n\tpublic static void main(String[] args) {"
+					+ "\n\t\tSystem.out.println(\"Hello, World\");"
+					+ "\n\t}"
+					+ "\n}");
 		</script>
 		
 		<div class="large-4 medium-4 columns">
 			<div class="callout">
 			  <h5>Description:</h5>
-			  <p id="description"><font face="monospace"></font></p>
+			  <p id="description"></p>
 			</div>
 		</div>
       <div class="large-4 medium-4 columns">
         <div class="callout">
-		  <h5>Your output:</h5>
-		<p id="test"></p>
-          <p><font face="monospace">Example output</font></p>
-		  <p>Test cases:</p>
-		  <style>
-			#yourProgress {
-			  width: 100%;
-			  height: 10px;
-			  background-color: #ddd;
-			}
-			#yourBar {
-			  width: 1%;
-			  height: 100%;
-			  background-color: #4CAF50;
-			}
+			<h5>Your output:</h5>
+			<p id="test"></p>
+			<p><font face="monospace">Example output</font></p>
+			<p>Test cases:</p>
+			<style>
+				#yourProgress {
+				  width: 100%;
+				  height: 10px;
+				  background-color: #ddd;
+				}
+				#yourBar {
+				  width: 1%;
+				  height: 100%;
+				  background-color: #4CAF50;
+				}
 			</style>
 			<div id="yourProgress">
-			  <div id="yourBar"></div>
+				<div id="yourBar"></div>
 			</div>
-           <script>
-			function moveYourBar() {
-			  var elem = document.getElementById("yourBar");   
-			  var width = 1;
-			  var id = setInterval(frame, 10);
-			  function frame() {
-				if (width >= 100) {
-				  clearInterval(id);
-				} else {
-				  width++; 
-				  elem.style.width = width + '%'; 
+			<script>
+				function moveYourBar() {
+				  var elem = document.getElementById("yourBar");   
+				  var width = 1;
+				  var id = setInterval(frame, 10);
+				  function frame() {
+					if (width >= 100) {
+					  clearInterval(id);
+					} else {
+					  width++; 
+					  elem.style.width = width + '%'; 
+					}
+				  }
 				}
-			  }
-			}
 		   </script>
         </div>
-      </div>
     </div>
 
     <script src="js/vendor/jquery.js"></script>
     <script src="js/vendor/what-input.js"></script>
     <script src="js/vendor/foundation.js"></script>
     <script src="js/app.js"></script>
-<script>
-	console.log("jquery begin");
-	$(document).ready(function(){
-		console.log("document ready");
-		$("#aceform").submit(function(e){
-			console.log("preventing default");
-			e.preventDefault();
-			var aceinput = $('#aceinput');
-			var ddown = $('#ddown');
-			var editor = ace.edit('editor');
-			console.log("editor getvalue:\n-----------------" + editor.getValue());
-			aceinput.val(editor.getValue());
-			console.log("aceinput val:----------------\n" + aceinput.val());
-			console.log("language val:----------------\n" + ddown.val());
-			$.post( '/runSandbox', {comments: aceinput.val(), language: ddown.val()}, function(data) {
-				console.log("runsandbox post req made");
-				$('#test').empty().append(data);
+	<script>
+		console.log("jquery begin");
+		$(document).ready(function(){
+			console.log("document ready");
+			$("#aceform").submit(function(e){
+				console.log("preventing default");
+				e.preventDefault();
+				var aceinput = $('#aceinput');
+				var ddown = $('#ddown');
+				var editor = ace.edit('editor');
+				console.log("editor getvalue:\n-----------------" + editor.getValue());
+				aceinput.val(editor.getValue());
+				console.log("aceinput val:----------------\n" + aceinput.val());
+				console.log("language val:----------------\n" + ddown.val());
+				$.post( '/runSandbox', {comments: aceinput.val(), language: ddown.val()}, function(data) {
+					console.log("runsandbox post req made");
+					$('#test').empty().append(data);
+				});
+			});
+			$('#problems').change(function(e){
+				console.log('Chaning problem jQuery script');
+				var problem = $('#problems');
+				console.log('problem name:\n-----------------' + problem.val());
+				$.post( '/getproblem', {problem: problem.val()}, function(data) {
+					console.log('getproblem post req made');
+					$('#description').empty().append(data);
+				});
 			});
 		});
-		$('#problems').change(function(e){
-			console.log('Chaning problem jQuery script');
-			var problem = $('#problems');
-			console.log('problem name:\n-----------------' + problem.val());
-			$.post( '/getproblem', {problem: problem.val()}, function(data) {
-				console.log('getproblem post req made');
-				$('#description').empty().append(data);
-			});
-		});
-	});
-</script>
-  </body>
+	</script>
+</body>
 </html>
