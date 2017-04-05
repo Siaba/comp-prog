@@ -234,6 +234,9 @@ function runSandbox(req, res){
 			case 'c_cpp':
 				filePath += 'test.cpp';
 				break;
+			case 'python':
+				filePath += 'test.py';
+				break;
 			default:
 				break;
 		}
@@ -266,6 +269,11 @@ function runSandbox(req, res){
 				 sym += '/tmp/box/' + sID + '/box/java';
 				 flag = true;
 				 break;
+			 case 'python':
+				 source += '/usr/lib/python3.5';
+				 sym += '/tmp/box/' + sID + '/box/python3.5';
+				 flag = true;
+				 break;
 			 default:
 				 flag = false;
 				 break;
@@ -285,44 +293,57 @@ function runSandbox(req, res){
 	function(callback){
 		var source = '';
 		var sym = '';
+		var flag = false;
 		switch(req.body.language){
 			case 'java':
 				source += '/usr/lib/jvm/java-8-openjdk-amd64/bin/javac';
 				sym += '/tmp/box/' + sID + '/box/javac';
+				flag = true;
 				break;
 			case 'c_cpp':
-				 source += '/usr/bin/g++';
-				 sym += '/tmp/box/' + sID + '/box/g++';
-				 break;
+				source += '/usr/bin/g++';
+				sym += '/tmp/box/' + sID + '/box/g++';
+				flag = true;
+				break;
 			default:
 				break;
 		}
-		fs.symlink(source,sym,function(err){
-			
-		 	console.log("compiler symlink has been created.");
-			callback();
-		});
+		if(flag){
+			fs.symlink(source,sym,function(err){
+
+				console.log("compiler symlink has been created.");
+				callback();
+			});
+		}
+		else{callback();}
 	},
 		      
 	function(callback){
-		var env = 'isolate --processes=15 --box-id=' + sID + ' --run -- ';
+		var env = '';
+		var flag = false;
 		switch(req.body.language){
 			case 'java':
-				env += 'javac test.java';
+				env += 'isolate --processes=15 --box-id=' + sID + ' --run -- javac test.java';
+				flag = true;
 				break;
 			case 'c_cpp':
 				env += 'g++ -c -o test test.cpp';
+				flag = true;
 				break;
 			default:
 				break;
 		}
-		exec(env, (error, stdout, stderr) => {
-			 if(error) {
-				 console.error("compilation failed");
-				 
-			 }
-			callback();
-		});
+		if(flag){
+			exec(env, (error, stdout, stderr) => {
+				 if(error) {
+					 console.error("compilation failed");
+
+				 }
+				callback();
+			});
+		}
+		else{callback();}
+		
 	},
 		      
 	function(callback){
@@ -333,6 +354,9 @@ function runSandbox(req, res){
 				break;
 			case 'c_cpp':
 				run += './test';
+				break;
+			case 'python':
+				run += 'python test.py';
 				break;
 			default:
 				break;
