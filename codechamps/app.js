@@ -356,7 +356,7 @@ function runSandbox(req, res){
 				run += './test';
 				break;
 			case 'python':
-				fs.chmodSync('test.py', '700');
+				fs.chmodSync('/tmp/box/' + sID + '/box/test.py', '700');
 				run += 'python3.5 test.py';
 				break;
 			default:
