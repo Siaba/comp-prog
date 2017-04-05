@@ -23,18 +23,18 @@ os: linux
 #   "files" section altogether. A blank or incomplete "files" section
 #   may cause associated deployments to fail.
 files:
-#  - source: /codechamps
+  - source: /codechamps
+    destination: /home/ubuntu/codechamps
+#  - source: /codechamps/app.js
 #    destination: /home/ubuntu/codechamps
-  - source: /codechamps/app.js
-    destination: /home/ubuntu/codechamps
-  - source: /codechamps/webapp
-    destination: /home/ubuntu/codechamps
-  - source: /codechamps/routes
-    destination: /home/ubuntu/codechamps
-  - source: /codechamps/Problems
-    destination: /home/ubuntu/codechamps
-  - source: /scripts
-    destination: /home/ubuntu/
+#  - source: /codechamps/webapp
+#    destination: /home/ubuntu/codechamps
+#  - source: /codechamps/routes
+#    destination: /home/ubuntu/codechamps
+#  - source: /codechamps/Problems
+#    destination: /home/ubuntu/codechamps
+#  - source: /scripts
+#    destination: /home/ubuntu/
 hooks:
   BeforeInstall:
     - location: /scripts/clean.sh
