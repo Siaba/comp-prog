@@ -26,15 +26,15 @@ files:
 #  - source: /codechamps
 #    destination: /home/ubuntu/codechamps
   - source: /codechamps/app.js
-    destination: /home/ubuntu/codechamps/app.js
+    destination: /home/ubuntu/codechamps/
   - source: /codechamps/webapp
-    destination: /home/ubuntu/codechamps/webapp
+    destination: /home/ubuntu/codechamps/
   - source: /codechamps/routes
-    destination: /home/ubuntu/codechamps/routes
+    destination: /home/ubuntu/codechamps/
   - source: /codechamps/Problems
-    destination: /home/ubuntu/codechamps/Problems
+    destination: /home/ubuntu/codechamps/
   - source: /scripts
-    destination: /home/ubuntu/scripts
+    destination: /home/ubuntu/
 hooks:
   BeforeInstall:
     - location: /scripts/clean.sh
