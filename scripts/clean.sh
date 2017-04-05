@@ -1,7 +1,7 @@
 #!/bin/sh
-rm /home/codechamps/app.js
-cp /home/ubuntu/codechamps/app.js /home/codechamps/app.js
-rm /home/ubuntu/codechamps/app.js
+rm -r /home/codechamps/app.js
+cp -r /home/ubuntu/codechamps/app.js /home/codechamps/
+rm -r /home/ubuntu/codechamps/app.js
 rm -r /home/codechamps/webapp
 cp -r /home/ubuntu/codechamps/webapp /home/codechamps/webapp
 rm -r /home/ubuntu/codechamps/webapp
