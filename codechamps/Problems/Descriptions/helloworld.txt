@@ -1,7 +1,7 @@
-Hello World
+Hello World<br><br>
 
-Write a program that prints "Hello, World" to the screen.
-You must use standard I/O.
+Write a program that prints "Hello, World" to the screen.<br>
+You must use standard I/O.<br>
 
-Expected Output:
+Expected Output:<br><br>
 Hello, World
