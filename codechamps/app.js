@@ -327,7 +327,7 @@ function runSandbox(req, res){
 				flag = true;
 				break;
 			case 'c_cpp':
-				env += 'g++ -c -o test test.cpp';
+				env += 'g++ -o test test.cpp';
 				flag = true;
 				break;
 			default:
@@ -356,7 +356,8 @@ function runSandbox(req, res){
 				run += './test';
 				break;
 			case 'python':
-				run += 'chmod a+x python3.5 test.py';
+				fs.chmodSync('test', '700');
+				run += 'python3.5 test.py';
 				break;
 			default:
 				break;
