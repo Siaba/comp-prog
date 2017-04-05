@@ -356,7 +356,7 @@ function runSandbox(req, res){
 				run += './test';
 				break;
 			case 'python':
-				run += 'python test.py';
+				run += 'python3.5 test.py';
 				break;
 			default:
 				break;
