@@ -1,0 +1,7 @@
+Write a program that takes the String<br>
+"This the string to count the total amounts of word in".<br>
+
+Symbols or punctuation should be ignored as counting an entire word<br>
+
+Expected Output:<br>
+11
