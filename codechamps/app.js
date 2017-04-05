@@ -270,8 +270,8 @@ function runSandbox(req, res){
 				 flag = true;
 				 break;
 			 case 'python':
-				 source += '/usr/lib/python3.5';
-				 sym += '/tmp/box/' + sID + '/box/python3.5';
+				 source += '/usr/bin/python3.5';
+				 sym += '/tmp/box/' + sID + '/box/pyt';
 				 flag = true;
 				 break;
 			 default:
@@ -357,7 +357,7 @@ function runSandbox(req, res){
 				break;
 			case 'python':
 				fs.chmodSync('/tmp/box/' + sID + '/box/test.py', '700');
-				run += 'python3.5 test.py';
+				run += 'pyt test.py';
 				break;
 			default:
 				break;
