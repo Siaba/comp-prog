@@ -37,21 +37,29 @@ var io = require('socket.io')(server);
 const MAX_ROOMS = 10;
 var currentroom = 0;
 var players = new Array(MAX_ROOMS);
+for(var i=0; i < MAX_ROOMS; i++){
+	players[i] = 0;
+}
 
 io.sockets.on('connection', function(socket){
 	console.log("someone has connected.");
 	socket.on('join_room', function(msg){
-		if(players[currentroom] < 2){
-			socket.join(currentroom);
-			console.log(msg + currentroom + " : players = " + players[currentroom]); 
-			players[currentroom]++;
-			if(players[currentroom] == 2){
+		socket.join(currentroom);
+		console.log(msg + currentroom + " : players = " + players[currentroom]); 
+		players[currentroom]++;
+		if(players[currentroom] == 2){
+			if(currentroom == MAX_ROOMS){
+				currentroom = 0;
+			}
+			else{
 				currentroom++;
 			}
 		}
+
   	});
 	socket.on('disconnect', function(socket){ 
-		console.log("someone disconnected."); });
+		console.log("someone disconnected.");
+	});
 });
 
 
