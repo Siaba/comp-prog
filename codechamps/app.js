@@ -44,6 +44,7 @@ io.on('connection', function(socket){
 server.listen(3000);
 
 app.get('/sayhi', function(req,res){
+	console.log('get sayhi');
 	io.sockets.emit('hi','everyone');
 });
 
