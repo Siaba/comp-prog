@@ -49,9 +49,13 @@
   </div>
   </div>
 <form action="/sayhi" method="get">
-	<input type="submit" class="button" value="Find Match">
+	<input type="button" class="button" value="Find Match" onclick="sayhi()">
 </form>
-	
+	<script>function sayhi(){
+		socket.on('connect', function(){
+		    socket.emit('hi', "This is a hello");
+	    });
+	</script>
 <script src="/socket.io/socket.io.js"></script>
 </body>
 </html>
