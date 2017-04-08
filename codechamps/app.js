@@ -56,6 +56,7 @@ io.sockets.on('connection', function(socket){
 				players[currentroom] = 0;
 			}
 		}
+		socket.emit('playerjoined');
 
   	});
 	socket.on('disconnect', function(socket){ 
@@ -66,7 +67,7 @@ io.sockets.on('connection', function(socket){
 
 server.listen(3000);
 
-io.sockets.on('hello' function(){
+io.sockets.on('hello', function(){
 	console.log("Hello from the client socket");
 });
 
