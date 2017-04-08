@@ -33,10 +33,22 @@ app.use(bodyParser.json());
 
 var server = require('http').createServer(app);
 var io = require('socket.io')(server);
+
+const MAX_ROOMS = 10;
+var currentroom = 0;
+var players = new Array(MAX_ROOMS);
+
 io.sockets.on('connection', function(socket){
 	console.log("someone has connected.");
-	socket.on('hi', function(msg){
-    		console.log('hi' + msg);
+	socket.on('join_room', function(msg){
+		if(players[currentroom] < 2){
+			socket.join(currentroom);
+			console.log(msg + currentroom + " : players = " + players[currentroom]); 
+			players[currentroom]++;
+			if(players[currentroom] == 2){
+				currentroom++;
+			}
+		}
   	});
 	socket.on('disconnect', function(socket){ 
 		console.log("someone disconnected."); });
