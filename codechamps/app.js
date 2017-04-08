@@ -382,7 +382,7 @@ function runSandbox(req, res){
 		var pname = req.body.problem; 
 		fs.readFile('/tmp/box/' + sID + '/box/output.txt' ,(err,data) => {
 			 if(err) throw err;
-			 fs.readFile('/tmp/box/' + sID +  '/' +  pname + '.txt', (error, other_data) => {
+			 fs.readFile('/tmp/box/' + sID + '/box' +  '/' +  pname + '.txt', (error, other_data) => {
 			if(error) throw error;
 			if(data.toString() === other_data.toString()){
 				 console.log("Your output is correct.");
