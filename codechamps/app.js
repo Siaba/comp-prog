@@ -38,6 +38,7 @@ io.on('connection', function(socket){
 	socket.on('hi', function(msg){
     		console.log('hi' + msg);
   	});
+	io.on('disconnect', function(socket){ console.log("someone disconnected."); });
 });
 
 
@@ -48,7 +49,7 @@ app.get('/sayhi', function(req,res){
 	io.sockets.emit('hi','everyone');
 });
 
-io.on('disconnect', function(socket){ console.log("someone disconnected."); });
+
 
 
 
