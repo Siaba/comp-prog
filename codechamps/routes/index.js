@@ -33,6 +33,16 @@ router.get('/', function(req, res) {
  
 });
 
+/* Profile Page Post Request for updating their Account settings */
+router.get('/Profile.html', function(req, res) {
+ var username = req.session.username;
+ var password = req.session.password;
+ sess = req.session;
+ 
+ res.sendFile(path.join(filePath + '/webapp/Profile.html'));
+ 
+});
+
 /* GET home page. */
 router.get('/Account.html', function(req, res) {
  
@@ -44,22 +54,11 @@ router.get('/Account.html', function(req, res) {
 console.log("The username is: " + username);
  
  if(username && password && sess){
-  res.sendFile(path.join(filePath + '/webapp/Account.html'));
+  res.sendFile(path.join(filePath + '/webapp/Profile.html'));
+  
  }
  
  else {
-  
-  if(session.views){
-   console.log("The " + session.views + " times youve viewed the page");
-   session.views = session.views + 1;
-  }
-  
-  else {
-   session.views = 1;
-   console.log("The first time youve viewd: view count is: " + session.views);
- }
- 
- //res.sendFile(path.join(filePath + '/webapp/CreateAccount.html'));
  
  res.sendFile(path.join(filePath + '/webapp/Account.html'));
  console.log("The cookie ID" + req.cookies);
