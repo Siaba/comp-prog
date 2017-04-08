@@ -10,7 +10,9 @@ var session = require('express-session');
 router.use(cookieParser());
 router.use(bodyParser.urlencoded({extended: true }));
 router.use(bodyParser.json());
-router.use(session({secret: "123abcg"}));
+router.use(session({secret: "123abcg", 
+	    secure: true,
+            maxAge:  1800000}));
 
 AWS.config.update({
     region: "us-east-1",
