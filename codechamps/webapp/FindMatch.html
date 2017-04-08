@@ -48,9 +48,10 @@
   </div>
   </div>
   </div>
-
-<button class="button" onclick="io.sockets.emit('hi', 'everyone');">Find Match</button>
+<form action="/sayhi" method="get">
+	<input type="button" class="button" value="Find Match">
+</form>
+	
 <script src="/socket.io/socket.io.js"></script>
-<script> var socket = io();</script>
 </body>
 </html>
