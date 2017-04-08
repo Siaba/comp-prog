@@ -45,10 +45,10 @@ io.sockets.on('connection', function(socket){
 	console.log("someone has connected.");
 	socket.on('join_room', function(msg){
 		socket.join(currentroom);
-		console.log(msg + currentroom + " : players = " + players[currentroom]); 
 		players[currentroom]++;
+		console.log(msg + currentroom + " : players = " + players[currentroom]); 
 		if(players[currentroom] == 2){
-			if(currentroom == MAX_ROOMS){
+			if(currentroom == MAX_ROOMS-1){
 				currentroom = 0;
 			}
 			else{
