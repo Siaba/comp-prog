@@ -55,8 +55,6 @@ console.log("The username is: " + username);
  console.log("The SessionID" + req.sessionID);
  console.log("ROUTES WORKED: Account Page");
  
- 
- 
 }});
 
 //log user in
@@ -127,10 +125,23 @@ router.get('/PracticeMode.html', function(req, res) {
 
 /* GET home page. */
 router.get('/Versus.html', function(req, res) {
- 
- console.log("ROUTES WORKED: versus Match");
- res.sendFile(path.join(filePath + '/webapp/Versus.html'));
- 
+	res.redirect('/Account.html');
+});
+
+router.post('/Versus.html', function(req, res){
+	var username = req.session.username;
+	var language = req.body.language;
+	if(username != null){
+		if(language){
+			res.sendFile(path.join(filePath + '/webapp/Versus.html'));
+		}
+		else{
+			res.redirect('/Home.html');
+		}
+	}
+	else{
+		res.redirect('/Account.html');
+	}
 });
 
 /* GET home page. */
