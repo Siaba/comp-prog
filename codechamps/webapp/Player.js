@@ -1,13 +1,23 @@
-
+var clientSocket;
 
 $(document).ready(function(){
     initSocket();
+    bindEvents();
 });
 
 
 function initSocket(){
-    var socket = io.connect();
-    socket.on('connect', function(){
-	    socket.emit('join_room', "Joining room ");
+    clientSocket = io.connect();
+    clientSocket.on('connect', function(){
+	    clientSocket.emit('join_room', "Joining room ");
 	});
+}
+
+function bindEvents(){
+	clientSocket.on('playerJoined', playerJoined);
+	clientSocket.emit('playerJoined');
+}
+
+function playerJoined(){
+	clientSocket.emit('hello', "Hi i am a socket");	
 }
