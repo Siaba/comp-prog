@@ -251,6 +251,9 @@ function runSandbox(req, res){
 	
 	function(callback){
 		var pname = req.body.problem;
+		console.log(pname);
+		var tester = __dirname + '/Problems/' + pname + '.txt /tmp/box/' + sID + '/box';
+		console.log(tester);
 		exec('cp '+ __dirname + '/Problems/' + pname + '.txt /tmp/box/' + sID + '/box', (error,stdout,stderr) =>{
 			 if(error){
 				 console.error("copy file has failed");
