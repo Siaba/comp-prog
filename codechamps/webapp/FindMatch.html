@@ -49,6 +49,8 @@
   </div>
   </div>
 
-<button class="button">Find Match</button>
+<button class="button" onclick="io.sockets.emit('hi', 'everyone');">Find Match</button>
+<script src="/socket.io/socket.io.js"></script>
+<script> var socket = io();</script>
 </body>
 </html>
