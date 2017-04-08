@@ -201,12 +201,15 @@
 				e.preventDefault();
 				var aceinput = $('#aceinput');
 				var ddown = $('#ddown');
+				var problem = $('#problems');
 				var editor = ace.edit('editor');
 				console.log("editor getvalue:\n-----------------" + editor.getValue());
 				aceinput.val(editor.getValue());
 				console.log("aceinput val:----------------\n" + aceinput.val());
 				console.log("language val:----------------\n" + ddown.val());
-				$.post( '/runSandbox', {comments: aceinput.val(), language: ddown.val()}, function(data) {
+				$.post( '/runSandbox', {comments: aceinput.val(), 
+							language: ddown.val(), 
+							problem: problem.val()}, function(data) {
 					console.log("runsandbox post req made");
 					$('#test').empty().append(data);
 				});
