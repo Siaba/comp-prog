@@ -179,7 +179,12 @@
     <script src="js/vendor/foundation.js"></script>
     <script src="js/app.js"></script>
     <script src="/socket.io/socket.io.js"></script>
-    <script> var socket = io();</script>
+    <script> 
+	    var socket = io();
+	    socket.on('connect', function(){
+		    socket.emit('hi', "This is a hello");
+	    });
+		    </script>
   </body>
 </html>
 
