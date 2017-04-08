@@ -56,7 +56,7 @@ io.sockets.on('connection', function(socket){
 				players[currentroom] = 0;
 			}
 		}
-		socket.emit('playerjoined', 'A player has joined');
+		socket.emit('playerJoined', 'A player has joined');
 
   	});
 	socket.on('disconnect', function(socket){ 
