@@ -15,9 +15,10 @@ function initSocket(){
 
 function bindEvents(){
 	clientSocket.on('playerJoined', playerJoined);
-	
+	console.log("binding events");
 }
 
 function playerJoined(){
+	console.log("Player joined event");
 	clientSocket.emit('hello', "Hi i am a socket");	
 }
