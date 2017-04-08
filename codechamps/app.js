@@ -33,12 +33,13 @@ app.use(bodyParser.json());
 
 var server = require('http').createServer(app);
 var io = require('socket.io')(server);
-io.on('connection', function(socket){
+io.sockets.on('connection', function(socket){
 	console.log("someone has connected.");
 	socket.on('hi', function(msg){
     		console.log('hi' + msg);
   	});
-	io.on('disconnect', function(socket){ console.log("someone disconnected."); });
+	socket.on('disconnect', function(socket){ 
+		console.log("someone disconnected."); });
 });
 
 
