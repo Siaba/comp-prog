@@ -53,6 +53,7 @@ io.sockets.on('connection', function(socket){
 			}
 			else{
 				currentroom++;
+				players[currentroom] = 0;
 			}
 		}
 
