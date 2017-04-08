@@ -15,7 +15,7 @@ function initSocket(){
 
 function bindEvents(){
 	clientSocket.on('playerJoined', playerJoined);
-	clientSocket.emit('playerJoined');
+	
 }
 
 function playerJoined(){
