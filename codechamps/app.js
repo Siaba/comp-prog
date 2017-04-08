@@ -423,6 +423,10 @@ var db = new AWS.DynamoDB({apiVersion: '2012-08-10'});
    console.log(data);
 });
 
+app.get('/sayhi', function(req,res){
+	io.sockets.emit('hi','everyone');
+});
+
 /// catch 404 and forwarding to error handler
 app.use(function(req, res, next) {
     var err = new Error('Not Found');
