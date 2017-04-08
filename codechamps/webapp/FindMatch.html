@@ -48,16 +48,15 @@
   </div>
   </div>
   </div>
-<form action="/sayhi" method="get">
-	<input type="button" class="button" value="Find Match" onclick="sayhi()">
+<form action="/Versus.html" method="get">
+	<div class="small-10 columns">
+		<select name="ddown" id="ddown" onchange="changeLang()">
+			<option value="java">Java</option>
+			<option value="c_cpp">C++</option>
+			<option value="python">Python</option>
+		</select>
+	</div>
+	<input type="submit" class="button" value="Find Match">
 </form>
-	<script>
-	function sayhi(){
-		socket.on('connect', function(){
-			socket.emit('hi', "This is a hello");
-    		});
-	}
-	</script>
-<script src="/socket.io/socket.io.js"></script>
 </body>
 </html>
