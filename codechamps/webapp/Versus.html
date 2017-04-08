@@ -7,7 +7,27 @@
     <title>Versus Match</title>
     <link rel="stylesheet" href="css/foundation.css">
     <link rel="stylesheet" href="css/app.css">
-	  <link href="http://cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/foundation-icons.css" rel="stylesheet">
+<style type="text/css" media="screen">
+    #editor { 
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+	
+    }
+    #acecontainer {
+		position: relative;
+		height: 100vh;
+		width: 100%;
+    }
+	
+	body {
+		background-image: url("/css/ep_naturalwhite.png");
+	}
+	</style>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
   </head>
   <body>
 <div class="nav">
@@ -46,71 +66,78 @@
   </div>
   </div>
   </div>
-    <div class="row">
-      <div class="large-8 medium-8 columns">
-        <form>
-          <div class="row">
-			<label>File name</label>
-			<div class="input-group columns">
-		          <input type="text" placeholder="filename" class="input-group-field"/>
-				  <span id="ext" class="input-group-label">.java</span>
-
-            </div>
-          </div>
-          <div class="row">
-            <div class="large-12">
-              <label>Language</label>
-			<script>
-			function changeExtension() {
-			  var src = document.getElementById("ddown");   
-			  var trgt = document.getElementById("ext");	  
-			  var txt;
-				
-			  if (src.value == "Java"){
-				txt = document.createTextNode(".java");
-				trgt.innerText = txt.textContent;
-			  }
-			  else if (src.value == "c++"){
-				txt = document.createTextNode(".cxx");
-				trgt.innerText = txt.textContent;
-			  }
-			  else {
-				txt = document.createTextNode(".py");
-				trgt.innerText = txt.textContent;
-			  }
+<div class="row">
+		<div class="large-8 columns" size=2>
+		  <select name="problems" id="problems">
+		   <option value="helloworld">Hello World</option>
+		   <option value="">Recursion</option>
+		   <option value="fibonacci">Fibonacci</option>
+		   <option value="reversestring">Reverse String</option>
+		   <option value="wordcount">Word Count</option>
+		  </select>
+		</div>
+		<script>
+		function changeLang(){
+			var ddown = document.getElementById('ddown');
+			var editor = ace.edit("editor");
+			editor.session.setMode("ace/mode/" + ddown.value);
+			switch(ddown.value) {
+				case 'java':
+					editor.setValue("public class test"
+					+ "\n{"
+					+ "\n\tpublic static void main(String[] args) {"
+					+ "\n\t\tSystem.out.println(\"Hello, World\");"
+					+ "\n\t}"
+					+ "\n}");
+					break;
+				case 'c_cpp':
+					editor.setValue("#include <iostream>"
+					+ "\nusing namespace std;"
+					+ "\n"
+					+ "\nint main()"
+					+ "\n{"
+					+ "\n\tcout << \"Hello, World\";"
+					+ "\n}");
+					break;
+				case 'python':
+					editor.setValue("print(\"Hello, World\");");
+					break;
+				default:
+					editor.setValue("");
 			}
-		   </script>
-			  <div class="large-12 columns">
-		          <select name="ddown" onchange="if (this.selectedIndex) changeExtension()">
-		            <option value="java" onclick="changeExtension()">Java</option>
-		            <option value="c++" onclick="changeExtension()">C++</option>
-		            <option value="python" onclick="changeExtension()">Python</option>
-		          </select>
-			  </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="large-12 columns">
-              <label>Code</label>
-              <textarea rows="25" placeholder="code here"></textarea>
-            </div>
-			<div class="large-6 medium-6 columns">
-				<a href="#" class="button">Test</a>
-            	<a class="button" onclick="moveYourBar()">Run</a>
+		}
+		</script>
+		<div class="large-8 medium-8 columns">
+			<div  id="acecontainer">
+				<pre id="editor">
+				</pre>
 			</div>
-          </div>
-          <div class="row">
-            <div class="large-12 columns">
-              <label>Test Input</label>
-              <textarea placeholder="test input"></textarea>
-            </div>
-          </div>
-        </form>
-      </div>
+			</br>
+			<div class="row">
+				<form method="post" id="aceform">
+					<input type="hidden" id="aceinput"  name="comments" value=""/>
+					<div class="small-2 columns">
+					  <button type="submit" class="button">Submit</button>
+					</div>
+				</form>
+			</div>
+		</div>
+		<script src="src-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
+		<script>
+			var editor = ace.edit("editor");
+			editor.setTheme("ace/theme/crimson_editor");
+			editor.session.setMode("ace/mode/java");
+			editor.setFontSize(16);
+			editor.setValue("public class test"
+					+ "\n{"
+					+ "\n\tpublic static void main(String[] args) {"
+					+ "\n\t\tSystem.out.println(\"Hello, World\");"
+					+ "\n\t}"
+					+ "\n}");
+		</script>
 
       <div class="large-4 medium-4 columns">
         <div class="callout">
-		<div id="timer">10</div>
           <h5>Their output:</h5>
           <p><font face="monospace">Example output</font></p>
 		  <style>
@@ -189,12 +216,43 @@
         </div>
       </div>
     </div>
-    <script src="/socket.io/socket.io.js"></script>
 
     <script src="js/vendor/jquery.js"></script>
     <script src="js/vendor/what-input.js"></script>
     <script src="js/vendor/foundation.js"></script>
     <script src="js/app.js"></script>
-	    <script src="Player.js"></script>
+	<script>
+		console.log("jquery begin");
+		$(document).ready(function(){
+			console.log("document ready");
+			$("#aceform").submit(function(e){
+				console.log("preventing default");
+				e.preventDefault();
+				var aceinput = $('#aceinput');
+				var ddown = $('#ddown');
+				var problem = $('#problems');
+				var editor = ace.edit('editor');
+				console.log("editor getvalue:\n-----------------" + editor.getValue());
+				aceinput.val(editor.getValue());
+				console.log("aceinput val:----------------\n" + aceinput.val());
+				console.log("language val:----------------\n" + ddown.val());
+				$.post( '/runSandbox', {comments: aceinput.val(), 
+							language: ddown.val(), 
+							problem: problem.val()}, function(data) {
+					console.log("runsandbox post req made");
+					$('#test').empty().append(data);
+				});
+			});
+			$('#problems').change(function(e){
+				console.log('Chaning problem jQuery script');
+				var problem = $('#problems');
+				console.log('problem name:\n-----------------' + problem.val());
+				$.post( '/getproblem', {problem: problem.val()}, function(data) {
+					console.log('getproblem post req made');
+					$('#description').empty().append(data);
+				});
+			});
+		});
+	</script>
   </body>
 </html>
