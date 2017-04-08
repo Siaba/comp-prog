@@ -184,6 +184,11 @@ router.get('/GroupLeaderboards.html', function(req, res) {
  
 });
 
+router.get('/Home.html', function(req, res) {
+	console.log("Routes worked, welcome to the home page");
+	res.sendFile(path.join(filePath + '/webapp/Home.html'));
+});
+
 /* GET home page. */
 router.get('/GroupStats.html', function(req, res) {
  
