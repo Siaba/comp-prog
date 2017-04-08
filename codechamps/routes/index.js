@@ -33,16 +33,6 @@ router.get('/', function(req, res) {
  
 });
 
-/* Profile Page Post Request for updating their Account settings */
-router.get('/Profile.html', function(req, res) {
- var username = req.session.username;
- var password = req.session.password;
- sess = req.session;
- 
- res.sendFile(path.join(filePath + '/webapp/Profile.html'));
- 
-});
-
 /* GET home page. */
 router.get('/Account.html', function(req, res) {
  
