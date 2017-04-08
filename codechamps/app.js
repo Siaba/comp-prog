@@ -250,7 +250,8 @@ function runSandbox(req, res){
 	},
 	
 	function(callback){
-		exec('cp '+ __dirname + '/Problems/helloworld.txt /tmp/box/' + sID + '/box', (error,stdout,stderr) =>{
+		var pname = req.body.problem;
+		exec('cp '+ __dirname + '/Problems/' + pname + '.txt /tmp/box/' + sID + '/box', (error,stdout,stderr) =>{
 			 if(error){
 				 console.error("copy file has failed");
 				 return;
@@ -375,9 +376,10 @@ function runSandbox(req, res){
 	},
 		      
 	function(callback){
-		 fs.readFile('/tmp/box/' + sID + '/box/output.txt' ,(err,data) => {
+		var pname = req.body.problem; 
+		fs.readFile('/tmp/box/' + sID + '/box/output.txt' ,(err,data) => {
 			 if(err) throw err;
-			 fs.readFile('/tmp/box/' + sID + '/box/helloworld.txt', (error, other_data) => {
+			 fs.readFile('/tmp/box/' + sID +  '/' +  pname + '.txt', (error, other_data) => {
 			if(error) throw error;
 			if(data.toString() === other_data.toString()){
 				 console.log("Your output is correct.");
