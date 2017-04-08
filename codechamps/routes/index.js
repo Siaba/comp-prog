@@ -10,7 +10,7 @@ var session = require('express-session');
 router.use(cookieParser());
 router.use(bodyParser.urlencoded({extended: true }));
 router.use(bodyParser.json());
-router.use(session({secret: "123abcg", 
+router.use(session({secret: "123abcgz^&#$^hbgate8162QQANZBSHSHSHAPLEUTCHVH", 
 	    secure: true,
             maxAge:  1800000}));
 
