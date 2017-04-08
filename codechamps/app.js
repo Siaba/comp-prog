@@ -40,10 +40,12 @@ io.on('connection', function(socket){
   	});
 });
 
+
+server.listen(3000);
+
 app.get('/sayhi', function(req,res){
 	io.sockets.emit('hi','everyone');
-}
-server.listen(3000);
+});
 
 io.on('disconnect', function(socket){ console.log("someone disconnected."); });
 
