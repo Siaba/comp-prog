@@ -51,10 +51,12 @@
 <form action="/sayhi" method="get">
 	<input type="button" class="button" value="Find Match" onclick="sayhi()">
 </form>
-	<script>function sayhi(){
+	<script>
+	function sayhi(){
 		socket.on('connect', function(){
-		    socket.emit('hi', "This is a hello");
-	    });
+			socket.emit('hi', "This is a hello");
+    		});
+	}
 	</script>
 <script src="/socket.io/socket.io.js"></script>
 </body>
