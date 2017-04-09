@@ -11,6 +11,7 @@ var async = require('async');
 var bcryptjs = require('bcryptjs');
 var routes = require('./routes/index');
 var users = require('./routes/users');
+var game = require('./game.js');
 //const nodemailer = require('nodemailer');
 var app = express();
 
@@ -42,6 +43,7 @@ for(var i=0; i < MAX_ROOMS; i++){
 }
 
 io.sockets.on('connection', function(socket){
+	game.initGame(io, socket);
 	console.log("someone has connected.");
 	socket.on('join_room', function(msg){
 		socket.join(currentroom);
