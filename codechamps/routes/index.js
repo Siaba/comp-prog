@@ -135,6 +135,7 @@ router.post('/Versus.html', function(req, res){
 	var language = req.body.language;
 	if(username != null){
 		if(language){
+			console.log(game.test);
 			res.sendFile(path.join(filePath + '/webapp/Versus.html'));
 		}
 		else{
