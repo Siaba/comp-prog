@@ -6,7 +6,7 @@ var bcryptjs = require('bcryptjs');
 var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
 var session = require('express-session');
-var game = require('./game.js');
+//var game = require('./game.js');
 router.use(cookieParser());
 router.use(bodyParser.urlencoded({extended: true }));
 router.use(bodyParser.json());
@@ -135,7 +135,7 @@ router.post('/Versus.html', function(req, res){
 	var language = req.body.language;
 	if(username != null){
 		if(language){
-			console.log(game.test);
+			//console.log(game.test);
 			res.sendFile(path.join(filePath + '/webapp/Versus.html'));
 		}
 		else{
