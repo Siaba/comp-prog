@@ -6,7 +6,7 @@ var bcryptjs = require('bcryptjs');
 var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
 var session = require('express-session');
-
+var game = require('./game.js');
 router.use(cookieParser());
 router.use(bodyParser.urlencoded({extended: true }));
 router.use(bodyParser.json());
