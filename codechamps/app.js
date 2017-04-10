@@ -181,6 +181,106 @@ app.post('/CreateAccount.html', function(req, res) {
 	});
 });
 
+/*app.post('/AccountSettings.html', function(req, res)) { //Allows users to change account settings. Getting there...
+	const saltRounds = 10;
+	var table = "user";
+	var firstName = req.body.first_name; //Gets the first name of the user.
+	var lastName = req.body.last_name; //Gets the last name of the user.
+	var curUsername = req.body.user_name; //Gets the current username of the user.
+	var optionIndex = req.body.user_changes; //Gets the index of what the user is changing.
+	var oldUsername = req.body.old_user_name;
+	var newUsername = req.body.new_user_name;
+	var oldEmail = old_user_email;
+	var newEmail = new_user_email;
+	var newEmailReentered = new_user_reentered_email;
+	var oldPassword = null; //We wouldn't want any security vulnerabilities now, would we?
+	var newPassword = null;
+	var newPasswordReentered = null;
+	var db = new AWS.DynamoDB();
+
+	//Verify User-entered information
+	console.log(username);
+	var paramsgetuser = {
+		TableName:table,
+		Key : {"username" : {S: username}},
+		AttributesToGet: [ "username" ]
+	};
+
+	db.getItem(paramsgetuser, function(err, data){
+		if(err) {
+			console.log(err);
+		}
+		else {
+			console.log(data);
+			if(data.Item == null) { //Executes when the user is not found in the database.
+				console.log("Username is not in the database.");
+			}
+			else { //Executes when the user is found in the database.
+				var docClient = new AWS.DynamoDB.DocumentClient();
+				switch (optionIndex) {
+					case "0": //User ONLY wishes to update username.
+					break;
+
+					case "1": //User ONLY wishes to update password.
+					bcryptjs.compare(req.body.old_user_password, data.Item.password.S).then(function(resp){
+					if(!resp){
+						console.log("User " + username + ": Failed to verify account. Invalid password.");
+					}
+					else{
+						//need to do session stuff here...
+						console.log("User  " + username + ": Successfully fetched username. Yay!")
+					}
+				});
+
+					break;
+
+					case "2": //User ONLY wishes to update email.
+					break;
+
+					case "3": //User wishes to update username AND password.
+					break;
+
+					case "4": //User wishes to update username, password, AND email.
+					break;
+
+				}
+				bcryptjs.genSalt(saltRounds, function(err, salt) {
+					bcryptjs.hash(req.body.user_password, salt, function(err, hash){
+						//user tuple
+						var params = {
+							TableName:table,
+							Item:{
+								"username": username,
+								"age": age,
+								"email": email,
+								"firstname": firstname,
+								"gender": gender,
+								"lastname": lastname,
+								"occupation": occupation,
+								"password": hash,
+							}
+						};
+
+						console.log("Adding a new item...");
+						//put user in database
+						docClient.put(params, function(err, data) {
+							if (err) {
+								console.error("Unable to add user. Error JSON:", JSON.stringify(err, null, 2));
+							} else {
+								console.log("Added user:", JSON.stringify(data, null, 2));
+							}
+						});
+					});
+				});
+				res.redirect('/Home.html');
+			}
+			else{
+				res.redirect('/CreateAccount.html');
+			}
+		}
+	});
+}*/
+
 //write to file when submit button is clicked
 app.post('/runSandbox', function(req, res){
 	
