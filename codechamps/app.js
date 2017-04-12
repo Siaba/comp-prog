@@ -206,7 +206,7 @@ app.post('/CreateAccount.html', function(req, res) {
 		AttributesToGet: [ "username" ]
 	};
 
-	db.getItem(paramsgetuser, function(err, data){
+	db.getItem(paramsgetuser, function(err, data) {
 		if(err) {
 			console.log(err);
 		}
@@ -224,9 +224,9 @@ app.post('/CreateAccount.html', function(req, res) {
 						Key:{
 							"username": curUsername,
 						},
-						updateExpression: "set Item.username = :nu",
+						updateExpression: "set Item.username = :u",
 						ExpressionAttributeValues: {
-							":nu": newUsername.
+							":u": newUsername.
 						},
 						ReturnValues:"UPDATED_NEW"
 						};
@@ -246,55 +246,71 @@ app.post('/CreateAccount.html', function(req, res) {
     				},
     				ReturnValues:"UPDATED_NEW"
 				};
+				}
 				}					
 					break;
 
 					case "2": //User ONLY wishes to update email.
+					var params = {
+						TableName:table,
+						Key:{
+							"username": curUsername,
+						},
+						updateExpression: "set Item.email = :e",
+						ExpressionAttributeValues: {
+							":e": newEmail,
+						},
+						ReturnValues:"UPDATED_NEW"
+						};
 					break;
 
 					case "3": //User wishes to update username AND password.
+					bcryptjs.genSalt(saltRounds, function(err, salt) {
+					bcryptjs.hash(req.body.newPassword, salt, function(err, hash){
+					var params = {
+						
+						TableName:table,
+						Key:{
+							"username": curUsername,
+						},
+						updateExpression: "set Item.username = :u, Item.password = :p",
+						ExpressionAttributeValues: {
+							":n": newUsername,
+							":p": hash,
+						},
+						ReturnValues:"UPDATED_NEW"
+						};
+					}
+				}
 					break;
 
 					case "4": //User wishes to update username, password, AND email.
-					break;
-
-				
-				bcryptjs.genSalt(saltRounds, function(err, salt) {
-					bcryptjs.hash(req.body.user_password, salt, function(err, hash){
-						//user tuple
-						var params = {
-							TableName:table,
-							Item:{
-								"username": username,
-								"age": age,
-								"email": email,
-								"firstname": firstname,
-								"gender": gender,
-								"lastname": lastname,
-								"occupation": occupation,
-								"password": hash,
-							}
+					bcryptjs.genSalt(saltRounds, function(err, salt) {
+					bcryptjs.hash(req.body.newPassword, salt, function(err, hash){
+					var params = {
+						
+						TableName:table,
+						Key:{
+							"username": curUsername,
+						},
+						updateExpression: "set Item.username = :u, Item.password = :p, Item.email = :e",
+						ExpressionAttributeValues: {
+							":n": newUsername,
+							":p": hash,
+							":e": newEmail,
+						},
+						ReturnValues:"UPDATED_NEW"
 						};
+					}
+				}
+					break;
+				
+		
 
-						console.log("Adding a new item...");
-						//put user in database
-						docClient.put(params, function(err, data) {
-							if (err) {
-								console.error("Unable to add user. Error JSON:", JSON.stringify(err, null, 2));
-							} else {
-								console.log("Added user:", JSON.stringify(data, null, 2));
-							}
-						});
-					});
-				});
-				res.redirect('/Home.html');
-			
-			else{
-				res.redirect('/CreateAccount.html');
-			}
-		}
-	});
-}*/
+}
+}
+}
+*/
 
 //write to file when submit button is clicked
 app.post('/runSandbox', function(req, res){
