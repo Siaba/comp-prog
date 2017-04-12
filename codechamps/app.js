@@ -538,13 +538,15 @@ function runSandbox(req, res){
 			if(error) throw error;
 			if(data.toString() === other_data.toString()){
 				 console.log("Your output is correct.");
-				 callback(null,"Your output is correct.");
+				 callback(null, "Your output is correct." + "<br>" +
+					  "Your output is: " + data.toString() + "<br>" +
+					  "Expected Output is: " + "<br>" + other_data.toString());
 			 }
 			 else{
 				 console.log("Your output failed.");
 				 callback(null, "Your output is incorrect." + "<br>" +
-					  "Your output is: " + other_data.toString() + "<br>" +
-					  "Expected Output is: " + "<br>" + data.toString());
+					  "Your output is: " + data.toString() + "<br>" +
+					  "Expected Output is: " + "<br>" + other_data.toString());
 			 }
 			
 		 });
