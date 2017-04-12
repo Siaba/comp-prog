@@ -477,11 +477,19 @@ function runSandbox(req, res){
 		}
 		if(flag){
 			exec(env, (error, stdout, stderr) => {
-				 if(error) {
-					 console.error("compilation failed");
-
-				 }
-				callback();
+				if(error) {
+					console.error("compilation failed");
+					fs.readFile('/tmp/box/' + sID + '/box/error.txt' , 'utf8', function (err,data) {
+						if (err) {
+							return console.log(err);
+						}
+					 	console.log(data);
+					 	callback(true,data);
+					});
+				}
+				else{
+					callback();
+				}
 			});
 		}
 		else{callback();}
@@ -506,9 +514,15 @@ function runSandbox(req, res){
 		}
 		exec(run, (error,stdout,stderr) => {
 				 if(error) {
-					 console.error("test run failed");
-					 console.log(stderr);
-					callback(true,stderr);
+					console.error("test run failed");
+					console.log(stderr);
+					fs.readFile('/tmp/box/' + sID + '/box/error.txt' , 'utf8', function (err,data) {
+						if (err) {
+							return console.log(err);
+						}
+					 	console.log(data);
+					 	callback(true,data);
+					});
 				 }
 				else{
 					callback();	
