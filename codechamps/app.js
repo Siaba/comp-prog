@@ -554,14 +554,14 @@ function runSandbox(req, res){
 			if(error) throw error;
 			if(data.toString() === other_data.toString()){
 				 console.log("Your output is correct.");
-				 callback(null, "1" + "Your output is correct." + "<br>" +
+				 callback(null, "Your output is correct." + "<br>" +
 					  "Your output is: " + data.toString() + "<br>" +
 					  "Expected Output is: " + "<br>" + other_data.toString());
 			 }
 			 else{
 				 flagger = false;
 				 console.log("Your output failed.");
-				 callback(null, "0" + "Your output is incorrect." + "<br>" +
+				 callback(null, "Your output is incorrect." + "<br>" +
 					  "Your output is: " + data.toString() + "<br>" +
 					  "Expected Output is: " + "<br>" + other_data.toString());
 			 }
