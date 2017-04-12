@@ -14,7 +14,7 @@ router.use(session({secret: "123abcgz^&#$^hbgate8162QQANZBSHSHSHAPLEUTCHVH",
 	    secure: true,
             maxAge:  1800000}));
 
-AWS.config.update({
+AWS.config.update({ //Also used to in AccountSettings. Reference this later.
     region: "us-east-1",
     endpoint: "dynamodb.us-east-1.amazonaws.com"
 });
