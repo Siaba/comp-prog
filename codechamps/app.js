@@ -181,7 +181,7 @@ app.post('/CreateAccount.html', function(req, res) {
 	});
 });
 
-/*app.post('/AccountSettings.html', function(req, res)) { //Allows users to change account settings. Getting there...
+/*app.post('/AccountSettings.html', function(req, res)) { //Allows users to change account settings.
 	const saltRounds = 10;
 	var table = "user";
 	var firstName = req.body.first_name; //Gets the first name of the user.
@@ -219,19 +219,34 @@ app.post('/CreateAccount.html', function(req, res) {
 				var docClient = new AWS.DynamoDB.DocumentClient();
 				switch (optionIndex) {
 					case "0": //User ONLY wishes to update username.
+					var params = {
+						TableName:table,
+						Key:{
+							"username": curUsername,
+						},
+						updateExpression: "set Item.username = :nu",
+						ExpressionAttributeValues: {
+							":nu": newUsername.
+						},
+						ReturnValues:"UPDATED_NEW"
+						};
 					break;
 
 					case "1": //User ONLY wishes to update password.
-					bcryptjs.compare(req.body.old_user_password, data.Item.password.S).then(function(resp){
-					if(!resp){
-						console.log("User " + username + ": Failed to verify account. Invalid password.");
-					}
-					else{
-						//need to do session stuff here...
-						console.log("User  " + username + ": Successfully fetched username. Yay!")
-					}
-				});
-
+					bcryptjs.genSalt(saltRounds, function(err, salt) {
+					bcryptjs.hash(req.body.newPassword, salt, function(err, hash){
+					var params = {
+    				TableName:table,
+    				Key:{
+        				"username": curUsername,
+    				},
+    				UpdateExpression: "set Item.password = :p",
+    				ExpressionAttributeValues:{
+       				":p":hash,
+    				},
+    				ReturnValues:"UPDATED_NEW"
+				};
+				}					
 					break;
 
 					case "2": //User ONLY wishes to update email.
@@ -243,7 +258,7 @@ app.post('/CreateAccount.html', function(req, res) {
 					case "4": //User wishes to update username, password, AND email.
 					break;
 
-				}
+				
 				bcryptjs.genSalt(saltRounds, function(err, salt) {
 					bcryptjs.hash(req.body.user_password, salt, function(err, hash){
 						//user tuple
@@ -273,7 +288,7 @@ app.post('/CreateAccount.html', function(req, res) {
 					});
 				});
 				res.redirect('/Home.html');
-			}
+			
 			else{
 				res.redirect('/CreateAccount.html');
 			}
