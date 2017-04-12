@@ -7,6 +7,7 @@
     <title>Practice Mode</title>
     <link rel="stylesheet" href="css/foundation.css">
     <link rel="stylesheet" href="css/app.css">
+    <link href="http://cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/foundation-icons.css" rel="stylesheet">
     <style type="text/css" media="screen">
     #editor { 
         position: absolute;
@@ -220,7 +221,7 @@
 				console.log('problem name:\n-----------------' + problem.val());
 				$.post( '/getproblem', {problem: problem.val()}, function(data) {
 					console.log('getproblem post req made');
-					$('#description').empty().append(data);
+					$('#description').empty().append(data + "<i class="fi-check">");
 				});
 			});
 		});
