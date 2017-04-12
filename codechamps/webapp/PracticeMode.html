@@ -221,7 +221,7 @@
 				console.log('problem name:\n-----------------' + problem.val());
 				$.post( '/getproblem', {problem: problem.val()}, function(data) {
 					console.log('getproblem post req made');
-					$('#description').empty().append(data);
+					$('#description').empty().append(data + "<h3><i class="fi-check"></h3>");
 				});
 			});
 		});
