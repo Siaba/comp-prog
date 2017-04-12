@@ -465,11 +465,11 @@ function runSandbox(req, res){
 		var flag = false;
 		switch(req.body.language){
 			case 'java':
-				env += 'isolate --processes=15 --box-id=' + sID + ' --full-env --run -- javac test.java';
+				env += 'isolate --processes=15 --box-id=' + sID + ' --full-env --stderr=error.txt --run -- javac test.java';
 				flag = true;
 				break;
 			case 'c_cpp':
-				env += 'isolate --processes=15 --box-id='+ sID + ' --full-env --run -- g++ -o test test.cpp';
+				env += 'isolate --processes=15 --box-id='+ sID + ' --full-env --stderr=error.txt --run -- g++ -o test test.cpp';
 				flag = true;
 				break;
 			default:
