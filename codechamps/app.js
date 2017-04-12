@@ -528,7 +528,8 @@ function runSandbox(req, res){
 			 }
 			 else{
 				 console.log("Your output failed.");
-				 callback(null,"Your output failed.");
+				 callback(null, other_data.toString() + + "Your output is: \n" +  
+					"\nYour output is correct.");
 			 }
 			
 		 });
