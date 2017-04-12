@@ -546,20 +546,22 @@ function runSandbox(req, res){
 	},
 		      
 	function(callback){
-		var pname = req.body.problem; 
+		var pname = req.body.problem;
+		var flagger = true;
 		fs.readFile('/tmp/box/' + sID + '/box/output.txt' ,(err,data) => {
 			 if(err) throw err;
 			 fs.readFile('/tmp/box/' + sID + '/box' +  '/' +  pname + '.txt', (error, other_data) => {
 			if(error) throw error;
 			if(data.toString() === other_data.toString()){
 				 console.log("Your output is correct.");
-				 callback(null, "Your output is correct." + "<br>" +
+				 callback(null, "1" + "Your output is correct." + "<br>" +
 					  "Your output is: " + data.toString() + "<br>" +
 					  "Expected Output is: " + "<br>" + other_data.toString());
 			 }
 			 else{
+				 flagger = false;
 				 console.log("Your output failed.");
-				 callback(null, "Your output is incorrect." + "<br>" +
+				 callback(null, "0" + "Your output is incorrect." + "<br>" +
 					  "Your output is: " + data.toString() + "<br>" +
 					  "Expected Output is: " + "<br>" + other_data.toString());
 			 }
