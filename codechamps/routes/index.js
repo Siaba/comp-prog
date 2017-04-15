@@ -125,22 +125,13 @@ router.get('/PracticeMode.html', function(req, res) {
  
 });
 
-/* GET home page. */
-router.get('/Versus.html', function(req, res) {
-	res.redirect('/Account.html');
-});
 
-router.post('/Versus.html', function(req, res){
+
+router.get('/Versus.html', function(req, res){
 	var username = req.session.username;
-	var language = req.body.language;
+	
 	if(username != null){
-		if(language){
-			//console.log(game.test);
-			res.sendFile(path.join(filePath + '/webapp/Versus.html'));
-		}
-		else{
-			res.redirect('/Home.html');
-		}
+		res.send(path.join(filePath + '/webapp/Versus.html');
 	}
 	else{
 		res.redirect('/Account.html');
@@ -203,8 +194,8 @@ router.get('/GroupStats.html', function(req, res) {
 /* GET home page. */
 router.get('/FindMatch.html', function(req, res) {
  
- console.log("ROUTES WORKED: find match");
- res.sendFile(path.join(filePath + '/webapp/FindMatch.html'));
+ 
+ res.redirect('/Versus.html');
  
 });
 
