@@ -7,7 +7,7 @@ var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
 var session = require('express-session');
 var sharedsession = require('express-socket.io-session');
-var io = require('socket.io');
+var io = require('socket.io')();
 //var game = require('./game.js');
 router.use(cookieParser());
 router.use(bodyParser.urlencoded({extended: true }));
@@ -143,7 +143,7 @@ router.get('/Versus.html', function(req, res){
 	var username = req.session.username;
 	
 	if(username != null){
-		res.send(path.join(filePath + '/webapp/Versus.html');
+		res.sendFile(path.join(filePath + '/webapp/Versus.html'));
 	}
 	else{
 		res.redirect('/Account.html');
