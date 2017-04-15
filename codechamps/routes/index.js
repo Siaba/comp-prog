@@ -20,6 +20,12 @@ router.use(session({secret: "123abcgz^&#$^hbgate8162QQANZBSHSHSHAPLEUTCHVH",
 
 io.use(sharedsession(session));
 
+
+io.on('connection' ,function(socket){
+	
+	console.log("routes socket.io connection");
+});
+
 AWS.config.update({ //Also used to in AccountSettings. Reference this later.
     region: "us-east-1",
     endpoint: "dynamodb.us-east-1.amazonaws.com"
