@@ -13,8 +13,9 @@ exports.initGame = function(siolib, socket){
     
 
 function addMatch(lang, roomID, player1ID){
-        matches.lang[roomID] = new GameInfo(player1ID);
         console.log('Room id: ' + roomID + ', lang: ' + lang);
+        matches.lang[roomID] = new GameInfo(player1ID);
+        
 }
 
 function findMatch(data){
