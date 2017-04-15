@@ -35,6 +35,14 @@ app.use(bodyParser.json());
 var server = require('http').createServer(app);
 var io = require('socket.io')(server);
 
+routes.use(session({secret: "123abcgz^&#$^hbgate8162QQANZBSHSHSHAPLEUTCHVH", 
+	    secure: true,
+	    saveUninitialized: true,
+            maxAge:  1800000}));
+
+io.use(sharedsession(session));
+
+
 const MAX_ROOMS = 10;
 var currentroom = 0;
 var players = new Array(MAX_ROOMS);
