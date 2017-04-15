@@ -21,6 +21,22 @@ function findMatch(data){
         addMatch(data.lang, roomId, this.handshake.session); 
 }
 
+function playerJoined(){
+        
+}
+
+function submitCode(){
+        
+}
+
+function newGame(){
+        
+}
+
+function playerLeft(){
+        
+}
+
 //stores references to all of the game objects and matches going on
 //to add new language put lang: [] when running new version of app
 var matches = {
