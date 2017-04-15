@@ -13,12 +13,12 @@ router.use(cookieParser());
 router.use(bodyParser.urlencoded({extended: true }));
 router.use(bodyParser.json());
 
-router.use(session({secret: "123abcgz^&#$^hbgate8162QQANZBSHSHSHAPLEUTCHVH", 
+/*router.use(session({secret: "123abcgz^&#$^hbgate8162QQANZBSHSHSHAPLEUTCHVH", 
 	    secure: true,
 	    saveUninitialized: true,
             maxAge:  1800000}));
 
-io.use(sharedsession(session));
+io.use(sharedsession(session));*/
 
 
 io.on('connection' ,function(socket){
