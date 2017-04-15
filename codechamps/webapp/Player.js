@@ -10,7 +10,7 @@ function initSocket(){
     clientSocket = io.connect();
     clientSocket.on('connect', function(){
 	    clientSocket.emit('join_room', "Joining room ");
-	    clientSocket.emit('createGame', {lang:'java'});
+	    clientSocket.emit('findMatch', {lang:'java'});
 	});
 }
 
