@@ -2,7 +2,8 @@ var express = require('express');
 var path = require('path');
 var favicon = require('static-favicon');
 var logger = require('morgan');
-
+var session = require('express-session');
+var sharedsession = require('express-socket.io-session');
 var bodyParser = require('body-parser');
 var AWS = require('aws-sdk');
 var fs = require('fs');
