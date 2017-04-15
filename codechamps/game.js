@@ -7,7 +7,7 @@ exports.initGame = function(siolib, socket){
         io.on('playerJoined', playerJoined);
         io.on('submitCode', submitCode);
         io.on('newGame', newGame);
-        io.on('createGame', createGame);
+        io.on('findMatch', findMatch);
         io.on('playerLeft', playerLeft);
 }
     
