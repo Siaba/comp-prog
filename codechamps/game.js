@@ -14,11 +14,13 @@ exports.initGame = function(siolib, socket){
 
 function addMatch(lang, roomID, player1ID){
         matches.lang[roomID] = new GameInfo(player1ID);
+        console.log('Room id: ' + roomID + ', lang: ' + lang);
 }
 
 function findMatch(data){
-        var roomId = ( Math.random() * 100000 ) | 0;
-        addMatch(data.lang, roomId, this.handshake.session); 
+        var roomID = ( Math.random() * 100000 ) | 0;
+        addMatch(data.lang, roomID, this.handshake.session);
+        
 }
 
 function playerJoined(){
