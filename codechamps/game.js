@@ -4,11 +4,11 @@ exports.initGame = function(siolib, socket){
         io = siolib;
        
         console.log("binding events"); 
-        io.on('playerJoined', playerJoined);
-        io.on('submitCode', submitCode);
-        io.on('newGame', newGame);
-        io.on('findMatch', findMatch);
-        io.on('playerLeft', playerLeft);
+        socket.on('playerJoined', playerJoined);
+        socket.on('submitCode', submitCode);
+        socket.on('newGame', newGame);
+        socket.on('findMatch', findMatch);
+        socket.on('playerLeft', playerLeft);
 }
     
 
