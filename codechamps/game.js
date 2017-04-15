@@ -18,7 +18,7 @@ function addMatch(lang, roomID, player1ID){
 
 function findMatch(data){
         var roomId = ( Math.random() * 100000 ) | 0;
-        addMatch(data.lang, roomId, 
+        addMatch(data.lang, roomId, this.handshake.session); 
 }
 
 //stores references to all of the game objects and matches going on
