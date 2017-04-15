@@ -6,7 +6,8 @@ var bcryptjs = require('bcryptjs');
 var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
 var session = require('express-session');
-var sharedsession = require("express-socket.io-session");
+var sharedsession = require('express-socket.io-session');
+var io = require('socket.io');
 //var game = require('./game.js');
 router.use(cookieParser());
 router.use(bodyParser.urlencoded({extended: true }));
@@ -16,6 +17,8 @@ router.use(session({secret: "123abcgz^&#$^hbgate8162QQANZBSHSHSHAPLEUTCHVH",
 	    secure: true,
 	    saveUninitialized: true,
             maxAge:  1800000}));
+
+io.use(sharedsession(session));
 
 AWS.config.update({ //Also used to in AccountSettings. Reference this later.
     region: "us-east-1",
