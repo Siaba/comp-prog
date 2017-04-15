@@ -16,6 +16,11 @@ function addMatch(lang, roomID, player1ID){
         matches.lang[roomID] = new GameInfo(player1ID);
 }
 
+function findMatch(data){
+        var roomId = ( Math.random() * 100000 ) | 0;
+        addMatch(data.lang, roomId, 
+}
+
 //stores references to all of the game objects and matches going on
 //to add new language put lang: [] when running new version of app
 var matches = {
