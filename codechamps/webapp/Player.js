@@ -3,6 +3,9 @@ var clientSocket;
 $(document).ready(function(){
     initSocket();
     bindEvents();
+    $.post('/getUserName', function(data){
+	    $("uname").val(data.uname);
+    });
 });
 
 
