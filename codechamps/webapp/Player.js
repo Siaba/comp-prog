@@ -5,6 +5,7 @@ $(document).ready(function(){
     bindEvents();
     $.post('/getUserName', function(data){
 	    $("uname").val(data.uname);
+	    console.log(data.uname);
     });
 });
 
@@ -13,7 +14,7 @@ function initSocket(){
     clientSocket = io.connect();
     clientSocket.on('connect', function(){
 	    clientSocket.emit('join_room', "Joining room ");
-	    clientSocket.emit('findMatch', {lang:'java'});
+	    
 	});
 }
 
