@@ -4,8 +4,8 @@ $(document).ready(function(){
     initSocket();
     bindEvents();
     $.post('/getUserName', function(data){
-	    $("uname").val(data.uname);
-	    $("sid").val(data.sid);
+	    $("#uname").val(data.uname);
+	    $("#sid").val(data.sid);
 	    console.log(data.uname + "" + data.sid);
     });
 });
