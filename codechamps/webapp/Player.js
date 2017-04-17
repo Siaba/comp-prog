@@ -8,7 +8,7 @@ $(document).ready(function(){
 	    $("#sid").val(data.sid);
 	    console.log(data.uname + "" + data.sid);
     });
-    $("#findmatch").submit(function(e){
+    $("#findmatchform").submit(function(e){
 	   e.preventDefault();
 	   var sid = $('#sid');
 	   var uname = $('#uname');
