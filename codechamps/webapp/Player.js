@@ -5,7 +5,8 @@ $(document).ready(function(){
     bindEvents();
     $.post('/getUserName', function(data){
 	    $("uname").val(data.uname);
-	    console.log(data.uname);
+	    $("sid").val(data.sid);
+	    console.log(data.uname + "" + data.sid);
     });
 });
 
