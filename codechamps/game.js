@@ -20,7 +20,7 @@ function addMatch(lang, roomID, player1ID){
 
 function findMatch(data){
         var roomID = ( Math.random() * 100000 ) | 0;
-        addMatch(data.lang, roomID, this.handshake.session);
+        addMatch(data.lang, roomID, data.sid);
         
 }
 
