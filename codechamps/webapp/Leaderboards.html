@@ -66,6 +66,7 @@
 	    </center>
 		
 		<div id = "fillthis">
+			<h3 id="headingtable"></h3>
 			
 		</div>
 
@@ -88,8 +89,8 @@
 				  $.post('/loadDB', function(data) {
 					  console.log("Time to append the DB entries to the Div with the id of fillthis");
 					  console.log(data);
-					  var lbtable = $.parseJSON(data);
-					  $('#fillthis').empty().append("<p>" + lbtable + "</p>");
+					  //var lbtable = $.parseJSON(data);
+					  $('#headingtable').empty().append(data);
 		  });
 	});
 });
