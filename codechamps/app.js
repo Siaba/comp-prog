@@ -626,16 +626,17 @@ function loadDB(req, res){
 	var paramsgetuser = {
 		TableName:table,
 		Key : {"username" : {S: username}},
+		{"Sizzle Rank"
 		AttributesToGet: [ "username", "Sizzle Rank", "Wins", "Losses" ]
 	};
 	
-	db.getItem(paramsgetuser, function(err, data){
+	db.scan(paramsgetuser, function(err, data){
 		if(err) {
 			console.log(err);
 		}
 		else {
-			console.log(data);
-			res.send(data);
+			console.log(data.JSON.stringify(data, null, 2));
+			res.send(data.JSON.stringify(data, null, 2));
 		}
 	});
 }
