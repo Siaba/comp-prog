@@ -622,7 +622,7 @@ function loadDB(req, res){
 	var db = new AWS.DynamoDB();
 	var table = "scoring";
 	
-	console.log(username);
+	
 	var paramsgetuser = {
 		TableName:table
 		
