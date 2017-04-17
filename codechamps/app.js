@@ -633,7 +633,7 @@ function loadDB(req, res){
 			console.log(err);
 		}
 		else {
-			console.log(data);
+			console.log(JSON.stringify(data, null, 2));
 			res.send(data);
 		}
 	});
