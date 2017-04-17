@@ -19,9 +19,15 @@ function addMatch(lang, roomID, player1ID, player1BoxID){
 }
 
 function findMatch(data){
+        for(var key in matches[data.lang]){
+                if(matches[data.lang][key].numPlayers < 2){
+                        //this is where you join a game instead of create one
+                        return;
+                }
+        }
         var roomID = ( Math.random() * 100000 ) | 0;
         addMatch(data.lang, roomID, data.uname, data.sid);
-        
+        return;
 }
 
 function playerJoined(){
@@ -59,4 +65,5 @@ function GameInfo(pid, pBoxid){
         this.p2BoxID = 100000;
         this.timeRemaining = 3000 * 60;
         this.problemSet = [];
+        this.numPlayers = 1;
 }
