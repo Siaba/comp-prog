@@ -318,7 +318,7 @@ app.post('/CreateAccount.html', function(req, res) {
 
 //getusername
 app.post('/getUserName', function(req, res){
-	res.send({uname: req.session.username});	
+	res.send({uname: req.session.username, sid: req.session.sID});	
 });
 //write to file when submit button is clicked
 app.post('/runSandbox', function(req, res){
