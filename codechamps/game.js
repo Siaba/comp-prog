@@ -16,12 +16,14 @@ function addMatch(lang, roomID, player1ID, player1BoxID){
         console.log('Room id: ' + roomID + ', lang: ' + lang + 'playerID ' + player1ID );
         matches[lang][roomID] = new GameInfo(player1ID, player1BoxID);
         console.log("game info: " + matches[lang][roomID].p1ID + " " + matches[lang][roomID].p1BoxID);
+        //emit an event to the client that created the match so their browser can update screen
 }
 
 function findMatch(data){
         for(var key in matches[data.lang]){
                 if(matches[data.lang][key].numPlayers < 2){
                         //this is where you join a game instead of create one
+                        console.log("a player is joining the game");
                         return;
                 }
         }
