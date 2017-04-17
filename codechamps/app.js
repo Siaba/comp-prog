@@ -625,8 +625,8 @@ function loadDB(req, res){
 	console.log(username);
 	var paramsgetuser = {
 		TableName:table,
-		Key : {"username" : {S: username}},
-		{"Sizzle Rank" : {N: Sizzle Rank}},
+		Key : {"username" : {S: username},
+		"Sizzle Rank" : {N: Sizzle Rank}},
 		AttributesToGet: [ "username", "Sizzle Rank", "Wins", "Losses" ]
 	};
 	
