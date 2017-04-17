@@ -12,15 +12,15 @@ exports.initGame = function(siolib, socket){
 }
     
 
-function addMatch(lang, roomID, player1ID){
+function addMatch(lang, roomID, player1ID, player1BoxID){
         console.log('Room id: ' + roomID + ', lang: ' + lang + 'playerID ' + player1ID );
-        matches.lang[roomID] = new GameInfo(player1ID);
+        matches.lang[roomID] = new GameInfo(player1ID, player1BoxID);
         
 }
 
 function findMatch(data){
         var roomID = ( Math.random() * 100000 ) | 0;
-        addMatch(data.lang, roomID, data.sid);
+        addMatch(data.lang, roomID, data.uname, data.sid);
         
 }
 
@@ -50,11 +50,13 @@ var matches = {
 
 
 
-function GameInfo(pid){
+function GameInfo(pid, pBoxid){
         this.p1Score = 0;
         this.p2Score = 0;
         this.p1ID = pid;
         this.p2ID = "";
+        this.p1BoxID = pBoxid;
+        this.p2BoxID = 100000;
         this.timeRemaining = 3000 * 60;
         this.problemSet = [];
 }
