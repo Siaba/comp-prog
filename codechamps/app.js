@@ -49,23 +49,7 @@ for(var i=0; i < MAX_ROOMS; i++){
 io.sockets.on('connection', function(socket){
 	game.initGame(io, socket);
 	console.log("someone has connected.");
-	socket.on('join_room', function(msg){
-		socket.join(currentroom);
-		players[currentroom]++;
-		console.log(msg + currentroom + " : players = " + players[currentroom]); 
-		if(players[currentroom] == 2){
-			if(currentroom == MAX_ROOMS-1){
-				currentroom = 0;
-			}
-			else{
-				currentroom++;
-				players[currentroom] = 0;
-			}
-		}
-		socket.on('hello', hello);
-		io.emit('playerJoined', 'A player has joined');
-
-  	});
+	
 	socket.on('disconnect', function(socket){ 
 		console.log("someone disconnected.");
 	});
@@ -74,9 +58,7 @@ io.sockets.on('connection', function(socket){
 
 server.listen(3000);
 
-function hello(data){
-	console.log("Hello from the client socket");
-}
+
 
 
 
