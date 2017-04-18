@@ -101,9 +101,9 @@ table, th, td {
 					  htmlTable += '<tr><th>Username</th><th>Wins</th><th>Losses</th><th>Sizzle Rank</th></tr>';
 					  $.each($.parseJSON(data), function() {
 						  $.each(this, function(key, value) {
-							htmlTable += '<tr><td>' + value.items.username + '</td>' +
-								'<td>' + value.items.Wins + '</td>' + '<td>' + value.items.Losses
-							  	+ '</td>' + '<td>' + value.items.sizzleRank + '</td></tr>';	
+							htmlTable += '<tr><td>' + data.items.username + '</td>' +
+								'<td>' + data.items.Wins + '</td>' + '<td>' + data.items.Losses
+							  	+ '</td>' + '<td>' + data.items.sizzleRank + '</td></tr>';	
 						  });
 					  });
 					  
