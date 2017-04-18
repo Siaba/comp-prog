@@ -634,7 +634,7 @@ function loadDB(req, res){
 		}
 		else {
 			console.log(JSON.stringify(data, null, 2));
-			res.send(data);
+			res.send(JSON.stringify(data));
 		}
 	});
 }
