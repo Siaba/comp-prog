@@ -20,10 +20,7 @@ $(document).ready(function(){
 
 function initSocket(){
     clientSocket = io.connect();
-    clientSocket.on('connect', function(){
-	    
-	    
-	});
+    
 }
 
 function bindEvents(){
