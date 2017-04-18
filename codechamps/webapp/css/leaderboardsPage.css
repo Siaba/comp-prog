@@ -14,7 +14,8 @@ table {
 	width: 80%;
 	table-layout: fixed;
 	border-collapse: collapse;
-	align-self: center;
+	margin-left: auto;
+	margin-right: auto;
 
 }
 
