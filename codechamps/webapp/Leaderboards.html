@@ -96,15 +96,18 @@ table, th, td {
 					  console.log("Time to append the DB entries to the Div with the id of fillthis");
 					  console.log(data);
 					  
-					  Form table for the Leaderboards
+					  
 					  var htmlTable = '<div class="table">' + '<table class="LB">';
 					  htmlTable += '<tr><th>Username</th><th>Wins</th><th>Losses</th><th>Sizzle Rank</th></tr>';
 					  $.each($.parseJSON(data), function() {
 						  $.each(this, function(key, value) {
 							htmlTable += '<tr><td>' + value.username + '</td>' +
 								'<td>' + value.Wins + '</td>' + '<td>' + value.Losses
-							  	+ '</td>' + '<td>' + value.Sizzle Rank + '</td></tr>';	  
-					  $('#headingtable').empty().append(data);
+							  	+ '</td>' + '<td>' + value.Sizzle Rank + '</td></tr>';	
+						  });
+					  });
+					  
+					  $('#fillthis').html(data);
 		  });
 	});
 });
