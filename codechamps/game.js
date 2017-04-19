@@ -39,7 +39,7 @@ function findMatch(data){
                         fs.readFile('/home/ubuntu/codechamps/webapp/gamepage.txt', function(err,data) {
                                 if (!err) {
                                         console.log('gamepage.txt read, sending to room...');
-                                        io.sockets.in(key).emit("loadGame", data);
+                                        io.sockets.in(key).emit("loadGame", {page: data});
                                 }
                                 else{
                                         console.log(err);
