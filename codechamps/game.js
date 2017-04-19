@@ -16,7 +16,7 @@ function addMatch(lang, roomID, player1ID, player1BoxID){
         console.log('Room id: ' + roomID + ', lang: ' + lang + 'playerID ' + player1ID );
         matches[lang][roomID] = new GameInfo(player1ID, player1BoxID);
         //this.join(roomID);
-        console.log("game info: " + matches[lang][roomID].p1ID + " " + matches[lang][roomID].p1BoxID);
+        //console.log("game info: " + matches[lang][roomID].p1ID + " " + matches[lang][roomID].p1BoxID);
         //emit an event to the client that created the match so their browser can update screen
 }
 
@@ -34,13 +34,14 @@ function findMatch(data){
                         //this is where you join a game instead of create one
                         joinMatch(data.lang,key,data.uname,data.sid);
                         this.join(key);
-                        console.log("a player is joining the game");
+                        console.log(data.uname, " (box: ", data.sid, ") joined ", data.lang, " ", key);
                         return;
                 }
         }
         var roomID = ( Math.random() * 100000 ) | 0;
         addMatch(data.lang, roomID, data.uname, data.sid);
         this.join(roomID);
+        console.log(data.uname, " (box: ", data.sid, ") created ", data.lang, " ", roomID);
         return;
 }
 
