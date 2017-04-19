@@ -1,3 +1,4 @@
+var fs = require('fs');
 var io;
 
 exports.initGame = function(siolib, socket){
