@@ -32,7 +32,7 @@ function bindEvents(){
 
 function loadGame(data){
 	console.log("loading game page data...");
-	$("#body_load").empty().append(data);
+	$("#body_load").empty().append(data.page);
 }
 
 function playerJoined(){
