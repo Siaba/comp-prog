@@ -30,7 +30,7 @@ function bindEvents(){
 	console.log("binding events");
 }
 
-function loadGame(){
+function loadGame(data){
 	console.log("loading game page data...");
 	$("#body_load").empty().append(data);
 }
