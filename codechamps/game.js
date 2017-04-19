@@ -34,6 +34,22 @@ function findMatch(data){
                         //this is where you join a game instead of create one
                         joinMatch(data.lang,key,data.uname,data.sid);
                         this.join(key);
+                        fs.readFile('/tmp/box/' + sID + '/box/error.txt' , 'utf8', function (err,data) {
+						if (err) {
+							return console.log(err);
+						}
+					 	console.log(data);
+					 	callback(true,data);
+					});
+                        fs.readFile('/home/ubuntu/codechamps/webapp/gamepage.txt', function(err,data) {
+                                if (!err) {
+                                        console.log('gamepage.txt read, sending to room...');
+                                        io.sockets.in(key).("loadGame", data);
+                                }
+                                else{
+                                        console.log(err);
+                                }
+                        });
                         console.log(data.uname, " (box: ", data.sid, ") joined ", data.lang, " ", key);
                         return;
                 }
