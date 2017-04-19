@@ -12,19 +12,19 @@ exports.initGame = function(siolib, socket){
 }
     
 
-function addMatch(lang, roomID, player1ID, player1BoxID, socket){
+function addMatch(lang, roomID, player1ID, player1BoxID){
         console.log('Room id: ' + roomID + ', lang: ' + lang + 'playerID ' + player1ID );
         matches[lang][roomID] = new GameInfo(player1ID, player1BoxID);
-        socket.join(roomID);
+        //this.join(roomID);
         console.log("game info: " + matches[lang][roomID].p1ID + " " + matches[lang][roomID].p1BoxID);
         //emit an event to the client that created the match so their browser can update screen
 }
 
-function joinMatch(lang, roomID, player2ID, player2BoxID, socket){
+function joinMatch(lang, roomID, player2ID, player2BoxID){
         matches[lang][roomID].p2ID = player2ID;
         matches[lang][roomID].p2BoxID = player2BoxID;
         matches[lang][roomID].numPlayers++;
-        socket.join(roomID);
+        //this.join(roomID);
         //emit join event to client
 }
 
@@ -32,13 +32,15 @@ function findMatch(data){
         for(var key in matches[data.lang]){
                 if(matches[data.lang][key].numPlayers < 2){
                         //this is where you join a game instead of create one
-                        joinMatch(data.lang,key,data.uname,data.sid,this);
+                        joinMatch(data.lang,key,data.uname,data.sid);
+                        this.join(key);
                         console.log("a player is joining the game");
                         return;
                 }
         }
         var roomID = ( Math.random() * 100000 ) | 0;
         addMatch(data.lang, roomID, data.uname, data.sid);
+        this.join(roomID);
         return;
 }
 
