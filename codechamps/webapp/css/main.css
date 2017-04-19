@@ -173,3 +173,7 @@ label.light {
   }
 
 }
+
+.hidden{
+   visibility:hidden;
+}
