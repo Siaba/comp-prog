@@ -13,6 +13,7 @@ $(document).ready(function(){
 	   var sid = $('#sid');
 	   var uname = $('#uname');
 	   var lang = $('#language');
+	   $('#fm_button').attr('disabled', true);
 	   clientSocket.emit('findMatch', {lang: lang.val(), sid: sid.val(), uname: uname.val()});
     });
 });
