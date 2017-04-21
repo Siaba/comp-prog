@@ -82,13 +82,38 @@
 						<option value="python">Python</option>
 					</select>
 					</div>
-					<input type="submit" class="button" value="Find Match" id="fm_button">
+					<input type="submit" class="button" value="Find Match" id="fm_button" onclick="">
 				</form>
 				
 			</div>
 		</div>
       
 </div>
+<div id="search_overlay" class="overlay">
+	<div class="loading">
+		<div class="text">
+			Searching&#8230;
+		</div>
+	</div>
+	
+	<!--
+	<div class="countdown">
+		<div class="number" id="number">
+			<p>1<br>2<br>3</p>
+		</div>
+	</div>-->
+</div>
+<script>
+	function openOver() {
+		document.getElementById("search_overlay").style.height = "100%";
+	}
+	function closeOver() {
+		document.getElementById("search_overlay").style.height = "0";
+	}
+
+	var x = document.getElementById("number");
+	x.addEventListener("webkitAnimationEnd", closeOver);
+</script>
 
     <script src="js/vendor/jquery.js"></script>
     <script src="js/vendor/what-input.js"></script>
