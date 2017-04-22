@@ -13,8 +13,9 @@ $(document).ready(function(){
 	   var sid = $('#sid');
 	   var uname = $('#uname');
 	   var lang = $('#language');
-	    lang.attr('disabled',true);
+	   lang.attr('disabled',true);
 	   $('#fm_button').attr('disabled', true);
+	   openOver();
 	   clientSocket.emit('findMatch', {lang: lang.val(), sid: sid.val(), uname: uname.val()});
     });
 });
