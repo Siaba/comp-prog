@@ -299,7 +299,7 @@ app.post('/ForgotPassword.html', function(req, res) {
 	console.log(username);
 	var paramsgetuser = {
 		TableName:table,
-		Key: {"username" {S: username}},
+		Key: {"username": {S: username}},
 		AttributesToGet: ["username"]
 	};
 	db.getItem(paramsgetuser, function(err, data){
