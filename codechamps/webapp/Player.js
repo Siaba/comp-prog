@@ -33,6 +33,7 @@ function initSocket(){
 function bindEvents(){
 	clientSocket.on('playerJoined', playerJoined);
 	clientSocket.on('loadGame', loadGame);
+	clientSocket.on('timerUpdate', timerUpdate);
 	
 	console.log("binding events");
 }
@@ -50,6 +51,10 @@ function loadGame(data){
 function playerJoined(){
 	console.log("Player joined event");
 	
+}
+
+function timerUpdate(){
+	console.log("The timer has updated");
 }
 
 function openOver() {
