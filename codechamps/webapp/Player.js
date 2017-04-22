@@ -36,6 +36,7 @@ function bindEvents(){
 function loadGame(data){
 	console.log("loading game page data...");
 	$("#body_load").empty().append(data.page);
+	$("#overlay_content").empty().append(data.overlay_content);
 }
 
 function playerJoined(){
