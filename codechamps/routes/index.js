@@ -53,7 +53,7 @@ router.get('/Account.html', function(req, res) {
 
 console.log("The username is: " + username);
  
- if(username){
+ if(username && password){
   res.sendFile(path.join(filePath + '/webapp/Profile.html'));
   
  }
