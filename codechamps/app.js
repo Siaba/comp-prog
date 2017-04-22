@@ -188,7 +188,7 @@ app.post('/AccountSettings.html', function(req, res) {
 //Verify User-entered information
 	console.log(curUsername);
 	var paramsgetuser = {
-		TableName:user,
+		TableName:table,
 		Key: {"username" : {S: curUsername}},
 		AttributesToGet: ["username"]
 	};
@@ -206,7 +206,7 @@ app.post('/AccountSettings.html', function(req, res) {
 				switch(optionIndex) {
 					case "0": //User ONLY wishes to update username.
 					var params = {
-						TableName:user,
+						TableName:table,
 						Key:{
 							"username": curUsername
 
@@ -233,7 +233,7 @@ app.post('/AccountSettings.html', function(req, res) {
 					bcryptjs.genSalt(saltRounds, function(err, salt){
 						bcryptjs.hash(req.body.newPassword, salt, function(err, hash){
 							var params = {
-								TableName:user,
+								TableName:table,
 								Key: {
 									"username": curUsername
 								},
@@ -258,7 +258,7 @@ app.post('/AccountSettings.html', function(req, res) {
 
 					case "2": //User ONLY wishes to update email.
 					var params = {
-						TableName:user,
+						TableName:table,
 						Key:{
 							"username": curUsername
 						},
@@ -283,7 +283,7 @@ app.post('/AccountSettings.html', function(req, res) {
 					bcryptjs.genSalt(saltRounds, function(err, salt) {
 						bcryptjs.hash(req.body.newPassword, salt, function(err, hash) {
 							var params = {
-								TableName:user,
+								TableName:table,
 								Key:{
 									"username": curUsername
 								},
@@ -311,7 +311,7 @@ app.post('/AccountSettings.html', function(req, res) {
 					bcryptjs.genSalt(saltRounds, function(err, salt) {
 						bcryptjs.hash(req.body.newPassword, salt, function(err, hash){
 							var params = {
-								TableName:user,
+								TableName:table,
 								Key: {
 									"username": curUsername
 								},
