@@ -629,9 +629,10 @@ function loadDB(req, res){
 	var paramsgetuser = {
 		TableName:table
 		
+		
 	};
 	
-	db.scan(paramsgetuser, function(err, data){
+	db.query(paramsgetuser, function(err, data){
 		if(err) {
 			console.log(err);
 		}
