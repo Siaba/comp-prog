@@ -202,7 +202,7 @@ app.post('/AccountSettings.html', function(req, res) {
 				console.log("Username is not in the database.");
 			}
 			else {
-				var docClient = mew AWS.DynamoDB.DocumentClient();
+				var docClient = new AWS.DynamoDB.DocumentClient();
 				switch(optionIndex) {
 					case "0": //User ONLY wishes to update username.
 					var params = {
