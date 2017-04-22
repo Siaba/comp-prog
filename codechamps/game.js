@@ -119,7 +119,7 @@ function GameInfo(pid, pBoxid, pSockID){
         this.p2ID = "";
         this.p1BoxID = pBoxid;
         this.p2BoxID = 100000;
-        this.timeRemaining = 3000 * 60;
+        this.timeRemaining = 1000 * 10;
         this.problemSet = [];
         this.numPlayers = 1;
 	this.readyPlayers = 0;
@@ -129,8 +129,9 @@ function GameInfo(pid, pBoxid, pSockID){
 		var timer = setInterval(countDown,1000);
 		function countDown(){
 			this.timeRemaining -= 1000;
+			console.log(this.timeRemaining);
 			io.sockets.in(roomID).emit('timerUpdate');
-			if(this.timeRemaining == 0){
+			if(this.timeRemaining <= 0){
 				clearInterval(timer);
 			}
 		}
