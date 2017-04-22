@@ -240,7 +240,7 @@ app.post('/AccountSettings.html', function(req, res) { //Allows users to change 
 	break;
 
 					case "2": //User ONLY wishes to update email.
-					var params = {
+					params = {
 						TableName:table,
 						Key:{
 							"username": curUsername,
@@ -270,8 +270,10 @@ app.post('/AccountSettings.html', function(req, res) { //Allows users to change 
 						ReturnValues:"UPDATED_NEW"
 						};
 					}
-				}
-					break;
+				);
+					}
+                    );
+                    break;
 
 					case "4": //User wishes to update username, password, AND email.
 					bcryptjs.genSalt(saltRounds, function(err, salt) {
@@ -291,16 +293,11 @@ app.post('/AccountSettings.html', function(req, res) { //Allows users to change 
 						ReturnValues:"UPDATED_NEW"
 						};
 					}
-				}
-					break;
-				
-		
+				);
+					});
+                    break;
+}
 
-}
-}
-}
-}
-}
 */
 
 //getusername
