@@ -211,7 +211,7 @@ app.post('/AccountSettings.html', function(req, res) {
 							"username": curUsername
 
 						},
-						UpdateExpression: "set Item.username = :u",
+						UpdateExpression: "set username = :u",
 						ExpressionAttributeValues: {
 							":u": newUsername
 						},
@@ -237,7 +237,7 @@ app.post('/AccountSettings.html', function(req, res) {
 								Key: {
 									"username": curUsername
 								},
-								UpdateExpression: "set Item.password = :p",
+								UpdateExpression: "set password = :p",
 								ExpressionAttributeValues:{
 									":p":hash
 								},
@@ -262,7 +262,7 @@ app.post('/AccountSettings.html', function(req, res) {
 						Key:{
 							"username": curUsername
 						},
-						UpdateExpression: "set Item.email = :e",
+						UpdateExpression: "set email = :e",
 						ExpressionAttributeValues: {
 							":e": newEmail
 						},
@@ -287,7 +287,7 @@ app.post('/AccountSettings.html', function(req, res) {
 								Key:{
 									"username": curUsername
 								},
-								UpdateExpression: "set Item.username = :u, Item.password = :p",
+								UpdateExpression: "set username = :u, password = :p",
 								ExpressionAttributeValues: {
 									":n": newUsername,
 									":p": hash
@@ -315,7 +315,7 @@ app.post('/AccountSettings.html', function(req, res) {
 								Key: {
 									"username": curUsername
 								},
-								UpdateExpression: "set Item.username = :u, Item.password = :p, Item.email = :e",
+								UpdateExpression: "set username = :u, password = :p, email = :e",
 								ExpressionAttributeValues: {
 									":n": newUsername,
 									":p": hash,
