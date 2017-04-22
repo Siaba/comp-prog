@@ -39,13 +39,28 @@ function findMatch(data){
                         joinMatch(data.lang,key,data.uname,data.sid, this.id);
                         this.join(key);
 			console.log(data.uname, " (box: ", data.sid, ") joined ", data.lang, " ", key);
-                        fs.readFile('/home/ubuntu/codechamps/webapp/gamepage.txt', function(err,data) {
-                                if (!err) {
-                                        console.log('gamepage.txt read, sending to room...');
-                                        io.sockets.in(key).emit("loadGame", {page: data.toString()});
+                        fs.readFile('/home/ubuntu/codechamps/webapp/gamepage.txt', function(error,data) {
+                                if (!error) {
+					var pagedata = data.toString();
+                                        console.log('gamepage.txt read...');
+					fs.readFile('/home/ubuntu/codechamps/webapp/overlay_content.txt', function(err,data) {
+						if (!err) {
+							console.log('gamepage.txt read...');
+							io.sockets.in(key).emit("loadGame", 
+										{page: pagedata,
+										 overlay_content: data.toString(),
+										 roomID: key,
+										 lang: data.lang,
+										 socketID: this.id
+										});
+						}
+						else{
+							console.log(err);
+						}
+					});
                                 }
                                 else{
-                                        console.log(err);
+                                        console.log(error);
                                 }
                         });
                         return;
