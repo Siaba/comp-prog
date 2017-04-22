@@ -167,8 +167,6 @@ app.post('/CreateAccount.html', function(req, res) {
 	});
 });
 
-//May or may not work
-
 app.post('/AccountSettings.html', function(req, res) {
 	const saltRounds = 10;
 	var table = "user";
