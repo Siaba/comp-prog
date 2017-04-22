@@ -22,7 +22,7 @@ $(document).ready(function(){
 	   openOver();
 	   clientSocket.emit('findMatch', {lang: lang.val(), sid: sid.val(), uname: uname.val()});
     });
-	$("#number").on("webkitAnimationEnd", function () {goStyle();});
+	$("#number").on("webkitAnimationEnd", function(){console.log("webkitAnimationEnd");goStyle();});
 });
 
 
