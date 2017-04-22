@@ -22,7 +22,6 @@ $(document).ready(function(){
 	   openOver();
 	   clientSocket.emit('findMatch', {lang: lang.val(), sid: sid.val(), uname: uname.val()});
     });
-	$("#number").on("webkitAnimationEnd", function(){console.log("webkitAnimationEnd");goStyle();});
 });
 
 
@@ -45,7 +44,7 @@ function loadGame(data){
 	socketID = data.socketID;
 	$("#body_load").empty().append(data.page);
 	$("#overlay_content").empty().append(data.overlay_content);
-	
+	$("#number").on("webkitAnimationEnd", function(){console.log("webkitAnimationEnd");goStyle();});
 }
 
 function playerJoined(){
