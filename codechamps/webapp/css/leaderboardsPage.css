@@ -1,8 +1,5 @@
 body {
-
 background-image: url("diagmonds-light.png");
-
-
 }
 
 table {
@@ -13,6 +10,7 @@ table {
 	margin-left: auto;
 	margin-right: auto;
 	overflow: scroll;
+	height: 800px;
 }
 
 th{
