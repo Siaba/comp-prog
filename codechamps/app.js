@@ -217,6 +217,16 @@ app.post('/AccountSettings.html', function(req, res) {
 						},
 						ReturnValues:"UPDATED_NEW"
 					};
+					console.log("Updating the item...");
+					docClient.update(params, function(err, data){
+						if (err) {
+							console.log("Unable to update item. Error JSON:", JSON.stringify(err, null, 2));
+						}
+						else {
+							console.log("UpdateItem succeeded:", JSON.stringify(data, null, 2));
+						}
+					});
+
 					break;
 
 					case "1": //User ONLY wishes to update password
@@ -235,6 +245,15 @@ app.post('/AccountSettings.html', function(req, res) {
 							};
 						});
 					});
+					console.log("Updating the item...");
+					docClient.update(params, function(err, data){
+						if (err) {
+							console.log("Unable to update item. Error JSON:", JSON.stringify(err, null, 2));
+						}
+						else {
+							console.log("UpdateItem succeeded:", JSON.stringify(data, null, 2));
+						}
+					});
 					break;
 
 					case "2": //User ONLY wishes to update email.
@@ -249,6 +268,15 @@ app.post('/AccountSettings.html', function(req, res) {
 						},
 						ReturnValues:"UPDATED_NEW"
 					};
+					console.log("Updating the item...");
+					docClient.update(params, function(err, data){
+						if (err) {
+							console.log("Unable to update item. Error JSON:", JSON.stringify(err, null, 2));
+						}
+						else {
+							console.log("UpdateItem succeeded:", JSON.stringify(data, null, 2));
+						}
+					});
 					break;
 
 					case "3": //User wishes to update username AND password.
@@ -267,6 +295,15 @@ app.post('/AccountSettings.html', function(req, res) {
 								ReturnValues: "UPDATED_NEW"
 							};
 						});
+					});
+					console.log("Updating the item...");
+					docClient.update(params, function(err, data){
+						if (err) {
+							console.log("Unable to update item. Error JSON:", JSON.stringify(err, null, 2));
+						}
+						else {
+							console.log("UpdateItem succeeded:", JSON.stringify(data, null, 2));
+						}
 					});
 					break;
 
@@ -287,6 +324,15 @@ app.post('/AccountSettings.html', function(req, res) {
 								ReturnValues:"UPDATED_NEW"
 							};
 						});
+					});
+					console.log("Updating the item...");
+					docClient.update(params, function(err, data){
+						if (err) {
+							console.log("Unable to update item. Error JSON:", JSON.stringify(err, null, 2));
+						}
+						else {
+							console.log("UpdateItem succeeded:", JSON.stringify(data, null, 2));
+						}
 					});
 					break;
 				}//Switch end bracket
