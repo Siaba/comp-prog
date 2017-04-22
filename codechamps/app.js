@@ -168,8 +168,8 @@ app.post('/CreateAccount.html', function(req, res) {
 });
 
 //May or may not work
-
-/*app.post('/AccountSettings.html', function(req, res) { //Allows users to change account settings.
+/*
+app.post('/AccountSettings.html', function(req, res) { //Allows users to change account settings.
 	const saltRounds = 10;
 	var table = "user";
 	var firstName = req.body.first_name; //Gets the first name of the user.
