@@ -65,5 +65,5 @@ function goStyle() {
 	$("#ready").css("color", "gray");
 	$("#go").css("color", "white");
 	setTimeout(function(){closeOver();}, 1000);
-	clientSocket.emit('clientReady', {roomID: roomID, lang: language});
+	clientSocket.emit('playerReady', {roomID: roomID, lang: language});
 }
