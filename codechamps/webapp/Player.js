@@ -22,6 +22,9 @@ $(document).ready(function(){
 	   openOver();
 	   clientSocket.emit('findMatch', {lang: lang.val(), sid: sid.val(), uname: uname.val()});
     });
+	var x = document.getElementById("number");
+	$("#number").on("webkitAnimationEnd", function () {goStyle();});
+
 });
 
 
@@ -64,5 +67,3 @@ function goStyle() {
 	setTimeout(function(){closeOver();}, 1000);
 	clientSocket.emit('clientReady', {roomID: roomID, lang: language});
 }
-var x = document.getElementById("number");
-x.addEventListener("webkitAnimationEnd", goStyle);
