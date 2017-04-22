@@ -1,4 +1,8 @@
 var clientSocket;
+var language;
+var roomID;
+var socketID;
+
 
 $(document).ready(function(){
     initSocket();
@@ -35,11 +39,30 @@ function bindEvents(){
 
 function loadGame(data){
 	console.log("loading game page data...");
+	language = data.lang;
+	roomID = data.roomID;
+	socketID = data.socketID;
 	$("#body_load").empty().append(data.page);
 	$("#overlay_content").empty().append(data.overlay_content);
+	
 }
 
 function playerJoined(){
 	console.log("Player joined event");
 	
 }
+
+function openOver() {
+	$("#search_overlay").style.height = "100%";
+}
+function closeOver() {
+	$("#search_overlay").style.height = "0";
+}
+function goStyle() {
+	$("#ready").style.color = "gray";
+	$("#go").style.color = "white";
+	setTimeout(function(){closeOver();}, 1000);
+	clientSocket.emit('clientReady', {roomID: roomID, lang: language});
+}
+var x = document.getElementById("number");
+x.addEventListener("webkitAnimationEnd", goStyle);
