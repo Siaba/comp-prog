@@ -96,6 +96,7 @@ function playerReady(data){
 	if(matches[data.lang][data.roomID].readyPlayers == 2){
 		//emit game start event	
 		console.log("both clients are ready");
+		matches[data.lang][data.roomID].time(data.roomID);
 	}
 }
 
@@ -122,4 +123,16 @@ function GameInfo(pid, pBoxid, pSockID){
         this.problemSet = [];
         this.numPlayers = 1;
 	this.readyPlayers = 0;
+	
+	this.time = function(rid){
+		var roomID = rid;
+		var timer = setInterval(countDown,1000);
+		function countDown(){
+			this.timeRemaining -= 1000;
+			io.sockets.in(roomID).emit('timerUpdate');
+			if(this.timeRemaining == 0){
+				clearInterval(timer);
+			}
+		}
+	}
 }
