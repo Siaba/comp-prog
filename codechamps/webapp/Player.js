@@ -57,8 +57,7 @@ function playerJoined(){
 function timerUpdate(data){
 	console.log("The timer has updated");
 	time = new Date(1000*Math.round(data.time/1000));
-	minsec = time.getUTCMinutes() + ":" + time.getUTCSeconds();
-	console.log(minsec);
+	minsec = time.getUTCMinutes() + ":" + time.getUTCSeconds().toPrecision(2);
 	$("#timer").html(minsec);
 }
 
