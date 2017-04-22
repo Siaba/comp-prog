@@ -175,7 +175,6 @@ app.post('/AccountSettings.html', function(req, res) {
 	var curUsername = req.body.user_name; //Gets the current username of the user.
 	var optionIndex = req.body.user_changes; //Gets the index of what the user is changing.
 	var oldUsername = req.body.old_user_name;
-	var newUsername = req.body.new_user_name;
 	var oldEmail = req.body.old_user_email;
 	var newEmail = req.body.new_user_email;
 	var newEmailReentered = req.body.new_user_reentered_email;
@@ -283,6 +282,62 @@ app.post('/AccountSettings.html', function(req, res) {
 				});
 					break;
 				}//Switch end bracket
+			}
+		}
+	});
+res.redirect('/Home.html');
+});
+
+app.post('/ForgotPassword.html', function(req, res) {
+	const saltRounds = 10;
+	var table = "user";
+	var username = req.body.user_name;
+	var email = req.body.user_email;
+
+	var db = new AWS.DynamoDB();
+
+	console.log(username);
+	var paramsgetuser = {
+		TableName:table,
+		Key: {"username" {S: username}},
+		AttributesToGet: ["username"]
+	};
+	db.getItem(paramsgetuser, function(err, data){
+		if(err) {
+			console.log(err);
+		}
+		else {
+			console.log(data);
+			if(data.Item == null) {
+				console.log("Username is not in the database.");
+			}
+			else {
+				var docClient = new AWS.DynamoDB.DocumentClient();
+				bcryptjs.genSalt(saltRounds, function(err, salt){
+						bcryptjs.hash(req.body.new_user_password, salt, function(err, hash){
+							var params = {
+								TableName:table,
+								Key: {
+									"username": username
+								},
+								UpdateExpression: "set password = :p",
+								ExpressionAttributeValues:{
+									":p": hash
+								},
+								ReturnValues:"UPDATED_NEW"
+							};
+											
+					console.log("Updating the item...");
+					docClient.update(params, function(err, data){
+						if (err) {
+							console.log("Unable to update item. Error JSON:", JSON.stringify(err, null, 2));
+						}
+						else {
+							console.log("UpdateItem succeeded:", JSON.stringify(data, null, 2));
+						}
+						});
+					});
+				});
 			}
 		}
 	});
