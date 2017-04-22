@@ -1,12 +1,12 @@
-
-<div class="large-8 columns" size=2>
-		  <select name="problems" id="problems">
-		   <option value="helloworld">Hello World</option>
-		   <option value="">Recursion</option>
-		   <option value="fibonacci">Fibonacci</option>
-		   <option value="reversestring">Reverse String</option>
-		   <option value="wordcount">Word Count</option>
-		  </select>
+<div class="large-8 medium-8 columns">
+			<div><table border="border"><tr><td><span id="pname">PROBLEM NAME</span></td></tr></table></div>
+		</div>
+		<div class="large-2 medium-2 columns">
+			<div class="callout" style="height: 132px;">Score</div>
+		</div>
+		<div class="large-2 medium-2 columns">
+			<div class="button" style="width:100%;">Forfeit</div>
+			<div class="callout">Time: <span id="timer">3:00</span></div>
 		</div>
 		<div class="large-8 medium-8 columns">
 			<div class="row">
@@ -14,7 +14,6 @@
 					<pre id="editor">
 					</pre>
 				</div>
-
 				<form method="post" id="aceform">
 					<input type="hidden" id="aceinput"  name="comments" value=""/>
 					<div class="small-2 columns">
@@ -37,75 +36,18 @@
 					+ "\n}");
 		</script>
 		<div class="large-4 medium-4 columns">
-			<div class="callout">
-				<h5>Their output:</h5>
-				<p><font face="monospace">Example output</font></p>
-				<style>
-					#theirProgress {
-					  width: 100%;
-					  height: 10px;
-					  background-color: #ddd;
-					}
-
-					#theirBar {
-					  width: 60%;
-					  height: 100%;
-					  background-color: #4CAF50;
-					}
-				</style>
-				<body>
-				<p>Test cases:</p>
-				<div id="theirProgress">
-					<div id="theirBar"></div>
-				</div>
-				<script>
-					function moveTheirBar() {
-					  var elem = document.getElementById("theirBar");   
-					  var width = 1;
-					  var id = setInterval(frame, 10);
-					  function frame() {
-						if (width >= 100) {
-						  clearInterval(id);
-						} else {
-						  width++; 
-						  elem.style.width = width + '%'; 
-						}
-					  }
-					}
-				</script>
-				<br><hr/>
-				<h5>Your output:</h5>
-				<p><font face="monospace">Example output</font></p>
-				<p>Test cases:</p>
-				<style>
-					#yourProgress {
-					  width: 100%;
-					  height: 10px;
-					  background-color: #ddd;
-					}
-					#yourBar {
-					  width: 1%;
-					  height: 100%;
-					  background-color: #4CAF50;
-					}
-				</style>
-					<div id="yourProgress">
-						<div id="yourBar"></div>
+			<div class="row">
+				<div class="large-12 medium-12 columns">
+					<div class="callout">
+						Description:
 					</div>
-				<script>
-					function moveYourBar() {
-					  var elem = document.getElementById("yourBar");   
-					  var width = 1;
-					  var id = setInterval(frame, 10);
-					  function frame() {
-						if (width >= 100) {
-						  clearInterval(id);
-						} else {
-						  width++; 
-						  elem.style.width = width + '%'; 
-						}
-					  }
-					}
-				</script>
+				</div>
+			</div>
+			<div class="row">
+				<div class="large-12 medium-12 columns">
+					<div class="callout">
+						Output/stderr:
+					</div>
+				</div>
 			</div>
 		</div>
