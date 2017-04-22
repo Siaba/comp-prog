@@ -2,7 +2,8 @@ var clientSocket;
 var language;
 var roomID;
 var socketID;
-
+var time;
+var minsec;
 
 $(document).ready(function(){
     initSocket();
@@ -53,8 +54,11 @@ function playerJoined(){
 	
 }
 
-function timerUpdate(){
+function timerUpdate(data){
 	console.log("The timer has updated");
+	time = new Date(1000*Math.round(data.time/1000));
+	minsec = time.getUTCMinutes() + ":" + time.getUTCSeconds();
+	$("#timer").val(minsec);
 }
 
 function openOver() {
