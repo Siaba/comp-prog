@@ -128,7 +128,7 @@ function GameInfo(pid, pBoxid, pSockID){
 		var roomID = rid;
 		var timer = setInterval(()=>{this.timeRemaining -= 1000;
 			console.log(this.timeRemaining);
-			io.sockets.in(roomID).emit('timerUpdate');
+			io.sockets.in(roomID).emit('timerUpdate', {time:this.timeRemaining, score1:this.p1Score, score2:this.p2Score});
 			if(this.timeRemaining <= 0){
 				clearInterval(timer);
 			}},1000);
