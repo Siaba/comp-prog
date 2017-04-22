@@ -92,8 +92,10 @@ function playerLeft(){
 
 function playerReady(data){
 	matches[data.lang][data.roomID].readyPlayers++;
+	console.log("A client is ready");
 	if(matches[data.lang][data.roomID].readyPlayers == 2){
 		//emit game start event	
+		console.log("both clients are ready");
 	}
 }
 
