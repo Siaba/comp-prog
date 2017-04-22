@@ -94,27 +94,30 @@
 	<a href="javascript:void(0)" class="xbutton" onclick="closeOver()">
 		<i class="fi-x"></i>
 	</a>
-	<div class="loading">
+	<!--<div class="loading">
 		<div class="text">
 			Searching&#8230;
 		</div>
-	</div>
+	</div>-->
 	
-	<!--
+	
 	<div class="countdown">
 		<div class="number" id="number">
 			<p>1<br>2<br>3</p>
 		</div>
-	</div>-->
+	</div>
 </div>
 <script>
 	function openOver() {
 		document.getElementById("search_overlay").style.height = "100%";
 	}
 	function closeOver() {
-		document.getElementById("search_overlay").style.height = "0";
+		document.getElementById("ready").style.color = "gray";
+		document.getElementById("go").style.color = "white";
+		setTimeout(function(){
+			document.getElementById("search_overlay").style.height = "0";
+		}, 1000);
 	}
-
 	var x = document.getElementById("number");
 	x.addEventListener("webkitAnimationEnd", closeOver);
 </script>
