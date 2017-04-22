@@ -208,7 +208,7 @@ app.post('/AccountSettings.html', function(req, res) {
 					var params = {
 						TableName:table,
 						Key:{
-							"username": curUsername,
+							"username": curUsername
 
 						},
 						updateExpression: "set Item.username = :u",
@@ -225,7 +225,7 @@ app.post('/AccountSettings.html', function(req, res) {
 							var params = {
 								TableName:table,
 								Key: {
-									"username": curUsername,
+									"username": curUsername
 								},
 								updateExpression: "set Item.password = :p",
 								ExpressionAttributeValues:{
