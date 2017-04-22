@@ -206,12 +206,12 @@ app.post('/AccountSettings.html', function(req, res) {
 				switch(optionIndex) {
 					case "0": //User ONLY wishes to update username.
 					var params = {
-						TableName:table,
+						TableName:user,
 						Key:{
 							"username": curUsername
 
 						},
-						updateExpression: "set Item.username = :u",
+						UpdateExpression: "set Item.username = :u",
 						ExpressionAttributeValues: {
 							":u": newUsername
 						},
@@ -233,13 +233,13 @@ app.post('/AccountSettings.html', function(req, res) {
 					bcryptjs.genSalt(saltRounds, function(err, salt){
 						bcryptjs.hash(req.body.newPassword, salt, function(err, hash){
 							var params = {
-								TableName:table,
+								TableName:user,
 								Key: {
 									"username": curUsername
 								},
-								updateExpression: "set Item.password = :p",
+								UpdateExpression: "set Item.password = :p",
 								ExpressionAttributeValues:{
-									":p":hash,
+									":p":hash
 								},
 								ReturnValues:"UPDATED_NEW"
 							};
@@ -258,13 +258,13 @@ app.post('/AccountSettings.html', function(req, res) {
 
 					case "2": //User ONLY wishes to update email.
 					var params = {
-						TableName:table,
+						TableName:user,
 						Key:{
 							"username": curUsername
 						},
-						updateExpression: "set Item.email = :e",
+						UpdateExpression: "set Item.email = :e",
 						ExpressionAttributeValues: {
-							":e": newEmail,
+							":e": newEmail
 						},
 						ReturnValues:"UPDATED_NEW"
 					};
@@ -283,11 +283,11 @@ app.post('/AccountSettings.html', function(req, res) {
 					bcryptjs.genSalt(saltRounds, function(err, salt) {
 						bcryptjs.hash(req.body.newPassword, salt, function(err, hash) {
 							var params = {
-								TableName:table,
+								TableName:user,
 								Key:{
 									"username": curUsername
 								},
-								updateExpression: "set Item.username = :u, Item.password = :p",
+								UpdateExpression: "set Item.username = :u, Item.password = :p",
 								ExpressionAttributeValues: {
 									":n": newUsername,
 									":p": hash
@@ -311,11 +311,11 @@ app.post('/AccountSettings.html', function(req, res) {
 					bcryptjs.genSalt(saltRounds, function(err, salt) {
 						bcryptjs.hash(req.body.newPassword, salt, function(err, hash){
 							var params = {
-								TableName:table,
+								TableName:user,
 								Key: {
 									"username": curUsername
 								},
-								updateExpression: "set Item.username = :u, Item.password = :p, Item.email = :e",
+								UpdateExpression: "set Item.username = :u, Item.password = :p, Item.email = :e",
 								ExpressionAttributeValues: {
 									":n": newUsername,
 									":p": hash,
