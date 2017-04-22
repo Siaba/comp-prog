@@ -60,8 +60,12 @@ function closeOver() {
 	$("#search_overlay").css("height", "0");
 }
 function goStyle() {
+	console.log("goStyle called");
 	$("#ready").css("color", "gray");
 	$("#go").css("color", "white");
+	console.log("ready & go colors changed");
 	setTimeout(function(){closeOver();}, 1000);
+	console.log("time elapsed: close overlay");
 	clientSocket.emit('playerReady', {roomID: roomID, lang: language});
+	console.log("playerReady client emit made");
 }
