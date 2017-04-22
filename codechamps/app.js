@@ -204,32 +204,8 @@ app.post('/AccountSettings.html', function(req, res) {
 			else {
 				var docClient = new AWS.DynamoDB.DocumentClient();
 				switch(optionIndex) {
-					case "0": //User ONLY wishes to update username.
-					var params = {
-						TableName:table,
-						Key:{
-							"username": curUsername
 
-						},
-						UpdateExpression: "set username = :u",
-						ExpressionAttributeValues: {
-							":u": newUsername
-						},
-						ReturnValues:"UPDATED_NEW"
-					};
-					console.log("Updating the item...");
-					docClient.update(params, function(err, data){
-						if (err) {
-							console.log("Unable to update item. Error JSON:", JSON.stringify(err, null, 2));
-						}
-						else {
-							console.log("UpdateItem succeeded:", JSON.stringify(data, null, 2));
-						}
-					});
-
-					break;
-
-					case "1": //User ONLY wishes to update password
+					case "0": //User ONLY wishes to update password
 					bcryptjs.genSalt(saltRounds, function(err, salt){
 						bcryptjs.hash(req.body.new_user_password, salt, function(err, hash){
 							var params = {
@@ -257,7 +233,7 @@ app.post('/AccountSettings.html', function(req, res) {
 				});
 					break;
 
-					case "2": //User ONLY wishes to update email.
+					case "1": //User ONLY wishes to update email.
 					var params = {
 						TableName:table,
 						Key:{
@@ -280,17 +256,17 @@ app.post('/AccountSettings.html', function(req, res) {
 					});
 					break;
 
-					case "3": //User wishes to update username AND password.
+					case "2": //User wishes to update email AND password.
 					bcryptjs.genSalt(saltRounds, function(err, salt) {
-						bcryptjs.hash(req.body.newPassword, salt, function(err, hash) {
+						bcryptjs.hash(req.body.new_user_password, salt, function(err, hash) {
 							var params = {
 								TableName:table,
 								Key:{
 									"username": curUsername
 								},
-								UpdateExpression: "set username = :u, password = :p",
+								UpdateExpression: "set email = :e, password = :p",
 								ExpressionAttributeValues: {
-									":n": newUsername,
+									":e": newEmail,
 									":p": hash
 								},
 								ReturnValues: "UPDATED_NEW"
