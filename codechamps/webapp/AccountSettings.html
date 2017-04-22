@@ -67,7 +67,6 @@
         <h1>Account Settings</h1>
                 <p>* Required Fields</p>
 
-
         
         <fieldset>
           <legend>Enter the info that you wish to change: </legend>
@@ -86,20 +85,11 @@
           <label for="change">* What you Wish to Update (please select from the following):</label>
         <select id="changeWhat" name="user_changes" onClick="hiddenValue()">
           <optgroup label="What to Change">
-            <option value= "0">Change Username Only</option>
-            <option value="1">Change Password Only</option>
-            <option value="2">Change Email Only</option>
-            <option value="3">Change Username and Password</option>
-            <option value="4">Change Username, Password, and Email
+            <option value="0">Change Password Only</option>
+            <option value="1">Change Email Only</option>
+            <option value="2">Change Email and Password</option>
           </optgroup>
         </select>
-          <label for="name" id="oldUsernameLabel" class="hidden">Old Username:</label>
-          <input type="hidden" id="oldUsername" name="old_user_name" onblur="validUsername()">
-          <p id="usernameWrong"></p>
-
-          <label for="name" id="newUsernameLabel" class="hidden">New Username:</label>
-          <input type="hidden" id="newUsername" name="new_user_name" onblur="validUsernameNew()">
-          <p id="newUsernameWrong"></p>
 
           <label for="email" id="oldMailLabel" class="hidden">Old Email:</label>
           <input type="hidden" id="oldMail" name="old_user_email" onblur="checkFirstEmail()">
@@ -120,11 +110,13 @@
           <label for="password" id="newPasswordLabel" class="hidden">New Password:</label>
           <input type="hidden" id="new_password" name="new_user_password" onblur="checkFirstPassword()">
           <p id="newPasswordWrong"></p>
+
           <label for="password" id="reNewPasswordLabel" class="hidden">Reenter New Password:</label>
           <input type="hidden" id="new_password_reentered" name="new_user_confirm_password" onblur="checkPassword()">
           <p id="passwordWrong"></p>
+          
         </fieldset>
-        <button type="submit">Save</button>
+        <input type="submit">Save</button>
         </form>
   </div>
 
