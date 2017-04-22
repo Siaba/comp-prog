@@ -233,8 +233,8 @@ app.post('/AccountSettings.html', function(req, res) {
 								},
 								ReturnValues:"UPDATED_NEW"
 							};
-						})
-					})
+						});
+					});
 					break;
 
 					case "2": //User ONLY wishes to update email.
@@ -266,8 +266,8 @@ app.post('/AccountSettings.html', function(req, res) {
 								},
 								ReturnValues: "UPDATED_NEW"
 							};
-						})
-					})
+						});
+					});
 					break;
 
 					case "4": //User wishes to update username, password, AND email.
@@ -286,14 +286,15 @@ app.post('/AccountSettings.html', function(req, res) {
 								},
 								ReturnValues:"UPDATED_NEW"
 							};
-						})
-					})
+						});
+					});
 					break;
 				}//Switch end bracket
 			}
 		}
-	})
-})
+	});
+res.end;
+});
 
 
 //getusername
