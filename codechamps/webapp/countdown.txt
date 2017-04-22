@@ -1,0 +1,1 @@
+<div class="countdown"><div class="number" id="number"><p>1<br>2<br>3</p></div></div><div class="outer"><div class="readytext"><p id="ready" style="color: white;line-height:15px;font-family: consolas;">Get Ready</p><p id="go" style="color: gray;line-height:15px;font-family: consolas;">Go!</p></div></div>
