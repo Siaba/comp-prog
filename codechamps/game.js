@@ -10,6 +10,7 @@ exports.initGame = function(siolib, socket){
         socket.on('newGame', newGame);
         socket.on('findMatch', findMatch);
         socket.on('playerLeft', playerLeft);
+	socket.on('playerReady', playerReady);
 }
     
 
@@ -71,6 +72,13 @@ function newGame(){
 
 function playerLeft(){
         
+}
+
+function playerReady(data){
+	matches[data.lang][data.roomID].readyPlayers++;
+	if(matches[data.lang][data.roomID].readyPlayers == 2){
+		//emit game start event	
+	}
 }
 
 //stores references to all of the game objects and matches going on
