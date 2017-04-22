@@ -339,7 +339,7 @@ app.post('/AccountSettings.html', function(req, res) {
 			}
 		}
 	});
-res.end;
+res.end();
 });
 
 
