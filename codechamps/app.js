@@ -269,8 +269,7 @@ app.post('/AccountSettings.html', function(req, res) {
 								},
 								ReturnValues: "UPDATED_NEW"
 							};
-						});
-					});
+						
 					console.log("Updating the item...");
 					docClient.update(params, function(err, data){
 						if (err) {
@@ -279,36 +278,9 @@ app.post('/AccountSettings.html', function(req, res) {
 						else {
 							console.log("UpdateItem succeeded:", JSON.stringify(data, null, 2));
 						}
-					});
-					break;
-
-					case "4": //User wishes to update username, password, AND email.
-					bcryptjs.genSalt(saltRounds, function(err, salt) {
-						bcryptjs.hash(req.body.newPassword, salt, function(err, hash){
-							var params = {
-								TableName:table,
-								Key: {
-									"username": curUsername
-								},
-								UpdateExpression: "set username = :u, password = :p, email = :e",
-								ExpressionAttributeValues: {
-									":n": newUsername,
-									":p": hash,
-									":e": newEmail
-								},
-								ReturnValues:"UPDATED_NEW"
-							};
 						});
 					});
-					console.log("Updating the item...");
-					docClient.update(params, function(err, data){
-						if (err) {
-							console.log("Unable to update item. Error JSON:", JSON.stringify(err, null, 2));
-						}
-						else {
-							console.log("UpdateItem succeeded:", JSON.stringify(data, null, 2));
-						}
-					});
+				});
 					break;
 				}//Switch end bracket
 			}
