@@ -188,7 +188,7 @@ app.post('/AccountSettings.html', function(req, res) {
 //Verify User-entered information
 	console.log(curUsername);
 	var paramsgetuser = {
-		TableName:table,
+		TableName:user,
 		Key: {"username" : {S: curUsername}},
 		AttributesToGet: ["username"]
 	};
