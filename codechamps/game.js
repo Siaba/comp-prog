@@ -44,7 +44,7 @@ function findMatch(data){
                                 if (!error) {
 					var pagedata = data.toString();
                                         console.log('gamepage.txt read...');
-					fs.readFile('/home/ubuntu/codechamps/webapp/overlay_content.txt', function(err,data) {
+					fs.readFile('/home/ubuntu/codechamps/webapp/countdown.txt', function(err,data) {
 						if (!err) {
 							console.log('gamepage.txt read...');
 							io.sockets.in(key).emit("loadGame", 
