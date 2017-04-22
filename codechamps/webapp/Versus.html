@@ -83,7 +83,7 @@
 						<option value="python">Python</option>
 					</select>
 					</div>
-					<input type="submit" class="button" value="Find Match" id="fm_button" onclick="openOver()">
+					<input type="submit" class="button" value="Find Match" id="fm_button">
 				</form>
 				
 			</div>
@@ -94,13 +94,15 @@
 	<a href="javascript:void(0)" class="xbutton" onclick="closeOver()">
 		<i class="fi-x"></i>
 	</a>
-	<!--<div class="loading">
-		<div class="text">
-			Searching&#8230;
+	<div id="overlay_content">
+		<div class="loading">
+			<div class="text">
+				Searching&#8230;
+			</div>
 		</div>
-	</div>-->
+	</div>
 	
-	
+	<!--
 	<div class="countdown">
 		<div class="number" id="number">
 			<p>1<br>2<br>3</p>
@@ -111,7 +113,7 @@
 			<p id="ready" style="color: white;line-height:15px;font-family: consolas;">Get Ready</p>
 			<p id="go" style="color: gray;line-height:15px;font-family: consolas;">Go!</p>
 		</div>
-	</div>
+	</div>-->
 </div>
 <script>
 	function openOver() {
