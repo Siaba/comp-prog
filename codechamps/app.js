@@ -231,7 +231,7 @@ app.post('/AccountSettings.html', function(req, res) {
 
 					case "1": //User ONLY wishes to update password
 					bcryptjs.genSalt(saltRounds, function(err, salt){
-						bcryptjs.hash(req.body.newPassword, salt, function(err, hash){
+						bcryptjs.hash(req.body.new_user_password, salt, function(err, hash){
 							var params = {
 								TableName:table,
 								Key: {
@@ -342,7 +342,6 @@ app.post('/AccountSettings.html', function(req, res) {
 	});
 res.redirect('/Home.html');
 });
-
 
 //getusername
 app.post('/getUserName', function(req, res){
