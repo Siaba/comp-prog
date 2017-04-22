@@ -58,7 +58,8 @@ function timerUpdate(data){
 	console.log("The timer has updated");
 	time = new Date(1000*Math.round(data.time/1000));
 	minsec = time.getUTCMinutes() + ":" + time.getUTCSeconds();
-	$("#timer").val(minsec);
+	console.log(minsec);
+	$("#timer").html(minsec);
 }
 
 function openOver() {
