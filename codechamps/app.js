@@ -169,7 +169,7 @@ app.post('/CreateAccount.html', function(req, res) {
 
 //May or may not work
 /*
-app.post('/AccountSettings.html', function(req, res) { //Allows users to change account settings.
+app.post('/AccountSettings.html', function(req, res) {
 	const saltRounds = 10;
 	var table = "user";
 	var firstName = req.body.first_name; //Gets the first name of the user.
@@ -185,119 +185,115 @@ app.post('/AccountSettings.html', function(req, res) { //Allows users to change 
 	var newPassword = null;
 	var newPasswordReentered = null;
 	var db = new AWS.DynamoDB();
-
-	//Verify User-entered information
-	console.log(username);
+//Verify User-entered information
+	console.log(curUsername);
 	var paramsgetuser = {
 		TableName:table,
-		Key : {"username" : {S: username}},
-		AttributesToGet: [ "username" ]
+		Key: {"username" : {S: username}},
+		AttributesToGet: ["username"]
 	};
-
 	db.getItem(paramsgetuser, function(err, data) {
 		if(err) {
 			console.log(err);
 		}
 		else {
 			console.log(data);
-			if(data.Item == null) { //Executes when the user is not found in the database.
+			if(data.Item == null) {
 				console.log("Username is not in the database.");
 			}
-			else { //Executes when the user is found in the database.
-				var docClient = new AWS.DynamoDB.DocumentClient();
-				switch (optionIndex) {
+			else {
+				var docClient = mew AWS.DynamoDB.DocumentClient();
+				switch(optionIndex) {
 					case "0": //User ONLY wishes to update username.
 					var params = {
 						TableName:table,
 						Key:{
 							"username": curUsername,
+
 						},
 						updateExpression: "set Item.username = :u",
 						ExpressionAttributeValues: {
 							":u": newUsername
 						},
 						ReturnValues:"UPDATED_NEW"
-						};
+					};
 					break;
 
-					case "1": //User ONLY wishes to update password.
-					bcryptjs.genSalt(saltRounds, function(err, salt) {
-					bcryptjs.hash(req.body.newPassword, salt, function(err, hash){
-					var params = {
-    				TableName:table,
-    				Key:{
-        				"username": curUsername,
-    				},
-    				UpdateExpression: "set Item.password = :p",
-    				ExpressionAttributeValues:{
-       				":p":hash,
-    				},
-    				ReturnValues:"UPDATED_NEW"
-				};
-				}
-				)		
-				})
-	break;
+					case "1": //User ONLY wishes to update password
+					bcryptjs.genSalt(saltRounds, function(err, salt){
+						bcryptjs.hash(req.body.newPassword, salt, function(err, hash){
+							var params = {
+								TableName:table,
+								Key: {
+									"username": curUsername,
+								},
+								updateExpression: "set Item.password = :p",
+								ExpressionAttributeValues:{
+									":p":hash,
+								},
+								ReturnValues:"UPDATED_NEW"
+							};
+						})
+					})
+					break;
 
 					case "2": //User ONLY wishes to update email.
-					params = {
+					var params = {
 						TableName:table,
 						Key:{
-							"username": curUsername,
+							"username": curUsername
 						},
 						updateExpression: "set Item.email = :e",
 						ExpressionAttributeValues: {
 							":e": newEmail,
 						},
 						ReturnValues:"UPDATED_NEW"
-						};
+					};
 					break;
 
 					case "3": //User wishes to update username AND password.
 					bcryptjs.genSalt(saltRounds, function(err, salt) {
-					bcryptjs.hash(req.body.newPassword, salt, function(err, hash){
-					var params = {
-						
-						TableName:table,
-						Key:{
-							"username": curUsername,
-						},
-						updateExpression: "set Item.username = :u, Item.password = :p",
-						ExpressionAttributeValues: {
-							":n": newUsername,
-							":p": hash,
-						},
-						ReturnValues:"UPDATED_NEW"
-						};
-					}
-				);
-					}
-                    );
-                    break;
+						bcryptjs.hash(req.body.newPassword, salt, function(err, hash) {
+							var params = {
+								TableName:table,
+								Key:{
+									"username": curUsername
+								},
+								updateExpression: "set Item.username = :u, Item.password = :p",
+								ExpressionAttributeValues: {
+									":n": newUsername,
+									":p": hash
+								},
+								ReturnValues: "UPDATED_NEW"
+							};
+						})
+					})
+					break;
 
 					case "4": //User wishes to update username, password, AND email.
 					bcryptjs.genSalt(saltRounds, function(err, salt) {
-					bcryptjs.hash(req.body.newPassword, salt, function(err, hash){
-					var params = {
-						
-						TableName:table,
-						Key:{
-							"username": curUsername,
-						},
-						updateExpression: "set Item.username = :u, Item.password = :p, Item.email = :e",
-						ExpressionAttributeValues: {
-							":n": newUsername,
-							":p": hash,
-							":e": newEmail,
-						},
-						ReturnValues:"UPDATED_NEW"
-						};
-					}
-				);
-					});
-                    break;
-}
-
+						bcryptjs.hash(req.body.newPassword, salt, function(err, hash){
+							var params = {
+								TableName:table,
+								Key: {
+									"username": curUsername
+								},
+								updateExpression: "set Item.username = :u, Item.password = :p, Item.email = :e",
+								ExpressionAttributeValues: {
+									":n": newUsername,
+									":p": hash,
+									":e": newEmail
+								},
+								ReturnValues:"UPDATED_NEW"
+							};
+						})
+					})
+					break;
+				}//Switch end bracket
+			}
+		}
+	})
+})
 */
 
 //getusername
