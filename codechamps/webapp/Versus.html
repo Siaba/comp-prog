@@ -115,21 +115,6 @@
 		</div>
 	</div>-->
 </div>
-<script>
-	function openOver() {
-		document.getElementById("search_overlay").style.height = "100%";
-	}
-	function closeOver() {
-		document.getElementById("search_overlay").style.height = "0";
-	}
-	function goStyle() {
-		document.getElementById("ready").style.color = "gray";
-		document.getElementById("go").style.color = "white";
-		setTimeout(function(){closeOver();}, 1000);
-	}
-	var x = document.getElementById("number");
-	x.addEventListener("webkitAnimationEnd", goStyle);
-</script>
 
     <script src="js/vendor/jquery.js"></script>
     <script src="js/vendor/what-input.js"></script>
