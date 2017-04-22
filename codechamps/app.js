@@ -189,7 +189,7 @@ app.post('/AccountSettings.html', function(req, res) {
 	console.log(curUsername);
 	var paramsgetuser = {
 		TableName:table,
-		Key: {"username" : {S: username}},
+		Key: {"username" : {S: curUsername}},
 		AttributesToGet: ["username"]
 	};
 	db.getItem(paramsgetuser, function(err, data) {
