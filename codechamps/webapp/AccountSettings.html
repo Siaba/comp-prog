@@ -90,18 +90,6 @@
             <option value="2">Change Email and Password</option>
           </optgroup>
         </select>
-
-          <label for="email" id="oldMailLabel" class="hidden">Old Email:</label>
-          <input type="hidden" id="oldMail" name="old_user_email" onblur="checkFirstEmail()">
-          <p id="originalEmailWrong"></p>
-
-          <label for="email" id="mailLabel" class="hidden">New Email:</label>
-          <input type="hidden" id="theMail" name="new_user_email" onblur="checkNewEmailFirst()">
-          <p id="newEmailWrong"></p>
-
-          <label for="email" id="reMailLabel" class="hidden">Reenter New Email:</label>
-          <input type="hidden" id="reMail" name="new_user_reentered_email" onblur="checkEmail()">
-          <p id="emailWrong"></p>
           
           <label for="password" id="oldPasswordLabel" class="hidden">Old Password:</label>
           <input type="hidden" id="old_password" name="old_user_password" onblur="checkOldPassword()">
@@ -114,7 +102,19 @@
           <label for="password" id="reNewPasswordLabel" class="hidden">Reenter New Password:</label>
           <input type="hidden" id="new_password_reentered" name="new_user_confirm_password" onblur="checkPassword()">
           <p id="passwordWrong"></p>
-          
+
+          <label for="email" id="oldMailLabel" class="hidden">Old Email:</label>
+          <input type="hidden" id="oldMail" name="old_user_email" onblur="checkFirstEmail()">
+          <p id="originalEmailWrong"></p>
+
+          <label for="email" id="mailLabel" class="hidden">New Email:</label>
+          <input type="hidden" id="theMail" name="new_user_email" onblur="checkNewEmailFirst()">
+          <p id="newEmailWrong"></p>
+
+          <label for="email" id="reMailLabel" class="hidden">Reenter New Email:</label>
+          <input type="hidden" id="reMail" name="new_user_reentered_email" onblur="checkEmail()">
+          <p id="emailWrong"></p>
+
         </fieldset>
         <input type="submit">Save</button>
         </form>
