@@ -106,20 +106,27 @@
 			<p>1<br>2<br>3</p>
 		</div>
 	</div>
+	<div class="outer">
+		<div class="readytext">
+			<p id="ready" style="color: white;line-height:15px;font-family: consolas;">Get Ready</p>
+			<p id="go" style="color: gray;line-height:15px;font-family: consolas;">Go!</p>
+		</div>
+	</div>
 </div>
 <script>
 	function openOver() {
 		document.getElementById("search_overlay").style.height = "100%";
 	}
 	function closeOver() {
+		document.getElementById("search_overlay").style.height = "0";
+	}
+	function goStyle() {
 		document.getElementById("ready").style.color = "gray";
 		document.getElementById("go").style.color = "white";
-		setTimeout(function(){
-			document.getElementById("search_overlay").style.height = "0";
-		}, 1000);
+		setTimeout(function(){closeOver();}, 1000);
 	}
 	var x = document.getElementById("number");
-	x.addEventListener("webkitAnimationEnd", closeOver);
+	x.addEventListener("webkitAnimationEnd", goStyle);
 </script>
 
     <script src="js/vendor/jquery.js"></script>
