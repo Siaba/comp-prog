@@ -178,7 +178,7 @@ app.post('/AccountSettings.html', function(req, res) {
 	var optionIndex = req.body.user_changes; //Gets the index of what the user is changing.
 	var oldUsername = req.body.old_user_name;
 	var newUsername = req.body.new_user_name;
-	var oldEmail = old_user_email;
+	var oldEmail = req.body.old_user_email;
 	var newEmail = new_user_email;
 	var newEmailReentered = new_user_reentered_email;
 	var oldPassword = null; //We wouldn't want any security vulnerabilities now, would we?
