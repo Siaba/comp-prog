@@ -235,8 +235,9 @@ app.post('/AccountSettings.html', function(req, res) { //Allows users to change 
     				ReturnValues:"UPDATED_NEW"
 				};
 				}
-				}					
-					break;
+				)		
+				})
+	break;
 
 					case "2": //User ONLY wishes to update email.
 					var params = {
