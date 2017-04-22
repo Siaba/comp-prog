@@ -11,23 +11,6 @@
 	transition: 0.5s;
 }
 
-.overlay .xbutton {
-    position: absolute;
-    top: 40px;
-    right: 60px;
-    font-size: 60px;
-}
-
-.overlay a {
-    color: #ffffff;
-    display: block;
-    transition: 0.5s;
-}
-.overlay a:hover{
-	outline: none;
-    color: #5f5f5f;
-}
-
 .overlay .loading {
 	margin: auto;
 	position: absolute;
@@ -51,6 +34,23 @@
 	display: inline-block;
 	-webkit-animation: ellipsis linear 1s infinite;      
 	content: "Searching\2026";
+}
+
+.overlay .xbutton {
+	position: absolute;
+	top: 40px;
+	right: 60px;
+	font-size: 60px;
+}
+
+.overlay a {
+	color: #ffffff;
+	display: block;
+	transition: 0.5s;
+}
+.overlay a:hover{
+	outline: none;
+	color: #5f5f5f;
 }
 
 .overlay .countdown {
@@ -79,8 +79,6 @@
 	font-size: 67px;
 	-webkit-animation: scroll-down 10s linear 1;
 	-webkit-animation-fill-mode: forwards;
-
-	
 }
 
 @-webkit-keyframes scroll-down {
