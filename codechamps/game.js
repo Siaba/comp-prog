@@ -33,12 +33,13 @@ function joinMatch(lang, roomID, player2ID, player2BoxID, player2SocketID){
 }
 
 function findMatch(data){
-        for(var key in matches[data.lang]){
-                if(matches[data.lang][key].numPlayers < 2){
+	var language = data.lang;
+        for(var key in matches[language]){
+                if(matches[language][key].numPlayers < 2){
                         //this is where you join a game instead of create one
-                        joinMatch(data.lang,key,data.uname,data.sid, this.id);
+                        joinMatch(language,key,data.uname,data.sid, this.id);
                         this.join(key);
-			console.log(data.uname, " (box: ", data.sid, ") joined ", data.lang, " ", key);
+			console.log(data.uname, " (box: ", data.sid, ") joined ", language, " ", key);
                         fs.readFile('/home/ubuntu/codechamps/webapp/gamepage.txt', function(error,data) {
                                 if (!error) {
 					var pagedata = data.toString();
@@ -50,7 +51,7 @@ function findMatch(data){
 										{page: pagedata,
 										 overlay_content: data.toString(),
 										 roomID: key,
-										 lang: data.lang,
+										 lang: language,
 										 socketID: this.id
 										});
 						}
