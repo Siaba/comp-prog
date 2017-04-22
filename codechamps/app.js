@@ -239,12 +239,11 @@ app.post('/AccountSettings.html', function(req, res) {
 								},
 								UpdateExpression: "set password = :p",
 								ExpressionAttributeValues:{
-									":p":hash
+									":p": hash
 								},
 								ReturnValues:"UPDATED_NEW"
 							};
-						});
-					});
+											
 					console.log("Updating the item...");
 					docClient.update(params, function(err, data){
 						if (err) {
@@ -253,7 +252,9 @@ app.post('/AccountSettings.html', function(req, res) {
 						else {
 							console.log("UpdateItem succeeded:", JSON.stringify(data, null, 2));
 						}
+						});
 					});
+				});
 					break;
 
 					case "2": //User ONLY wishes to update email.
@@ -339,7 +340,7 @@ app.post('/AccountSettings.html', function(req, res) {
 			}
 		}
 	});
-res.end();
+res.redirect('/Home.html');
 });
 
 
