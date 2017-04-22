@@ -53,14 +53,14 @@ function playerJoined(){
 }
 
 function openOver() {
-	$("#search_overlay").style.height = "100%";
+	$("#search_overlay").attr("height", "100%");
 }
 function closeOver() {
-	$("#search_overlay").style.height = "0";
+	$("#search_overlay").attr("height", "0");
 }
 function goStyle() {
-	$("#ready").style.color = "gray";
-	$("#go").style.color = "white";
+	$("#ready").attr("color", "gray");
+	$("#go").attr("color", "white");
 	setTimeout(function(){closeOver();}, 1000);
 	clientSocket.emit('clientReady', {roomID: roomID, lang: language});
 }
