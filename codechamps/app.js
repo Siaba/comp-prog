@@ -214,7 +214,7 @@ app.post('/AccountSettings.html', function(req, res) { //Allows users to change 
 						},
 						updateExpression: "set Item.username = :u",
 						ExpressionAttributeValues: {
-							":u": newUsername.
+							":u": newUsername
 						},
 						ReturnValues:"UPDATED_NEW"
 						};
