@@ -657,7 +657,7 @@ function loadDB(req, res){
 		
 	};
 	
-	db.query(paramsgetuser, function(err, data){
+	db.scan(paramsgetuser, function(err, data){
 		if(err) {
 			console.log(err);
 		}
