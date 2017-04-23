@@ -9,6 +9,20 @@
     <link rel="stylesheet" href="css/foundation.css">
     <link rel="stylesheet" href="css/app.css">
     <link href="http://cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/foundation-icons.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+    
+  <!-- jQuery function for grabbing the username and displaying'
+	a greeting on the Profile Page.		-->
+
+    <script>
+	 $.post('/loadGreeting', function(data) {
+		 
+	 	 console.log("JQuery starting to get username and append to Profile page");
+	 	 console.log(data);
+		 
+		 $('#greeting').replaceWith('Thanks for coming back' + data);
+	 });
+    </script>
 
   </head>
   <body>
@@ -63,6 +77,12 @@
 
   <div id="fillProfilePage">
 	<input type="button" name="loadLeaderboards" id ="buttonloadLB" value="Load Your Profile Page" />
+		<center>
+			<h1 id="greeting"></h1>
+	    	</center>
+  </div>
+	    
+	    
 	  
 	  
 	  
