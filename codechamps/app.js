@@ -642,6 +642,17 @@ function getproblem(req, res){
 	});
 }
 
+app.post('loadGreeting', function(req, res) {
+	loadGreeting(req, res);
+});
+
+
+function loadGreeting(req, res) {
+	var theuser = req.body.session.username;
+	res.send(theuser);
+}
+
+
 app.post('/loadDB', function(req, res){
 	loadDB(req, res);
 });
