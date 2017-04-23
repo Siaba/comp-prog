@@ -642,7 +642,7 @@ function getproblem(req, res){
 	});
 }
 
-app.post('loadGreeting', function(req, res) {
+app.post('/loadGreeting', function(req, res) {
 	loadGreeting(req, res);
 });
 
