@@ -89,7 +89,7 @@
 		  console.log("jQuery for loading Profile Page Greeting");
 		  $(document).ready(function(){
 			  console.log('Calling post request for username');
-			  $.post('/loadGreeting' , function(data) {
+			  $.post('/loadGreeting' , function(data.toString()) {
 				  $('#greeting').html(data);
 			  });
 		  });
