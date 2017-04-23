@@ -13,10 +13,12 @@ router.use(cookieParser());
 router.use(bodyParser.urlencoded({extended: true }));
 router.use(bodyParser.json());
 
-router.use(session({secret: "123abcgz^&#$^hbgate8162QQANZBSHSHSHAPLEUTCHVH", 
-	    secure: true,
-	    saveUninitialized: true,
-            maxAge:  1800000}));
+router.use(session({
+	   resave: false,
+	   saveUninitialized: false,
+	   secret: '123abcgz^&#$^hbgate8162QQA<ZBSH?6SH>PLEUTCHVH'
+	   
+		   }));
 
 
 
