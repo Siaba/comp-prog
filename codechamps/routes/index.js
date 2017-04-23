@@ -55,7 +55,7 @@ router.get('/Account.html', function(req, res) {
 
 console.log("The username is: " + username);
  
- if(username && password){
+ if(username != null){
   res.sendFile(path.join(filePath + '/webapp/Profile.html'));
   
  }
