@@ -1,0 +1,38 @@
+.container {
+	position: relative;
+	overflow: hidden;
+}
+.door-left, .door-right {
+	position: absolute;
+	height: 100%;
+	width: 50%;
+	top: 0%;
+	transition: all ease 1s;
+	-moz-transition: all ease 1s;
+	-webkit-transition: all ease 1s;
+	-o-transition: all ease 1s;
+	-ms-transition: all ease 1s;
+}
+.door-left {
+	left: 0%;
+	/*z-index: 1;*/
+	/*background-color: rgb(91,96,106);*/
+	/*background-image: url("BGPromo.jpg");*/
+	background-image: url("BGLeft.jpeg");
+	/*background-repeat:no-repeat;*/
+	background-repeat:repeat-x;
+}
+.door-right {
+	left: 50%;
+	background-image: url("BGRight.jpeg");
+	background-repeat:repeat-x;
+
+
+	/*background-color: rgb(229,211,211);*/
+}
+.container:hover .door-left{
+	left: -50%;
+}
+.container:hover .door-right{
+	left: 100%;
+}
