@@ -1,0 +1,38 @@
+/*body{
+    background:#000;
+}*/
+.fire {
+    z-index: -1;
+    background-image: url("BGCarbon.png");
+    text-align:center;
+    font:900 120px/150px Arial;
+    padding-top:150px;    
+    color:#000;  
+    white-space:nowrap;
+    text-shadow:
+        -2px -1px 2px purple,
+        2px -2px 2px blue,
+        2px -10px 20px white,
+        0 -2px 6px red,
+        2px -2px 10px white,     
+        5px -10px 15px lightyellow,
+        8px -20px 20px yellow,
+        12px -30px 25px orange,
+        5px -60px 40px orange,
+        15px -34px 30px darkorange,
+        0px -36px 35px red,
+        40px -40px 50px red,
+        -20px -60px 40px red,
+        20px -80px 40px red,
+        40px -80px 40px red,
+        20px -120px 60px red,
+        20px -150px 80px black,
+        50px -160px 80px black,
+        100px -200px 100px black,
+        120px -150px 100px black,
+        100px -100px 100px black,
+        120px -220px 100px black,
+        200px -300px 150px black
+        ;   
+    
+}
