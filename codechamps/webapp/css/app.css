@@ -19,7 +19,32 @@
 
 }
 
+.promohover h3:hover {
 
+  background-color: #404040;
+  color: white;
+  font: bold;
+  border-radius: 4px;
+
+}
+
+.promohover {
+
+  border-style: solid;
+  border-color: white;
+
+}
+
+.AboutBG {
+
+  background-image: url("real_cf.png");
+
+}
+
+.text-center {
+
+  color: white;
+}
 
 .top-bar h3 {
 
