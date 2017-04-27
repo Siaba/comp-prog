@@ -3,7 +3,7 @@
 }*/
 .fire {
     z-index: -1;
-    background-image: url("BGCarbon.png");
+    
     text-align:center;
     font:900 120px/150px Arial;
     padding-top:150px;    
@@ -35,4 +35,24 @@
         200px -300px 150px black
         ;   
     
+}
+
+hr {
+
+
+    width: 100%;
+}
+
+body {
+
+    background-color: #000000;
+
+
+}
+
+
+span {
+
+color: #fff;
+
 }
