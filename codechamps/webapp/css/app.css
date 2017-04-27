@@ -37,6 +37,14 @@
 
 }
 
+.hero2 {
+
+	background-image: url("hip-square.png");
+	padding: 75px 135px;
+  opacity: 0.85;
+
+
+}
 
 a:hover {
 
