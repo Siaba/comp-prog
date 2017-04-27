@@ -20,6 +20,10 @@
 
 }
 
+.profileBG {
+	background-image: url("black_lozenge.png");
+}
+
 .promohover h3:hover {
 
   background-color: #404040;
