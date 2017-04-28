@@ -61,6 +61,9 @@ function timerUpdate(data){
 	if(time.getUTCSeconds() < 10){
 		sec = "0" + time.getUTCSeconds();
 	}
+	else{
+		sec = time.getUTCSeconds();
+	}
 	minsec = time.getUTCMinutes() + ":" + sec;
 	$("#timer").html(minsec);
 }
