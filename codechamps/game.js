@@ -119,7 +119,7 @@ function GameInfo(pid, pBoxid, pSockID){
         this.p2ID = "";
         this.p1BoxID = pBoxid;
         this.p2BoxID = 100000;
-        this.timeRemaining = 1000 * 70;
+        this.timeRemaining = 1000 * 180;
         this.problemSet = [];
         this.numPlayers = 1;
 	this.readyPlayers = 0;
