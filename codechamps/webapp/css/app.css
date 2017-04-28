@@ -166,6 +166,7 @@ img.img1 {
   }
 }
 .footer-links {
+	margin-left: 0;
   list-style-type: none;
 }
 .footer-links li {
