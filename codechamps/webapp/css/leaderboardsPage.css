@@ -3,13 +3,13 @@ background-image: url("chalkboard.jpg");
 }
 
 table {
-	
-	width: 80%;
-	table-layout: fixed;
-	border-collapse: collapse;
-	margin-left: auto;
-	margin-right: auto;
-	overflow: scroll;
+  
+  width: 80%;
+  table-layout: fixed;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  overflow: scroll;
 }
 
 th{
@@ -26,7 +26,7 @@ th{
 
 td{
 
-  padding: 25px 25px;
+  padding: 45px 45px;
   text-align: left;
   vertical-align:middle;
   font-weight: 300;
