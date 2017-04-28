@@ -679,7 +679,31 @@ function loadDB(req, res){
 	});
 }
 
-		   
+app.post('/loadGroupDB', function(req, res){
+	loadDB(req, res);
+});
+
+function loadGroupDB(req, res){
+	var db = new AWS.DynamoDB();
+	var table = "Groups";
+	
+	
+	var paramsgetuser = {
+		TableName:table
+		
+		
+	};
+	
+	db.scan(paramsgetuser, function(err, data){
+		if(err) {
+			console.log(err);
+		}
+		else {
+			console.log(JSON.stringify(data, null, 2));
+			res.send(JSON.stringify(data));
+		}
+	});
+}		   
 	
 	
 
