@@ -79,8 +79,22 @@ function playerJoined(){
 }
 
 function submitCode(data){
-        //runsandbox(data)
-	//data will contain code, lang, boxid, & problem name
+        /* call runsandbox(data)
+	* 	data will contain code, lang, boxid, & problem name
+	*	(data.code, data.lang, data.sid, data.pname) 		
+	*	
+	*	if success:
+	*		update score (+10?)
+	*		load new problem
+	*	else:
+	*		decrement score (-1?)
+	*		if stderr to return:
+	*			stderr string = stderr
+	*		else:
+	*			stderr string = empty
+	*
+	*	emit result to player
+	*/
 }
 
 function newGame(){
