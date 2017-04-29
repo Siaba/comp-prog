@@ -31,6 +31,7 @@ $(document).ready(function(){
 		var editor = ace.edit('editor');
 		aceinput.val(editor.getValue());
         	clientSocket.emit('submitCode', {code: aceinput.val(), lang: language, pname: problem.val(), sid: sid.val()} );
+		//do we need to send socketid?
 		});
 	});
 });
