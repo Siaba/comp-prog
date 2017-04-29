@@ -78,8 +78,9 @@ function playerJoined(){
         
 }
 
-function submitCode(){
-        
+function submitCode(data){
+        //runsandbox(data)
+	//data will contain code, lang, boxid, & problem name
 }
 
 function newGame(){
