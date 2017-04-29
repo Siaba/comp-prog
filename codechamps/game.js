@@ -80,7 +80,7 @@ function playerJoined(){
 
 function submitCode(data){
         /* call runsandbox(data)
-	* 	data will contain code, lang, boxid, & problem name
+	* 	data will contain code, lang, boxid, & problem name  ---  Is socketid needed?
 	*	(data.code, data.lang, data.sid, data.pname) 		
 	*	
 	*	if success:
