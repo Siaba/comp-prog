@@ -27,10 +27,10 @@ $(document).ready(function(){
 		e.preventDefault();
 		var aceinput = $('#aceinput');
 		var problem = $('#problems');
-        var sid = $('#sid');
+        	var sid = $('#sid');
 		var editor = ace.edit('editor');
 		aceinput.val(editor.getValue());
-        clientSocket.emit('submitCode', {code: aceinput.val(), lang: language, pname: problem.val(), sid: sid.val()} );
+        	clientSocket.emit('submitCode', {code: aceinput.val(), lang: language, pname: problem.val(), sid: sid.val()} );
 		});
 	});
 });
