@@ -6,23 +6,33 @@ var time;
 var minsec;
 
 $(document).ready(function(){
-    initSocket();
-    bindEvents();
-    $.post('/getUserName', function(data){
+	initSocket();
+	bindEvents();
+	$.post('/getUserName', function(data){
 	   $("#uname").val(data.uname);
 	   $("#sid").val(data.sid);
 	   console.log(data.uname + "" + data.sid);
-    });
-    $("#findmatchform").submit(function(e){
-	   e.preventDefault();
-	   var sid = $('#sid');
-	   var uname = $('#uname');
-	   var lang = $('#language');
-	   lang.attr('disabled',true);
-	   $('#fm_button').attr('disabled', true);
-	   openOver();
-	   clientSocket.emit('findMatch', {lang: lang.val(), sid: sid.val(), uname: uname.val()});
-    });
+	});
+	$("#findmatchform").submit(function(e){
+		e.preventDefault();
+		var sid = $('#sid');
+		var uname = $('#uname');
+		var lang = $('#language');
+		lang.attr('disabled',true);
+		$('#fm_button').attr('disabled', true);
+		openOver();
+		clientSocket.emit('findMatch', {lang: lang.val(), sid: sid.val(), uname: uname.val()});
+	});
+	$("#aceform").submit(function(e){
+		e.preventDefault();
+		var aceinput = $('#aceinput');
+		var problem = $('#problems');
+        var sid = $('#sid');
+		var editor = ace.edit('editor');
+		aceinput.val(editor.getValue());
+        clientSocket.emit('submitCode', {code: aceinput.val(), lang: language, pname: problem.val(), sid: sid.val()} );
+		});
+	});
 });
 
 
