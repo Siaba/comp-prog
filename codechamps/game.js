@@ -56,7 +56,8 @@ function findMatch(data){
 										 lang: language,
 										 socketID: this.id,
 										 p1ID: matches[language][key].p1ID,
-										 p2ID: matches[language][key].p2ID
+										 p2ID: matches[language][key].p2ID,
+										 pname: matches[language][key].problemSet[0]
 										});
 						}
 						else{
