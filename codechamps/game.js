@@ -114,8 +114,11 @@ function playerLeft(data){
 function endGame(data){
 	var docClient = new AWS.DynamoDB.DocumentClient();
 	console.log("Storing win/loss results for room " + data.roomID);
+	
+	//for forfeited matches, data.user will contain data
+	//so this if statement will do wins+1 on winner and losses+1 on data.user
 	if(data.user){
-		var params = {
+		var paramsloss = {
 			TableName:"scoring",
 			Key: {"username" : data.user},
 			UpdateExpression: "ADD losses :increment",
@@ -125,17 +128,51 @@ function endGame(data){
 			},
 			ReturnValues:"UPDATED_NEW"
 		};
-		docClient.update(params, function(err, data) {
+		docClient.update(paramsloss, function(err, data) {
 			if(err) {
 				console.log("Unable to update losses. Error JSON:", JSON.stringify(err, null, 2));
 			}
 			else {
 				console.log("Update losses succeeded:", JSON.stringify(data, null, 2));
 			}
-		};
-				
+		});
+		var paramswin;
+		if(data.user === matches[data.lang][data.roomID].p1ID){
+			paramswin = {
+				TableName:"scoring",
+				Key: {"username" : matches[data.lang][data.roomID].p2ID},
+				UpdateExpression: "ADD wins :increment",
+				ExpressionAttributeValues =
+				{
+					":increment": 1
+				},
+				ReturnValues:"UPDATED_NEW"
+			};
+		}
+		else {
+			paramswin = {
+				TableName:"scoring",
+				Key: {"username" : matches[data.lang][data.roomID].p1ID},
+				UpdateExpression: "ADD wins :increment",
+				ExpressionAttributeValues =
+				{
+					":increment": 1
+				},
+				ReturnValues:"UPDATED_NEW"
+			};
+		}
+		docClient.update(paramswin, function(err, data) {
+			if(err) {
+				console.log("Unable to update losses. Error JSON:", JSON.stringify(err, null, 2));
+			}
+			else {
+				console.log("Update losses succeeded:", JSON.stringify(data, null, 2));
+			}
+		});
 	}
-		
+	else {
+		//normal game end
+	}
 }
 
 function playerReady(data){
