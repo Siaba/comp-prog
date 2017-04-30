@@ -62,6 +62,7 @@ function loadGame(data){
 		$("#p2name").empty().append(data.p2ID);
 	}
 	else { $("#p2name").empty().append(data.p1ID); }
+	$("#pname").empty().append(data.pname);
 	$("#overlay_content").empty().append(data.overlay_content);
 	$("#number").on("webkitAnimationEnd", function(){console.log("webkitAnimationEnd");goStyle();});
 }
