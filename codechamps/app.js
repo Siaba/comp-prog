@@ -417,7 +417,7 @@ app.post('/runSandbox', function(req, res){
 function runSandbox(req, res){
 	console.log("Starting async tasks");
 	var sID = req.session.sID;
-	async.series([function(callback){
+	var items = async.series([function(callback){
 		console.log("initializing sandbox " + sID);
 		exec('isolate --box-id=' + sID + ' --init', (error, stdout, stderr) => {
 			if (error) {
@@ -640,7 +640,7 @@ function runSandbox(req, res){
 		console.log("all functions complete.");
 		return results;
 	});
-	
+	return items;
 }
 
 
