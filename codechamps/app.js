@@ -417,7 +417,7 @@ app.post('/runSandbox', function(req, res){
 });
 
 
-exports.runSandbox = function(req, cb){
+function runSandbox(req, cb){
 	console.log("Starting async tasks");
 	var sID = req.session.sID;
 	async.series([function(callback){
