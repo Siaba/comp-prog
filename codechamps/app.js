@@ -351,8 +351,11 @@ app.post('/getUserName', function(req, res){
 //write to file when submit button is clicked
 app.post('/runSandbox', function(req, res){
 	
-	var results = runSandbox(req, res);
-	res.send(results);
+	runSandbox(req, function(err, results){
+		res.send(results);
+	
+	});
+	
 	/*exec('isolate --init', (error, stdout, stderr) => {
  	 if (error) {
    	 console.error(`exec error: ${error}`);
@@ -414,10 +417,10 @@ app.post('/runSandbox', function(req, res){
 });
 
 
-function runSandbox(req, res){
+exports.runSandbox = function(req, cb){
 	console.log("Starting async tasks");
 	var sID = req.session.sID;
-	var items = async.series([function(callback){
+	async.series([function(callback){
 		console.log("initializing sandbox " + sID);
 		exec('isolate --box-id=' + sID + ' --init', (error, stdout, stderr) => {
 			if (error) {
@@ -638,9 +641,9 @@ function runSandbox(req, res){
 	}
 	],function(err, results){
 		console.log("all functions complete.");
-		return results;
+		cb(err, results);
 	});
-	return items;
+	
 }
 
 
