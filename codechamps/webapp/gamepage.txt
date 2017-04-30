@@ -1,13 +1,56 @@
 <div class="large-8 medium-8 columns">
-			<div><table border="border"><tr><td><span id="pname">PROBLEM NAME</span></td></tr></table></div>
+			<!--PROBLEM NAME-->
+			<div><table class="problemtitle"><tr><td><span id="pname">Fibonacci</span></td></tr></table></div>
+			<!--/PROBLEM NAME-->
+			
+			<!--PROBLEM BAR-->
+			<div style="overflow-x:auto;">
+			  <table class="problembar">
+				<tr>
+				  <th style="border-color: #444444; border-style: dotted; border-width:2px;">1</th>
+				  <th>2</th>
+				  <th>3</th>
+				  <th>4</th>
+				  <th>5</th>
+				  <th>6</th>
+				  <th>7</th>
+				  <th>8</th>
+				</tr>
+			  </table>
+			</div>
+			<!--/PROBLEM BAR-->
 		</div>
-		<div class="large-2 medium-2 columns">
-			<div class="callout" style="height: 132px;">Score</div>
+		
+		<!--SCOREBOARD-->
+		<div class="large-2 medium-2 columns" style="background-color:white; border-style: solid; padding:7px;
+				border-width: 1px;
+				border-color: #444444;">
+					<div class="large-2 medium-2 columns" style="background-color:white; width:50%; padding:3px;">
+						<p id="p1name" style="width:100%; height 20%; text-align: center;">Player1</p>
+						<div style="background-color: black; width:100%; height 80%;">
+							<p id="p1score" style="font: bold 300% AppleGothic, sans-serif; color: white; text-align:center;">80</p>
+						</div>
+					</div>
+					<div class="large-2 medium-2 columns" style="width:50%; padding:3px;">
+						<p id="p2score" style="width:100%; height 20%; text-align: center;">Player2</p>
+						<div style="background-color: black; width:100%; height 80%;">
+							<p id="p2score" style="font: bold 300% AppleGothic, sans-serif; color: white; text-align:center;">0</p>
+						</div>
+					</div>
+	
 		</div>
+		<!--/SCOREBOARD-->
+		
 		<div class="large-2 medium-2 columns">
+			<!--FORFEIT-->
 			<div class="button" style="width:100%;">Forfeit</div>
-			<div class="callout">Time: <span id="timer">3:00</span></div>
+			<!--TIMER-->
+			<div class="callout" style="border-style: solid; border-width: 1px; border-color: #444444; text-align:center;">
+				<span id="timer" style="font: bold 238% AppleGothic, sans-serif; color:#444444;">3:00</span>
+			</div>
 		</div>
+		
+		<!--ACE-->
 		<div class="large-8 medium-8 columns">
 			<div class="row">
 				<div  id="acecontainer">
@@ -16,8 +59,9 @@
 				</div>
 				<form method="post" id="aceform">
 					<input type="hidden" id="aceinput"  name="comments" value=""/>
-					<div class="small-2 columns">
-					  <button type="submit" class="button">Submit</button>
+					<div class="large-8 medium-8 columns">
+					  <button type="button" class="button" style="background-color:red; width:40%;">Skip</button>
+					  <button type="submit" class="button" style="width:50%;">Submit</button>
 					</div>
 				</form>
 			</div>
@@ -35,19 +79,26 @@
 					+ "\n\t}"
 					+ "\n}");
 		</script>
+		<!--/ACE-->
+		
 		<div class="large-4 medium-4 columns">
+			<!--PROBLEM DESCRIPTION-->
 			<div class="row">
 				<div class="large-12 medium-12 columns">
 					<div class="callout">
-						Description:
+						<p id="desc">Description:</p>
 					</div>
 				</div>
 			</div>
+			<!--/PROBLEM DESCRIPTION-->
+			
+			<!--OUTPUT-->
 			<div class="row">
 				<div class="large-12 medium-12 columns">
 					<div class="callout">
-						Output/stderr:
+						<p id="output">Output/stderr:</p>
 					</div>
 				</div>
 			</div>
+			<!--/OUTPUT-->
 		</div>
