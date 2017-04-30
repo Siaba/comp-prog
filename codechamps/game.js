@@ -193,7 +193,7 @@ var matches = {
   python: []
 };
 
-
+var problems = ["fibonacci", "helloworld", "reversestring", "wordcount"];
 
 function GameInfo(pid, pBoxid, pSockID){
         this.p1Score = 0;
@@ -205,9 +205,22 @@ function GameInfo(pid, pBoxid, pSockID){
         this.p1BoxID = pBoxid;
         this.p2BoxID = 100000;
         this.timeRemaining = 1000 * 180;
-        this.problemSet = [];
+        this.problemSet = problems;
+	this.problemSet = problemShuffle(this.problemSet);
         this.numPlayers = 1;
 	this.readyPlayers = 0;
+	
+	function problemShuffle(arr){
+		var len = arr.length;
+		var j = 0;
+		var temp = "";
+		for(var i = 0; i < len; i++){
+			j = Math.floor((Math.random() * len-1) + 0);
+			temp = arr[i];
+			arr[i] = arr[j];
+			arr[j] = temp;
+		}
+	}
 	
 	this.time = function(rid){
 		var roomID = rid;
