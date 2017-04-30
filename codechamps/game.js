@@ -111,7 +111,7 @@ function playerLeft(data){
         endGame(data);
 }
 
-function endGame(data){
+function endGame(data){/*
 	var docClient = new AWS.DynamoDB.DocumentClient();
 	console.log("Storing win/loss results for room " + data.roomID);
 	
@@ -172,7 +172,7 @@ function endGame(data){
 	}
 	else {
 		//normal game end
-	}
+	}*/
 }
 
 function playerReady(data){
