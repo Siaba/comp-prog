@@ -351,7 +351,8 @@ app.post('/getUserName', function(req, res){
 //write to file when submit button is clicked
 app.post('/runSandbox', function(req, res){
 	
-	runSandbox(req, res);
+	var results = runSandbox(req, res);
+	res.send(results);
 	/*exec('isolate --init', (error, stdout, stderr) => {
  	 if (error) {
    	 console.error(`exec error: ${error}`);
@@ -637,7 +638,7 @@ function runSandbox(req, res){
 	}
 	],function(err, results){
 		console.log("all functions complete.");
-		res.send(results);
+		return results;
 	});
 	
 }
