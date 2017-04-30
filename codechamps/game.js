@@ -1,4 +1,6 @@
 var fs = require('fs');
+var bodyParser = require('body-parser');
+var AWS = require('aws-sdk');
 var io;
 
 exports.initGame = function(siolib, socket){
@@ -103,8 +105,37 @@ function newGame(){
         
 }
 
-function playerLeft(){
-        
+//data contains 'user' for quitting user and the 'roomID' that is affected
+function playerLeft(data){
+	console.log("Player left game: " + data.user + " ending game...");
+        endGame(data);
+}
+
+function endGame(data){
+	var docClient = new AWS.DynamoDB.DocumentClient();
+	console.log("Storing win/loss results for room " + data.roomID);
+	if(data.user){
+		var params = {
+			TableName:"scoring",
+			Key: {"username" : data.user},
+			UpdateExpression: "ADD losses :increment",
+			ExpressionAttributeValues =
+			{
+				":increment": 1
+			},
+			ReturnValues:"UPDATED_NEW"
+		};
+		docClient.update(params, function(err, data) {
+			if(err) {
+				console.log("Unable to update losses. Error JSON:", JSON.stringify(err, null, 2));
+			}
+			else {
+				console.log("Update losses succeeded:", JSON.stringify(data, null, 2));
+			}
+		};
+				
+	}
+		
 }
 
 function playerReady(data){
