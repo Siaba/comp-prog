@@ -2,6 +2,7 @@ var clientSocket;
 var language;
 var roomID;
 var socketID;
+var username;
 var time;
 var minsec;
 
@@ -9,6 +10,7 @@ $(document).ready(function(){
 	initSocket();
 	bindEvents();
 	$.post('/getUserName', function(data){
+	   username = data.uname;
 	   $("#uname").val(data.uname);
 	   $("#sid").val(data.sid);
 	   console.log(data.uname + "" + data.sid);
@@ -55,9 +57,8 @@ function loadGame(data){
 	roomID = data.roomID;
 	socketID = data.socketID;
 	$("#body_load").empty().append(data.page);
-	var player1 = $("#uname").val();
-	$("#p1name").empty().append(player1);
-	if(player1 === data.p1ID) {
+	$("#p1name").empty().append(username);
+	if(username === data.p1ID) {
 		$("#p2name").empty().append(data.p2ID);
 	}
 	else { $("#p2name").empty().append(data.p1ID); }
