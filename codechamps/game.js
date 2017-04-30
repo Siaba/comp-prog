@@ -53,8 +53,8 @@ function findMatch(data){
 										 roomID: key,
 										 lang: language,
 										 socketID: this.id,
-										 p1ID: matches[lang][roomID].p1ID,
-										 p2ID: matches[lang][roomID].p2ID
+										 p1ID: matches[language][key].p1ID,
+										 p2ID: matches[language][key].p2ID
 										});
 						}
 						else{
