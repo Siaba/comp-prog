@@ -564,7 +564,7 @@ function runSandbox(req, res){
 	},
 		      
 	function(callback){
-		var run = 'isolate --processes=15 --box-id=' + sID + '  --full-env --stdout=output.txt --stderr=error.txt --run -- ';
+		var run = 'isolate --processes=15 --box-id=' + sID + '  --full-env --time=5 --stdout=output.txt --stderr=error.txt --run -- ';
 		switch(req.body.language){
 			case 'java':
 				run += 'java test';
