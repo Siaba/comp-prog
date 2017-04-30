@@ -457,9 +457,23 @@ function runSandbox(req, res){
 	function(callback){
 		var pname = req.body.problem;
 		console.log(pname);
-		var tester = __dirname + '/Problems/' + pname + '.txt /tmp/box/' + sID + '/box';
+		var tester = __dirname + '/Problems/' + pname + '/output.txt /tmp/box/' + sID + '/box';
 		console.log(tester);
-		exec('cp '+ __dirname + '/Problems/' + pname + '.txt /tmp/box/' + sID + '/box', (error,stdout,stderr) =>{
+		exec('cp '+ __dirname + '/Problems/' + pname + '/output.txt /tmp/box/' + sID + '/box', (error,stdout,stderr) =>{
+			 if(error){
+				 console.error("copy file has failed");
+				 return;
+		 	}
+			callback();
+	 	});
+	},
+
+	function(callback){
+		var pname = req.body.problem;
+		console.log(pname);
+		var tester = __dirname + '/Problems/' + pname + '/input.txt /tmp/box/' + sID + '/box';
+		console.log(tester);
+		exec('cp '+ __dirname + '/Problems/' + pname + '/input.txt /tmp/box/' + sID + '/box', (error,stdout,stderr) =>{
 			 if(error){
 				 console.error("copy file has failed");
 				 return;
@@ -564,7 +578,7 @@ function runSandbox(req, res){
 	},
 		      
 	function(callback){
-		var run = 'isolate --processes=15 --box-id=' + sID + '  --full-env --time=5 --stdout=output.txt --stderr=error.txt --run -- ';
+		var run = 'isolate --processes=15 --box-id=' + sID + '  --full-env --time=5 --stdout=user_output.txt --stderr=error.txt --run -- ';
 		switch(req.body.language){
 			case 'java':
 				run += 'java test';
@@ -600,9 +614,9 @@ function runSandbox(req, res){
 	function(callback){
 		var pname = req.body.problem;
 		var flagger = true;
-		fs.readFile('/tmp/box/' + sID + '/box/output.txt' ,(err,data) => {
+		fs.readFile('/tmp/box/' + sID + '/box/user_output.txt' ,(err,data) => {
 			 if(err) throw err;
-			 fs.readFile('/tmp/box/' + sID + '/box' +  '/' +  pname + '.txt', (error, other_data) => {
+			 fs.readFile('/tmp/box/' + sID + '/box/output.txt', (error, other_data) => {
 			if(error) throw error;
 			if(data.toString() === other_data.toString()){
 				 console.log("Your output is correct.");
