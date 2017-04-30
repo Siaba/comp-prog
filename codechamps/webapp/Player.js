@@ -71,6 +71,13 @@ function playerJoined(){
 	
 }
 
+function forfeit(){
+	var quit = confirm("Are you sure you want to forfeit? This will count as a loss");
+	if(quit){
+		clientSocket.emit('playerLeft', {user: username});
+	}
+}
+
 function timerUpdate(data){
 	console.log("The timer has updated");
 	time = new Date(1000*Math.round(data.time/1000));
