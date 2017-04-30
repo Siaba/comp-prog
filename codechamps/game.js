@@ -52,7 +52,9 @@ function findMatch(data){
 										 overlay_content: data.toString(),
 										 roomID: key,
 										 lang: language,
-										 socketID: this.id
+										 socketID: this.id,
+										 p1ID: matches[lang][roomID].p1ID,
+										 p2ID: matches[lang][roomID].p2ID
 										});
 						}
 						else{
