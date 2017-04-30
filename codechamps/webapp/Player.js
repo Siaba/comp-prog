@@ -56,6 +56,12 @@ function loadGame(data){
 	roomID = data.roomID;
 	socketID = data.socketID;
 	$("#body_load").empty().append(data.page);
+	var player1 = $("#uname").val();
+	$("#p1name").empty().append(player1);
+	if(player1 === data.p1ID) {
+		$("#p2name").empty().append(data.p2ID);
+	}
+	else { $("#p1name").empty().append(data.p1ID); }
 	$("#overlay_content").empty().append(data.overlay_content);
 	$("#number").on("webkitAnimationEnd", function(){console.log("webkitAnimationEnd");goStyle();});
 }
