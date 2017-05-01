@@ -350,8 +350,11 @@ app.post('/getUserName', function(req, res){
 });
 //write to file when submit button is clicked
 app.post('/runSandbox', function(req, res){
-	
-	runSandbox(req, function(err, results){
+	var bID = req.session.sID;
+	var bbody = req.body.comments;
+	var bpname = req.body.problem;
+	var blang = req.body.language;
+	runSandbox(bbody,bpname,bID,blang, function(err, results){
 		res.send(results);
 	
 	});
@@ -417,9 +420,9 @@ app.post('/runSandbox', function(req, res){
 });
 
 
-function runSandbox(req, cb){
+function runSandbox(body,pname,sID,language, cb){
 	console.log("Starting async tasks");
-	var sID = req.session.sID;
+	
 	async.series([function(callback){
 		console.log("initializing sandbox " + sID);
 		exec('isolate --box-id=' + sID + ' --init', (error, stdout, stderr) => {
@@ -436,7 +439,7 @@ function runSandbox(req, cb){
 	function(callback){
 		var body = req.body.comments;
 		var filePath = '/tmp/box/' + sID + '/box/';
-		switch(req.body.language){
+		switch(language){
 			case 'java':
 				filePath += 'test.java';
 				break;
@@ -490,7 +493,7 @@ function runSandbox(req, cb){
 		 var source = '';
 		 var sym = '';
 		 var flag = false;
-		 switch(req.body.language){
+		 switch(language){
 			 case 'java':
 				 source += '/usr/lib/jvm/java-8-openjdk-amd64/jre/bin/java';
 				 sym += '/tmp/box/' + sID + '/box/java';
@@ -521,7 +524,7 @@ function runSandbox(req, cb){
 		var source = '';
 		var sym = '';
 		var flag = false;
-		switch(req.body.language){
+		switch(language){
 			case 'java':
 				source += '/usr/lib/jvm/java-8-openjdk-amd64/bin/javac';
 				sym += '/tmp/box/' + sID + '/box/javac';
@@ -548,7 +551,7 @@ function runSandbox(req, cb){
 	function(callback){
 		var env = '';
 		var flag = false;
-		switch(req.body.language){
+		switch(language){
 			case 'java':
 				env += 'isolate --processes=15 --box-id=' + sID + ' --full-env --stderr=error.txt --run -- javac test.java';
 				flag = true;
@@ -583,7 +586,7 @@ function runSandbox(req, cb){
 		      
 	function(callback){
 		var run = 'isolate --processes=15 --box-id=' + sID + '  --full-env --time=5 --stdin=input.txt --stdout=user_output.txt --stderr=error.txt --run -- ';
-		switch(req.body.language){
+		switch(language){
 			case 'java':
 				run += 'java test';
 				break;
