@@ -437,7 +437,7 @@ function runSandbox(body,pname,sID,language, cb){
 	},
 	
 	function(callback){
-		var body = req.body.comments;
+		
 		var filePath = '/tmp/box/' + sID + '/box/';
 		switch(language){
 			case 'java':
@@ -462,7 +462,7 @@ function runSandbox(body,pname,sID,language, cb){
 	},
 	
 	function(callback){
-		var pname = req.body.problem;
+		
 		console.log(pname);
 		var tester = __dirname + '/Problems/' + pname + '/output.txt /tmp/box/' + sID + '/box';
 		console.log(tester);
@@ -476,7 +476,7 @@ function runSandbox(body,pname,sID,language, cb){
 	},
 
 	function(callback){
-		var pname = req.body.problem;
+		
 		console.log(pname);
 		var tester = __dirname + '/Problems/' + pname + '/input.txt /tmp/box/' + sID + '/box';
 		console.log(tester);
@@ -619,7 +619,7 @@ function runSandbox(body,pname,sID,language, cb){
 	},
 		      
 	function(callback){
-		var pname = req.body.problem;
+		
 		var flagger = true;
 		fs.readFile('/tmp/box/' + sID + '/box/user_output.txt' ,(err,data) => {
 			 if(err) throw err;
