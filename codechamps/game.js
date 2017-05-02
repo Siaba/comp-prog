@@ -222,6 +222,7 @@ function GameInfo(pid, pBoxid, pSockID){
 			arr[i] = arr[j];
 			arr[j] = temp;
 		}
+		console.log("shuffle   " + arr);
 		return arr;
 	}
 	this.problemSet = this.problemShuffle();
