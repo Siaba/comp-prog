@@ -206,23 +206,25 @@ function GameInfo(pid, pBoxid, pSockID){
         this.p1BoxID = pBoxid;
         this.p2BoxID = 100000;
         this.timeRemaining = 1000 * 180;
-        this.problemSet = problems;
-	this.problemSet = problemShuffle(this.problemSet);
+        
+	
         this.numPlayers = 1;
 	this.readyPlayers = 0;
 	
-	function problemShuffle(arr){
-		var len = arr.length;
+	this.problemShuffle = function(){
+		var arr = problems.slice(0);
+		var len = problems.length;
 		var j = 0;
 		var temp = "";
-		for(var i = 0; i < len; i++){
-			j = Math.floor((Math.random() * len-1) + 0);
+		for(var i = len - 1; i > 0; i--){
+			j = Math.floor((Math.random() * (i-1)));
 			temp = arr[i];
 			arr[i] = arr[j];
 			arr[j] = temp;
 		}
+		return arr;
 	}
-	
+	this.problemSet = this.problemShuffle();
 	this.time = function(rid){
 		var roomID = rid;
 		var timer = setInterval(()=>{this.timeRemaining -= 1000;
