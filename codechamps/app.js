@@ -355,7 +355,7 @@ app.post('/runSandbox', function(req, res){
 	var bpname = req.body.problem;
 	var blang = req.body.language;
 	runSandbox(bbody,bpname,bID,blang, function(err, results){
-		res.send(results[0].output);
+		res.send(results[results.length - 1].output);
 	
 	});
 	
