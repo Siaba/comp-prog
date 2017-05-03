@@ -12,7 +12,7 @@ $(document).ready(function(){
 	bindEvents();
 	$.post('/getUserName', function(data){
 	   username = data.uname;
-	   sid == data.sid;
+	   sid = data.sid;
 	   $("#uname").val(data.uname);
 	   $("#sid").val(data.sid);
 	   console.log(data.uname + "" + data.sid);
