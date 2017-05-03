@@ -25,18 +25,17 @@ $(document).ready(function(){
 		openOver();
 		clientSocket.emit('findMatch', {lang: lang.val(), sid: sid.val(), uname: uname.val()});
 	});
-	$("#aceform").submit(function(e){
-		e.preventDefault();
-		var aceinput = $('#aceinput');
-		var problem = $('#problems');
-        	var sid = $('#sid');
-		var editor = ace.edit('editor');
-		aceinput.val(editor.getValue());
-        	clientSocket.emit('submitCode', {code: aceinput.val(), lang: language, pname: problem.val(), sid: sid.val()});
-		//do we need to send socketid?
-	});
 });
 
+
+function submitAce(){
+	var aceinput = $('#aceinput');
+	var problem = $('#problems');
+	var sid = $('#sid');
+	var editor = ace.edit('editor');
+	aceinput.val(editor.getValue());
+	clientSocket.emit('submitCode', {code: aceinput.val(), lang: language, pname: problem.val(), sid: sid.val()});
+}
 
 function initSocket(){
     clientSocket = io.connect();
