@@ -32,7 +32,7 @@ $(document).ready(function(){
 
 function submitAce(){
 	var aceinput = $('#aceinput');
-	var problem = $('#problems');
+	var problem = $('#pname');
 	var editor = ace.edit('editor');
 	aceinput.val(editor.getValue());
 	clientSocket.emit('submitCode', {code: aceinput.val(), lang: language, pname: problem.val(), boxID: sid});
