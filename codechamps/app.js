@@ -355,7 +355,7 @@ app.post('/runSandbox', function(req, res){
 	var bpname = req.body.problem;
 	var blang = req.body.language;
 	runSandbox(bbody,bpname,bID,blang, function(err, results){
-		res.send(results);
+		res.send(results[0].output);
 	
 	});
 	
@@ -572,7 +572,7 @@ function runSandbox(body,pname,sID,language, cb){
 							return console.log(err);
 						}
 					 	console.log(data);
-					 	callback(true,data);
+					 	callback(true,{output:data,answer:false});
 					});
 				}
 				else{
@@ -609,7 +609,7 @@ function runSandbox(body,pname,sID,language, cb){
 							return console.log(err);
 						}
 					 	console.log(data);
-					 	callback(true,data);
+					 	callback(true,{output:data,answer:false});
 					});
 				 }
 				else{
@@ -627,16 +627,18 @@ function runSandbox(body,pname,sID,language, cb){
 			if(error) throw error;
 			if(data.toString() === other_data.toString()){
 				 console.log("Your output is correct.");
-				 callback(null, "Your output is correct." + "<br>" +
+				 callback(null, {output:"Your output is correct." + "<br>" +
 					  "Your output is: " + data.toString() + "<br>" +
-					  "Expected Output is: " + "<br>" + other_data.toString());
+					  "Expected Output is: " + "<br>" + other_data.toString(),
+						answer: true});
 			 }
 			 else{
 				 flagger = false;
 				 console.log("Your output failed.");
-				 callback(null, "Your output is incorrect." + "<br>" +
+				 callback(null, {output:"Your output is incorrect." + "<br>" +
 					  "Your output is: " + data.toString() + "<br>" +
-					  "Expected Output is: " + "<br>" + other_data.toString());
+					  "Expected Output is: " + "<br>" + other_data.toString(), 
+						answer: false});
 			 }
 			
 		 });
