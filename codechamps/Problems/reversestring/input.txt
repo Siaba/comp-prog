@@ -1,2 +1,4 @@
+3
 Hello I am-- a programmer-- whose string to revers----!!!
 !!!!----????Why no letters???!!!---+++
+!!!Remember that Dynamic Memory can cause issues---++++!
