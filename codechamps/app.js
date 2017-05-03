@@ -649,6 +649,7 @@ function runSandbox(body,pname,sID,language, cb){
 	
 }
 
+exports.runSandbox = runSandbox;
 
 app.post('/getproblem', function(req, res){
 	getproblem(req, res);
