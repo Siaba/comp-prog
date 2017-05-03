@@ -61,7 +61,7 @@
 					<input type="hidden" id="aceinput"  name="comments" value=""/>
 					<div class="large-8 medium-8 columns">
 					  <button type="button" class="button" style="background-color:red; width:40%;">Skip</button>
-					  <button type="submit" class="button" style="width:50%;">Submit</button>
+					  <button type="button" class="button" onclick="submitAce()" style="width:50%;">Submit</button>
 					</div>
 				</form>
 			</div>
