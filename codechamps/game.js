@@ -1,6 +1,7 @@
 var fs = require('fs');
 var bodyParser = require('body-parser');
 var AWS = require('aws-sdk');
+var app = require('./app.js');
 var io;
 
 exports.initGame = function(siolib, socket){
@@ -84,6 +85,18 @@ function playerJoined(){
 }
 
 function submitCode(data){
+	app.runSandbox(data.body, data.pname, data.boxID, data.lang, function(results, err){
+		/*if(results[0].answer){
+			if(matches[data.lang][data.roomID].p1SocketID == this.id){
+				matches[data.lang][data.roomID].p1Score += 10;
+			}
+			else{
+				matches[data.lang][data.roomID].p2Score += 10;
+			}
+			this.socket.emit('sandboxResult', {pname: ""}
+		}*/
+		console.log(results[0]);
+	});
         /* call runsandbox(data)
 	* 	data will contain code, lang, boxid, & problem name  ---  Is socketid needed?
 	*	(data.code, data.lang, data.sid, data.pname) 		
