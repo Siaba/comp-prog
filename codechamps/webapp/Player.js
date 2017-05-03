@@ -5,12 +5,14 @@ var socketID;
 var username;
 var time;
 var minsec;
+var sid;
 
 $(document).ready(function(){
 	initSocket();
 	bindEvents();
 	$.post('/getUserName', function(data){
 	   username = data.uname;
+	   sid == data.sid;
 	   $("#uname").val(data.uname);
 	   $("#sid").val(data.sid);
 	   console.log(data.uname + "" + data.sid);
@@ -31,10 +33,9 @@ $(document).ready(function(){
 function submitAce(){
 	var aceinput = $('#aceinput');
 	var problem = $('#problems');
-	var sid = $('#sid');
 	var editor = ace.edit('editor');
 	aceinput.val(editor.getValue());
-	clientSocket.emit('submitCode', {code: aceinput.val(), lang: language, pname: problem.val(), boxID: sid.val()});
+	clientSocket.emit('submitCode', {code: aceinput.val(), lang: language, pname: problem.val(), boxID: sid});
 }
 
 function initSocket(){
