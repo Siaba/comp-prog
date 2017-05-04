@@ -1,6 +1,6 @@
 <div class="large-8 medium-8 columns">
 			<!--PROBLEM NAME-->
-			<div><table class="problemtitle"><tr><td><span id="pname">Fibonacci</span></td></tr></table></div>
+			<div><table class="problemtitle"><tr><td id="pname">Fibonacci</td></tr></table></div>
 			<!--/PROBLEM NAME-->
 			
 			<!--PROBLEM BAR-->
