@@ -86,15 +86,17 @@ function playerJoined(){
 
 function submitCode(data){
 	app.runSandbox(data.body, data.pname, data.boxID, data.lang, function(err, results){
-		/*if(results[0].answer){
+		if(results[0].answer){
 			if(matches[data.lang][data.roomID].p1SocketID == this.id){
 				matches[data.lang][data.roomID].p1Score += 10;
 			}
 			else{
 				matches[data.lang][data.roomID].p2Score += 10;
 			}
-			this.socket.emit('sandboxResult', {pname: ""}
-		}*/
+			//this.socket.emit('sandboxResult', {pname: ""}
+		}
+		console.log("SCORE UPDATE: " + matches[data.lang][data.roomID].p1ID + ": " + matches[data.lang][data.roomID].p1Score + 
+			    " " + matches[data.lang][data.roomID].p2ID + ": " + matches[data.lang][data.roomID].p2Score);
 		console.log(results[results.length-1]);
 	});
         /* call runsandbox(data)
