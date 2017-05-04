@@ -85,11 +85,12 @@ function playerJoined(){
 }
 
 function submitCode(data){
+	var socketID = this.id;
 	app.runSandbox(data.body, data.pname, data.boxID, data.lang, function(err, results){
 		console.log("p1SocketID: " + matches[data.lang][data.roomID].p1SocketID + " this.id: " + this.id);
 		if(results[results.length-1].answer){
 			
-			if(matches[data.lang][data.roomID].p1SocketID == this.id){
+			if(matches[data.lang][data.roomID].p1SocketID == socketID){
 				matches[data.lang][data.roomID].p1Score += 10;
 			}
 			else{
