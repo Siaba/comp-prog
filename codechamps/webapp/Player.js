@@ -84,7 +84,10 @@ function endGame(data){
 }
 
 function playerQuit(){
-	alert("The other player has disconnected. You win!");
+	var clickok = alert("The other player has disconnected. You win!");
+	if(clickok){
+		window.location="sizzlingsyntax.com:3000/Versus.html";
+	}
 }
 
 //need pname, p1 or p2problems
