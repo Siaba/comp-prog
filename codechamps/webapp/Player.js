@@ -79,6 +79,7 @@ function endGame(data){
 	$("#endp1score").empty().append(p1score);
 	$("#endp2score").empty().append(p2score);
 	$("#winmessage").empty().append(data);
+	$("#gameend_overlay").css('height', '100%');
 }
 
 //need pname, p1 or p2problems
