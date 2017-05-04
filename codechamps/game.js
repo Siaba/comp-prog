@@ -92,11 +92,23 @@ function submitCode(data){
 			
 			if(matches[data.lang][data.roomID].p1SocketID == socketID){
 				matches[data.lang][data.roomID].p1Score += 10;
+				matches[data.lang][data.roomID].p1Problem++;
 			}
 			else{
 				matches[data.lang][data.roomID].p2Score += 10;
+				matches[data.lang][data.roomID].p2Problem++;
 			}
 			//this.socket.emit('sandboxResult', {pname: ""}
+		}
+		else{
+			if(matches[data.lang][data.roomID].p1SocketID == socketID){
+				matches[data.lang][data.roomID].p1Score -= 1;
+				
+			}
+			else{
+				matches[data.lang][data.roomID].p2Score -= 1;
+				
+			}
 		}
 		console.log("SCORE UPDATE: " + matches[data.lang][data.roomID].p1ID + ": " + matches[data.lang][data.roomID].p1Score + 
 			    " " + matches[data.lang][data.roomID].p2ID + ": " + matches[data.lang][data.roomID].p2Score);
@@ -224,7 +236,8 @@ function GameInfo(pid, pBoxid, pSockID){
         this.p1BoxID = pBoxid;
         this.p2BoxID = 100000;
         this.timeRemaining = 1000 * 180;
-        
+        this.p1Problem = 0;
+	this.p2Problem = 0;
 	
         this.numPlayers = 1;
 	this.readyPlayers = 0;
@@ -247,7 +260,7 @@ function GameInfo(pid, pBoxid, pSockID){
 	this.time = function(rid){
 		var roomID = rid;
 		var timer = setInterval(()=>{this.timeRemaining -= 1000;
-			io.sockets.in(roomID).emit('timerUpdate', {time:this.timeRemaining, score1:this.p1Score, score2:this.p2Score});
+			io.sockets.in(roomID).emit('timerUpdate', {time:this.timeRemaining, score1:this.p1Score, score2:this.p2Score, p1ID:this.p1ID, p2ID:this.p2ID});
 			if(this.timeRemaining <= 0){
 				clearInterval(timer);
 			}},1000);
