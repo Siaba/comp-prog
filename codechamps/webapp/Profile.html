@@ -62,11 +62,15 @@
   </div>
   </div>
 
-  <div id="fillProfilePage">
-		<center>
-			<h1 id="greeting"></h1>
-	    	</center>
-  </div>
+<div class="callout">
+  <div class="success callout" data-closable="slide-out-right">
+  <h5 id ="greeting">Welcome back to Code Champs: </h5>
+  <p>And when you're done with me, I can be closed using a Motion UI animation.</p>
+  <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+</div>
 	    
 	    
 	  
@@ -79,7 +83,10 @@
 	   <table border="border">
 	   <tr><td><img src="https://cmkt-image-prd.global.ssl.fastly.net/0.1.0/ps/1079692/580/386/m1/fpnw/wm0/trophy-cup-flat-icon-flat-01-.jpg?1457801080&s=714eaa145f808fdb7a7bf6d45f78fc1d"> </td></tr>
 	   <br>
+	   <tr><td><b> Username </b></td></tr>
 	   <tr><td> Favorite Languages</td></tr>
+	   <tr><td> Favorite Quote</td></tr>
+	   <tr><td> Favorite Band</td></tr>
 	   <tr><td> Wins </td></tr>
 	   <tr><td> Losses</td></tr>
 	   </table>
@@ -87,6 +94,10 @@
 
 
 	   </div>
+
+	<div class="large-3 medium-3 small-3 columns">
+		<textarea placeholder="" cols="30" rows="5"></textarea>
+	</div>
 
 
 
@@ -100,8 +111,8 @@
 		  console.log("jQuery for loading Profile Page Greeting");
 		  $(document).ready(function(){
 			  console.log('Calling post request for username');
-			  $.post('/getUserName' , function(data) {
-				  $('#greeting').html(data);
+			  $.post('/loadGreeting' , function(data) {
+				  $('#greeting').append(data);
 			  });
 		  });
 		
