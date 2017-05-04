@@ -85,7 +85,7 @@ function endGame(data){
 
 function playerQuit(){
 	alert("The other player has disconnected. You win!");
-	document.location.href="sizzlingsyntax.com:3000/Versus.html";
+	document.location.href = "/Versus.html";
 }
 
 //need pname, p1 or p2problems
