@@ -230,7 +230,7 @@ function GameInfo(pid, pBoxid, pSockID){
 		var j = 0;
 		var temp = "";
 		for(var i = len - 1; i > 0; i--){
-			j = Math.floor((Math.random() * (i-1)));
+			j = Math.floor((Math.random() * i));
 			temp = arr[i];
 			arr[i] = arr[j];
 			arr[j] = temp;
