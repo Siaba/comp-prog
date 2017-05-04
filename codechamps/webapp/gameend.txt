@@ -1,0 +1,24 @@
+<a href="javascript:void(0)" class="xbutton" onclick="closeOver()">
+		<i class="fi-x"></i>
+	</a>
+	<div id="overlay_content" class="gameend" style="text-align:center;left:0%">
+	<p style="font: bold 300% AppleGothic, sans-serif; color: white;"></p>
+	</div>
+	<div id="overlay_content" class="gameend">
+		<div class="large-2 medium-2 columns" style="background-color:white; border-style: solid; padding:7px;
+				border-width: 1px;
+				border-color: #444444;">
+					<div class="large-2 medium-2 columns" style="background-color:white; width:50%; padding:3px;">
+						<p id="p1name" style="width:100%; height 20%; text-align: center;"></p>
+						<div style="background-color: black; width:100%; height 80%;">
+							<p id="p1score" style="font: bold 300% AppleGothic, sans-serif; color: white; text-align:center;">0</p>
+						</div>
+					</div>
+					<div class="large-2 medium-2 columns" style="width:50%; padding:3px;">
+						<p id="p2name" style="width:100%; height 20%; text-align: center;"></p>
+						<div style="background-color: black; width:100%; height 80%;">
+							<p id="p2score" style="font: bold 300% AppleGothic, sans-serif; color: white; text-align:center;">0</p>
+						</div>
+					</div>
+		</div>
+	</div>
