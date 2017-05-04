@@ -48,6 +48,7 @@ function bindEvents(){
 	clientSocket.on('loadGame', loadGame);
 	clientSocket.on('timerUpdate', timerUpdate);
 	clientSocket.on('sandboxResult', updateOnResult);
+	clientSocket.on('endGame', endGame);
 	
 	console.log("binding events");
 }
@@ -66,6 +67,18 @@ function loadGame(data){
 	$("#pname").empty().append(data.pname);
 	$("#overlay_content").empty().append(data.overlay_content);
 	$("#number").on("webkitAnimationEnd", function(){console.log("webkitAnimationEnd");goStyle();});
+}
+
+function endGame(data){
+	var p1name = $("#p1name").text();
+	var p2name = $("#p2name").text();
+	var p1score = $("#p1score").text();
+	var p2score = $("#p2score").text();
+	$("#endp1name").empty().append(p1name);
+	$("#endp2name").empty().append(p2name);
+	$("#endp1score").empty().append(p1score);
+	$("#endp2score").empty().append(p2score);
+	$("#winmessage").empty().append(data);
 }
 
 //need pname, p1 or p2problems
