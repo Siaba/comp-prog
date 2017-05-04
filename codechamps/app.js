@@ -51,7 +51,8 @@ io.sockets.on('connection', function(socket){
 	console.log("someone has connected.");
 	
 	socket.on('disconnect', function(socket){ 
-		console.log("someone disconnected.");
+		console.log(socket);
+		
 	});
 });
 
