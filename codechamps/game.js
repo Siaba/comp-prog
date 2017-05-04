@@ -19,7 +19,7 @@ exports.initGame = function(siolib, socket){
 
 function addMatch(lang, roomID, player1ID, player1BoxID, player1SocketID){
         console.log('Room id: ' + roomID + ', lang: ' + lang + 'playerID ' + player1ID );
-        matches[lang][roomID] = new GameInfo(player1ID, player1BoxID, player1SocketID);
+        matches[lang][roomID] = new GameInfo(player1ID, player1BoxID, player1SocketID,lang);
 	
         //this.join(roomID);
         //console.log("game info: " + matches[lang][roomID].p1ID + " " + matches[lang][roomID].p1BoxID);
@@ -86,6 +86,14 @@ function playerJoined(){
 
 function submitCode(data){
 	var socketID = this.id;
+	var index = -1;
+	if(matches[data.lang][data.roomID].p1SocketID == socketID){
+		index = matches[data.lang][data.roomID].p1Problem;		
+	}
+	else{
+		index = matches[data.lang][data.roomID].p2Problem;	
+	}
+	if(index < problems.length){
 	app.runSandbox(data.body, data.pname, data.boxID, data.lang, function(err, results){
 		console.log("p1SocketID: " + matches[data.lang][data.roomID].p1SocketID + " this.id: " + this.id);
 		if(results[results.length-1].answer){
@@ -119,6 +127,12 @@ function submitCode(data){
 			    " " + matches[data.lang][data.roomID].p2ID + ": " + matches[data.lang][data.roomID].p2Score);
 		console.log(results[results.length-1]);
 	});
+	}
+	else{
+		console.log("Youve finished with the problems");
+		//emit to the socket that they have finished the problems and should wait til the timer is up
+		
+	}
         /* call runsandbox(data)
 	* 	data will contain code, lang, boxid, & problem name  ---  Is socketid needed?
 	*	(data.code, data.lang, data.sid, data.pname) 		
@@ -147,7 +161,22 @@ function playerLeft(data){
         endGame(data);
 }
 
-function endGame(data){/*
+function endGame(roomID, lang){
+	
+	if(matches[lang][roomID].p1Score > matches[lang][roomID].p2Score){
+		io.to(matches[lang][roomID].p1SocketID).emit('endGame', "You won");
+		io.to(matches[lang][roomID].p2SocketID).emit('endGame', "You lost");
+	}
+	else if(matches[lang][roomID].p1Score < matches[lang][roomID].p2Score){
+		io.to(matches[lang][roomID].p2SocketID).emit('endGame', "You won");
+		io.to(matches[lang][roomID].p1SocketID).emit('endGame', "You lost");
+	}
+	else{
+		console.log("tie");
+		io.to(matches[lang][roomID].p2SocketID).emit('endGame', "You tied");
+		io.to(matches[lang][roomID].p1SocketID).emit('endGame', "You tied");
+	}
+	/*
 	var docClient = new AWS.DynamoDB.DocumentClient();
 	console.log("Storing win/loss results for room " + data.roomID);
 	
@@ -217,7 +246,7 @@ function playerReady(data){
 	if(matches[data.lang][data.roomID].readyPlayers == 2){
 		//emit game start event	
 		console.log("both clients are ready");
-		matches[data.lang][data.roomID].time(data.roomID);
+		matches[data.lang][data.roomID].time(data.roomID, data.lang);
 	}
 }
 
@@ -231,7 +260,7 @@ var matches = {
 
 var problems = ["fibonacci", "helloworld", "reversestring", "wordcount"];
 
-function GameInfo(pid, pBoxid, pSockID){
+function GameInfo(pid, pBoxid, pSockID, lang){
         this.p1Score = 0;
         this.p2Score = 0;
 	this.p1SocketID = pSockID;
@@ -243,7 +272,7 @@ function GameInfo(pid, pBoxid, pSockID){
         this.timeRemaining = 1000 * 180;
         this.p1Problem = 0;
 	this.p2Problem = 0;
-	
+	this.language = lang;
         this.numPlayers = 1;
 	this.readyPlayers = 0;
 	
@@ -262,12 +291,14 @@ function GameInfo(pid, pBoxid, pSockID){
 		return arr;
 	}
 	this.problemSet = this.problemShuffle();
-	this.time = function(rid){
+	this.time = function(rid, lang){
 		var roomID = rid;
+		var language = lang;
 		var timer = setInterval(()=>{this.timeRemaining -= 1000;
 			io.sockets.in(roomID).emit('timerUpdate', {time:this.timeRemaining, score1:this.p1Score, score2:this.p2Score, p1ID:this.p1ID, p2ID:this.p2ID});
 			if(this.timeRemaining <= 0){
 				clearInterval(timer);
+				endGame(roomID, language);
 			}},1000);
 		
 	}
