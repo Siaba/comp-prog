@@ -229,8 +229,8 @@ function GameInfo(pid, pBoxid, pSockID){
 		var len = problems.length;
 		var j = 0;
 		var temp = "";
-		for(var i = len - 1; i > 0; i--){
-			j = Math.floor((Math.random() * i));
+		for(var i = 0; i < len-1; i++){
+			j = Math.floor(Math.random() * len);
 			temp = arr[i];
 			arr[i] = arr[j];
 			arr[j] = temp;
@@ -242,7 +242,6 @@ function GameInfo(pid, pBoxid, pSockID){
 	this.time = function(rid){
 		var roomID = rid;
 		var timer = setInterval(()=>{this.timeRemaining -= 1000;
-			console.log(this.timeRemaining);
 			io.sockets.in(roomID).emit('timerUpdate', {time:this.timeRemaining, score1:this.p1Score, score2:this.p2Score});
 			if(this.timeRemaining <= 0){
 				clearInterval(timer);
