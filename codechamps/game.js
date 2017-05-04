@@ -101,7 +101,7 @@ function submitCode(data){
 				problemID = matches[data.lang][data.roomID].p2Problem;
 			}
 			//this.socket.emit('sandboxResult', {pname: ""}
-			fs.readFile('/home/ubuntu/codechamps/Problems/Descriptions/' + data.pname + '.txt', (err, info) => {
+			fs.readFile('/home/ubuntu/codechamps/Problems/Descriptions/' + matches[data.lang][data.roomID].problemSet[problemID] + '.txt', (err, info) => {
 				  io.to(socketID).emit('sandboxResult', {pname: data.pname, desc: info.toString(), pid: problemID});
 			});
 		}
