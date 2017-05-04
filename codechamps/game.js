@@ -89,16 +89,21 @@ function submitCode(data){
 	app.runSandbox(data.body, data.pname, data.boxID, data.lang, function(err, results){
 		console.log("p1SocketID: " + matches[data.lang][data.roomID].p1SocketID + " this.id: " + this.id);
 		if(results[results.length-1].answer){
-			
+			var problemID = -1;
 			if(matches[data.lang][data.roomID].p1SocketID == socketID){
 				matches[data.lang][data.roomID].p1Score += 10;
 				matches[data.lang][data.roomID].p1Problem++;
+				problemID = matches[data.lang][data.roomID].p1Problem;
 			}
 			else{
 				matches[data.lang][data.roomID].p2Score += 10;
 				matches[data.lang][data.roomID].p2Problem++;
+				problemID = matches[data.lang][data.roomID].p2Problem;
 			}
 			//this.socket.emit('sandboxResult', {pname: ""}
+			fs.readFile('/home/ubuntu/codechamps/Problems/Descriptions/' + data.pname + '.txt', (err, info) => {
+				  socket.to(socketID).emit('sandboxResult', {pname: data.pname, desc: info.toString(), pid: problemID});
+			});
 		}
 		else{
 			if(matches[data.lang][data.roomID].p1SocketID == socketID){
