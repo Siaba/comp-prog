@@ -7,14 +7,14 @@
 			<div style="overflow-x:auto;">
 			  <table class="problembar">
 				<tr>
-				  <th style="border-color: #444444; border-style: dotted; border-width:2px;">1</th>
-				  <th>2</th>
-				  <th>3</th>
-				  <th>4</th>
-				  <th>5</th>
-				  <th>6</th>
-				  <th>7</th>
-				  <th>8</th>
+				  <th id="t0" style="border-color: #444444; border-style: dotted; border-width:2px;">1</th>
+				  <th id="t1">2</th>
+				  <th id="t2">3</th>
+				  <th id="t3">4</th>
+				  <th id="t4">5</th>
+				  <th id="t5">6</th>
+				  <th id="t6">7</th>
+				  <th id="t7">8</th>
 				</tr>
 			  </table>
 			</div>
