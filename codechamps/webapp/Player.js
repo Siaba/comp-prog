@@ -48,6 +48,7 @@ function bindEvents(){
 	clientSocket.on('loadGame', loadGame);
 	clientSocket.on('timerUpdate', timerUpdate);
 	clientSocket.on('sandboxResult', updateOnResult);
+	clientSocket.on('playerQuit', playerQuit);
 	clientSocket.on('endGame', endGame);
 	
 	console.log("binding events");
@@ -80,6 +81,10 @@ function endGame(data){
 	$("#endp2score").empty().append(p2score);
 	$("#winmessage").empty().append(data);
 	$("#gameend_overlay").css('height', '100%');
+}
+
+function playerQuit(){
+	alert("The other player has disconnected. You win!");
 }
 
 //need pname, p1 or p2problems
