@@ -85,7 +85,7 @@ function playerJoined(){
 }
 
 function submitCode(data){
-	app.runSandbox(data.body, data.pname, data.boxID, data.lang, function(results, err){
+	app.runSandbox(data.body, data.pname, data.boxID, data.lang, function(err, results){
 		/*if(results[0].answer){
 			if(matches[data.lang][data.roomID].p1SocketID == this.id){
 				matches[data.lang][data.roomID].p1Score += 10;
