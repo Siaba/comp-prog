@@ -86,7 +86,9 @@ function playerJoined(){
 
 function submitCode(data){
 	app.runSandbox(data.body, data.pname, data.boxID, data.lang, function(err, results){
+		System.out.println("p1SocketID: " + matches[data.lang][data.roomID].p1SocketID + " this.id: " + this.id);
 		if(results[results.length-1].answer){
+			
 			if(matches[data.lang][data.roomID].p1SocketID == this.id){
 				matches[data.lang][data.roomID].p1Score += 10;
 			}
