@@ -36,6 +36,13 @@
 	content: "Searching\2026";
 }
 
+.overlay .gameend {
+	position: relative; 
+    left: 42%; 
+	width:100%;
+	top:40%;
+}
+
 .overlay .xbutton {
 	position: absolute;
 	top: 40px;
