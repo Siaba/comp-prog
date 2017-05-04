@@ -86,7 +86,7 @@ function endGame(data){
 function playerQuit(){
 	var clickok = alert("The other player has disconnected. You win!");
 	if(clickok){
-		window.location="sizzlingsyntax.com:3000/Versus.html";
+		window.location.assign("sizzlingsyntax.com:3000/Versus.html");
 	}
 }
 
