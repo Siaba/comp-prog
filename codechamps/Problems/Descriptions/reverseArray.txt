@@ -1,0 +1,4 @@
+Input Format:
+Given an integer N, where N represents the number of elements in the array
+
+The next line contains the array in order with space sepereated integers.
