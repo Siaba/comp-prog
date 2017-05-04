@@ -90,6 +90,17 @@ function timerUpdate(data){
 		sec = time.getUTCSeconds();
 	}
 	minsec = time.getUTCMinutes() + ":" + sec;
+	
+	if(data.p1ID == username){
+		$("#p1score").empty().append(data.score1);
+		$("#p2score").empty().append(data.score2);
+	}
+	else {
+		$("#p1score").empty().append(data.score2);
+		$("#p2score").empty().append(data.score1);
+	}
+
+	
 	$("#timer").html(minsec);
 }
 
