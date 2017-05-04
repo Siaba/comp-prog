@@ -25,14 +25,14 @@ exports.quit = function(socketID){
 		for(var inkey in matches[key]){
 			if(matches[key][inkey].p1SocketID == socketID){
 				rid = inkey;
-				playerNumber = p2SocketID;
+				playerNumber = matches[key][inkey].p2SocketID;
 				playerCount = matches[key][inkey].numPlayers;
 				lang = key;
 				console.log("player 1 quit");
 			}
 			else if(matches[key][inkey].p2SocketID == socketID){
 				rid = inkey;
-				playerNumber = p1SocketID;
+				playerNumber = matches[key][inkey].p1SocketID;
 				playerCount = matches[key][inkey].numPlayers;
 				lang = key;
 				console.log("player 2 quit");
