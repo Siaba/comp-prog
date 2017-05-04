@@ -221,9 +221,10 @@ function endGame(roomID, lang){
 		io.to(matches[lang][roomID].p2SocketID).emit('endGame', "You tied");
 		io.to(matches[lang][roomID].p1SocketID).emit('endGame', "You tied");
 	}
-	delete matches[lang][roomID];
+	
 	var otherSocket1 = io.sockets.connected[matches[lang][roomID].p1SocketID];
 	var otherSocket2 = io.sockets.connected[matches[lang][roomID].p2SocketID];
+	delete matches[lang][roomID];
 	otherSocket1.leave(roomID);
 	otherSocket2.leave(roomID);
 	/*
