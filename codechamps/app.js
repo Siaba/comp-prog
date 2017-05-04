@@ -50,9 +50,9 @@ io.sockets.on('connection', function(socket){
 	game.initGame(io, socket);
 	console.log("someone has connected.");
 	
-	socket.on('disconnect', function(socket){ 
-		console.log(socket);
-		
+	socket.on('disconnect', function(){ 
+		console.log(socket.id);
+		game.quit(socket.id);
 	});
 });
 
