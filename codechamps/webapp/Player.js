@@ -35,7 +35,7 @@ function submitAce(){
 	var problem = $('#pname');
 	var editor = ace.edit('editor');
 	aceinput.val(editor.getValue());
-	clientSocket.emit('submitCode', {code: aceinput.val(), lang: language, pname: problem.val(), boxID: sid});
+	clientSocket.emit('submitCode', {code: aceinput.val(), lang: language, pname: problem.text(), boxID: sid});
 }
 
 function initSocket(){
