@@ -47,6 +47,7 @@ function bindEvents(){
 	clientSocket.on('playerJoined', playerJoined);
 	clientSocket.on('loadGame', loadGame);
 	clientSocket.on('timerUpdate', timerUpdate);
+	clientSocket.on('sandboxResult', updateOnResult);
 	
 	console.log("binding events");
 }
@@ -65,6 +66,20 @@ function loadGame(data){
 	$("#pname").empty().append(data.pname);
 	$("#overlay_content").empty().append(data.overlay_content);
 	$("#number").on("webkitAnimationEnd", function(){console.log("webkitAnimationEnd");goStyle();});
+}
+
+//need pname, p1 or p2problems
+function updateOnResult(data){
+	$("#pname").empty().append(data.pname);
+	$("#desc").empty().append(data.desc);
+	var tprev = "#t" + (data.pid-1);
+	var t = "#t" + data.pid;
+	$(tprev).css('border-color', 'none');
+	$(tprev).css('border-style', 'none');
+	$(tprev).css('border-width', 'none');
+	$(t).css('border-color', '#444444');
+	$(t).css('border-style', 'dotted');
+	$(t).css('border-width', '2px');
 }
 
 function playerJoined(){
