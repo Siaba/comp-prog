@@ -15,6 +15,45 @@ exports.initGame = function(siolib, socket){
         socket.on('playerLeft', playerLeft);
 	socket.on('playerReady', playerReady);
 }
+
+exports.quit(socketID){
+	var rid = "";
+	var playerNumber = -1;
+	var playerCount = 0;
+	var lang = "";
+	for(var key in matches){
+		for(var inkey in matches[key]){
+			if(matches[key][inkey].p1SocketID == socketID){
+				rid = inkey;
+				playerNumber = p2SocketID;
+				playerCount = matches[key][inkey].numPlayers;
+				lang = key;
+			}
+			else if(matches[key][inkey].p2SocketID == socketID){
+				rid = inkey;
+				playerNumber = p1SocketID;
+				playerCount = matches[key][inkey].numPlayers;
+				lang = key;
+			}
+		}
+	}
+	
+	if(rid != ""){
+		if(playerCount == 1){
+			//quit while searching	
+			//kill game
+			delete matches[lang][rid];
+		}
+		else if(playerCount == 2){
+			io.to(rid).emit('playerQuit');	
+			//quit room
+			//kill game
+			var otherSocket = io.sockets.connected[playerNumber];
+			otherSocket.leave(rid);
+			delete matches[lang][rid];
+		}
+	}
+}
     
 
 function addMatch(lang, roomID, player1ID, player1BoxID, player1SocketID){
