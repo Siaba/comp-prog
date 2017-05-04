@@ -95,7 +95,7 @@ function submitCode(data){
 			}
 			this.socket.emit('sandboxResult', {pname: ""}
 		}*/
-		console.log(results[0]);
+		console.log(results[results.length-1]);
 	});
         /* call runsandbox(data)
 	* 	data will contain code, lang, boxid, & problem name  ---  Is socketid needed?
