@@ -16,7 +16,7 @@ exports.initGame = function(siolib, socket){
 	socket.on('playerReady', playerReady);
 }
 
-exports.quit(socketID){
+exports.quit = function(socketID){
 	var rid = "";
 	var playerNumber = -1;
 	var playerCount = 0;
