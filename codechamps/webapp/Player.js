@@ -60,6 +60,52 @@ function loadGame(data){
 	roomID = data.roomID;
 	socketID = data.socketID;
 	$("#body_load").empty().append(data.page);
+	var editor = ace.edit('editor');
+	var mode = "ace/mode/" + language;
+	editor.session.setMode(mode);
+	switch(language) {
+		case 'java':
+			editor.setValue("import java.io.*;\n" +
+			"import java.util.*;\n" +
+			"import java.text.*;\n" + 
+			"import java.math.*;\n" +
+			"import java.util.regex.*;\n" + "\n" +
+			"public class test"
+			+ "\n{"
+			+ "\n\tpublic static void main(String[] args) {"
+			+ "\n\n\t}"
+			+ "\n}");
+			break;
+		case 'c_cpp':
+			editor.setValue("#include <map>" + "\n" +
+			"#include <set>" + "\n" +
+			"#include <list>" + "\n" +
+			"#include <cmath>" + "\n" +
+			"#include <ctime>" + "\n" +
+			"#include <deque>" + "\n" +
+			"#include <queue>" + "\n" +
+			"#include <stack>" + "\n" +
+			"#include <string>" + "\n" +
+			"#include <bitset>" + "\n" +
+			"#include <cstdio>" + "\n" +
+			"#include <limits>" + "\n" +
+			"#include <vector>" + "\n" +
+			"#include <climits>" + "\n" +
+			"#include <cstring>" + "\n" +
+			"#include <cstdlib>" + "\n" +
+			"#include <fstream>" + "\n" +
+			"#include <numeric>" + "\n" +
+			"#include <sstream>" + "\n" +
+			"#include <iostream>" + "\n" +
+			"#include <algorithm>" + "\n" +
+			"using namespace std;" + "\n" + "\n" +
+			"int main()\n{\n\n\n\n\nreturn 0;\n\n}");
+			break;
+		case 'python':
+			editor.setValue("#Begin your Python Program");
+			break;
+		default:
+			editor.setValue("");
 	$("#p1name").empty().append(username);
 	if(username === data.p1ID) {
 		$("#p2name").empty().append(data.p2ID);
@@ -134,7 +180,7 @@ function timerUpdate(data){
 		$("#p1score").empty().append(data.score2);
 		$("#p2score").empty().append(data.score1);
 	}
-
+	
 	
 	$("#timer").html(minsec);
 }
