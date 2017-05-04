@@ -166,10 +166,12 @@ function endGame(roomID, lang){
 	if(matches[lang][roomID].p1Score > matches[lang][roomID].p2Score){
 		io.to(matches[lang][roomID].p1SocketID).emit('endGame', "You won");
 		io.to(matches[lang][roomID].p2SocketID).emit('endGame', "You lost");
+		console.log("winner");
 	}
 	else if(matches[lang][roomID].p1Score < matches[lang][roomID].p2Score){
 		io.to(matches[lang][roomID].p2SocketID).emit('endGame', "You won");
 		io.to(matches[lang][roomID].p1SocketID).emit('endGame', "You lost");
+		console.log("loser");
 	}
 	else{
 		console.log("tie");
