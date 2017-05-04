@@ -102,7 +102,7 @@ function submitCode(data){
 			}
 			//this.socket.emit('sandboxResult', {pname: ""}
 			fs.readFile('/home/ubuntu/codechamps/Problems/Descriptions/' + data.pname + '.txt', (err, info) => {
-				  socket.to(socketID).emit('sandboxResult', {pname: data.pname, desc: info.toString(), pid: problemID});
+				  io.to(socketID).emit('sandboxResult', {pname: data.pname, desc: info.toString(), pid: problemID});
 			});
 		}
 		else{
