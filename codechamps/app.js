@@ -672,7 +672,7 @@ app.post('/loadGreeting', function(req, res) {
 
 
 function loadGreeting(req, res) {
-	var theuser = req.body.session.username;
+	var theuser = req.session.username;
 	console.log("The username on the profile Page: " + theuser);
 	res.send(theuser);
 }
