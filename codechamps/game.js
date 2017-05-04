@@ -292,12 +292,17 @@ function endGame(roomID, lang){
 }
 
 function playerReady(data){
+	if(typeof matches[data.lang][data.roomID] === 'undefined') {
+  		console.log("game no longer exists");  
+	}
+	else {
 	matches[data.lang][data.roomID].readyPlayers++;
 	console.log("A client is ready");
 	if(matches[data.lang][data.roomID].readyPlayers == 2){
 		//emit game start event	
 		console.log("both clients are ready");
 		matches[data.lang][data.roomID].time(data.roomID, data.lang);
+	}
 	}
 }
 
