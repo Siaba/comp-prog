@@ -28,21 +28,24 @@ exports.quit(socketID){
 				playerNumber = p2SocketID;
 				playerCount = matches[key][inkey].numPlayers;
 				lang = key;
+				console.log("player 1 quit");
 			}
 			else if(matches[key][inkey].p2SocketID == socketID){
 				rid = inkey;
 				playerNumber = p1SocketID;
 				playerCount = matches[key][inkey].numPlayers;
 				lang = key;
+				console.log("player 2 quit");
 			}
 		}
 	}
-	
+	console.log("rid  " + rid + " playNum  " + playerNumber + "  playcount " + playerCount + "  lang  " + lang);
 	if(rid != ""){
 		if(playerCount == 1){
 			//quit while searching	
 			//kill game
 			delete matches[lang][rid];
+			console.log("search room killed");
 		}
 		else if(playerCount == 2){
 			io.to(rid).emit('playerQuit');	
@@ -51,6 +54,7 @@ exports.quit(socketID){
 			var otherSocket = io.sockets.connected[playerNumber];
 			otherSocket.leave(rid);
 			delete matches[lang][rid];
+			console.log("game room killed");
 		}
 	}
 }
