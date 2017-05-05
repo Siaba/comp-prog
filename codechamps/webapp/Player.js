@@ -107,6 +107,7 @@ function loadGame(data){
 			break;
 		default:
 			editor.setValue("");
+		       }
 	$("#p1name").empty().append(username);
 	if(username === data.p1ID) {
 		$("#p2name").empty().append(data.p2ID);
