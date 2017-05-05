@@ -352,7 +352,7 @@ app.post('/getUserName', function(req, res){
 
 app.post('/getAccountInfo', function(req, res) {
 	var table1 = "scoring";
-	var username = req.body.username;
+	var username = req.session.username;
 	var wins;
 	var losses;
 	var sizzlerank;
