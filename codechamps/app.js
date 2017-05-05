@@ -349,6 +349,36 @@ res.redirect('/Home.html');
 app.post('/getUserName', function(req, res){
 	res.send({uname: req.session.username, sid: req.session.sID});	
 });
+
+app.post('/getAccountInfo', function(req, res) {
+	var table1 = "scoring";
+	var username = req.body.username;
+	var wins;
+	var losses;
+	var sizzlerank;
+	var db = new AWS.DynamoDB();
+	
+	var paramsgetuser = {
+		TableName:table1,
+		Key : {"username" : {S: username}},
+		AttributesToGet: [ "username", "wins", "losses", "sizzlerank" ]
+	};
+	
+	//check if username exists in database
+	db.getItem(paramsgetuser, function(err, data){
+		if(err) {
+			console.log(err);
+		}
+		else {
+			console.log(data);
+			wins = data.wins;
+			losses = data.losses;
+			sizzlerank = data.sizzlerank;
+			res.send( { username: username, wins: wins, losses: losses, sizzlerank: sizzlerank } );
+		}
+	});
+});
+
 //write to file when submit button is clicked
 app.post('/runSandbox', function(req, res){
 	var bID = req.session.sID;
