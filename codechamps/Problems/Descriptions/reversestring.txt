@@ -1,9 +1,9 @@
-Write a program that takes as input an integer N, that denotes the number of test cases. 
-For each test case, take in a string and print its reverse.
-The following symbols: -, ?, +, ! , should all be replaced with the | symbol.
+Write a program that takes as input an integer N, that denotes the number of test cases.<br>
+For each test case, take in a string and print its reverse.<br>
+The following symbols: -, ?, +, ! , should all be replaced with the | symbol.<br>
 
-Sample Input:
-???casey--?++
+Sample Input:<br>
+casey<br><br>
 
-Sample Output:
-|||||yesac|||
+Sample Output:<br>
+yesac
