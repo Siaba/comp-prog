@@ -85,6 +85,7 @@
 		function changeLang(){
 			var ddown = document.getElementById('ddown');
 			var editor = ace.edit("editor");
+			editor.session.setMode("ace/mode/" + ddown.value);
 			switch(ddown.value) {
 				case 'java':
 					editor.setValue("import java.io.*;\n" +
@@ -129,7 +130,7 @@
 				case 'csharp':
 					editor.setValue("using System;\n" +
 					"{\n" +
-					"\n\tclass test" 
+					"\n\tclass test" +
 					"\n\t{" +
 					"\n\t\tstatic void Main()" +
 					"\n\t\t{" +
@@ -140,7 +141,6 @@
 				default:
 					editor.setValue("");
 			}
-			editor.session.setMode("ace/mode/" + ddown.value);
 		}
 		</script>
 		<div class="large-8 medium-8 columns">
