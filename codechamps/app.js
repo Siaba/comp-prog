@@ -371,9 +371,9 @@ app.post('/getAccountInfo', function(req, res) {
 		}
 		else {
 			console.log(data);
-			wins = data.wins;
-			losses = data.losses;
-			sizzlerank = data.sizzlerank;
+			wins = data.wins.N;
+			losses = data.losses.N;
+			sizzlerank = data.sizzlerank.N;
 			res.send( { username: username, wins: wins, losses: losses, sizzlerank: sizzlerank } );
 		}
 	});
