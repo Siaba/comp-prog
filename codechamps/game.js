@@ -137,7 +137,7 @@ function playerJoined(){
 function submitCode(data){
 	var socketID = this.id;
 	var index = -1;
-	if(typeof matches[lang][roomID] === 'undefined') {
+	if(typeof matches[data.lang][data.roomID] === 'undefined') {
   		console.log("game no longer exists");  
 	}
 	else{
