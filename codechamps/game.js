@@ -92,7 +92,7 @@ function findMatch(data){
                                         console.log('gamepage.txt read...');
 					fs.readFile('/home/ubuntu/codechamps/webapp/countdown.txt', function(err,data) {
 						if (!err) {
-							fs.readFile('/home/ubuntu/codechamps/Problems/Descriptions/' + matches[language][key].problemSet[0] + '.txt',(err, info){ => {
+					fs.readFile('/home/ubuntu/codechamps/Problems/Descriptions/' + matches[language][key].problemSet[0] + '.txt',(err, info) => {
 								console.log('gamepage.txt read...');
 								io.sockets.in(key).emit("loadGame", 
 											{page: pagedata,
