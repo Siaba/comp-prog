@@ -137,6 +137,11 @@ function playerJoined(){
 function submitCode(data){
 	var socketID = this.id;
 	var index = -1;
+	if(typeof matches[lang][roomID] === 'undefined') {
+  		console.log("game no longer exists");  
+	}
+	else{
+		
 	if(matches[data.lang][data.roomID].p1SocketID == socketID){
 		index = matches[data.lang][data.roomID].p1Problem;		
 	}
@@ -182,6 +187,7 @@ function submitCode(data){
 		console.log("Youve finished with the problems");
 		//emit to the socket that they have finished the problems and should wait til the timer is up
 		
+	}
 	}
         /* call runsandbox(data)
 	* 	data will contain code, lang, boxid, & problem name  ---  Is socketid needed?
