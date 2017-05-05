@@ -105,7 +105,7 @@ function loadGame(data){
 		case 'csharp':
 			editor.setValue("using System;\n" +
 					"{\n" +
-					"\n\tclass test" 
+					"\n\tclass test" +
 					"\n\t{" +
 					"\n\t\tstatic void Main()" +
 					"\n\t\t{" +
