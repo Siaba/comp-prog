@@ -4,6 +4,8 @@ var AWS = require('aws-sdk');
 var app = require('./app.js');
 var io;
 
+
+
 exports.initGame = function(siolib, socket){
         io = siolib;
        
@@ -210,6 +212,11 @@ function playerLeft(data){
 }
 
 function endGame(roomID, lang){
+	if(typeof matches[lang][roomID] === 'undefined') {
+  		console.log("game no longer exists");  
+	}
+	else{
+		
 	
 	if(matches[lang][roomID].p1Score > matches[lang][roomID].p2Score){
 		io.to(matches[lang][roomID].p1SocketID).emit('endGame', "You won");
@@ -232,6 +239,7 @@ function endGame(roomID, lang){
 	delete matches[lang][roomID];
 	otherSocket1.leave(roomID);
 	otherSocket2.leave(roomID);
+	}
 	/*
 	var docClient = new AWS.DynamoDB.DocumentClient();
 	console.log("Storing win/loss results for room " + data.roomID);
