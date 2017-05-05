@@ -127,6 +127,17 @@
 				case 'python':
 					editor.setValue("#Begin your Python Program");
 					break;
+				case 'csharp':
+					editor.setValue("using System;\n" +
+					"{\n" +
+					"\n\tclass test" 
+					"\n\t{" +
+					"\n\t\tstatic void Main()" +
+					"\n\t\t{" +
+					"\n\t\t}" +
+					"\n\t}" +
+					"\n}");
+					break;
 				default:
 					editor.setValue("");
 			}
@@ -144,6 +155,7 @@
 						  <select name="ddown" id="ddown" onchange="changeLang()">
 							<option value="java">Java</option>
 							<option value="c_cpp">C++</option>
+							<option value="csharp">C#</option>
 							<option value="python">Python</option>
 						  </select>
 					</div>
