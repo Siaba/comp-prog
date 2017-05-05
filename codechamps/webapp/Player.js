@@ -167,11 +167,7 @@ function playerJoined(){
 }
 
 function forfeit(){
-	var quit = confirm("Are you sure you want to forfeit? This will count as a loss");
-	if(quit){
-		document.location.href = "/Versus.html";
-	}
-	
+	document.location.href = "/Versus.html";
 }
 
 function timerUpdate(data){
