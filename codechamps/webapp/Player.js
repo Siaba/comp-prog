@@ -60,6 +60,7 @@ function loadGame(data){
 	roomID = data.roomID;
 	socketID = data.socketID;
 	$("#body_load").empty().append(data.page);
+	$("#desc").empty().append(data.desc);
 	var editor = ace.edit('editor');
 	var mode = "ace/mode/" + language;
 	editor.session.setMode(mode);
