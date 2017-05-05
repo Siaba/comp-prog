@@ -102,6 +102,17 @@ function loadGame(data){
 			"using namespace std;" + "\n" + "\n" +
 			"int main()\n{\n\n\n\n\nreturn 0;\n\n}");
 			break;
+		case 'csharp':
+			editor.setValue("using System;\n" +
+					"{\n" +
+					"\n\tclass test" 
+					"\n\t{" +
+					"\n\t\tstatic void Main()" +
+					"\n\t\t{" +
+					"\n\t\t}" +
+					"\n\t}" +
+					"\n}");
+			break;
 		case 'python':
 			editor.setValue("#Begin your Python Program");
 			break;
