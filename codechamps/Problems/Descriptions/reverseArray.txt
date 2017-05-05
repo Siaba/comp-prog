@@ -2,3 +2,11 @@ Input Format:
 Given an integer N, where N represents the number of elements in the array
 
 The next line contains the array in order with space sepereated integers.
+Print the array in reverse order
+
+Sample Input:
+5
+1 2 3 4 5
+
+Sample Output:
+5 4 3 2 1
