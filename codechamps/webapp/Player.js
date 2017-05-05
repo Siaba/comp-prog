@@ -169,8 +169,9 @@ function playerJoined(){
 function forfeit(){
 	var quit = confirm("Are you sure you want to forfeit? This will count as a loss");
 	if(quit){
-		clientSocket.emit('playerLeft', {user: username, roomID: roomID, lang: language});
+		document.location.href = "/Versus.html";
 	}
+	
 }
 
 function timerUpdate(data){
