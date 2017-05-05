@@ -536,6 +536,11 @@ function runSandbox(body,pname,sID,language, cb){
 				sym += '/tmp/box/' + sID + '/box/g++';
 				flag = true;
 				break;
+			case 'csharp':
+				 source += '/usr/bin/mcs';
+				 sym += '/tmp/box/' + sID + '/box/mcs';
+				 flag = true;
+				 break;
 			default:
 				break;
 		}
@@ -559,6 +564,10 @@ function runSandbox(body,pname,sID,language, cb){
 				break;
 			case 'c_cpp':
 				env += 'isolate --processes=15 --box-id='+ sID + ' --full-env --stderr=error.txt --run -- g++ -o test test.cpp';
+				flag = true;
+				break;
+			case 'csharp':
+				env += 'isolate --processes=15 --box-id='+ sID + ' --full-env --stderr=error.txt --run -- mcs -out:test.exe test.cs';
 				flag = true;
 				break;
 			default:
@@ -597,6 +606,9 @@ function runSandbox(body,pname,sID,language, cb){
 			case 'python':
 				fs.chmodSync('/tmp/box/' + sID + '/box/test.py', '700');
 				run += 'pyt test.py';
+				break;
+			case 'csharp':
+				run += './test.exe';
 				break;
 			default:
 				break;
