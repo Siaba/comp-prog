@@ -316,7 +316,8 @@ function playerReady(data){
 var matches = {
   java: [],
   c_cpp: [],
-  python: []
+  python: [],
+  csharp: []
 };
 
 var problems = ["fibonacci", "helloworld", "reversestring", "wordcount"];
