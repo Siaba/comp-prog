@@ -1,5 +1,9 @@
-Write a program that reverses the String<br>
-"Penn State Harrisburg Computer Science"<br>
+Write a program that takes as input an integer N, that denotes the number of test cases. 
+For each test case, take in a string and print its reverse.
+The following symbols: -, ?, +, ! , should all be replaced with the | symbol.
 
-Expected Output:<br>
-ecneicS retupmoc grubsirraH etatS nneP
+Sample Input:
+???casey--?++
+
+Sample Output:
+|||||yesac|||
