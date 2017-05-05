@@ -85,7 +85,6 @@
 		function changeLang(){
 			var ddown = document.getElementById('ddown');
 			var editor = ace.edit("editor");
-			editor.session.setMode("ace/mode/" + ddown.value);
 			switch(ddown.value) {
 				case 'java':
 					editor.setValue("import java.io.*;\n" +
@@ -141,6 +140,7 @@
 				default:
 					editor.setValue("");
 			}
+			editor.session.setMode("ace/mode/" + ddown.value);
 		}
 		</script>
 		<div class="large-8 medium-8 columns">
