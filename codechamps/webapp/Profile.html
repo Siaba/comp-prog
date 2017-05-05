@@ -77,20 +77,11 @@
 	  
 	  
   </div>
-	
-	<div class="profilepicture">
-	   <left>
-	   <table border="border">
-	   <tr><td><img src="https://cmkt-image-prd.global.ssl.fastly.net/0.1.0/ps/1079692/580/386/m1/fpnw/wm0/trophy-cup-flat-icon-flat-01-.jpg?1457801080&s=714eaa145f808fdb7a7bf6d45f78fc1d"> </td></tr>
-	   <br>
-	   <tr><td><b> Username </b></td></tr>
-	   <tr><td> Favorite Languages</td></tr>
-	   <tr><td> Favorite Quote</td></tr>
-	   <tr><td> Favorite Band</td></tr>
-	   <tr><td> Wins </td></tr>
-	   <tr><td> Losses</td></tr>
-	   </table>
-	   </left>
+	<script>
+		
+	</script>
+	<div class="profilepicture" id="accountInfo">
+	   
 
 
 	   </div>
@@ -116,6 +107,18 @@
 			  console.log('Calling post request for username');
 			  $.post('/loadGreeting' , function(data) {
 				  $('#greeting').append(data);
+			  });
+			  $.post('/getAccountInfo' , function(data) {
+				   var tabledata = "<left>"
+				   + "<table border=\"border\">"
+				   + "<tr><td><img src=\"https://cmkt-image-prd.global.ssl.fastly.net/0.1.0/ps/1079692/580/386/m1/fpnw/wm0/trophy-cup-flat-icon-flat-01-.jpg?1457801080&s=714eaa145f808fdb7a7bf6d45f78fc1d\"> </td></tr>"
+				   + "<br>"
+				   + "<tr><td><b> Username: &#09;" + data.username + "</b></td></tr>"
+				   + "<tr><td> Wins: &#09;" + data.wins + "</td></tr>"
+				   + "<tr><td> Losses: &#09;" + data.losses + "</td></tr>"
+				   + "</table>
+				   + "</left>");
+			  	$('#accountInfo').append(tabledata);
 			  });
 		  });
 		
