@@ -1,0 +1,18 @@
+Write a program, that takes an integer N, denoting the number of test cases to follow.
+Next are N lines, with a string on its own line.
+Your program should check each string, and print 'yes' or 'no' on their own line representing if the string is a palindrome.
+
+Sample Input:
+5
+racecar
+racecar
+racecar
+martin
+griffin
+
+Sample Output:
+yes
+yes
+yes
+no
+no
