@@ -450,6 +450,9 @@ function runSandbox(body,pname,sID,language, cb){
 			case 'python':
 				filePath += 'test.py';
 				break;
+			case 'csharp':
+				filePath += 'test.cs';
+				break;
 			default:
 				break;
 		}
