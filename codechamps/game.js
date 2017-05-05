@@ -92,21 +92,26 @@ function findMatch(data){
                                         console.log('gamepage.txt read...');
 					fs.readFile('/home/ubuntu/codechamps/webapp/countdown.txt', function(err,data) {
 						if (!err) {
-							console.log('gamepage.txt read...');
-							io.sockets.in(key).emit("loadGame", 
-										{page: pagedata,
-										 overlay_content: data.toString(),
-										 roomID: key,
-										 lang: language,
-										 socketID: this.id,
-										 p1ID: matches[language][key].p1ID,
-										 p2ID: matches[language][key].p2ID,
-										 pname: matches[language][key].problemSet[0]
-										});
+							fs.readFile('/home/ubuntu/codechamps/Problems/Descriptions/' + matches[language][key].problemSet[0] + '.txt',(err, info){ => {
+								console.log('gamepage.txt read...');
+								io.sockets.in(key).emit("loadGame", 
+											{page: pagedata,
+											 overlay_content: data.toString(),
+											 roomID: key,
+											 lang: language,
+											 socketID: this.id,
+											 p1ID: matches[language][key].p1ID,
+											 p2ID: matches[language][key].p2ID,
+											 pname: matches[language][key].problemSet[0],
+											 desc: info.toString()
+											});
+							});
 						}
+							
 						else{
 							console.log(err);
 						}
+							
 					});
                                 }
                                 else{
