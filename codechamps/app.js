@@ -508,6 +508,11 @@ function runSandbox(body,pname,sID,language, cb){
 				 sym += '/tmp/box/' + sID + '/box/pyt';
 				 flag = true;
 				 break;
+			 case 'csharp':
+				 source += '/usr/bin/mono';
+				 sym += '/tmp/box/' + sID + '/box/mono';
+				 flag = true;
+				 break;
 			 default:
 				 flag = false;
 				 break;
@@ -611,7 +616,7 @@ function runSandbox(body,pname,sID,language, cb){
 				run += 'pyt test.py';
 				break;
 			case 'csharp':
-				run += './test.exe';
+				run += 'mono test.exe';
 				break;
 			default:
 				break;
