@@ -339,7 +339,7 @@ function GameInfo(pid, pBoxid, pSockID, lang){
         this.p2ID = "";
         this.p1BoxID = pBoxid;
         this.p2BoxID = 100000;
-        this.timeRemaining = 1000 * 45;
+        this.timeRemaining = 1000 * 300;
         this.p1Problem = 0;
 	this.p2Problem = 0;
 	this.language = lang;
