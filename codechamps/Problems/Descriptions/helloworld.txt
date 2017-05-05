@@ -1,7 +1,13 @@
-Hello World<br><br>
+Hello World<br>
 
-Write a program that prints "Hello, World" to the screen.<br>
-You must use standard I/O.<br>
+Write a program that accepts an integer N, and prints Hello World that number of times
 
-Expected Output:<br><br>
-Hello, World
+Sample Input:
+5
+
+Sample Output:
+Hello, World!
+Hello, World!
+Hello, World!
+Hello, World!
+Hello, World!
